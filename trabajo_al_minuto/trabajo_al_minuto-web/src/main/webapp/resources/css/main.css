@@ -1,0 +1,85 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 1/11/2016, 02:37:05 PM
+    Author     : Bryan Silva
+*/
+.ui-toolbar {
+    background-color: #33AFDE !important;
+}
+#dialogBoxId{
+    top: 50% !important;
+    left:50% !important;
+}
+.ui-datatable .ui-row-editor .ui-icon-pencil {
+    background-image: url("/trabajo_al_minuto-web/resources/icon/pen-gray.png") !important;
+}
+.ui-datatable .ui-row-editor .ui-icon-check {
+    background-image: url("/trabajo_al_minuto-web/resources/icon/check-green.png") !important;
+}
+.ui-datatable .ui-row-editor .ui-icon-close {
+    background-image: url("/trabajo_al_minuto-web/resources/icon/delete-red.png") !important;
+}
+.ui-datatable .ui-paginator .ui-paginator-first .ui-icon { 
+    background-image: url("/trabajo_al_minuto-web/resources/icon/left-double-arrow-for-data-white.png") !important;
+}
+.ui-datatable .ui-paginator .ui-paginator-prev .ui-icon {  
+    background-image: url("/trabajo_al_minuto-web/resources/icon/left-one-arrow-for-data-white.png") !important;
+}
+.ui-datatable .ui-paginator .ui-paginator-next .ui-icon {   
+    background-image: url("/trabajo_al_minuto-web/resources/icon/right-one-arrow-for-data-white.png") !important;
+}
+.ui-datatable .ui-paginator .ui-paginator-last .ui-icon {  
+    background-image: url("/trabajo_al_minuto-web/resources/icon/right-double-arrow-for-data-white.png") !important;
+}
+.ui-datagrid .ui-paginator .ui-paginator-first .ui-icon { 
+    background-image: url("/trabajo_al_minuto-web/resources/icon/left-double-arrow-for-data-white.png") !important;
+}
+.ui-datagrid .ui-paginator .ui-paginator-prev .ui-icon {  
+    background-image: url("/trabajo_al_minuto-web/resources/icon/left-one-arrow-for-data-white.png") !important;
+}
+.ui-datagrid .ui-paginator .ui-paginator-next .ui-icon {   
+    background-image: url("/trabajo_al_minuto-web/resources/icon/right-one-arrow-for-data-white.png") !important;
+}
+.ui-datagrid .ui-paginator .ui-paginator-last .ui-icon {  
+    background-image: url("/trabajo_al_minuto-web/resources/icon/right-double-arrow-for-data-white.png") !important;
+}
+.ui-selectonemenu-trigger .ui-icon-triangle-1-s, .ui-selectcheckboxmenu-trigger .ui-icon-triangle-1-s {
+    background-image: url("/trabajo_al_minuto-web/resources/icon/downarrow-white.png") !important;
+}
+.ui-chkbox-box .ui-icon-check{
+    background-image: url("/trabajo_al_minuto-web/resources/icon/check-white.png") !important;
+}
+.ui-fileupload-upload .ui-icon-arrowreturnthick-1-n{
+    background-image: url("/trabajo_al_minuto-web/resources/icon/upload-white.png") !important;
+}
+.ui-fileupload-cancel .ui-icon-cancel{
+    background-image: url("/trabajo_al_minuto-web/resources/icon/delete-white.png") !important;
+}
+.ui-fileupload-choose .ui-icon-plusthick, .ui-fileupload-simple .ui-icon-plusthick{
+    background-image: url("/trabajo_al_minuto-web/resources/icon/plus-sign-white.png") !important;
+}
+.ui-fileupload-content .ui-fileupload-cancel .ui-icon-close{
+    background-image: url("/trabajo_al_minuto-web/resources/icon/delete-white.png") !important;
+}
+.ui-datatable table tbody tr td .ui-row-toggler.ui-icon-circle-triangle-e {
+    background-image: url("/trabajo_al_minuto-web/resources/icon/rightarrow-gray.png") !important;
+}
+.ui-datatable table tbody tr td .ui-row-toggler.ui-icon-circle-triangle-s {
+    background-image: url("/trabajo_al_minuto-web/resources/icon/downarrow-gray.png") !important;
+}
+.ui-messages-info .ui-icon-close, .ui-messages-warn .ui-icon-close, .ui-messages-error .ui-icon-close, .ui-messages-fatal .ui-icon-close {
+    background-image: url("/trabajo_al_minuto-web/resources/icon/delete-red.png") !important;
+}
+.ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-icon .ui-icon-closethick {
+    background-image: url("/trabajo_al_minuto-web/resources/icon/delete-red.png") !important;
+}
+/*.meshim_widget_components_chatButton_Button .button_bar {
+    background: #80B73E !important;
+}
+.meshim_widget_components_chatButton_ButtonBar .favicon{
+    color: white !important;
+}*/

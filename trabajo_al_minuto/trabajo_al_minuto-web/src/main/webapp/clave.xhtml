@@ -1,0 +1,105 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+            <meta http-equiv="cache-control" content="max-age=0" />
+            <meta http-equiv="cache-control" content="no-cache" />
+            <meta http-equiv="expires" content="0" />
+            <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+            <meta http-equiv="pragma" content="no-cache" />
+        </f:facet>
+        <title>Trabajo al minuto ©  2017</title>
+        <link rel="shortcut icon" type="image/png" href="#{resource['image/favicon.png']}"/>
+        <h:outputScript name="js/layout.js" library="spark-layout" />
+
+        <ui:insert name="head" />
+        <f:metadata>
+            <f:event type="preRenderView" listener="#{adminBean.claveArriba}"/>
+        </f:metadata>
+    </h:head>
+
+    <h:body>    
+        <h:form id="form_login">           
+            <div id="layout-portlets-cover">
+                <ui:insert name="content">     
+                    <div id="layout-portlets-cover">
+                        <div class="login-pages-box Container50 Responsive50 MarAuto Fnone TexAlCenter MarTop10"
+                             style="margin-top:5%; background-position:center; background-size:cover; border-radius: 15px; background-color: #FFF">
+                            <div class="Container90 Fnone MarAuto TexAlCenter">
+
+                                <p:graphicImage  name="logo.png" library="image" style="width: 40%; top: 10px;position: relative;"/>
+                                <p:messages id="messages" autoUpdate="true" closable="true" />
+                                <div class="EmptyBox10"></div>
+                                <p style="font-size: 12px">Por políticas de seguridad del sistema es necesario que realice el cambio de contraseña, recuerde que esta es personal e intransferible. 
+                                    <br/><br/>
+                                    <b>La contraseña debe tener de 6 a 12 caracteres y contener una combinación de letras y números.</b>
+                                </p>                            
+                                <div class="EmptyBox20"></div>
+                                <p:password id="pass1" value="#{adminBean.clave}" placeholder="Contraseña nueva" styleClass="Wid80"
+                                            validatorMessage="Las contraseñas no coinciden o no cumplen con los requisitos mínimos de validación, intente de nuevo." 
+                                            required="true" match="pass2" maxlength="12">
+                                    <f:validateLength minimum="6" maximum="12" /> 
+                                    <f:validateRegex pattern="^[a-zA-Z0-9]+$" />
+                                </p:password>      
+                                <div class="EmptyBox10"></div>
+                                <p:password id="pass2" value="#{adminBean.clave}" placeholder="Confirmar contraseña" styleClass="Wid80"
+                                            required="true" maxlength="12"/>  
+                                <div class="EmptyBox10"></div>                       
+                                <div class="Container85 Fnone MarAuto softgray">
+                                    <div class="EmptyBox5"></div>
+                                </div>              
+                                <div class="Seperator"></div>
+                                <div class="Container50 Responsive MarTop10">
+                                    <div class="Container10 Responsive MarTop10" style="margin-left: 10px;">
+                                        <p:selectBooleanCheckbox value="#{adminBean.usuarioSeleccionado.terminos}" required="true">
+                                            <p:ajax update="btn_change_ps" />
+                                        </p:selectBooleanCheckbox>
+                                    </div>
+                                    <div class="Container80 Responsive">
+                                        <p class="Fs12 TexAlLeft"><b> Acepto <a 
+                                                    href="#" target="_blank" class="FontSourceSansLight red">términos y condiciones</a></b></p>
+                                    </div>
+                                </div>
+                                <div class="Container10 Responsive MarTop10"></div>
+                                <div class="Container40 Responsive MarTop10">
+                                    <p:commandButton id="btn_change_ps" value="Cambiar clave" 
+                                                     icon="fa fa-key-white" disabled="#{!adminBean.usuarioSeleccionado.terminos}"
+                                                     styleClass="Fs16 RedButton"
+                                                     update=":form_login:messages" 
+                                                     actionListener="#{adminBean.cambiarClave}" />
+                                </div>
+                                <div class="EmptyBox40"></div>
+                            </div>
+                        </div>
+                    </div>             
+                </ui:insert>
+                <div class="EmptyBox60"></div>
+                <ui:include src="./resources/template/footer.xhtml" />
+            </div>    
+            <p:ajaxStatus style="width:32px;height:32px;position:fixed;right:15px;bottom:50px">
+                <f:facet name="start">
+                    <p:graphicImage name="images/preloader.gif" library="spark-layout"/>
+                </f:facet>
+
+                <f:facet name="complete">
+                    <h:outputText value="" />
+                </f:facet>
+            </p:ajaxStatus>
+
+            <h:outputStylesheet name="css/core-layout.css" library="spark-layout" />
+            <h:outputStylesheet name="css/font-awesome.css" library="spark-layout" />
+            <h:outputStylesheet name="css/animate.css" library="spark-layout" />
+            <h:outputStylesheet name="css/spark-layout-red.css" library="spark-layout" />
+            <h:outputStylesheet name="main.css" library="css" />
+        </h:form>
+    </h:body>
+
+</html>
