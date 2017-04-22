@@ -62,9 +62,9 @@ public class ComponenteWeb implements Serializable {
         lisTo.add(email);
 
         EmailMessage em = new EmailMessage();
-        em.setFrom("basp.staff@gmail.com");
-        em.setUser("basp.staff@gmail.com");
-        em.setPassword("bsilva.basp95");
+        em.setFrom("trabajoalminuto@gmail.com");
+        em.setUser("trabajoalminuto@gmail.com");
+        em.setPassword("tam12345");
         em.setPort(587);
         em.setStarttls(Boolean.TRUE);
         em.setMask("Trabajo al minuto");
