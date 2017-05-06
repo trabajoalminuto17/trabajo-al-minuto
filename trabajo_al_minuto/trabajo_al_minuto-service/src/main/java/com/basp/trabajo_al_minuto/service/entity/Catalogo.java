@@ -57,16 +57,18 @@ public class Catalogo implements Serializable {
     @NotNull
     @Column(name = "orden")
     private int orden;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "estado")
-    private List<UsuarioHasOferta> usuarioHasOfertaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "area")
     private List<Prueba> pruebaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "area")
+    private List<PruebaPlantilla> pruebaPlantillaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "estado")
+    private List<UsuarioHasOferta> usuarioHasOfertaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "area")
     private List<Perfil> perfilList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "catalogoPadre")
+    @OneToMany(mappedBy = "catalogoPadre")
     private List<Catalogo> catalogoList;
     @JoinColumn(name = "catalogo_padre", referencedColumnName = "catalogo_id")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Catalogo catalogoPadre;
 
     public Catalogo() {
@@ -124,20 +126,28 @@ public class Catalogo implements Serializable {
         this.orden = orden;
     }
 
-    public List<UsuarioHasOferta> getUsuarioHasOfertaList() {
-        return usuarioHasOfertaList;
-    }
-
-    public void setUsuarioHasOfertaList(List<UsuarioHasOferta> usuarioHasOfertaList) {
-        this.usuarioHasOfertaList = usuarioHasOfertaList;
-    }
-
     public List<Prueba> getPruebaList() {
         return pruebaList;
     }
 
     public void setPruebaList(List<Prueba> pruebaList) {
         this.pruebaList = pruebaList;
+    }
+
+    public List<PruebaPlantilla> getPruebaPlantillaList() {
+        return pruebaPlantillaList;
+    }
+
+    public void setPruebaPlantillaList(List<PruebaPlantilla> pruebaPlantillaList) {
+        this.pruebaPlantillaList = pruebaPlantillaList;
+    }
+
+    public List<UsuarioHasOferta> getUsuarioHasOfertaList() {
+        return usuarioHasOfertaList;
+    }
+
+    public void setUsuarioHasOfertaList(List<UsuarioHasOferta> usuarioHasOfertaList) {
+        this.usuarioHasOfertaList = usuarioHasOfertaList;
     }
 
     public List<Perfil> getPerfilList() {

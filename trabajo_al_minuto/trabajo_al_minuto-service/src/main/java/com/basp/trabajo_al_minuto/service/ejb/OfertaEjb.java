@@ -7,7 +7,9 @@ package com.basp.trabajo_al_minuto.service.ejb;
 
 import com.basp.trabajo_al_minuto.model.business.BusinessException;
 import com.basp.trabajo_al_minuto.service.dao.OfertaDao;
+import com.basp.trabajo_al_minuto.service.dte.OfertaAplicada;
 import com.basp.trabajo_al_minuto.service.entity.Oferta;
+import com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta;
 import com.basp.trabajo_al_minuto.service.facade.OfertaFacade;
 import java.util.List;
 import javax.ejb.LocalBean;
@@ -43,6 +45,15 @@ public class OfertaEjb extends OfertaDao implements OfertaFacade {
     public Oferta updateOferta(Oferta o) throws BusinessException {
         try {
             return _updateOferta(o);
+        } catch (Exception ex) {
+            throw new BusinessException(ex);
+        }
+    }
+
+    @Override
+    public List<OfertaAplicada> getOfertasMasAplicadasByEmpresa(Long id) throws BusinessException {
+        try {
+            return _getOfertasMasAplicadasByEmpresa(id);
         } catch (Exception ex) {
             throw new BusinessException(ex);
         }

@@ -60,13 +60,13 @@ public class Menu implements Serializable {
     @Size(max = 2147483647)
     @Column(name = "icono")
     private String icono;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "menu")
+    private List<RolHasMenu> rolHasMenuList;
     @OneToMany(mappedBy = "menuPadre")
     private List<Menu> menuList;
     @JoinColumn(name = "menu_padre", referencedColumnName = "menu_id")
     @ManyToOne
     private Menu menuPadre;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "menu")
-    private List<RolHasMenu> rolHasMenuList;
 
     public Menu() {
     }
@@ -131,6 +131,14 @@ public class Menu implements Serializable {
         this.icono = icono;
     }
 
+    public List<RolHasMenu> getRolHasMenuList() {
+        return rolHasMenuList;
+    }
+
+    public void setRolHasMenuList(List<RolHasMenu> rolHasMenuList) {
+        this.rolHasMenuList = rolHasMenuList;
+    }
+
     public List<Menu> getMenuList() {
         return menuList;
     }
@@ -145,14 +153,6 @@ public class Menu implements Serializable {
 
     public void setMenuPadre(Menu menuPadre) {
         this.menuPadre = menuPadre;
-    }
-
-    public List<RolHasMenu> getRolHasMenuList() {
-        return rolHasMenuList;
-    }
-
-    public void setRolHasMenuList(List<RolHasMenu> rolHasMenuList) {
-        this.rolHasMenuList = rolHasMenuList;
     }
 
     @Override

@@ -7,6 +7,7 @@ package com.basp.trabajo_al_minuto.service.ejb;
 
 import com.basp.trabajo_al_minuto.model.business.BusinessException;
 import com.basp.trabajo_al_minuto.service.dao.UsuarioDao;
+import com.basp.trabajo_al_minuto.service.entity.Evaluacion;
 import com.basp.trabajo_al_minuto.service.entity.Menu;
 import com.basp.trabajo_al_minuto.service.entity.Usuario;
 import com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta;
@@ -78,6 +79,15 @@ public class UsuarioEjb extends UsuarioDao implements UsuarioFacade {
     }
 
     @Override
+    public void createUsuario(Usuario u) throws BusinessException {
+        try {
+            _createUsuario(u);
+        } catch (Exception ex) {
+            throw new BusinessException(ex);
+        }
+    }
+
+    @Override
     public List<Usuario> getUsuariosByOferta(Long id) throws BusinessException {
         try {
             return _getUsuariosByOferta(id);
@@ -99,6 +109,15 @@ public class UsuarioEjb extends UsuarioDao implements UsuarioFacade {
     public List<Menu> getMenusByRol(Long id) throws BusinessException {
         try {
             return _getMenusByRol(id);
+        } catch (Exception ex) {
+            throw new BusinessException(ex);
+        }
+    }
+
+    @Override
+    public List<Evaluacion> getUsuariosMejoresResultadosByEmpresa(Long id) throws BusinessException {
+        try {
+            return _getUsuariosMejoresResultadosByEmpresa(id);
         } catch (Exception ex) {
             throw new BusinessException(ex);
         }

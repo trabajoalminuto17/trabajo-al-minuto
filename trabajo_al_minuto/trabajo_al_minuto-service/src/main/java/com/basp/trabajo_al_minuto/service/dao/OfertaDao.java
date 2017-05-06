@@ -9,8 +9,12 @@ import static com.basp.trabajo_al_minuto.model.business.BusinessAttributes.PERSI
 import com.basp.trabajo_al_minuto.model.business.BusinessPersistence;
 import static com.basp.trabajo_al_minuto.model.business.BusinessPersistence.JPQL;
 import static com.basp.trabajo_al_minuto.model.business.BusinessQuery.GET_OFERTAS_BY_EMPRESA;
+import static com.basp.trabajo_al_minuto.model.business.BusinessQuery.GET_OFERTAS_MAS_APLICADAS_BY_EMPRESA;
 import com.basp.trabajo_al_minuto.model.dto.PersistenceObject;
+import com.basp.trabajo_al_minuto.service.dte.OfertaAplicada;
 import com.basp.trabajo_al_minuto.service.entity.Oferta;
+import com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Persistence;
 
@@ -25,6 +29,7 @@ public class OfertaDao {
     protected OfertaDao() {
         BP = new BusinessPersistence(Persistence.createEntityManagerFactory(PERSISTENCE_SERVICE));
     }
+//
 
     protected List<Oferta> _getOfertasByEmpresa(Long id) throws Exception {
         return BP.read(new PersistenceObject(Oferta.class, GET_OFERTAS_BY_EMPRESA, JPQL, id));
@@ -36,6 +41,15 @@ public class OfertaDao {
 
     protected Oferta _updateOferta(Oferta o) throws Exception {
         return (Oferta) BP.update(o);
+    }
+
+    protected List<OfertaAplicada> _getOfertasMasAplicadasByEmpresa(Long id) throws Exception {
+        List<Object[]> response = BP.read(new PersistenceObject(UsuarioHasOferta.class, GET_OFERTAS_MAS_APLICADAS_BY_EMPRESA, JPQL, id, 6));
+        List<OfertaAplicada> list = new ArrayList();
+        for (Object[] o : response) {
+            list.add(new OfertaAplicada((Oferta) o[0], (Long) o[1]));
+        }
+        return list;
     }
 
 }

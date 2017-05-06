@@ -6,6 +6,7 @@
 package com.basp.trabajo_al_minuto.service.facade;
 
 import com.basp.trabajo_al_minuto.model.business.BusinessException;
+import com.basp.trabajo_al_minuto.service.entity.Evaluacion;
 import com.basp.trabajo_al_minuto.service.entity.Menu;
 import com.basp.trabajo_al_minuto.service.entity.Usuario;
 import com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta;
@@ -29,10 +30,14 @@ public interface UsuarioFacade {
 
     public Usuario updateUsuario(Usuario u) throws BusinessException;
 
+    public void createUsuario(Usuario u) throws BusinessException;
+
     public List<Usuario> getUsuariosByOferta(Long id) throws BusinessException;
 
     public UsuarioHasOferta updateUsuarioHasOferta(UsuarioHasOferta uho) throws BusinessException;
-    
+
     public List<Menu> getMenusByRol(Long id) throws BusinessException;
+
+    public List<Evaluacion> getUsuariosMejoresResultadosByEmpresa(Long id) throws BusinessException;
 
 }

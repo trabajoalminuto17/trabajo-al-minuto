@@ -38,8 +38,8 @@ public class Evaluacion implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "evaluacon_id")
-    private Long evaluaconId;
+    @Column(name = "evaluacion_id")
+    private Long evaluacionId;
     @Column(name = "fecha_fin")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaFin;
@@ -60,16 +60,16 @@ public class Evaluacion implements Serializable {
     public Evaluacion() {
     }
 
-    public Evaluacion(Long evaluaconId) {
-        this.evaluaconId = evaluaconId;
+    public Evaluacion(Long evaluacionId) {
+        this.evaluacionId = evaluacionId;
     }
 
-    public Long getEvaluaconId() {
-        return evaluaconId;
+    public Long getEvaluacionId() {
+        return evaluacionId;
     }
 
-    public void setEvaluaconId(Long evaluaconId) {
-        this.evaluaconId = evaluaconId;
+    public void setEvaluacionId(Long evaluacionId) {
+        this.evaluacionId = evaluacionId;
     }
 
     public Date getFechaFin() {
@@ -123,7 +123,7 @@ public class Evaluacion implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (evaluaconId != null ? evaluaconId.hashCode() : 0);
+        hash += (evaluacionId != null ? evaluacionId.hashCode() : 0);
         return hash;
     }
 
@@ -134,7 +134,7 @@ public class Evaluacion implements Serializable {
             return false;
         }
         Evaluacion other = (Evaluacion) object;
-        if ((this.evaluaconId == null && other.evaluaconId != null) || (this.evaluaconId != null && !this.evaluaconId.equals(other.evaluaconId))) {
+        if ((this.evaluacionId == null && other.evaluacionId != null) || (this.evaluacionId != null && !this.evaluacionId.equals(other.evaluacionId))) {
             return false;
         }
         return true;
@@ -142,7 +142,7 @@ public class Evaluacion implements Serializable {
 
     @Override
     public String toString() {
-        return "com.basp.trabajo_al_minuto.service.entity.Evaluacion[ evaluaconId=" + evaluaconId + " ]";
+        return "com.basp.trabajo_al_minuto.service.entity.Evaluacion[ evaluacionId=" + evaluacionId + " ]";
     }
     
 }

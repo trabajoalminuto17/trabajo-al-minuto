@@ -34,7 +34,7 @@ public class Respuesta implements Serializable {
     @Basic(optional = false)
     @Column(name = "respuesta_id")
     private Long respuestaId;
-    @JoinColumn(name = "evaluacion", referencedColumnName = "evaluacon_id")
+    @JoinColumn(name = "evaluacion", referencedColumnName = "evaluacion_id")
     @ManyToOne(optional = false)
     private Evaluacion evaluacion;
     @JoinColumn(name = "opcion", referencedColumnName = "opcion_id")

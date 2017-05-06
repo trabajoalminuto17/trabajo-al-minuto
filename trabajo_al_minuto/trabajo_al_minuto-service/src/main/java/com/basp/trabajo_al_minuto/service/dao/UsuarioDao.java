@@ -10,9 +10,11 @@ import com.basp.trabajo_al_minuto.model.business.BusinessPersistence;
 import static com.basp.trabajo_al_minuto.model.business.BusinessPersistence.JPQL;
 import static com.basp.trabajo_al_minuto.model.business.BusinessQuery.GET_MENUS_BY_ROL;
 import static com.basp.trabajo_al_minuto.model.business.BusinessQuery.GET_USUARIOS_BY_OFERTA;
+import static com.basp.trabajo_al_minuto.model.business.BusinessQuery.GET_USUARIOS_MEJORES_RESULTADOS;
 import static com.basp.trabajo_al_minuto.model.business.BusinessQuery.GET_USUARIO_BY_EMAIL;
 import static com.basp.trabajo_al_minuto.model.business.BusinessQuery.GET_USUARIO_BY_EMPRESA;
 import com.basp.trabajo_al_minuto.model.dto.PersistenceObject;
+import com.basp.trabajo_al_minuto.service.entity.Evaluacion;
 import com.basp.trabajo_al_minuto.service.entity.Menu;
 import com.basp.trabajo_al_minuto.service.entity.RolHasMenu;
 import com.basp.trabajo_al_minuto.service.entity.Usuario;
@@ -56,6 +58,10 @@ public class UsuarioDao {
         return (Usuario) BP.update(u);
     }
 
+    protected void _createUsuario(Usuario u) throws Exception {
+        BP.create(u);
+    }
+
     protected List<Usuario> _getUsuariosByOferta(Long id) throws Exception {
         return BP.read(new PersistenceObject(UsuarioHasOferta.class, GET_USUARIOS_BY_OFERTA, JPQL, id));
     }
@@ -66,6 +72,10 @@ public class UsuarioDao {
 
     protected List<Menu> _getMenusByRol(Long id) throws Exception {
         return BP.read(new PersistenceObject(RolHasMenu.class, GET_MENUS_BY_ROL, JPQL, id));
+    }
+
+    protected List<Evaluacion> _getUsuariosMejoresResultadosByEmpresa(Long id) throws Exception {
+        return BP.read(new PersistenceObject(Evaluacion.class, GET_USUARIOS_MEJORES_RESULTADOS, JPQL, id));
     }
 
 }

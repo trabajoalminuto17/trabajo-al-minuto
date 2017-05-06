@@ -35,8 +35,8 @@ public class UsuarioHasOferta implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "oferta_has_usuario_id")
-    private Long ofertaHasUsuarioId;
+    @Column(name = "usuario_has_oferta_id")
+    private Long usuarioHasOfertaId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioHasOferta")
     private List<Citacion> citacionList;
     @JoinColumn(name = "estado", referencedColumnName = "catalogo_id")
@@ -52,16 +52,16 @@ public class UsuarioHasOferta implements Serializable {
     public UsuarioHasOferta() {
     }
 
-    public UsuarioHasOferta(Long ofertaHasUsuarioId) {
-        this.ofertaHasUsuarioId = ofertaHasUsuarioId;
+    public UsuarioHasOferta(Long usuarioHasOfertaId) {
+        this.usuarioHasOfertaId = usuarioHasOfertaId;
     }
 
-    public Long getOfertaHasUsuarioId() {
-        return ofertaHasUsuarioId;
+    public Long getUsuarioHasOfertaId() {
+        return usuarioHasOfertaId;
     }
 
-    public void setOfertaHasUsuarioId(Long ofertaHasUsuarioId) {
-        this.ofertaHasUsuarioId = ofertaHasUsuarioId;
+    public void setUsuarioHasOfertaId(Long usuarioHasOfertaId) {
+        this.usuarioHasOfertaId = usuarioHasOfertaId;
     }
 
     public List<Citacion> getCitacionList() {
@@ -99,7 +99,7 @@ public class UsuarioHasOferta implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (ofertaHasUsuarioId != null ? ofertaHasUsuarioId.hashCode() : 0);
+        hash += (usuarioHasOfertaId != null ? usuarioHasOfertaId.hashCode() : 0);
         return hash;
     }
 
@@ -110,7 +110,7 @@ public class UsuarioHasOferta implements Serializable {
             return false;
         }
         UsuarioHasOferta other = (UsuarioHasOferta) object;
-        if ((this.ofertaHasUsuarioId == null && other.ofertaHasUsuarioId != null) || (this.ofertaHasUsuarioId != null && !this.ofertaHasUsuarioId.equals(other.ofertaHasUsuarioId))) {
+        if ((this.usuarioHasOfertaId == null && other.usuarioHasOfertaId != null) || (this.usuarioHasOfertaId != null && !this.usuarioHasOfertaId.equals(other.usuarioHasOfertaId))) {
             return false;
         }
         return true;
@@ -118,7 +118,7 @@ public class UsuarioHasOferta implements Serializable {
 
     @Override
     public String toString() {
-        return "com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta[ ofertaHasUsuarioId=" + ofertaHasUsuarioId + " ]";
+        return "com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta[ usuarioHasOfertaId=" + usuarioHasOfertaId + " ]";
     }
     
 }

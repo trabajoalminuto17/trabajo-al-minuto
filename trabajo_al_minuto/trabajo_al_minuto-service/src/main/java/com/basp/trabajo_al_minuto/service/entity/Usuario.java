@@ -36,14 +36,12 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")})
 public class Usuario implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "estado")
-    private boolean estado;
-    @Column(name = "terminos")
-    private Boolean terminos;
-
-    private static final long serialVersionUID = 1L;
+    @Size(min = 1, max = 2147483647)
+    @Column(name = "password")
+    private String password;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
@@ -51,9 +49,8 @@ public class Usuario implements Serializable {
     private Long usuarioId;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 2147483647)
-    @Column(name = "password")
-    private String password;
+    @Column(name = "estado")
+    private boolean estado;
     @Basic(optional = false)
     @NotNull
     @Column(name = "fecha_creacion")
@@ -65,12 +62,16 @@ public class Usuario implements Serializable {
     @Size(min = 1, max = 2147483647)
     @Column(name = "email")
     private String email;
+    @Column(name = "cambio_clave")
+    private Boolean cambioClave;
+    @Column(name = "terminos")
+    private Boolean terminos;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioAutor")
+    private List<Oferta> ofertaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioAutor")
     private List<Citacion> citacionList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioUsuarioId")
     private List<UsuarioHasOferta> usuarioHasOfertaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioAutor")
-    private List<Oferta> ofertaList;
     @JoinColumn(name = "candidato", referencedColumnName = "candidato_id")
     @ManyToOne
     private Candidato candidato;
@@ -83,8 +84,6 @@ public class Usuario implements Serializable {
     @JoinColumn(name = "rol", referencedColumnName = "rol_id")
     @ManyToOne(optional = false)
     private Rol rol;
-    @Column(name = "cambio_clave")
-    private Boolean cambioClave;
 
     public Usuario() {
     }
@@ -101,14 +100,6 @@ public class Usuario implements Serializable {
         this.email = email;
     }
 
-    public Long getUsuarioId() {
-        return usuarioId;
-    }
-
-    public void setUsuarioId(Long usuarioId) {
-        this.usuarioId = usuarioId;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -117,6 +108,21 @@ public class Usuario implements Serializable {
         this.password = password;
     }
 
+    public Long getUsuarioId() {
+        return usuarioId;
+    }
+
+    public void setUsuarioId(Long usuarioId) {
+        this.usuarioId = usuarioId;
+    }
+
+    public boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
 
     public Date getFechaCreacion() {
         return fechaCreacion;
@@ -134,6 +140,30 @@ public class Usuario implements Serializable {
         this.email = email;
     }
 
+    public Boolean getCambioClave() {
+        return cambioClave;
+    }
+
+    public void setCambioClave(Boolean cambioClave) {
+        this.cambioClave = cambioClave;
+    }
+
+    public Boolean getTerminos() {
+        return terminos;
+    }
+
+    public void setTerminos(Boolean terminos) {
+        this.terminos = terminos;
+    }
+
+    public List<Oferta> getOfertaList() {
+        return ofertaList;
+    }
+
+    public void setOfertaList(List<Oferta> ofertaList) {
+        this.ofertaList = ofertaList;
+    }
+
     public List<Citacion> getCitacionList() {
         return citacionList;
     }
@@ -148,14 +178,6 @@ public class Usuario implements Serializable {
 
     public void setUsuarioHasOfertaList(List<UsuarioHasOferta> usuarioHasOfertaList) {
         this.usuarioHasOfertaList = usuarioHasOfertaList;
-    }
-
-    public List<Oferta> getOfertaList() {
-        return ofertaList;
-    }
-
-    public void setOfertaList(List<Oferta> ofertaList) {
-        this.ofertaList = ofertaList;
     }
 
     public Candidato getCandidato() {
@@ -190,16 +212,6 @@ public class Usuario implements Serializable {
         this.rol = rol;
     }
 
-    public Boolean getCambioClave() {
-        return cambioClave;
-    }
-
-    public void setCambioClave(Boolean cambioClave) {
-        this.cambioClave = cambioClave;
-    }
-    
-    
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -223,22 +235,6 @@ public class Usuario implements Serializable {
     @Override
     public String toString() {
         return "com.basp.trabajo_al_minuto.service.entity.Usuario[ usuarioId=" + usuarioId + " ]";
-    }
-
-    public boolean getEstado() {
-        return estado;
-    }
-
-    public void setEstado(boolean estado) {
-        this.estado = estado;
-    }
-
-    public Boolean getTerminos() {
-        return terminos;
-    }
-
-    public void setTerminos(Boolean terminos) {
-        this.terminos = terminos;
     }
     
 }

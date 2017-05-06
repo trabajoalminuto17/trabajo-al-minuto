@@ -48,14 +48,14 @@ public class Oferta implements Serializable {
     @NotNull
     @Column(name = "estado")
     private boolean estado;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ofertasOfertaId")
-    private List<UsuarioHasOferta> usuarioHasOfertaList;
     @JoinColumn(name = "perfil", referencedColumnName = "perfil_id")
     @ManyToOne(optional = false)
     private Perfil perfil;
     @JoinColumn(name = "usuario_autor", referencedColumnName = "usuario_id")
     @ManyToOne(optional = false)
     private Usuario usuarioAutor;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ofertasOfertaId")
+    private List<UsuarioHasOferta> usuarioHasOfertaList;
 
     public Oferta() {
     }
@@ -93,14 +93,6 @@ public class Oferta implements Serializable {
         this.estado = estado;
     }
 
-    public List<UsuarioHasOferta> getUsuarioHasOfertaList() {
-        return usuarioHasOfertaList;
-    }
-
-    public void setUsuarioHasOfertaList(List<UsuarioHasOferta> usuarioHasOfertaList) {
-        this.usuarioHasOfertaList = usuarioHasOfertaList;
-    }
-
     public Perfil getPerfil() {
         return perfil;
     }
@@ -115,6 +107,14 @@ public class Oferta implements Serializable {
 
     public void setUsuarioAutor(Usuario usuarioAutor) {
         this.usuarioAutor = usuarioAutor;
+    }
+
+    public List<UsuarioHasOferta> getUsuarioHasOfertaList() {
+        return usuarioHasOfertaList;
+    }
+
+    public void setUsuarioHasOfertaList(List<UsuarioHasOferta> usuarioHasOfertaList) {
+        this.usuarioHasOfertaList = usuarioHasOfertaList;
     }
 
     @Override

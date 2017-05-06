@@ -55,11 +55,11 @@ public class Perfil implements Serializable {
     private String requerimientos;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "perfil")
     private List<Oferta> ofertaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "perfil")
+    private List<PerfilHasPrueba> perfilHasPruebaList;
     @JoinColumn(name = "area", referencedColumnName = "catalogo_id")
     @ManyToOne(optional = false)
     private Catalogo area;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "perfil")
-    private List<PerfilHasPrueba> perfilHasPruebaList;
 
     public Perfil() {
     }
@@ -121,20 +121,20 @@ public class Perfil implements Serializable {
         this.ofertaList = ofertaList;
     }
 
-    public Catalogo getArea() {
-        return area;
-    }
-
-    public void setArea(Catalogo area) {
-        this.area = area;
-    }
-
     public List<PerfilHasPrueba> getPerfilHasPruebaList() {
         return perfilHasPruebaList;
     }
 
     public void setPerfilHasPruebaList(List<PerfilHasPrueba> perfilHasPruebaList) {
         this.perfilHasPruebaList = perfilHasPruebaList;
+    }
+
+    public Catalogo getArea() {
+        return area;
+    }
+
+    public void setArea(Catalogo area) {
+        this.area = area;
     }
 
     @Override

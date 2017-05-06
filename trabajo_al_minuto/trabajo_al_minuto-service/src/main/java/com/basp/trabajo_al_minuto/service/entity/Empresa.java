@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -63,6 +64,8 @@ public class Empresa implements Serializable {
     @Column(name = "fecha")
     @Temporal(TemporalType.DATE)
     private Date fecha;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empresaEmpresaId")
+    private List<PruebaPlantilla> pruebaPlantillaList;
     @OneToMany(mappedBy = "empresa")
     private List<Usuario> usuarioList;
 
@@ -128,6 +131,14 @@ public class Empresa implements Serializable {
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
+    }
+
+    public List<PruebaPlantilla> getPruebaPlantillaList() {
+        return pruebaPlantillaList;
+    }
+
+    public void setPruebaPlantillaList(List<PruebaPlantilla> pruebaPlantillaList) {
+        this.pruebaPlantillaList = pruebaPlantillaList;
     }
 
     public List<Usuario> getUsuarioList() {

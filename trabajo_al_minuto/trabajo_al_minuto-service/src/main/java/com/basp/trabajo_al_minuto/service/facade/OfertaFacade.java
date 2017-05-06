@@ -6,6 +6,7 @@
 package com.basp.trabajo_al_minuto.service.facade;
 
 import com.basp.trabajo_al_minuto.model.business.BusinessException;
+import com.basp.trabajo_al_minuto.service.dte.OfertaAplicada;
 import com.basp.trabajo_al_minuto.service.entity.Oferta;
 import java.util.List;
 
@@ -20,5 +21,7 @@ public interface OfertaFacade {
     public Oferta findOferta(Long pk) throws BusinessException;
 
     public Oferta updateOferta(Oferta o) throws BusinessException;
+
+    public List<OfertaAplicada> getOfertasMasAplicadasByEmpresa(Long id) throws BusinessException;
 
 }
