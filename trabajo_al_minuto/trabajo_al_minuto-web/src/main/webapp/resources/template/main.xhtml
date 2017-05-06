@@ -27,6 +27,7 @@
         <h:outputStylesheet name="css/font-awesome.css" library="spark-layout" />
         <h:outputStylesheet name="css/animate.css" library="spark-layout" />
         <h:outputStylesheet name="css/spark-layout-red.css" library="spark-layout" />
+        <h:outputStylesheet name="main.css" library="css" />
 
 
         <title>Trabajo al minuto ©  2016</title>
@@ -52,7 +53,9 @@
                             <ui:insert name="right"></ui:insert>
                         </div>
                         <div id="content" class="right_content">
-                            <ui:insert name="content"></ui:insert>
+                            <div class="layout-portlets-box">
+                                <ui:insert name="content"></ui:insert>
+                            </div>
                         </div>
                     </div>
                 </div>

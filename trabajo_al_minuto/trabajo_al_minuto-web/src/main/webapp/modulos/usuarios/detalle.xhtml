@@ -50,34 +50,41 @@
     </ui:define>
 
     <ui:define name="content">
-        <h:panelGroup id="pg_crear_usuario">
+        <h:panelGroup id="pg_detalle_usuario" rendered="#{not empty principalBean.usuarioSeleccionado}">
             <div class="Container80 Responsive MarTop20" style="margin-left: 10%">
                 <div class="ContainerIndent"> 
-                    <h4 class="Fs15 gray DispBlock FontLight">Crear usuario</h4>
-                    <h5 class="Fs13 gray DispBlock FontBold">Ingrese los datos del usuario.</h5>
+                    <h4 class="Fs15 gray DispBlock FontLight">Información detallada de #{principalBean.usuarioSeleccionado.persona.nombre}</h4>
+                    <h5 class="Fs13 gray DispBlock FontBold">Modifique la información de su cuenta.</h5>
                     <div class="Seperator"></div>
                     <div class="Container100 Responsive">
                         <div class="Container50 Responsive MarTop10">
-                            <h4 class="Fs14 black  DispBlock black">Documento*</h4>
-                            <p:inputText value="#{principalBean.newPersona.documento}" required="true" styleClass="Wid60" disabled="#{principalBean.render}"
-                                         requiredMessage="Documento no válido" validatorMessage="Documento no válido"/>
+                            <h4 class="Fs14 black  DispBlock black">Documento</h4>
+                            <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{principalBean.usuarioSeleccionado.persona.documento}"/>
                             <div class="EmptyBox30"/>
                             <h4 class="Fs14 black  DispBlock black">Nombre*</h4>
-                            <p:inputText value="#{principalBean.newPersona.nombre}" required="true" styleClass="Wid60" disabled="#{principalBean.render}"
-                                         requiredMessage="Nombre no válido" validatorMessage="Nombre no válido"/>
+                            <p:inputText value="#{principalBean.usuarioSeleccionado.persona.nombre}" required="true" styleClass="Wid60"
+                                         requiredMessage="Nombre no válido" validatorMessage="Nombre no válido" disabled="#{principalBean.usuarioSeleccionado.rol.rolId == 1}"/>
                             <div class="EmptyBox30"/>
+                            <h4 class="Fs14 black  DispBlock black">Fecha de creación</h4>
+                            <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{principalBean.usuarioSeleccionado.fechaCreacion}">
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </p:outputLabel>
+                            <div class="EmptyBox50"/>
                             <h4 class="Fs14 black  DispBlock black">Edad*</h4>
-                            <p:inputText value="#{principalBean.newPersona.edad}" required="true" disabled="#{principalBean.render}"
+                            <p:inputText value="#{principalBean.usuarioSeleccionado.persona.edad}" required="true" disabled="#{principalBean.usuarioSeleccionado.rol.rolId == 1}"
                                          requiredMessage="Edad no válida" validatorMessage="Edad no válida" type="number" maxlength="2" />
                             <div class="EmptyBox30"/>
                             <h4 class="Fs14 black FontOpenSansRegular DispBlock black">Teléfono fijo* </h4>
-                            <p:inputText value="#{principalBean.newPersona.telefonoFijo}" required="true"  styleClass="Wid60" disabled="#{principalBean.render}"
+                            <p:inputText value="#{principalBean.usuarioSeleccionado.persona.telefonoFijo}" required="true"  styleClass="Wid60" disabled="#{principalBean.usuarioSeleccionado.rol.rolId == 1}"
                                          requiredMessage="Teléfono no válido" validatorMessage="Teléfono no válido" />
                         </div>
                         <div class="Container50 Responsive MarTop10">
+                            <h4 class="Fs14 black  DispBlock black">Rol</h4>
+                            <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{principalBean.usuarioSeleccionado.rol.nombre}"/>
+                            <div class="EmptyBox30"/>
                             <h4 class="Fs14 black DispBlock black">Email*</h4>
-                            <p:inputText id="emailusuario" value="#{principalBean.newUsuario.email}"  required="true"  styleClass="Wid60" disabled="#{principalBean.render}"
-                                         requiredMessage="Email no válido"  validatorMessage="Email no válido" >
+                            <p:inputText id="emailusuario" value="#{principalBean.usuarioSeleccionado.email}"  required="true"  styleClass="Wid60"
+                                         requiredMessage="Email no válido"  validatorMessage="Email no válido" disabled="#{principalBean.usuarioSeleccionado.rol.rolId == 1}" >
                                 <f:validateRegex
                                     pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
                             </p:inputText>
@@ -85,23 +92,26 @@
                                         myPosition="top left"
                                         atPosition="bottom left"/> 
                             <div class="EmptyBox30"/>
+                            <h4 class="Fs14 black  DispBlock black">Estado*</h4>
+                            <p:inputSwitch value="#{principalBean.usuarioSeleccionado.estado}" offLabel="Inactivo" onLabel="Activo" disabled="#{principalBean.usuarioSeleccionado.rol.rolId == 1}"/>
+                            <div class="EmptyBox30"/>
                             <h4 class="Fs14 black  DispBlock black">Genero*</h4>
-                            <p:selectOneMenu id="console" value="#{principalBean.newPersona.genero}" style="width:125px" required="true" disabled="#{principalBean.render}"> 
+                            <p:selectOneMenu id="console" value="#{principalBean.usuarioSeleccionado.persona.genero}" style="width:125px" required="true" disabled="#{principalBean.usuarioSeleccionado.rol.rolId == 1}">
                                 <f:selectItem itemLabel="Seleccione...." itemValue="" />
                                 <f:selectItem itemLabel="Hombre" itemValue="1" />
                                 <f:selectItem itemLabel="Mujer" itemValue="0" />
                             </p:selectOneMenu>
                             <div class="EmptyBox30"/>
                             <h4 class="Fs14 black FontOpenSansRegular DispBlock black">Teléfono celular* </h4>
-                            <p:inputText value="#{principalBean.newPersona.celular}" required="true" styleClass="Wid60" disabled="#{principalBean.render}"
-                                         requiredMessage="Celular no válido" validatorMessage="Celular no válido" />
+                            <p:inputText value="#{principalBean.usuarioSeleccionado.persona.celular}" required="true" styleClass="Wid60" 
+                                         requiredMessage="Celular no válido" validatorMessage="Celular no válido" disabled="#{principalBean.usuarioSeleccionado.rol.rolId == 1}"/>
                         </div>
                         <div class="EmptyBox80"/>
 
-                        <p:commandButton styleClass="Fright RedButton" value="Regresar" action="/modulos/usuarios/ver?faces-redirect=true"
+                        <p:commandButton styleClass="Fright RedButton" value="Regresar" action="/modulos/usuarios/ver?faces-redirect=true"  
                                          icon="fa fa-mail-reply-all-white" immediate="true"/>
-                        <p:commandButton styleClass="Fright BlueButton" value="Guardar" actionListener="#{principalBean.createUsuario}" disabled="#{principalBean.render}"
-                                         icon="fa fa-save-white" update="pg_crear_usuario"/>
+                        <p:commandButton styleClass="Fright BlueButton" value="Guardar" actionListener="#{principalBean.updateUsuario}" 
+                                         icon="fa fa-save-white" update="pg_detalle_usuario" disabled="#{principalBean.usuarioSeleccionado.rol.rolId == 1}"/>
                     </div>
                 </div>
             </div>

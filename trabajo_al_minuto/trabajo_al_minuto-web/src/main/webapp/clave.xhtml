@@ -59,7 +59,7 @@
                                 <div class="Seperator"></div>
                                 <div class="Container50 Responsive MarTop10">
                                     <div class="Container10 Responsive MarTop10" style="margin-left: 10px;">
-                                        <p:selectBooleanCheckbox value="#{adminBean.usuarioSeleccionado.terminos}" required="true">
+                                        <p:selectBooleanCheckbox value="#{adminBean.usuarioSession.terminos}" required="true">
                                             <p:ajax update="btn_change_ps" />
                                         </p:selectBooleanCheckbox>
                                     </div>
@@ -71,7 +71,7 @@
                                 <div class="Container10 Responsive MarTop10"></div>
                                 <div class="Container40 Responsive MarTop10">
                                     <p:commandButton id="btn_change_ps" value="Cambiar clave" 
-                                                     icon="fa fa-key-white" disabled="#{!adminBean.usuarioSeleccionado.terminos}"
+                                                     icon="fa fa-key-white" disabled="#{!adminBean.usuarioSession.terminos}"
                                                      styleClass="Fs16 RedButton"
                                                      update=":form_login:messages" 
                                                      actionListener="#{adminBean.cambiarClave}" />

@@ -25,7 +25,7 @@ import org.primefaces.model.menu.MenuModel;
  *
  * @author BASP
  */
-public class ComponenteWeb implements Serializable {
+public class ComponenteWeb extends AtributosWeb implements Serializable {
 
     @Inject
     protected OfertaEjb ofertaEjb;
@@ -54,6 +54,10 @@ public class ComponenteWeb implements Serializable {
         }
         System.out.println("Menus de usuario es nulo");
         return null;
+    }
+
+    protected Long getUsuarioId() {
+        return (Long) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuarioId");
     }
 
     protected Boolean enviarClaveRestaurada(String email, String nombre, String clave) throws BusinessException {

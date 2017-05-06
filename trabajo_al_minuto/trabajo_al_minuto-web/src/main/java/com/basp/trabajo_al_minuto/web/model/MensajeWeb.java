@@ -23,7 +23,11 @@ public enum MensajeWeb {
     USUARIO_NO_ENCONTRADO(ERROR_MESSAGE, "Usuario no encontrado, ".concat(INTENTE_DE_NUEVO_MESSAGE), FacesMessage.SEVERITY_ERROR),
     NO_PASSWORD(ERROR_MESSAGE, "No se ha podido cambiar la contraseña, ".concat(INTENTE_DE_NUEVO_MESSAGE), FacesMessage.SEVERITY_ERROR),
     CLAVE_RESTAURAD_NOT(ERROR_MESSAGE, "No se ha podido restaurar la contraseña, ".concat(INTENTE_DE_NUEVO_MESSAGE), FacesMessage.SEVERITY_ERROR),
-    CLAVE_RESTAURADA_OK(EXITO_MESSAGE, "Se ha enviado la contraseña de restauración al email registrado.", FacesMessage.SEVERITY_INFO);
+    CLAVE_RESTAURADA_OK(EXITO_MESSAGE, "Se ha enviado la contraseña de restauración al email registrado.", FacesMessage.SEVERITY_INFO),
+    CHANGE_OK(EXITO_MESSAGE, "Cambios realizados correctamente.", FacesMessage.SEVERITY_INFO),
+    CHANGE_NOT(ERROR_MESSAGE, "No se han podido guardar los cambios, ".concat(INTENTE_DE_NUEVO_MESSAGE), FacesMessage.SEVERITY_ERROR),
+    USUARIO_OK(EXITO_MESSAGE, "Usuario creado correctamente.", FacesMessage.SEVERITY_INFO),
+    USUARIO_NOT(ERROR_MESSAGE, "No se han podido crear el usuario, ".concat(INTENTE_DE_NUEVO_MESSAGE), FacesMessage.SEVERITY_ERROR);
 
     private final String TITULO;
     private final String DESCRIPCION;

@@ -114,64 +114,17 @@
                         </div>
                         <div class="Seperator"></div>
                         <div class="Container100">
-                            <div class="Wid45 BorderedBox Fleft TexAlCenter">
-                                <div class="ContainerIndent">
-                                    <div class="EmptyBox10"></div>
-                                    <div class="Fs14 gray FontRalewayRegular">Desarrollador de Software</div>
-                                    <div class="EmptyBox10"></div>
-                                    <div class="Fs30 blue FontRalewayLight">795</div>
-                                    <div class="EmptyBox10"></div>
-                                </div>
-                            </div>
-                            <div class="Wid45 BorderedBox Fright TexAlCenter">
-                                <div class="ContainerIndent">
-                                    <div class="EmptyBox10"></div>
-                                    <div class="Fs14 gray FontRalewayRegular">Profesor de Inglés</div>
-                                    <div class="EmptyBox10"></div>
-                                    <div class="Fs30 blue FontRalewayLight">3.455</div>
-                                    <div class="EmptyBox10"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="Container100">
-                            <div class="Wid45 BorderedBox Fleft TexAlCenter">
-                                <div class="ContainerIndent">
-                                    <div class="EmptyBox10"></div>
-                                    <div class="Fs14 gray FontRalewayRegular">Desarrollador de Software</div>
-                                    <div class="EmptyBox10"></div>
-                                    <div class="Fs30 blue FontRalewayLight">795</div>
-                                    <div class="EmptyBox10"></div>
-                                </div>
-                            </div>
-                            <div class="Wid45 BorderedBox Fright TexAlCenter">
-                                <div class="ContainerIndent">
-                                    <div class="EmptyBox10"></div>
-                                    <div class="Fs14 gray FontRalewayRegular">Profesor de Inglés</div>
-                                    <div class="EmptyBox10"></div>
-                                    <div class="Fs30 blue FontRalewayLight">3.455</div>
-                                    <div class="EmptyBox10"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="Container100">
-                            <div class="Wid45 BorderedBox Fleft TexAlCenter">
-                                <div class="ContainerIndent">
-                                    <div class="EmptyBox10"></div>
-                                    <div class="Fs14 gray FontRalewayRegular">Desarrollador de Software</div>
-                                    <div class="EmptyBox10"></div>
-                                    <div class="Fs30 blue FontRalewayLight">795</div>
-                                    <div class="EmptyBox10"></div>
-                                </div>
-                            </div>
-                            <div class="Wid45 BorderedBox Fright TexAlCenter">
-                                <div class="ContainerIndent">
-                                    <div class="EmptyBox10"></div>
-                                    <div class="Fs14 gray FontRalewayRegular">Profesor de Inglés</div>
-                                    <div class="EmptyBox10"></div>
-                                    <div class="Fs30 blue FontRalewayLight">3.455</div>
-                                    <div class="EmptyBox10"></div>
-                                </div>
-                            </div>
+                            <ui:repeat value="#{principalBean.ofertasMasAplicadasByEmpresa}" var="o">
+                                <h:commandLink styleClass="Wid45 BorderedBox Fleft TexAlCenter" action="iniciar_sesion">
+                                    <div class="ContainerIndent">
+                                        <div class="EmptyBox10"></div>
+                                        <div class="Fs14 gray FontRalewayRegular">#{o.oferta.perfil.titulo}</div>
+                                        <div class="EmptyBox10"></div>
+                                        <div class="Fs30 blue FontRalewayLight">#{o.cantidadPostulados}</div>
+                                        <div class="EmptyBox10"></div>
+                                    </div>
+                                </h:commandLink>
+                            </ui:repeat>
                         </div>
 
                     </div>
@@ -190,44 +143,22 @@
                         </div>
                         <div class="Seperator"></div>
                         <div class="Container100">
-                            <a href="#" class="Wid45 BorderedBox Fleft TexAlCenter HoverEffect">
-                                <div class="ContainerIndent">
-                                    <div class="EmptyBox10"></div>
-                                    <h:graphicImage name="images/usa.png" styleClass="Fleft Wid60" library="demo"/>
-                                    <div class="Fs14 gray">USA</div>
-                                    <div class="Fs24 red FontRalewayRegular">54.657</div>
-                                    <div class="EmptyBox10"></div>
+                            <ui:repeat value="#{principalBean.usuariosMejoresResultados}" var="e">
+                                <div class="Container45">
+                                    <h:commandLink styleClass="Wid45 BorderedBox Fleft TexAlCenter" action="iniciar_sesion">
+                                        <div class="ContainerIndent">
+                                            <div class="EmptyBox10"></div>
+                                            <div class="Fs14 gray FontRalewayRegular">#{e.citacion.usuarioHasOferta.usuarioUsuarioId.persona.nombre}</div>
+                                            <div class="EmptyBox10"></div>
+                                            <div class="Fs14 red FontRalewayRegular">#{e.citacion.usuarioHasOferta.ofertasOfertaId.perfil.titulo}</div>
+                                            <div class="EmptyBox10"></div>
+                                            <div class="Fs30 blue FontRalewayLight">#{e.porcentaje} %</div>
+                                            <div class="EmptyBox10"></div>
+                                        </div>
+                                    </h:commandLink>
                                 </div>
-                            </a>
-                            <a href="#" class="Wid45 BorderedBox Fright TexAlCenter HoverEffect">
-                                <div class="ContainerIndent">
-                                    <div class="EmptyBox10"></div>
-                                    <h:graphicImage name="images/southamerica.png" styleClass="Fleft Wid60" library="demo"/>
-                                    <div class="Fs14 gray">South America</div>
-                                    <div class="Fs24 red FontRalewayRegular">13.365</div>
-                                    <div class="EmptyBox10"></div>
-                                </div>
-                            </a>
-                            <a href="#" class="Wid45 BorderedBox Fleft TexAlCenter HoverEffect">
-                                <div class="ContainerIndent">
-                                    <div class="EmptyBox10"></div>
-                                    <h:graphicImage name="images/europe.png" styleClass="Fleft Wid60" library="demo"/>
-                                    <div class="Fs14 gray">Europe</div>
-                                    <div class="Fs24 red FontRalewayRegular">29.456</div>
-                                    <div class="EmptyBox10"></div>
-                                </div>
-                            </a>
-                            <a href="#" class="Wid45 BorderedBox Fright TexAlCenter HoverEffect">
-                                <div class="ContainerIndent">
-                                    <div class="EmptyBox10"></div>
-                                    <h:graphicImage name="images/africa.png" styleClass="Fleft Wid60" library="demo" />
-                                    <div class="Fs14 gray">Africa</div>
-                                    <div class="Fs24 red FontRalewayRegular">44.657</div>
-                                    <div class="EmptyBox10"></div>
-                                </div>
-                            </a>
-                        </div>
-
+                            </ui:repeat>
+                        </div>            
                     </div>
                 </div>
             </div>

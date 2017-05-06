@@ -30,11 +30,11 @@ import javax.inject.Named;
 public class AdminBean extends ComponenteWeb implements Serializable {
 
     private String clave;
-    private Usuario usuarioSeleccionado;
+    private Usuario usuarioSession;
 
     @PostConstruct
     public void init() {
-        usuarioSeleccionado = getUSER_LOGIN();
+        usuarioSession = getUSER_LOGIN();
         this.sessionArriba();
     }
 
@@ -60,7 +60,7 @@ public class AdminBean extends ComponenteWeb implements Serializable {
 
     public void sessionArriba() {
         try {
-            if (usuarioSeleccionado == null) {
+            if (usuarioSession == null) {
                 FacesContext.getCurrentInstance().getExternalContext().redirect(ERROR_PAGE);
             }
         } catch (IOException ex) {
@@ -70,7 +70,7 @@ public class AdminBean extends ComponenteWeb implements Serializable {
 
     public void claveArriba() {
         try {
-            if (usuarioSeleccionado.getCambioClave()) {
+            if (usuarioSession.getCambioClave()) {
                 FacesContext.getCurrentInstance().getExternalContext().redirect(INICIO_PAGE);
             }
         } catch (IOException ex) {
@@ -87,11 +87,11 @@ public class AdminBean extends ComponenteWeb implements Serializable {
         this.clave = clave;
     }
 
-    public Usuario getUsuarioSeleccionado() {
-        return usuarioSeleccionado;
+    public Usuario getUsuarioSession() {
+        return usuarioSession;
     }
 
-    public void setUsuarioSeleccionado(Usuario usuarioSeleccionado) {
-        this.usuarioSeleccionado = usuarioSeleccionado;
+    public void setUsuarioSession(Usuario usuarioSession) {
+        this.usuarioSession = usuarioSession;
     }
 }

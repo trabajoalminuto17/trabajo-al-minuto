@@ -699,6 +699,10 @@
 .fa-globe:before {
     content: "\f0ac";
 }
+.fa-globe:before {
+    content: "\f0ac";
+    color: #D0525D;
+}
 .fa-wrench:before {
     content: "\f0ad";
 }
@@ -742,6 +746,11 @@
 .fa-save:before,
 .fa-floppy-o:before {
     content: "\f0c7";
+}
+.fa-save-white:before,
+.fa-floppy-o-white:before {
+    content: "\f0c7";
+    color: #fff;
 }
 .fa-square:before {
     content: "\f0c8";
@@ -1375,6 +1384,12 @@
 .fa-bank:before,
 .fa-university:before {
     content: "\f19c";
+}
+.fa-institution-red:before,
+.fa-bank-red:before,
+.fa-university-red:before {
+    content: "\f19c";
+    color: #D0525D;
 }
 .fa-mortar-board:before,
 .fa-graduation-cap:before {

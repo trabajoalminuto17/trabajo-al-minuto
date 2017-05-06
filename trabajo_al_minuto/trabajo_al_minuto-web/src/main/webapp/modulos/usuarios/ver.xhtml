@@ -49,9 +49,50 @@
     </ui:define>
 
     <ui:define name="content">
-        <p:dataTable value="#{principalBean.usuariosActivos}" var="usuario">
-
-        </p:dataTable>
+        <h:panelGroup id="pg_ver_usuarios">
+            <div class="Container90 Responsive MarTop20" style="margin-left: 5%">
+                <div class="ContainerIndent"> 
+                    <h4 class="Fs15 gray DispBlock FontBold">Mis usuarios</h4>
+                    <h5 class="Fs13 gray DispBlock FontLight">A continuación podrá ver el listado de sus usuarios.</h5>
+                    <div class="Seperator"></div>
+                    <div class="Container100 Responsive MarTop10">
+                        <p:dataTable id="dtusers" var="usuario" value="#{principalBean.usuariosByEmpresa}"  widgetVar="wv_dtusers"
+                                     filteredValue="#{principalBean.usuariosFlitrados}" reflow="true" styleClass="borderless"
+                                     rows="10"
+                                     paginator="true"
+                                     paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                                     rowsPerPageTemplate="10,20"
+                                     paginatorPosition="bottom"
+                                     selectionMode="single" selection="#{principalBean.usuarioSession}" rowKey="#{usuario.usuarioId}"
+                                     emptyMessage="No se encontraron usuarios!">
+                            <f:facet name="header">
+                                <p:toolbar style="border: none">
+                                    <f:facet name="left">
+                                        <p:outputPanel>
+                                            <p:inputText id="globalFilter" onkeyup="PF('wv_dtusers').filter()" style="width: 250px; font-size: 12px" placeholder="Buscar"/>
+                                        </p:outputPanel>
+                                    </f:facet>
+                                </p:toolbar>
+                            </f:facet>
+                            <p:ajax event="rowSelect" listener="#{principalBean.onRowSelectVerUsuarios}" update=":main:pg_ver_usuarios"  />
+                            <p:column headerText="Documento" filterBy="#{usuario.persona.documento}"  filterStyle="display:none" styleClass="Wid20 Fs14">
+                                <h:outputText value="#{usuario.persona.documento}" styleClass="Fs14" />
+                            </p:column>
+                            <p:column headerText="Nombre" filterBy="#{usuario.persona.nombre}"  filterStyle="display:none" styleClass="Wid40 Fs14">
+                                <h:outputText value="#{usuario.persona.nombre}" styleClass="Fs14"/>
+                            </p:column>
+                            <p:column headerText="Rol" filterBy="#{usuario.rol.nombre}"  filterStyle="display:none" styleClass="Wid40 Fs14">
+                                <h:outputText value="#{usuario.rol.nombre}" styleClass="Fs14"/>
+                            </p:column>
+                            <p:column headerText="Estado" filterBy="#{usuario.estado ? 'Activo' : 'Inactivo'}"  filterStyle="display:none" styleClass="Wid10">
+                                <h:outputText value="#{usuario.estado ? 'Activo' : 'Inactivo'}" styleClass="Fs14"/>
+                            </p:column>
+                        </p:dataTable>
+                    </div>
+                </div>
+            </div>
+            <div class="EmptyBox50" />
+        </h:panelGroup>
     </ui:define>
 
 </ui:composition>
