@@ -199,7 +199,6 @@ public class BusinessPersistence implements Serializable {
                 } else if (re.getCause() instanceof DatabaseException) {
                     throw new Exception(re.getMessage(), re);
                 }
-                et.rollback();
             } catch (Exception ex) {
                 throw new Exception(ex);
             }
@@ -225,7 +224,6 @@ public class BusinessPersistence implements Serializable {
                 } else if (re.getCause() instanceof DatabaseException) {
                     throw new Exception(re.getMessage(), re);
                 }
-                et.rollback();
                 throw new Exception(re);
             } catch (Exception ex) {
                 throw new Exception(ex);
@@ -308,7 +306,6 @@ public class BusinessPersistence implements Serializable {
                 } else if (re.getCause() instanceof DatabaseException) {
                     throw new Exception(re.getMessage(), re);
                 }
-                et.rollback();
                 throw new Exception(re);
             } catch (Exception ex) {
                 throw new Exception(ex);
@@ -335,7 +332,6 @@ public class BusinessPersistence implements Serializable {
                 } else if (re.getCause() instanceof DatabaseException) {
                     throw new Exception(re.getMessage(), re);
                 }
-                et.rollback();
                 throw new Exception(re);
             } catch (Exception ex) {
                 throw new Exception(ex);
@@ -353,7 +349,6 @@ public class BusinessPersistence implements Serializable {
                 return EM.unwrap(Connection.class);
             } catch (Exception ex) {
                 System.out.println("Rollback:" + ex.getMessage());
-                et.rollback();
                 throw new Exception(ex);
             }
         }
