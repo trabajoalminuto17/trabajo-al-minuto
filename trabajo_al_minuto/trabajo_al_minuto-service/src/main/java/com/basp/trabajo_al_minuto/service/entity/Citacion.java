@@ -20,6 +20,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -64,13 +65,17 @@ public class Citacion implements Serializable {
     @NotNull
     @Column(name = "activar_pruebas")
     private boolean activarPruebas;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "estado")
+    private boolean estado;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "citacion")
     private List<Evaluacion> evaluacionList;
     @JoinColumn(name = "usuario_autor", referencedColumnName = "usuario_id")
     @ManyToOne(optional = false)
     private Usuario usuarioAutor;
     @JoinColumn(name = "usuario_has_oferta", referencedColumnName = "usuario_has_oferta_id")
-    @ManyToOne(optional = false)
+    @OneToOne(optional = false)
     private UsuarioHasOferta usuarioHasOferta;
 
     public Citacion() {
@@ -80,11 +85,12 @@ public class Citacion implements Serializable {
         this.citacionId = citacionId;
     }
 
-    public Citacion(Long citacionId, Date fechaCitacion, boolean resuelto, boolean activarPruebas) {
+    public Citacion(Long citacionId, Date fechaCitacion, boolean resuelto, boolean activarPruebas, boolean estado) {
         this.citacionId = citacionId;
         this.fechaCitacion = fechaCitacion;
         this.resuelto = resuelto;
         this.activarPruebas = activarPruebas;
+        this.estado = estado;
     }
 
     public Long getCitacionId() {
@@ -141,6 +147,14 @@ public class Citacion implements Serializable {
 
     public void setActivarPruebas(boolean activarPruebas) {
         this.activarPruebas = activarPruebas;
+    }
+
+    public boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
 
     public List<Evaluacion> getEvaluacionList() {

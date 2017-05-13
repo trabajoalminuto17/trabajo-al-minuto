@@ -62,7 +62,7 @@ public class UsuarioDao {
         BP.create(u);
     }
 
-    protected List<Usuario> _getUsuariosByOferta(Long id) throws Exception {
+    protected List<UsuarioHasOferta> _getUsuariosByOferta(Long id) throws Exception {
         return BP.read(new PersistenceObject(UsuarioHasOferta.class, GET_USUARIOS_BY_OFERTA, JPQL, id));
     }
 
@@ -75,7 +75,10 @@ public class UsuarioDao {
     }
 
     protected List<Evaluacion> _getUsuariosMejoresResultadosByEmpresa(Long id) throws Exception {
-        return BP.read(new PersistenceObject(Evaluacion.class, GET_USUARIOS_MEJORES_RESULTADOS, JPQL, id));
+        return BP.read(new PersistenceObject(Evaluacion.class, GET_USUARIOS_MEJORES_RESULTADOS, JPQL, id, 4));
     }
 
+    protected UsuarioHasOferta _findUsuarioHasOferta(Long pk) throws Exception {
+        return (UsuarioHasOferta) BP.find(UsuarioHasOferta.class, pk);
+    }
 }

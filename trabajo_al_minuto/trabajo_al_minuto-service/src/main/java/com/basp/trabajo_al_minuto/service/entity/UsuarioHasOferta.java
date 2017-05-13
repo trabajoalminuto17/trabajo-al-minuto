@@ -6,7 +6,7 @@
 package com.basp.trabajo_al_minuto.service.entity;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,8 +18,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -37,8 +40,13 @@ public class UsuarioHasOferta implements Serializable {
     @Basic(optional = false)
     @Column(name = "usuario_has_oferta_id")
     private Long usuarioHasOfertaId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioHasOferta")
-    private List<Citacion> citacionList;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "fecha_postulacion")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaPostulacion;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuarioHasOferta")
+    private Citacion citacion;
     @JoinColumn(name = "estado", referencedColumnName = "catalogo_id")
     @ManyToOne(optional = false)
     private Catalogo estado;
@@ -56,6 +64,11 @@ public class UsuarioHasOferta implements Serializable {
         this.usuarioHasOfertaId = usuarioHasOfertaId;
     }
 
+    public UsuarioHasOferta(Long usuarioHasOfertaId, Date fechaPostulacion) {
+        this.usuarioHasOfertaId = usuarioHasOfertaId;
+        this.fechaPostulacion = fechaPostulacion;
+    }
+
     public Long getUsuarioHasOfertaId() {
         return usuarioHasOfertaId;
     }
@@ -64,12 +77,20 @@ public class UsuarioHasOferta implements Serializable {
         this.usuarioHasOfertaId = usuarioHasOfertaId;
     }
 
-    public List<Citacion> getCitacionList() {
-        return citacionList;
+    public Date getFechaPostulacion() {
+        return fechaPostulacion;
     }
 
-    public void setCitacionList(List<Citacion> citacionList) {
-        this.citacionList = citacionList;
+    public void setFechaPostulacion(Date fechaPostulacion) {
+        this.fechaPostulacion = fechaPostulacion;
+    }
+
+    public Citacion getCitacion() {
+        return citacion;
+    }
+
+    public void setCitacion(Citacion citacion) {
+        this.citacion = citacion;
     }
 
     public Catalogo getEstado() {

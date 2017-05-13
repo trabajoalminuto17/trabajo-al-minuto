@@ -7,6 +7,7 @@ package com.basp.trabajo_al_minuto.service.facade;
 
 import com.basp.trabajo_al_minuto.model.business.BusinessException;
 import com.basp.trabajo_al_minuto.service.entity.Prueba;
+import com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla;
 import java.util.List;
 
 /**
@@ -22,4 +23,6 @@ public interface PruebaFacade {
     public Prueba updatePrueba(Prueba p) throws BusinessException;
 
     public List<Prueba> getPruebasByPerfil(Long id) throws BusinessException;
+
+    public List<PruebaPlantilla> getPruebasPlantillaByEmpresa(Long id) throws BusinessException;
 }

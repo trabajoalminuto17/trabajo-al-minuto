@@ -88,7 +88,7 @@ public class UsuarioEjb extends UsuarioDao implements UsuarioFacade {
     }
 
     @Override
-    public List<Usuario> getUsuariosByOferta(Long id) throws BusinessException {
+    public List<UsuarioHasOferta> getUsuariosByOferta(Long id) throws BusinessException {
         try {
             return _getUsuariosByOferta(id);
         } catch (Exception ex) {
@@ -118,6 +118,15 @@ public class UsuarioEjb extends UsuarioDao implements UsuarioFacade {
     public List<Evaluacion> getUsuariosMejoresResultadosByEmpresa(Long id) throws BusinessException {
         try {
             return _getUsuariosMejoresResultadosByEmpresa(id);
+        } catch (Exception ex) {
+            throw new BusinessException(ex);
+        }
+    }
+
+    @Override
+    public UsuarioHasOferta findUsuarioHasOferta(Long id) throws BusinessException {
+        try {
+            return _findUsuarioHasOferta(id);
         } catch (Exception ex) {
             throw new BusinessException(ex);
         }

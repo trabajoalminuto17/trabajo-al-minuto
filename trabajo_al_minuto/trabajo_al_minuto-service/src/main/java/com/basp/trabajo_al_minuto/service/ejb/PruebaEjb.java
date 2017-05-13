@@ -8,6 +8,7 @@ package com.basp.trabajo_al_minuto.service.ejb;
 import com.basp.trabajo_al_minuto.model.business.BusinessException;
 import com.basp.trabajo_al_minuto.service.dao.PruebaDao;
 import com.basp.trabajo_al_minuto.service.entity.Prueba;
+import com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla;
 import com.basp.trabajo_al_minuto.service.facade.PruebaFacade;
 import java.util.List;
 import javax.ejb.LocalBean;
@@ -52,6 +53,15 @@ public class PruebaEjb extends PruebaDao implements PruebaFacade {
     public List<Prueba> getPruebasByPerfil(Long id) throws BusinessException {
         try {
             return _getPruebasByPerfil(id);
+        } catch (Exception ex) {
+            throw new BusinessException(ex);
+        }
+    }
+
+    @Override
+    public List<PruebaPlantilla> getPruebasPlantillaByEmpresa(Long id) throws BusinessException {
+        try {
+            return _getPruebasPlantillaByEmpresa(id);
         } catch (Exception ex) {
             throw new BusinessException(ex);
         }

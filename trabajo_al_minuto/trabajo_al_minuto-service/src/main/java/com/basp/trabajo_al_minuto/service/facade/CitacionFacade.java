@@ -18,7 +18,7 @@ public interface CitacionFacade {
 
     public Citacion updateCitacion(Citacion c) throws BusinessException;
     
-    public List<Citacion> getCitacionByOferta(Long id) throws BusinessException;
+    public Citacion getCitacionByOferta(Long id) throws BusinessException;
     
     public Citacion findCitacion(Long pk) throws BusinessException;
     

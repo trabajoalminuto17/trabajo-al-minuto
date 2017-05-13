@@ -30,9 +30,9 @@ public class CitacionEjb extends CitacionDao implements CitacionFacade {
             throw new BusinessException(ex);
         }
     }
-    
+
     @Override
-    public List<Citacion> getCitacionByOferta(Long id) throws BusinessException {
+    public Citacion getCitacionByOferta(Long id) throws BusinessException {
         try {
             return _getCitacionByOferta(id);
         } catch (Exception ex) {
