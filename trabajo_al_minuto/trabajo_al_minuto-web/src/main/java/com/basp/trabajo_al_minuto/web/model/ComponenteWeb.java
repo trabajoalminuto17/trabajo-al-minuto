@@ -10,7 +10,10 @@ import com.basp.trabajo_al_minuto.model.business.BusinessException;
 import com.basp.trabajo_al_minuto.model.business.BusinessHtmlTemplates;
 import static com.basp.trabajo_al_minuto.model.business.BusinessUtils.sendEmail;
 import com.basp.trabajo_al_minuto.model.dto.EmailMessage;
+import com.basp.trabajo_al_minuto.service.ejb.CitacionEjb;
 import com.basp.trabajo_al_minuto.service.ejb.OfertaEjb;
+import com.basp.trabajo_al_minuto.service.ejb.PerfilEjb;
+import com.basp.trabajo_al_minuto.service.ejb.PruebaEjb;
 import com.basp.trabajo_al_minuto.service.ejb.UsuarioEjb;
 import com.basp.trabajo_al_minuto.service.entity.Usuario;
 import java.io.Serializable;
@@ -31,6 +34,12 @@ public class ComponenteWeb extends AtributosWeb implements Serializable {
     protected OfertaEjb ofertaEjb;
     @Inject
     protected UsuarioEjb usuarioEjb;
+    @Inject
+    protected CitacionEjb citacionEjb;
+    @Inject
+    protected PerfilEjb perfilEjb;
+    @Inject
+    protected PruebaEjb pruebaEjb;
 
     protected FacesMessage message;
 
@@ -58,6 +67,18 @@ public class ComponenteWeb extends AtributosWeb implements Serializable {
 
     protected Long getUsuarioId() {
         return (Long) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuarioId");
+    }
+
+    protected Long getOfertaId() {
+        return (Long) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("ofertaId");
+    }
+
+    protected Long getUsuarioHasOfertaId() {
+        return (Long) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuarioHasOfertaId");
+    }
+
+    protected Long getPruebaId() {
+        return (Long) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("pruebaId");
     }
 
     protected Boolean enviarClaveRestaurada(String email, String nombre, String clave) throws BusinessException {

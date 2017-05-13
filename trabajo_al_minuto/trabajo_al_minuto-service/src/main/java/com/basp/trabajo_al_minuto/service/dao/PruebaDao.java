@@ -9,9 +9,11 @@ import static com.basp.trabajo_al_minuto.model.business.BusinessAttributes.PERSI
 import com.basp.trabajo_al_minuto.model.business.BusinessPersistence;
 import static com.basp.trabajo_al_minuto.model.business.BusinessPersistence.JPQL;
 import static com.basp.trabajo_al_minuto.model.business.BusinessQuery.GET_PRUEBAS_BY_PERFIL;
+import static com.basp.trabajo_al_minuto.model.business.BusinessQuery.GET_PRUEBAS_PLANTILLA_BY_EMPRESA;
 import com.basp.trabajo_al_minuto.model.dto.PersistenceObject;
 import com.basp.trabajo_al_minuto.service.entity.PerfilHasPrueba;
 import com.basp.trabajo_al_minuto.service.entity.Prueba;
+import com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla;
 import java.util.List;
 import javax.persistence.Persistence;
 
@@ -41,6 +43,10 @@ public class PruebaDao {
 
     protected List<Prueba> _getPruebasByPerfil(Long id) throws Exception {
         return BP.read(new PersistenceObject(PerfilHasPrueba.class, GET_PRUEBAS_BY_PERFIL, JPQL, id));
+    }
+
+    protected List<PruebaPlantilla> _getPruebasPlantillaByEmpresa(Long id) throws Exception {
+        return BP.read(new PersistenceObject(PruebaPlantilla.class, GET_PRUEBAS_PLANTILLA_BY_EMPRESA, JPQL, id));
     }
 
 }

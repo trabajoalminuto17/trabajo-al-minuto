@@ -25,4 +25,6 @@ public class AtributosWeb {
     public static final String CLAVE_PAGE = FACES_PATH.concat("clave.xhtml").concat(REDIRECT);
     public static final String ERROR_PAGE = FACES_PATH.concat("error.xhtml").concat(REDIRECT);
     public static final String DETALLE_USUARIO_PAGE = FACES_PATH.concat("modulos/usuarios/detalle.xhtml").concat(REDIRECT);
+    public static final String DETALLE_OFERTA_PAGE = FACES_PATH.concat("modulos/ofertas/detalle.xhtml").concat(REDIRECT);
+    public static final String DETALLE_POSTULACION_PAGE = FACES_PATH.concat("modulos/ofertas/detalle_postulacion.xhtml").concat(REDIRECT);
 }

@@ -34,8 +34,8 @@ public class CitacionDao {
         return (Citacion) BP.update(c);
     }
 
-    protected List<Citacion> _getCitacionByOferta(Long id) throws Exception {
-        return BP.read(new PersistenceObject(Citacion.class, GET_CITACIONES_BY_OFERTA, JPQL, id));
+    protected Citacion _getCitacionByOferta(Long id) throws Exception {
+        return (Citacion) BP.readOne(new PersistenceObject(UsuarioHasOferta.class, GET_CITACIONES_BY_OFERTA, JPQL, id));
     }
 
     protected Citacion _findCitacion(Long pk) throws Exception {

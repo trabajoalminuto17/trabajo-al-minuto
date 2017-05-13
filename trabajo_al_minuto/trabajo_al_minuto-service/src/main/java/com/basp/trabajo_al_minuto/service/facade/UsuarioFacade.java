@@ -32,12 +32,14 @@ public interface UsuarioFacade {
 
     public void createUsuario(Usuario u) throws BusinessException;
 
-    public List<Usuario> getUsuariosByOferta(Long id) throws BusinessException;
+    public List<UsuarioHasOferta> getUsuariosByOferta(Long id) throws BusinessException;
 
     public UsuarioHasOferta updateUsuarioHasOferta(UsuarioHasOferta uho) throws BusinessException;
 
     public List<Menu> getMenusByRol(Long id) throws BusinessException;
 
     public List<Evaluacion> getUsuariosMejoresResultadosByEmpresa(Long id) throws BusinessException;
+    
+    public UsuarioHasOferta findUsuarioHasOferta(Long id) throws BusinessException;
 
 }
