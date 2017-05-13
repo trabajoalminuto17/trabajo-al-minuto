@@ -5,6 +5,7 @@
  */
 package com.basp.trabajo_al_minuto.web.model;
 
+import static com.basp.trabajo_al_minuto.web.model.AtributosWeb.ALERTA_MESSAGE;
 import static com.basp.trabajo_al_minuto.web.model.AtributosWeb.CONTACT_ADMIN_MESSAGE;
 import static com.basp.trabajo_al_minuto.web.model.AtributosWeb.ERROR_MESSAGE;
 import static com.basp.trabajo_al_minuto.web.model.AtributosWeb.EXITO_MESSAGE;
@@ -27,7 +28,12 @@ public enum MensajeWeb {
     CHANGE_OK(EXITO_MESSAGE, "Cambios realizados correctamente.", FacesMessage.SEVERITY_INFO),
     CHANGE_NOT(ERROR_MESSAGE, "No se han podido guardar los cambios, ".concat(INTENTE_DE_NUEVO_MESSAGE), FacesMessage.SEVERITY_ERROR),
     USUARIO_OK(EXITO_MESSAGE, "Usuario creado correctamente.", FacesMessage.SEVERITY_INFO),
-    USUARIO_NOT(ERROR_MESSAGE, "No se han podido crear el usuario, ".concat(INTENTE_DE_NUEVO_MESSAGE), FacesMessage.SEVERITY_ERROR);
+    USUARIO_NOT(ERROR_MESSAGE, "No se han podido crear el usuario, ".concat(INTENTE_DE_NUEVO_MESSAGE), FacesMessage.SEVERITY_ERROR),
+    CITACION_OK(EXITO_MESSAGE, "Citación creada correctamente.", FacesMessage.SEVERITY_INFO),
+    CITACION_NOT(ERROR_MESSAGE, "No se han podido crear la citacion, ".concat(INTENTE_DE_NUEVO_MESSAGE), FacesMessage.SEVERITY_ERROR),
+    CITACION_RECHAZADA_OK(EXITO_MESSAGE, "Citación rechazada correctamente.", FacesMessage.SEVERITY_INFO),
+    CITACION_RECHAZADA_NOT(ERROR_MESSAGE, "No se han podido rechazar la citacion, ".concat(INTENTE_DE_NUEVO_MESSAGE), FacesMessage.SEVERITY_ERROR),
+    CITACION_RECHAZADA(ALERTA_MESSAGE, "El candidato ha sido rechazado, no es posible ver el detalle de esté!", FacesMessage.SEVERITY_WARN);
 
     private final String TITULO;
     private final String DESCRIPCION;
