@@ -61,10 +61,10 @@ public class ComponenteWeb extends AtributosWeb implements Serializable {
     }
 
     protected Boolean enviarClaveRestaurada(String email, String nombre, String clave) throws BusinessException {
-        
+
         List<String> lisTo = new ArrayList();
         lisTo.add(email);
-        
+
         EmailMessage em = new EmailMessage();
         em.setFrom("trabajoalminuto@gmail.com");
         em.setUser("trabajoalminuto@gmail.com");
@@ -80,4 +80,6 @@ public class ComponenteWeb extends AtributosWeb implements Serializable {
         return sendEmail(em);
     }
 
+    public void algo() {
+    }
 }
