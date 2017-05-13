@@ -225,6 +225,12 @@
 .fa-times:before {
     content: "\f00d";
 }
+.fa-remove-white:before,
+.fa-close-white:before,
+.fa-times-white:before {
+    content: "\f00d";
+    color: white
+}
 .fa-search-plus:before {
     content: "\f00e";
 }
@@ -253,11 +259,19 @@
 .fa-clock-o:before {
     content: "\f017";
 }
+.fa-clock-o-white:before {
+    content: "\f017";
+    color: white
+}
 .fa-road:before {
     content: "\f018";
 }
 .fa-download:before {
     content: "\f019";
+}
+.fa-download-blue:before {
+    content: "\f019";
+    color:#33AFDE;
 }
 .fa-arrow-circle-o-down:before {
     content: "\f01a";
@@ -487,6 +501,10 @@
 }
 .fa-plus:before {
     content: "\f067";
+}
+.fa-plus-white:before {
+    content: "\f067";
+    color: white
 }
 .fa-minus:before {
     content: "\f068";
@@ -825,6 +843,10 @@
 }
 .fa-envelope:before {
     content: "\f0e0";
+}
+.fa-envelope-white:before {
+    content: "\f0e0";
+    color: white
 }
 .fa-linkedin:before {
     content: "\f0e1";
