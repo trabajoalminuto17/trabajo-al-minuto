@@ -22,7 +22,7 @@
 
         <ui:insert name="head" />
         <f:metadata>
-            <f:event type="preRenderView" listener="#{adminBean.claveArriba}"/>
+            <f:event type="preRenderView" listener="#{claveView.claveArriba}"/>
         </f:metadata>
     </h:head>
 
@@ -38,19 +38,20 @@
                                 <p:graphicImage  name="logo.png" library="image" style="width: 40%; top: 10px;position: relative;"/>
                                 <p:messages id="messages" autoUpdate="true" closable="true" />
                                 <div class="EmptyBox10"></div>
-                                <p style="font-size: 12px">Por políticas de seguridad del sistema es necesario que realice el cambio de contraseña, recuerde que esta es personal e intransferible. 
+                                <p style="font-size: 12px">Por políticas de seguridad del sistema es necesario que realice el cambio de contraseña, 
+                                    recuerde que esta es personal e intransferible. 
                                     <br/><br/>
                                     <b>La contraseña debe tener de 6 a 12 caracteres y contener una combinación de letras y números.</b>
                                 </p>                            
                                 <div class="EmptyBox20"></div>
-                                <p:password id="pass1" value="#{adminBean.clave}" placeholder="Contraseña nueva" styleClass="Wid80"
+                                <p:password id="pass1" value="#{claveView.clave}" placeholder="Contraseña nueva" styleClass="Wid80"
                                             validatorMessage="Las contraseñas no coinciden o no cumplen con los requisitos mínimos de validación, intente de nuevo." 
                                             required="true" match="pass2" maxlength="12">
                                     <f:validateLength minimum="6" maximum="12" /> 
                                     <f:validateRegex pattern="^[a-zA-Z0-9]+$" />
                                 </p:password>      
                                 <div class="EmptyBox10"></div>
-                                <p:password id="pass2" value="#{adminBean.clave}" placeholder="Confirmar contraseña" styleClass="Wid80"
+                                <p:password id="pass2" value="#{claveView.clave}" placeholder="Confirmar contraseña" styleClass="Wid80"
                                             required="true" maxlength="12"/>  
                                 <div class="EmptyBox10"></div>                       
                                 <div class="Container85 Fnone MarAuto softgray">
@@ -59,7 +60,7 @@
                                 <div class="Seperator"></div>
                                 <div class="Container50 Responsive MarTop10">
                                     <div class="Container10 Responsive MarTop10" style="margin-left: 10px;">
-                                        <p:selectBooleanCheckbox value="#{adminBean.usuarioSession.terminos}" required="true">
+                                        <p:selectBooleanCheckbox value="#{claveView.terminos}" required="true">
                                             <p:ajax update="btn_change_ps" />
                                         </p:selectBooleanCheckbox>
                                     </div>
@@ -71,10 +72,10 @@
                                 <div class="Container10 Responsive MarTop10"></div>
                                 <div class="Container40 Responsive MarTop10">
                                     <p:commandButton id="btn_change_ps" value="Cambiar clave" 
-                                                     icon="fa fa-key-white" disabled="#{!adminBean.usuarioSession.terminos}"
+                                                     icon="fa fa-key-white" disabled="#{!claveView.terminos}"
                                                      styleClass="Fs16 RedButton"
                                                      update=":form_login:messages" 
-                                                     actionListener="#{adminBean.cambiarClave}" />
+                                                     actionListener="#{claveView.cambiarClave}" />
                                 </div>
                                 <div class="EmptyBox40"></div>
                             </div>

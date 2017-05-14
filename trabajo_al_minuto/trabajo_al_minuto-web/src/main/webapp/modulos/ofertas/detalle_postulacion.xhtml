@@ -104,31 +104,31 @@
             <h:panelGroup id="pg_citacion">
                 <div class="Container80 Responsive MarTop20" style="margin-left: 10%">
                     <div class="ContainerIndent"> 
-                        <h4 class="Fs15 gray DispBlock FontLight">Información detallada de #{principalBean.ofertaSeleccionada.perfil.titulo}</h4>
+                        <h4 class="Fs15 gray DispBlock FontLight">Información detallada de #{detallePostulacionView.ofertaSeleccionada.perfil.titulo}</h4>
                         <h5 class="Fs13 gray DispBlock FontBold">A continuación se encuentra la información de su oferta.</h5>
                         <div class="Seperator"></div>
                         <div class="Container100 Responsive">
                             <div class="Container50 Responsive MarTop10">
                                 <h4 class="Fs14 black  DispBlock black">Descripción</h4>
-                                <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{principalBean.ofertaSeleccionada.perfil.descripcion}"/>
+                                <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{detallePostulacionView.ofertaSeleccionada.perfil.descripcion}"/>
                                 <div class="EmptyBox30"/>
                                 <h4 class="Fs14 black  DispBlock black">Requerimientos</h4>
-                                <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{principalBean.ofertaSeleccionada.perfil.requerimientos}"/>
+                                <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{detallePostulacionView.ofertaSeleccionada.perfil.requerimientos}"/>
                                 <div class="EmptyBox30"/>
                                 <h4 class="Fs14 black  DispBlock black">Estado</h4>
-                                <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{principalBean.usuarioHasOfertaSeleccionada.estado.valor}"/>
+                                <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{detallePostulacionView.usuarioHasOfertaSeleccionada.estado.valor}"/>
                             </div>
                             <div class="Container50 Responsive MarTop10">
                                 <h4 class="Fs14 black  DispBlock black">Fecha Expiración</h4>
-                                <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{principalBean.ofertaSeleccionada.fechaExpiracion}">
+                                <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{detallePostulacionView.ofertaSeleccionada.fechaExpiracion}">
                                     <f:convertDateTime pattern="MMMM, dd yyyy" locale="es" />
                                 </p:outputLabel>
                                 <div class="EmptyBox30"/>
                                 <h4 class="Fs14 black DispBlock black">Area</h4>
-                                <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{principalBean.ofertaSeleccionada.perfil.area.valor}"/>
+                                <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{detallePostulacionView.ofertaSeleccionada.perfil.area.valor}"/>
                                 <div class="EmptyBox30"/>
                                 <h4 class="Fs14 black DispBlock black">Salario</h4>
-                                <p:outputLabel styleClass="Fs14 black  DispBlock black" value="$ #{principalBean.ofertaSeleccionada.perfil.salario}"/>
+                                <p:outputLabel styleClass="Fs14 black  DispBlock black" value="$ #{detallePostulacionView.ofertaSeleccionada.perfil.salario}"/>
                             </div>
                             <div class="EmptyBox80"/>
                             <h4 class="Fs15 gray DispBlock FontLight">Información del candidato</h4>
@@ -137,99 +137,99 @@
                             <div class="Container100 Responsive">
                                 <div class="Container33 Responsive MarTop10">
                                     <h4 class="Fs14 black  DispBlock black">Nombre</h4>
-                                    <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{principalBean.usuarioHasOfertaSeleccionada.usuarioUsuarioId.persona.nombre}"/>
+                                    <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{detallePostulacionView.usuarioHasOfertaSeleccionada.usuarioUsuarioId.persona.nombre}"/>
                                     <div class="EmptyBox30"/>
                                     <h4 class="Fs14 black  DispBlock black">Documento</h4>
-                                    <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{principalBean.usuarioHasOfertaSeleccionada.usuarioUsuarioId.persona.documento}"/>
+                                    <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{detallePostulacionView.usuarioHasOfertaSeleccionada.usuarioUsuarioId.persona.documento}"/>
                                     <div class="EmptyBox30"/>
                                     <h4 class="Fs14 black  DispBlock black">Edad</h4>
-                                    <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{principalBean.usuarioHasOfertaSeleccionada.usuarioUsuarioId.persona.edad}"/>
+                                    <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{detallePostulacionView.usuarioHasOfertaSeleccionada.usuarioUsuarioId.persona.edad}"/>
                                     <div class="EmptyBox30"/>
                                     <h4 class="Fs14 black FontOpenSansRegular DispBlock black">Hoja de vida </h4>
                                     <h:commandLink  class="Fs14 DispBlock blue Underline" immediate="true"
-                                                    actionListener="#{principalBean.descargarArchivoPdf(principalBean.usuarioHasOfertaSeleccionada.usuarioUsuarioId.candidato.rutaHojaDeVida)}">
+                                                    actionListener="#{detallePostulacionView.descargarHojaDeVida(detallePostulacionView.usuarioHasOfertaSeleccionada.usuarioUsuarioId.candidato.rutaHojaDeVida)}">
                                         <i class="fa fa-download-blue"></i>
-                                        <p:fileDownload value="#{principalBean.streamedContent}"/>
+                                        <p:fileDownload value="#{detallePostulacionView.streamedContent}"/>
                                         Descargar la hoja de vida
                                     </h:commandLink>   
                                 </div>
                                 <div class="Container33 Responsive MarTop10">
                                     <h4 class="Fs14 black DispBlock black">Email</h4>
-                                    <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{principalBean.usuarioHasOfertaSeleccionada.usuarioUsuarioId.email}"/>
+                                    <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{detallePostulacionView.usuarioHasOfertaSeleccionada.usuarioUsuarioId.email}"/>
                                     <div class="EmptyBox30"/>
                                     <h4 class="Fs14 black  DispBlock black">Genero</h4>
-                                    <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{principalBean.usuarioHasOfertaSeleccionada.usuarioUsuarioId.persona.genero == 1 ? 'Hombre' : 'Mujer'}"/>
+                                    <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{detallePostulacionView.usuarioHasOfertaSeleccionada.usuarioUsuarioId.persona.genero == 1 ? 'Hombre' : 'Mujer'}"/>
                                     <div class="EmptyBox30"/>
                                     <h4 class="Fs14 black FontOpenSansRegular DispBlock black">Teléfono celular </h4>
-                                    <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{principalBean.usuarioHasOfertaSeleccionada.usuarioUsuarioId.persona.celular}"/>
+                                    <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{detallePostulacionView.usuarioHasOfertaSeleccionada.usuarioUsuarioId.persona.celular}"/>
                                 </div>
                                 <div class="Container33 Responsive MarTop10">
                                     <h4 class="Fs14 black DispBlock black">Aspiración Salarial</h4>
-                                    <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{principalBean.usuarioHasOfertaSeleccionada.usuarioUsuarioId.candidato.aspiracionSalarial}"/>
+                                    <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{detallePostulacionView.usuarioHasOfertaSeleccionada.usuarioUsuarioId.candidato.aspiracionSalarial}"/>
                                     <div class="EmptyBox30"/>
                                     <h4 class="Fs14 black  DispBlock black">Escolaridad</h4>
-                                    <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{principalBean.usuarioHasOfertaSeleccionada.usuarioUsuarioId.candidato.escolaridad}"/>
+                                    <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{detallePostulacionView.usuarioHasOfertaSeleccionada.usuarioUsuarioId.candidato.escolaridad}"/>
                                     <div class="EmptyBox30"/>
                                     <h4 class="Fs14 black FontOpenSansRegular DispBlock black">Teléfono fijo </h4>
-                                    <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{principalBean.usuarioHasOfertaSeleccionada.usuarioUsuarioId.persona.telefonoFijo}"/>
+                                    <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{detallePostulacionView.usuarioHasOfertaSeleccionada.usuarioUsuarioId.persona.telefonoFijo}"/>
 
                                 </div>
                             </div>     
                         </div>
                     </div>
                     <div class="EmptyBox80" />
-                    <h:panelGroup rendered="#{principalBean.usuarioHasOfertaSeleccionada.estado.catalogoId == 8}">
+                    <h:panelGroup rendered="#{detallePostulacionView.usuarioHasOfertaSeleccionada.estado.catalogoId == 8}">
                         <h4 class="Fs15 gray DispBlock FontLight">Citación</h4>
                         <h5 class="Fs13 gray DispBlock FontBold">Programe la citación con el candidato.</h5>
                         <div class="Seperator"></div>
                         <div class="Container100 Responsive">
                             <div class="Container100 Responsive MarTop10">
                                 <h4 class="Fs14 black  DispBlock black">Lugar*</h4>
-                                <p:inputText value="#{principalBean.newCitacion.lugar}" required="true" styleClass="Wid60"
+                                <p:inputText value="#{detallePostulacionView.newCitacion.lugar}" required="true" styleClass="Wid60"
                                              requiredMessage="Lugar no válido" validatorMessage="Lugar no válido" />
                             </div>
                             <div class="Container100 Responsive MarTop10">
                                 <h4 class="Fs14 black  DispBlock black">Detalles*</h4>
-                                <p:inputText value="#{principalBean.newCitacion.detalles}" required="true" styleClass="Wid60"
+                                <p:inputText value="#{detallePostulacionView.newCitacion.detalles}" required="true" styleClass="Wid60"
                                              requiredMessage="Detalles no válidos" validatorMessage="Detalles no válidos" />
                             </div>
                             <div class="Container100 Responsive MarTop10">
                                 <h4 class="Fs14 black  DispBlock black">Fecha de citación*</h4>
-                                <p:calendar value="#{principalBean.newCitacion.fechaCitacion}" pattern="MM/dd/yyyy HH:mm" locale="es" />
+                                <p:calendar value="#{detallePostulacionView.newCitacion.fechaCitacion}" pattern="MM/dd/yyyy HH:mm" locale="es" />
                             </div>
                         </div>
                         <div class="EmptyBox50" />
                         <p:commandButton styleClass="Fright RedButton" value="Regresar" action="/modulos/ofertas/detalle?faces-redirect=true"
                                          icon="fa fa-mail-reply-all-white" immediate="true"/>
-                        <p:commandButton styleClass="Fright GreenButton" value="Rechazar" actionListener="#{principalBean.rechazarCitacion}"
+                        <p:commandButton styleClass="Fright GreenButton" value="Rechazar" actionListener="#{detallePostulacionView.rechazarCitacion}"
                                          icon="fa fa-close-white" update="pg_citacion" immediate="true" action="/modulos/ofertas/detalle?faces-redirect=true"/>
-                        <p:commandButton styleClass="Fright BlueButton" value="Citar" actionListener="#{principalBean.createCitacion}"
+                        <p:commandButton styleClass="Fright BlueButton" value="Citar" actionListener="#{detallePostulacionView.createCitacion}"
                                          icon="fa fa-clock-o-white" update="pg_citacion"/>
                     </h:panelGroup>
-                    <h:panelGroup rendered="#{principalBean.usuarioHasOfertaSeleccionada.estado.catalogoId == 11}">
+                    <h:panelGroup rendered="#{detallePostulacionView.usuarioHasOfertaSeleccionada.estado.catalogoId == 11}">
                         <h4 class="Fs15 gray DispBlock FontLight">Citación</h4>
                         <h5 class="Fs13 gray DispBlock FontBold">Programe la citación con el candidato.</h5>
                         <div class="Seperator"></div>
                         <div class="Container100 Responsive">
                             <div class="Container100 Responsive MarTop10">
                                 <h4 class="Fs14 black  DispBlock black">Lugar*</h4>
-                                <p:inputText value="#{principalBean.citacionSeleccionada.lugar}" required="true" styleClass="Wid60"
+                                <p:inputText value="#{detallePostulacionView.citacionSeleccionada.lugar}" required="true" styleClass="Wid60"
                                              requiredMessage="Lugar no válido" validatorMessage="Lugar no válido" />
                             </div>
                             <div class="Container100 Responsive MarTop10">
                                 <h4 class="Fs14 black  DispBlock black">Detalles*</h4>
-                                <p:inputText value="#{principalBean.citacionSeleccionada.detalles}" required="true" styleClass="Wid60"
+                                <p:inputText value="#{detallePostulacionView.citacionSeleccionada.detalles}" required="true" styleClass="Wid60"
                                              requiredMessage="Detalles no válidos" validatorMessage="Detalles no válidos" />
                             </div>
                             <div class="Container100 Responsive MarTop10">
                                 <h4 class="Fs14 black  DispBlock black">Fecha de citación*</h4>
-                                <p:calendar value="#{principalBean.citacionSeleccionada.fechaCitacion}" pattern="MM/dd/yyyy HH:mm" locale="es" />
+                                <p:calendar value="#{detallePostulacionView.citacionSeleccionada.fechaCitacion}" pattern="MM/dd/yyyy HH:mm" locale="es" />
                             </div>
                         </div>
                         <div class="EmptyBox50" />
                         <p:commandButton styleClass="Fright RedButton" value="Regresar" action="/modulos/ofertas/detalle?faces-redirect=true"  
                                          icon="fa fa-mail-reply-all-white" immediate="true"/>
-                        <p:commandButton styleClass="Fright BlueButton" value="Re-enviar" actionListener="#{principalBean.updateCitacion}" 
+                        <p:commandButton styleClass="Fright BlueButton" value="Re-enviar" actionListener="#{detallePostulacionView.updateCitacion}" 
                                          update="pg_citacion" icon="fa fa-envelope-white"/>
                     </h:panelGroup>
                 </div>

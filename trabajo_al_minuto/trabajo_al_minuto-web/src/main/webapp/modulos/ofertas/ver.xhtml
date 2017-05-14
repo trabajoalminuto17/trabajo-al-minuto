@@ -56,14 +56,14 @@
                     <h5 class="Fs13 gray DispBlock FontLight">A continuación podrá ver el listado de sus ofertas.</h5>
                     <div class="Seperator"></div>
                     <div class="Container100 Responsive MarTop10">
-                        <p:dataTable id="dtusers" var="oferta" value="#{principalBean.ofertasByEmpreas}"  widgetVar="wv_dtofertas"
-                                     filteredValue="#{principalBean.ofertasFlitradas}" reflow="true" styleClass="borderless"
+                        <p:dataTable id="dtusers" var="oferta" value="#{verOfertasView.ofertasByEmpreas}"  widgetVar="wv_dtofertas"
+                                     filteredValue="#{verOfertasView.ofertasFlitradas}" reflow="true" styleClass="borderless"
                                      rows="10"
                                      paginator="true"
                                      paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                                      rowsPerPageTemplate="10,20"
                                      paginatorPosition="bottom"
-                                     selectionMode="single" selection="#{principalBean.ofertaSeleccionada}" rowKey="#{oferta.ofertaId}"
+                                     selectionMode="single" selection="#{verOfertasView.ofertaSeleccionada}" rowKey="#{oferta.ofertaId}"
                                      emptyMessage="No se encontraron ofertas!">
                             <f:facet name="header">
                                 <p:toolbar style="border: none">
@@ -74,7 +74,7 @@
                                     </f:facet>
                                 </p:toolbar>
                             </f:facet>
-                            <p:ajax event="rowSelect" listener="#{principalBean.onRowSelectVerOfertas}" update=":main:pg_ver_ofertas"  />
+                            <p:ajax event="rowSelect" listener="#{verOfertasView.onRowSelectVerOfertas}" update=":main:pg_ver_ofertas"  />
                             <p:column headerText="Título" filterBy="#{oferta.perfil.titulo}"  filterStyle="display:none" styleClass="Wid40 Fs14">
                                 <h:outputText value="#{oferta.perfil.titulo}" styleClass="Fs14" />
                             </p:column>

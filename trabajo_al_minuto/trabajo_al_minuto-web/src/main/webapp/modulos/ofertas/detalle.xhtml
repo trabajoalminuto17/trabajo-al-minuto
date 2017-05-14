@@ -50,45 +50,45 @@
     </ui:define>
 
     <ui:define name="content">
-        <h:panelGroup id="pg_detalle_oferta" rendered="#{not empty principalBean.ofertaSeleccionada}">
+        <h:panelGroup id="pg_detalle_oferta" rendered="#{not empty detalleOfertaView.ofertaSeleccionada}">
             <div class="Container80 Responsive MarTop20" style="margin-left: 10%">
                 <div class="ContainerIndent"> 
-                    <h4 class="Fs15 gray DispBlock FontLight">Información detallada de #{principalBean.ofertaSeleccionada.perfil.titulo}</h4>
+                    <h4 class="Fs15 gray DispBlock FontLight">Información detallada de #{detalleOfertaView.ofertaSeleccionada.perfil.titulo}</h4>
                     <h5 class="Fs13 gray DispBlock FontBold">A continuación se encuentra la información de su oferta.</h5>
                     <div class="Seperator"></div>
                     <div class="Container100 Responsive">
                         <div class="Container50 Responsive MarTop10">
                             <h4 class="Fs14 black  DispBlock black">Descripción</h4>
-                            <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{principalBean.ofertaSeleccionada.perfil.descripcion}"/>
+                            <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{detalleOfertaView.ofertaSeleccionada.perfil.descripcion}"/>
                             <div class="EmptyBox30"/>
                             <h4 class="Fs14 black  DispBlock black">Requerimientos</h4>
-                            <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{principalBean.ofertaSeleccionada.perfil.requerimientos}"/>
+                            <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{detalleOfertaView.ofertaSeleccionada.perfil.requerimientos}"/>
                         </div>
                         <div class="Container50 Responsive MarTop10">
                             <h4 class="Fs14 black  DispBlock black">Fecha Expiración</h4>
-                            <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{principalBean.ofertaSeleccionada.fechaExpiracion}">
+                            <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{detalleOfertaView.ofertaSeleccionada.fechaExpiracion}">
                                 <f:convertDateTime pattern="MMMM, dd yyyy" locale="es" />
                             </p:outputLabel>
                             <div class="EmptyBox30"/>
                             <h4 class="Fs14 black DispBlock black">Area</h4>
-                            <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{principalBean.ofertaSeleccionada.perfil.area.valor}"/>
+                            <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{detalleOfertaView.ofertaSeleccionada.perfil.area.valor}"/>
                             <div class="EmptyBox30"/>
                             <h4 class="Fs14 black DispBlock black">Salario</h4>
-                            <p:outputLabel styleClass="Fs14 black  DispBlock black" value="$ #{principalBean.ofertaSeleccionada.perfil.salario}"/>
+                            <p:outputLabel styleClass="Fs14 black  DispBlock black" value="$ #{detalleOfertaView.ofertaSeleccionada.perfil.salario}"/>
                         </div>
                         <div class="EmptyBox80"/>
                         <h4 class="Fs15 gray DispBlock FontBold">Candidatos</h4>
                         <h5 class="Fs13 gray DispBlock FontLight">A continuación podrá ver el listado de los usuarios postulados.</h5>
                         <div class="Seperator"></div>
                         <div class="Container100 Responsive MarTop10">
-                            <p:dataTable id="dtofertasusuario" var="ofertausuario" value="#{principalBean.usuarioHasOfertaByOferta}"  widgetVar="wv_dtofertasusuario"
-                                         filteredValue="#{principalBean.usuarioHasOfertaFlitradas}" reflow="true" styleClass="borderless"
+                            <p:dataTable id="dtofertasusuario" var="ofertausuario" value="#{detalleOfertaView.usuarioHasOfertaByOferta}"  widgetVar="wv_dtofertasusuario"
+                                         filteredValue="#{detalleOfertaView.usuarioHasOfertaFlitradas}" reflow="true" styleClass="borderless"
                                          rows="10"
                                          paginator="true"
                                          paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                                          rowsPerPageTemplate="10,20"
                                          paginatorPosition="bottom"
-                                         selectionMode="single" selection="#{principalBean.usuarioHasOfertaSeleccionada}" rowKey="#{ofertausuario.usuarioHasOfertaId}"
+                                         selectionMode="single" selection="#{detalleOfertaView.usuarioHasOfertaSeleccionada}" rowKey="#{ofertausuario.usuarioHasOfertaId}"
                                          emptyMessage="No se encontraron candidatos!">
                                 <f:facet name="header">
                                     <p:toolbar style="border: none">
@@ -99,7 +99,7 @@
                                         </f:facet>
                                     </p:toolbar>
                                 </f:facet>
-                                <p:ajax event="rowSelect" listener="#{principalBean.onRowSelectVerUsuarioHasOfertas}" update=":main:pg_detalle_oferta"  />
+                                <p:ajax event="rowSelect" listener="#{detalleOfertaView.onRowSelectVerUsuarioHasOfertas}" update=":main:pg_detalle_oferta"  />
                                 <p:column headerText="Nombre" filterBy="#{ofertausuario.usuarioUsuarioId.persona.nombre}"  filterStyle="display:none" styleClass="Wid40 Fs14">
                                     <h:outputText value="#{ofertausuario.usuarioUsuarioId.persona.nombre}" styleClass="Fs14" />
                                 </p:column>
@@ -122,14 +122,14 @@
                         <h5 class="Fs13 gray DispBlock FontLight">A continuación podrá ver el listado de las pruebas a presentar por los candidatos.</h5>
                         <div class="Seperator"></div>
                         <div class="Container100 Responsive MarTop10">
-                            <p:dataTable id="dtofertapruebas" var="ofertaprueba" value="#{principalBean.pruebasByPerfil}"  widgetVar="wv_dtofertapruebas"
-                                         filteredValue="#{principalBean.pruebasFlitradas}" reflow="true" styleClass="borderless"
+                            <p:dataTable id="dtofertapruebas" var="ofertaprueba" value="#{detalleOfertaView.pruebasByPerfil}"  widgetVar="wv_dtofertapruebas"
+                                         filteredValue="#{detalleOfertaView.pruebasFlitradas}" reflow="true" styleClass="borderless"
                                          rows="10"
                                          paginator="true"
                                          paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                                          rowsPerPageTemplate="10,20"
                                          paginatorPosition="bottom"
-                                         selectionMode="single" selection="#{principalBean.preubaSeleccionada}" rowKey="#{ofertaprueba.pruebaId}"
+                                         selectionMode="single" selection="#{detalleOfertaView.preubaSeleccionada}" rowKey="#{ofertaprueba.pruebaId}"
                                          emptyMessage="No se encontraron candidatos!">
                                 <f:facet name="header">
                                     <p:toolbar style="border: none">
@@ -143,7 +143,7 @@
                                         </f:facet>
                                     </p:toolbar>
                                 </f:facet>
-                                <p:ajax event="rowSelect" listener="#{principalBean.onRowSelectVerPruebas}" update=":main:pg_detalle_oferta"  />
+                                <p:ajax event="rowSelect" listener="#{detalleOfertaView.onRowSelectVerPruebas}" update=":main:pg_detalle_oferta"  />
                                 <p:column headerText="Nombre" filterBy="#{ofertaprueba.nombre}"  filterStyle="display:none" styleClass="Wid40 Fs14">
                                     <h:outputText value="#{ofertaprueba.nombre}" styleClass="Fs14" />
                                 </p:column>
