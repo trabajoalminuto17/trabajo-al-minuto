@@ -23,7 +23,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
@@ -168,5 +167,5 @@ public class PruebaPlantilla implements Serializable {
     public String toString() {
         return "com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla[ pruebaId=" + pruebaId + " ]";
     }
-
+    
 }

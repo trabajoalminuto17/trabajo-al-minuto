@@ -22,7 +22,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -40,10 +39,8 @@ public class UsuarioHasOferta implements Serializable {
     @Basic(optional = false)
     @Column(name = "usuario_has_oferta_id")
     private Long usuarioHasOfertaId;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "fecha_postulacion")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date fechaPostulacion;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuarioHasOferta")
     private Citacion citacion;
@@ -62,11 +59,6 @@ public class UsuarioHasOferta implements Serializable {
 
     public UsuarioHasOferta(Long usuarioHasOfertaId) {
         this.usuarioHasOfertaId = usuarioHasOfertaId;
-    }
-
-    public UsuarioHasOferta(Long usuarioHasOfertaId, Date fechaPostulacion) {
-        this.usuarioHasOfertaId = usuarioHasOfertaId;
-        this.fechaPostulacion = fechaPostulacion;
     }
 
     public Long getUsuarioHasOfertaId() {

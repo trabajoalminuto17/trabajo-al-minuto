@@ -10,11 +10,15 @@ import com.basp.trabajo_al_minuto.service.dao.AdminDao;
 import com.basp.trabajo_al_minuto.service.entity.Catalogo;
 import com.basp.trabajo_al_minuto.service.facade.AdminFacade;
 import java.util.List;
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
 
 /**
  *
  * @author BASP
  */
+@Stateless
+@LocalBean
 public class AdminEjb extends AdminDao implements AdminFacade {
 
     @Override
