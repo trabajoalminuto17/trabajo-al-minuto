@@ -25,4 +25,6 @@ public interface PruebaFacade {
     public List<Prueba> getPruebasByPerfil(Long id) throws BusinessException;
 
     public List<PruebaPlantilla> getPruebasPlantillaByEmpresa(Long id) throws BusinessException;
+
+    public PruebaPlantilla findPruebaPlantilla(Long id) throws BusinessException;
 }

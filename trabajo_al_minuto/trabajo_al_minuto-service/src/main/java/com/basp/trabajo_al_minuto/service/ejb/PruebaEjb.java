@@ -67,4 +67,13 @@ public class PruebaEjb extends PruebaDao implements PruebaFacade {
         }
     }
 
+    @Override
+    public PruebaPlantilla findPruebaPlantilla(Long id) throws BusinessException {
+        try {
+            return _findPruebaPlantilla(id);
+        } catch (Exception ex) {
+            throw new BusinessException(ex);
+        }
+    }
+
 }

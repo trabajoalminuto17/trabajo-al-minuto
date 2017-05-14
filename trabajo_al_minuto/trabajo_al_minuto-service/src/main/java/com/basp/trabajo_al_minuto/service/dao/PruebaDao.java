@@ -49,4 +49,8 @@ public class PruebaDao {
         return BP.read(new PersistenceObject(PruebaPlantilla.class, GET_PRUEBAS_PLANTILLA_BY_EMPRESA, JPQL, id));
     }
 
+    protected PruebaPlantilla _findPruebaPlantilla(Long id) throws Exception {
+        return (PruebaPlantilla) BP.find(PruebaPlantilla.class, id);
+    }
+
 }
