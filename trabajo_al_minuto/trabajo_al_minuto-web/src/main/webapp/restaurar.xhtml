@@ -39,15 +39,15 @@
                                     Primero escribe tu usuario de Trabajo al Minuto y sigue las instrucciones siguientes.
                                 </p>
                                 <div class="EmptyBox10"></div>
-                                <p:inputText label="Usuario" size="25" placeholder="usuario@dominio.com" styleClass="Container80 Fnone MarAuto Fs14" value="#{sessionBean.usuario}" required="true" />
+                                <p:inputText label="Usuario" size="25" placeholder="usuario@dominio.com" styleClass="Container80 Fnone MarAuto Fs14" value="#{restaurarView.usuario}" required="true" />
                                 <div class="EmptyBox20"></div>
                                 <div class="Container80 Fnone MarAuto Fs12 MarRight10">
                                     <p:captcha language="es" required="true" requiredMessage="Debes validar el capcha!"/>
                                 </div>
                                 <div class="EmptyBox20"></div>
-                                <p:commandButton styleClass="RedButton" value="Regresar" action="/iniciar_sesion?faces-redirect=true"  icon="fa fa-mail-reply-all-white" immediate="true" actionListener="#{sessionBean.ok_off}"/>
+                                <p:commandButton styleClass="RedButton" value="Regresar" action="/iniciar_sesion?faces-redirect=true"  icon="fa fa-mail-reply-all-white" immediate="true" actionListener="#{restaurarView.ok_off}"/>
                                 <div class="Container80"></div>
-                                <p:commandButton styleClass="BlueButton" value="Aceptar" id="btn_ok_restore" icon="fa fa-check-white" actionListener="#{sessionBean.restaurarClave}" disabled="#{sessionBean.ok}" update="btn_ok_restore"/>
+                                <p:commandButton styleClass="BlueButton" value="Aceptar" id="btn_ok_restore" icon="fa fa-check-white" actionListener="#{restaurarView.restaurarClave}" disabled="#{restaurarView.ok}" update="btn_ok_restore"/>
                                 <div class="EmptyBox40"></div>
                             </div>
                         </div>

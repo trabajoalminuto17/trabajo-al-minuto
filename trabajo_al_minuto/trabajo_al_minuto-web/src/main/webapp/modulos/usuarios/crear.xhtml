@@ -59,24 +59,24 @@
                     <div class="Container100 Responsive">
                         <div class="Container50 Responsive MarTop10">
                             <h4 class="Fs14 black  DispBlock black">Documento*</h4>
-                            <p:inputText value="#{principalBean.newPersona.documento}" required="true" styleClass="Wid60" disabled="#{principalBean.render}"
+                            <p:inputText value="#{crearUsuario.newPersona.documento}" required="true" styleClass="Wid60" disabled="#{crearUsuario.render}"
                                          requiredMessage="Documento no válido" validatorMessage="Documento no válido"/>
                             <div class="EmptyBox30"/>
                             <h4 class="Fs14 black  DispBlock black">Nombre*</h4>
-                            <p:inputText value="#{principalBean.newPersona.nombre}" required="true" styleClass="Wid60" disabled="#{principalBean.render}"
+                            <p:inputText value="#{crearUsuario.newPersona.nombre}" required="true" styleClass="Wid60" disabled="#{crearUsuario.render}"
                                          requiredMessage="Nombre no válido" validatorMessage="Nombre no válido"/>
                             <div class="EmptyBox30"/>
                             <h4 class="Fs14 black  DispBlock black">Edad*</h4>
-                            <p:inputText value="#{principalBean.newPersona.edad}" required="true" disabled="#{principalBean.render}"
+                            <p:inputText value="#{crearUsuario.newPersona.edad}" required="true" disabled="#{crearUsuario.render}"
                                          requiredMessage="Edad no válida" validatorMessage="Edad no válida" type="number" maxlength="2" />
                             <div class="EmptyBox30"/>
                             <h4 class="Fs14 black FontOpenSansRegular DispBlock black">Teléfono fijo* </h4>
-                            <p:inputText value="#{principalBean.newPersona.telefonoFijo}" required="true"  styleClass="Wid60" disabled="#{principalBean.render}"
+                            <p:inputText value="#{crearUsuario.newPersona.telefonoFijo}" required="true"  styleClass="Wid60" disabled="#{crearUsuario.render}"
                                          requiredMessage="Teléfono no válido" validatorMessage="Teléfono no válido" />
                         </div>
                         <div class="Container50 Responsive MarTop10">
                             <h4 class="Fs14 black DispBlock black">Email*</h4>
-                            <p:inputText id="emailusuario" value="#{principalBean.newUsuario.email}"  required="true"  styleClass="Wid60" disabled="#{principalBean.render}"
+                            <p:inputText id="emailusuario" value="#{crearUsuario.newUsuario.email}"  required="true"  styleClass="Wid60" disabled="#{crearUsuario.render}"
                                          requiredMessage="Email no válido"  validatorMessage="Email no válido" >
                                 <f:validateRegex
                                     pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
@@ -86,21 +86,21 @@
                                         atPosition="bottom left"/> 
                             <div class="EmptyBox30"/>
                             <h4 class="Fs14 black  DispBlock black">Genero*</h4>
-                            <p:selectOneMenu id="console" value="#{principalBean.newPersona.genero}" style="width:125px" required="true" disabled="#{principalBean.render}"> 
+                            <p:selectOneMenu id="console" value="#{crearUsuario.newPersona.genero}" style="width:125px" required="true" disabled="#{crearUsuario.render}"> 
                                 <f:selectItem itemLabel="Seleccione...." itemValue="" />
                                 <f:selectItem itemLabel="Hombre" itemValue="1" />
                                 <f:selectItem itemLabel="Mujer" itemValue="0" />
                             </p:selectOneMenu>
                             <div class="EmptyBox30"/>
                             <h4 class="Fs14 black FontOpenSansRegular DispBlock black">Teléfono celular* </h4>
-                            <p:inputText value="#{principalBean.newPersona.celular}" required="true" styleClass="Wid60" disabled="#{principalBean.render}"
+                            <p:inputText value="#{crearUsuario.newPersona.celular}" required="true" styleClass="Wid60" disabled="#{crearUsuario.render}"
                                          requiredMessage="Celular no válido" validatorMessage="Celular no válido" />
                         </div>
                         <div class="EmptyBox80"/>
 
                         <p:commandButton styleClass="Fright RedButton" value="Regresar" action="/modulos/usuarios/ver?faces-redirect=true"
                                          icon="fa fa-mail-reply-all-white" immediate="true"/>
-                        <p:commandButton styleClass="Fright BlueButton" value="Guardar" actionListener="#{principalBean.createUsuario}" disabled="#{principalBean.render}"
+                        <p:commandButton styleClass="Fright BlueButton" value="Guardar" actionListener="#{crearUsuario.createUsuario}" disabled="#{crearUsuario.render}"
                                          icon="fa fa-save-white" update="pg_crear_usuario"/>
                     </div>
                 </div>
