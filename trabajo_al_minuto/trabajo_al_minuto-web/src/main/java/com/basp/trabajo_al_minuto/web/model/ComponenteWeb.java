@@ -19,6 +19,7 @@ import com.basp.trabajo_al_minuto.service.entity.Usuario;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.enterprise.inject.Model;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -28,7 +29,10 @@ import org.primefaces.model.menu.MenuModel;
  *
  * @author BASP
  */
-public class ComponenteWeb extends AtributosWeb implements Serializable {
+@Model
+public class ComponenteWeb implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Inject
     protected OfertaEjb ofertaEjb;
@@ -43,11 +47,7 @@ public class ComponenteWeb extends AtributosWeb implements Serializable {
 
     protected FacesMessage message;
 
-    protected void webMessage(MensajeWeb me) {
-        this.message = new FacesMessage(me.getSEVERITY(), me.getTITULO(), me.getDESCRIPCION());
-    }
-
-    protected Usuario getUSER_LOGIN() {
+    protected Usuario getUserLogin() {
         Usuario userlogin = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUsuario");
         if (userlogin != null) {
             return userlogin;
@@ -56,7 +56,7 @@ public class ComponenteWeb extends AtributosWeb implements Serializable {
         return null;
     }
 
-    public MenuModel getMenus() {
+    protected MenuModel getMenus() {
         MenuModel menus = (MenuModel) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("menusUsuario");
         if (menus != null) {
             return menus;
@@ -80,25 +80,4 @@ public class ComponenteWeb extends AtributosWeb implements Serializable {
     protected Long getPruebaId() {
         return (Long) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("pruebaId");
     }
-
-    protected Boolean enviarClaveRestaurada(String email, String nombre, String clave) throws BusinessException {
-
-        List<String> lisTo = new ArrayList();
-        lisTo.add(email);
-
-        EmailMessage em = new EmailMessage();
-        em.setFrom("trabajoalminuto@gmail.com");
-        em.setUser("trabajoalminuto@gmail.com");
-        em.setPassword("tam12345");
-        em.setPort(587);
-        em.setStarttls(Boolean.TRUE);
-        em.setMask("Trabajo al minuto");
-        em.setSubject("Contraseña restaurada!");
-        em.setBodyMessage(BusinessHtmlTemplates.restourarClaveTemplate(clave, nombre, email));
-        em.setToList(lisTo);
-        em.setHost(HOST_EMAIL_SERVER);
-        em.setMimeTypeMessage("text/html; charset=utf-8");
-        return sendEmail(em);
-    }
-
 }
