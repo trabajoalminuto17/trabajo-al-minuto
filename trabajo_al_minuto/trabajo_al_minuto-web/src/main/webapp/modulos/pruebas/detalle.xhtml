@@ -77,40 +77,13 @@
                             <p:inputSwitch value="#{detallePruebaView.pruebaSeleccionada.estado}" offLabel="Inactivo" onLabel="Activo"/>
 
                         </div>
-                        <div class="Container50 Responsive MarTop10">
-                            <h4 class="Fs14 black  DispBlock black">Rol</h4>
-                            <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{detalleUsuarioView.usuarioSeleccionado.rol.nombre}"/>
-                            <div class="EmptyBox30"/>
-                            <h4 class="Fs14 black DispBlock black">Email*</h4>
-                            <p:inputText id="emailusuario" value="#{detalleUsuarioView.usuarioSeleccionado.email}"  required="true"  styleClass="Wid60"
-                                         requiredMessage="Email no válido"  validatorMessage="Email no válido" disabled="#{detalleUsuarioView.usuarioSeleccionado.rol.rolId == 1}" >
-                                <f:validateRegex
-                                    pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
-                            </p:inputText>
-                            <pe:tooltip value="Este email sera utilizado como loginID en la plataforma." for="emailusuario" showEvent="focus"
-                                        myPosition="top left"
-                                        atPosition="bottom left"/> 
-                            <div class="EmptyBox30"/>
-                            <h4 class="Fs14 black  DispBlock black">Estado*</h4>
-                            <p:inputSwitch value="#{detalleUsuarioView.usuarioSeleccionado.estado}" offLabel="Inactivo" onLabel="Activo" disabled="#{detalleUsuarioView.usuarioSeleccionado.rol.rolId == 1}"/>
-                            <div class="EmptyBox30"/>
-                            <h4 class="Fs14 black  DispBlock black">Genero*</h4>
-                            <p:selectOneMenu id="console" value="#{detalleUsuarioView.usuarioSeleccionado.persona.genero}" style="width:125px" required="true" disabled="#{detalleUsuarioView.usuarioSeleccionado.rol.rolId == 1}">
-                                <f:selectItem itemLabel="Seleccione...." itemValue="" />
-                                <f:selectItem itemLabel="Hombre" itemValue="1" />
-                                <f:selectItem itemLabel="Mujer" itemValue="0" />
-                            </p:selectOneMenu>
-                            <div class="EmptyBox30"/>
-                            <h4 class="Fs14 black FontOpenSansRegular DispBlock black">Teléfono celular* </h4>
-                            <p:inputText value="#{detalleUsuarioView.usuarioSeleccionado.persona.celular}" required="true" styleClass="Wid60" 
-                                         requiredMessage="Celular no válido" validatorMessage="Celular no válido" disabled="#{detalleUsuarioView.usuarioSeleccionado.rol.rolId == 1}"/>
-                        </div>
+
                         <div class="EmptyBox80"/>
 
-                        <p:commandButton styleClass="Fright RedButton" value="Regresar" action="/modulos/usuarios/ver?faces-redirect=true"  
-                                         icon="fa fa-mail-reply-all-white" immediate="true"/>
-                        <p:commandButton styleClass="Fright BlueButton" value="Guardar" actionListener="#{detalleUsuarioView.updateUsuario}" 
-                                         icon="fa fa-save-white" update="pg_detalle_usuario" disabled="#{detalleUsuarioView.usuarioSeleccionado.rol.rolId == 1}"/>
+                        <!--                        <p:commandButton styleClass="Fright RedButton" value="Regresar" action="/modulos/usuarios/ver?faces-redirect=true"  
+                                                                 icon="fa fa-mail-reply-all-white" immediate="true"/>
+                                                <p:commandButton styleClass="Fright BlueButton" value="Guardar" actionListener="#s{detalleUsuarioView.updateUsuario}" 
+                                                                 icon="fa fa-save-white" update="pg_detalle_usuario" disabled="#s{detalleUsuarioView.usuarioSeleccionado.rol.rolId == 1}"/>-->
                     </div>
                 </div>
             </div>
