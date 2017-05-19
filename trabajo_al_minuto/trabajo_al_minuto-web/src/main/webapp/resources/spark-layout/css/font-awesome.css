@@ -231,6 +231,12 @@
     content: "\f00d";
     color: white
 }
+.fa-remove-red:before,
+.fa-close-red:before,
+.fa-times-red:before {
+    content: "\f00d";
+    color: #D0525D;
+}
 .fa-search-plus:before {
     content: "\f00e";
 }
