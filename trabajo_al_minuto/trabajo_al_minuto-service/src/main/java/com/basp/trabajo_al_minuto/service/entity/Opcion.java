@@ -14,6 +14,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -46,8 +48,9 @@ public class Opcion implements Serializable {
     @NotNull
     @Column(name = "correcta")
     private boolean correcta;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "opcion")
-    private List<PreguntaHasOpcion> preguntaHasOpcionList;
+    @JoinColumn(name = "pregunta_pregunta_id", referencedColumnName = "pregunta_id")
+    @ManyToOne(optional = false)
+    private Pregunta preguntaPreguntaId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "opcion")
     private List<Respuesta> respuestaList;
 
@@ -88,12 +91,12 @@ public class Opcion implements Serializable {
         this.correcta = correcta;
     }
 
-    public List<PreguntaHasOpcion> getPreguntaHasOpcionList() {
-        return preguntaHasOpcionList;
+    public Pregunta getPreguntaPreguntaId() {
+        return preguntaPreguntaId;
     }
 
-    public void setPreguntaHasOpcionList(List<PreguntaHasOpcion> preguntaHasOpcionList) {
-        this.preguntaHasOpcionList = preguntaHasOpcionList;
+    public void setPreguntaPreguntaId(Pregunta preguntaPreguntaId) {
+        this.preguntaPreguntaId = preguntaPreguntaId;
     }
 
     public List<Respuesta> getRespuestaList() {

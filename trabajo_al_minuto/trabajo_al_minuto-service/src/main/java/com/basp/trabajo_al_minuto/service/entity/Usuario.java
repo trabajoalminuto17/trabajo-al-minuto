@@ -67,11 +67,11 @@ public class Usuario implements Serializable {
     @Column(name = "terminos")
     private Boolean terminos;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioAutor")
-    private List<Oferta> ofertaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioAutor")
     private List<Citacion> citacionList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioUsuarioId")
     private List<UsuarioHasOferta> usuarioHasOfertaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioAutor")
+    private List<Oferta> ofertaList;
     @JoinColumn(name = "candidato", referencedColumnName = "candidato_id")
     @ManyToOne
     private Candidato candidato;
@@ -156,14 +156,6 @@ public class Usuario implements Serializable {
         this.terminos = terminos;
     }
 
-    public List<Oferta> getOfertaList() {
-        return ofertaList;
-    }
-
-    public void setOfertaList(List<Oferta> ofertaList) {
-        this.ofertaList = ofertaList;
-    }
-
     public List<Citacion> getCitacionList() {
         return citacionList;
     }
@@ -178,6 +170,14 @@ public class Usuario implements Serializable {
 
     public void setUsuarioHasOfertaList(List<UsuarioHasOferta> usuarioHasOfertaList) {
         this.usuarioHasOfertaList = usuarioHasOfertaList;
+    }
+
+    public List<Oferta> getOfertaList() {
+        return ofertaList;
+    }
+
+    public void setOfertaList(List<Oferta> ofertaList) {
+        this.ofertaList = ofertaList;
     }
 
     public Candidato getCandidato() {

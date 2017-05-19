@@ -14,6 +14,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -40,9 +42,10 @@ public class PreguntaPlantilla implements Serializable {
     @Column(name = "enunciado")
     private String enunciado;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "preguntaPlantillaPreguntaId")
-    private List<PruebaPlantillaHasPreguntaPlantilla> pruebaPlantillaHasPreguntaPlantillaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "preguntaPlantillaPreguntaId")
-    private List<PreguntaPlantillaHasOpcionPlantilla> preguntaPlantillaHasOpcionPlantillaList;
+    private List<OpcionPlantilla> opcionPlantillaList;
+    @JoinColumn(name = "prueba_plantilla_prueba_id", referencedColumnName = "prueba_id")
+    @ManyToOne(optional = false)
+    private PruebaPlantilla pruebaPlantillaPruebaId;
 
     public PreguntaPlantilla() {
     }
@@ -67,20 +70,20 @@ public class PreguntaPlantilla implements Serializable {
         this.enunciado = enunciado;
     }
 
-    public List<PruebaPlantillaHasPreguntaPlantilla> getPruebaPlantillaHasPreguntaPlantillaList() {
-        return pruebaPlantillaHasPreguntaPlantillaList;
+    public List<OpcionPlantilla> getOpcionPlantillaList() {
+        return opcionPlantillaList;
     }
 
-    public void setPruebaPlantillaHasPreguntaPlantillaList(List<PruebaPlantillaHasPreguntaPlantilla> pruebaPlantillaHasPreguntaPlantillaList) {
-        this.pruebaPlantillaHasPreguntaPlantillaList = pruebaPlantillaHasPreguntaPlantillaList;
+    public void setOpcionPlantillaList(List<OpcionPlantilla> opcionPlantillaList) {
+        this.opcionPlantillaList = opcionPlantillaList;
     }
 
-    public List<PreguntaPlantillaHasOpcionPlantilla> getPreguntaPlantillaHasOpcionPlantillaList() {
-        return preguntaPlantillaHasOpcionPlantillaList;
+    public PruebaPlantilla getPruebaPlantillaPruebaId() {
+        return pruebaPlantillaPruebaId;
     }
 
-    public void setPreguntaPlantillaHasOpcionPlantillaList(List<PreguntaPlantillaHasOpcionPlantilla> preguntaPlantillaHasOpcionPlantillaList) {
-        this.preguntaPlantillaHasOpcionPlantillaList = preguntaPlantillaHasOpcionPlantillaList;
+    public void setPruebaPlantillaPruebaId(PruebaPlantilla pruebaPlantillaPruebaId) {
+        this.pruebaPlantillaPruebaId = pruebaPlantillaPruebaId;
     }
 
     @Override

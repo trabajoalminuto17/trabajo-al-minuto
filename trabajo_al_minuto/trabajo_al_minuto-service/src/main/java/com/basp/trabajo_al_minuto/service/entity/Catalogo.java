@@ -58,11 +58,11 @@ public class Catalogo implements Serializable {
     @Column(name = "orden")
     private int orden;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "area")
-    private List<Prueba> pruebaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "area")
     private List<PruebaPlantilla> pruebaPlantillaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "estado")
     private List<UsuarioHasOferta> usuarioHasOfertaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "area")
+    private List<Prueba> pruebaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "area")
     private List<Perfil> perfilList;
     @OneToMany(mappedBy = "catalogoPadre")
@@ -126,14 +126,6 @@ public class Catalogo implements Serializable {
         this.orden = orden;
     }
 
-    public List<Prueba> getPruebaList() {
-        return pruebaList;
-    }
-
-    public void setPruebaList(List<Prueba> pruebaList) {
-        this.pruebaList = pruebaList;
-    }
-
     public List<PruebaPlantilla> getPruebaPlantillaList() {
         return pruebaPlantillaList;
     }
@@ -148,6 +140,14 @@ public class Catalogo implements Serializable {
 
     public void setUsuarioHasOfertaList(List<UsuarioHasOferta> usuarioHasOfertaList) {
         this.usuarioHasOfertaList = usuarioHasOfertaList;
+    }
+
+    public List<Prueba> getPruebaList() {
+        return pruebaList;
+    }
+
+    public void setPruebaList(List<Prueba> pruebaList) {
+        this.pruebaList = pruebaList;
     }
 
     public List<Perfil> getPerfilList() {

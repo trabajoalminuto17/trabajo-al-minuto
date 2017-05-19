@@ -14,6 +14,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -42,10 +44,11 @@ public class Pregunta implements Serializable {
     @Size(min = 1, max = 2147483647)
     @Column(name = "enunciado")
     private String enunciado;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pregunta")
-    private List<PruebaHasPregunta> pruebaHasPreguntaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pregunta")
-    private List<PreguntaHasOpcion> preguntaHasOpcionList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "preguntaPreguntaId")
+    private List<Opcion> opcionList;
+    @JoinColumn(name = "prueba_prueba_id", referencedColumnName = "prueba_id")
+    @ManyToOne(optional = false)
+    private Prueba pruebaPruebaId;
 
     public Pregunta() {
     }
@@ -75,20 +78,20 @@ public class Pregunta implements Serializable {
         this.enunciado = enunciado;
     }
 
-    public List<PruebaHasPregunta> getPruebaHasPreguntaList() {
-        return pruebaHasPreguntaList;
+    public List<Opcion> getOpcionList() {
+        return opcionList;
     }
 
-    public void setPruebaHasPreguntaList(List<PruebaHasPregunta> pruebaHasPreguntaList) {
-        this.pruebaHasPreguntaList = pruebaHasPreguntaList;
+    public void setOpcionList(List<Opcion> opcionList) {
+        this.opcionList = opcionList;
     }
 
-    public List<PreguntaHasOpcion> getPreguntaHasOpcionList() {
-        return preguntaHasOpcionList;
+    public Prueba getPruebaPruebaId() {
+        return pruebaPruebaId;
     }
 
-    public void setPreguntaHasOpcionList(List<PreguntaHasOpcion> preguntaHasOpcionList) {
-        this.preguntaHasOpcionList = preguntaHasOpcionList;
+    public void setPruebaPruebaId(Prueba pruebaPruebaId) {
+        this.pruebaPruebaId = pruebaPruebaId;
     }
 
     @Override
