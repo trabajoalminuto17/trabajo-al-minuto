@@ -24,5 +24,5 @@ public class BusinessQuery {
     public static final String GET_OFERTAS_MAS_APLICADAS_BY_EMPRESA = "SELECT u.ofertasOfertaId, COUNT(u.usuarioUsuarioId) AS c FROM UsuarioHasOferta u WHERE u.ofertasOfertaId.usuarioAutor.empresa.empresaId = :arg GROUP BY u.ofertasOfertaId ORDER BY c";
     public static final String GET_USUARIOS_MEJORES_RESULTADOS = "SELECT e FROM Evaluacion e WHERE e.citacion.usuarioAutor.empresa.empresaId = :arg ORDER BY e.porcentaje DESC";
     public static final String GET_PRUEBAS_PLANTILLA_BY_EMPRESA = "SELECT p FROM PruebaPlantilla p WHERE p.empresaEmpresaId.empresaId = :arg";
-    public static final String GET_CATALOGOS_BY_PADRE = "SELECT c FROM Catalogo c WHERE c.catalogoPadre = :arg AND c.estado = TRUE AND c.catalogoPadre.estado = TRUE";
+    public static final String GET_CATALOGOS_BY_PADRE = "SELECT c FROM Catalogo c WHERE c.catalogoPadre.catalogoId = :arg AND c.estado = TRUE AND c.catalogoPadre.estado = TRUE";
 }
