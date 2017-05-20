@@ -29,7 +29,7 @@ import javax.inject.Named;
  */
 @Named
 @ViewScoped
-public class CrearUsuario extends ComponenteWeb implements Serializable {
+public class CrearUsuarioView extends ComponenteWeb implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -37,7 +37,7 @@ public class CrearUsuario extends ComponenteWeb implements Serializable {
     private Persona newPersona;
     private Boolean render;
 
-    public CrearUsuario() {
+    public CrearUsuarioView() {
         newUsuario = new Usuario();
         newPersona = new Persona();
     }
@@ -62,7 +62,7 @@ public class CrearUsuario extends ComponenteWeb implements Serializable {
             message = webMessage(USUARIO_OK);
         } catch (BusinessException ex) {
             message = webMessage(USUARIO_NOT);
-            Logger.getLogger(CrearUsuario.class.getName()).log(Level.SEVERE, ex.developerException());
+            Logger.getLogger(CrearUsuarioView.class.getName()).log(Level.SEVERE, ex.developerException());
         } finally {
             FacesContext.getCurrentInstance().addMessage(null, message);
         }
