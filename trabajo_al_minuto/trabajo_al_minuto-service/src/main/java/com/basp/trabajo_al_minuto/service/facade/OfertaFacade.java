@@ -30,4 +30,6 @@ public interface OfertaFacade {
 
     public List<Oferta> getOfertasExternal(Long area, List<String> palabras) throws BusinessException;
 
+    public List<Oferta> getMisOfertas(Long id) throws BusinessException;
+
 }

@@ -8,6 +8,7 @@ package com.basp.trabajo_al_minuto.service.dao;
 import static com.basp.trabajo_al_minuto.model.business.BusinessAttributes.PERSISTENCE_SERVICE;
 import com.basp.trabajo_al_minuto.model.business.BusinessPersistence;
 import static com.basp.trabajo_al_minuto.model.business.BusinessPersistence.JPQL;
+import static com.basp.trabajo_al_minuto.model.business.BusinessQuery.GET_CITACIONES_ACTIVAS_BY_EMPRESA;
 import static com.basp.trabajo_al_minuto.model.business.BusinessQuery.GET_CITACIONES_ACTIVAS_BY_USUARIO;
 import static com.basp.trabajo_al_minuto.model.business.BusinessQuery.GET_CITACIONES_BY_OFERTA;
 import static com.basp.trabajo_al_minuto.model.business.BusinessQuery.GET_EVALUACION_BY_CITACION;
@@ -48,6 +49,10 @@ public class CitacionDao {
 
     protected List<Citacion> _getCitacionesActivasByUsuario(Long id) throws Exception {
         return BP.read(new PersistenceObject(UsuarioHasOferta.class, GET_CITACIONES_ACTIVAS_BY_USUARIO, JPQL, id));
+    }
+
+    protected List<Citacion> _getCitacionesActivasByEmpresa(Long id) throws Exception {
+        return BP.read(new PersistenceObject(UsuarioHasOferta.class, GET_CITACIONES_ACTIVAS_BY_EMPRESA, JPQL, id));
     }
 
 }

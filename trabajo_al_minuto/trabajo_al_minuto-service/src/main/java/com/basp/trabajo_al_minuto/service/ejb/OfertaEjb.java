@@ -86,4 +86,13 @@ public class OfertaEjb extends OfertaDao implements OfertaFacade {
         }
     }
 
+    @Override
+    public List<Oferta> getMisOfertas(Long id) throws BusinessException {
+        try {
+            return _getMisOfertas(id);
+        } catch (Exception ex) {
+            throw new BusinessException(ex);
+        }
+    }
+
 }
