@@ -84,12 +84,8 @@ public class ComponenteWeb implements Serializable {
         return (Long) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("pruebaPlantillaId");
     }
 
-    protected String getPerfilFiltered() {
-        return (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("perfilFiltro");
-    }
-
-    protected Long getAreaFiltered() {
-        return (Long) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("areaFiltro");
+    protected Long getOfertaExternalId() {
+        return (Long) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("ofertaexternalId");
     }
 
     protected List<Catalogo> getCatalogosByParent(Long id) throws BusinessException {

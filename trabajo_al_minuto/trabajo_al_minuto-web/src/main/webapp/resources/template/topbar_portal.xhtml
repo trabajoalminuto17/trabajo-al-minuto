@@ -8,8 +8,8 @@
 
     <div id="layout-topbar" class="ShadowGray">
         <div id="layout-topbar-indent">
-            <h:commandLink title="Inicio" 
-                           action="/inicio?faces-redirect=true" 
+            <h:commandLink title="Portal" 
+                           action="/portal?faces-redirect=true" 
                            immediate="true">
                 <h:graphicImage library="image" name="logo_h.png" width="20%" height="60" styleClass="Fleft" style="margin-top: 10px; margin-left: -20px; " class="Fleft"/>
             </h:commandLink>
@@ -25,18 +25,17 @@
                 </li>
                 <li class="fa fa-ellipsis-v menu-separator"></li>
                 <li>
-                    <a target="_blank" href="#" 
-                       class="Animated05 CursPointer Fs14">
+                    <a target="_blank" href="#" class="Animated05 CursPointer Fs14">
                         <i class="fa fa-sign-in-red"></i> Registrarse
                         <i class="fa fa-chevron-down Fs14 Fright ShowOnMobile"></i>
                     </a>
                 </li>
                 <li class="fa fa-ellipsis-v menu-separator"></li>
                 <li>
-                    <a target="_blank" href="#" class="Animated05 CursPointer Fs14">
+                    <h:commandLink action="iniciar_sesion?faces-redirect=true" class="Animated05 CursPointer Fs14">
                         <i class="fa fa-user-red"></i> Iniciar Sesión
                         <i class="fa fa-chevron-down Fs14 Fright ShowOnMobile"></i>
-                    </a>
+                    </h:commandLink>
                 </li>
             </ul>
         </div>
