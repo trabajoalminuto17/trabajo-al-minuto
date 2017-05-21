@@ -7,7 +7,7 @@
     
     <!--navigation-->
     <welcome-file-list>
-        <welcome-file>iniciar_sesion.xhtml</welcome-file>
+        <welcome-file>portal.xhtml</welcome-file>
     </welcome-file-list>
     <error-page>
         <error-code>404</error-code>

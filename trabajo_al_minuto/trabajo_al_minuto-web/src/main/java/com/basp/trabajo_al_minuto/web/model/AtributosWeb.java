@@ -26,6 +26,8 @@ public class AtributosWeb {
     public static final String ERROR_PAGE = FACES_PATH.concat("error.xhtml").concat(REDIRECT);
     public static final String DETALLE_USUARIO_PAGE = FACES_PATH.concat("modulos/usuarios/detalle.xhtml").concat(REDIRECT);
     public static final String DETALLE_OFERTA_PAGE = FACES_PATH.concat("modulos/ofertas/detalle.xhtml").concat(REDIRECT);
+    public static final String DETALLE_OFERTA_EXTERNAL_PAGE = FACES_PATH.concat("modulos/ofertas/detalle.xhtml").concat(REDIRECT);
     public static final String DETALLE_POSTULACION_PAGE = FACES_PATH.concat("modulos/ofertas/detalle_postulacion.xhtml").concat(REDIRECT);
+    public static final String VER_OFERTA_EXTERNAL = FACES_PATH.concat("modulos/ofertas/ver_external.xhtml").concat(REDIRECT);
     public static final String DETALLE_PRUEBA_PLANTILLA_PAGE = FACES_PATH.concat("modulos/pruebas/detalle.xhtml").concat(REDIRECT);
 }

@@ -182,6 +182,10 @@
 .fa-search:before {
     content: "\f002";
 }
+.fa-search-white:before {
+    content: "\f002";
+    color: white;
+}
 .fa-envelope-o:before {
     content: "\f003";
 }
@@ -636,6 +640,10 @@
 }
 .fa-sign-in:before {
     content: "\f090";
+}
+.fa-sign-in-red:before {
+    content: "\f090";
+    color: #D0525D;
 }
 .fa-trophy:before {
     content: "\f091";

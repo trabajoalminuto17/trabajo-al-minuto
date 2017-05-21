@@ -53,7 +53,7 @@ public class DetallePruebaView extends ComponenteWeb implements Serializable {
 
     public List<SelectItem> getAreas() {
         List<SelectItem> response = new ArrayList();
-        response.add(propiedadesItem(new SelectItem(-1, "Seleccione..")));
+        response.add(propiedadesItem(new SelectItem(-1, "Seleccione area..")));
         try {
             List<Catalogo> list = getCatalogosByParent(1L);
             for (Catalogo c : list) {

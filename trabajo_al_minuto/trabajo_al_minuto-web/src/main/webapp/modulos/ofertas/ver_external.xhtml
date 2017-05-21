@@ -1,0 +1,100 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="../../resources/template/main_portal.xhtml">
+
+    <ui:define name="head">
+        <script type="text/javascript">
+            function skinChart() {
+                this.cfg.shadow = false;
+                this.cfg.seriesColors = ['#71CC8D', '#33AFDE', '#F7941E'];
+                this.cfg.grid = {
+                    background: '#EDF3F6',
+                    borderColor: '#D9E3E8',
+                    gridLineColor: '#D9E3E8',
+                    shadow: false
+                };
+                this.cfg.axesDefaults = {
+                    rendererOptions: {
+                        textColor: '#778D9B'
+                    }
+                };
+                this.cfg.seriesDefaults = {
+                    shadow: false,
+                    markerOptions: {
+                        shadow: false
+                    }
+                }
+            }
+
+            function skinPie() {
+                this.cfg.seriesColors = ['#dae8ef', '#27aae1', '#33ccff', '#9fadb5'];
+                this.cfg.grid = {
+                    background: '#ffffff',
+                    borderColor: '#eaeaea',
+                    gridLineColor: '#e5ebf0',
+                    shadow: false,
+                    borderWidth: 0
+                };
+                this.cfg.seriesDefaults.shadow = false;
+            }
+        </script>
+        <style type="text/css">
+            .jqplot-target, .jqplot-axis {
+                color: #778D9B;
+            }
+        </style>
+    </ui:define>
+
+    <ui:define name="content">
+        <h:panelGroup id="pg_ver_ofertas">
+            <div class="Container90 Responsive MarTop20" style="margin-left: 5%">
+                <div class="ContainerIndent"> 
+                    <h4 class="Fs15 gray DispBlock FontBold">Ofertas</h4>
+                    <h5 class="Fs13 gray DispBlock FontLight">A continuación podrá ver el listado de ofertas.</h5>
+                    <div class="Seperator"></div>
+                    <div class="Container100 Responsive MarTop10">
+                        <p:dataTable id="dtofertasexternal" var="oferta" value="#{verOfertasExternalView.ofertasExternal}"  widgetVar="wv_dtofertasexternal"
+                                     filteredValue="#{verOfertasView.ofertasFlitradas}" reflow="true" styleClass="borderless"
+                                     rows="10"
+                                     paginator="true"
+                                     paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                                     rowsPerPageTemplate="10,20"
+                                     paginatorPosition="bottom"
+                                     selectionMode="single" selection="#{verOfertasView.ofertaSeleccionada}" rowKey="#{oferta.ofertaId}"
+                                     emptyMessage="No se encontraron ofertas!">
+                            <f:facet name="header">
+                                <p:toolbar style="border: none">
+                                    <f:facet name="left">
+                                        <p:outputPanel>
+                                            <p:inputText id="globalFilter" onkeyup="PF('wv_dtofertasexternal').filter()" style="width: 250px; font-size: 12px" placeholder="Buscar"/>
+                                        </p:outputPanel>
+                                    </f:facet>
+                                </p:toolbar>
+                            </f:facet>
+                            <p:ajax event="rowSelect" listener="#{verOfertasExternalView.onRowSelectVerExternalOfertas}" update=":main:pg_ver_ofertas"  />
+                            <p:column headerText="Título" filterBy="#{oferta.perfil.titulo}"  filterStyle="display:none" styleClass="Wid40 Fs14">
+                                <h:outputText value="#{oferta.perfil.titulo}" styleClass="Fs14" />
+                            </p:column>
+                            <p:column headerText="Area" filterBy="#{oferta.perfil.area.valor}"  filterStyle="display:none" styleClass="Wid20 Fs14">
+                                <h:outputText value="#{oferta.perfil.area.valor}" styleClass="Fs14"/>
+                            </p:column>
+                            <p:column headerText="Estado" filterBy="#{oferta.estado ? 'Activa' : 'Inactiva'}" filterStyle="display:none" styleClass="Wid10 Fs14">
+                                <h:outputText value="#{oferta.estado ? 'Activa' : 'Inactiva'}" styleClass="Fs14"/>
+                            </p:column>
+                            <p:column headerText="Fecha expiración" filterBy="#{oferta.fechaExpiracion}"  filterStyle="display:none" styleClass="Wid20">
+                                <h:outputText value="#{oferta.fechaExpiracion}" styleClass="Fs14">
+                                    <f:convertDateTime pattern="MMMM, dd yyyy" locale="es" />
+                                </h:outputText>
+                            </p:column>
+                        </p:dataTable>
+                    </div>
+                </div>
+            </div>
+            <div class="EmptyBox50" />
+        </h:panelGroup>
+    </ui:define>
+
+</ui:composition>
