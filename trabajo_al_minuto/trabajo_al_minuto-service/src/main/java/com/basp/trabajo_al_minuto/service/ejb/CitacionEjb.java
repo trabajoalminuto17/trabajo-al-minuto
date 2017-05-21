@@ -67,4 +67,13 @@ public class CitacionEjb extends CitacionDao implements CitacionFacade {
         }
     }
 
+    @Override
+    public List<Citacion> getCitacionesActivasByEmpresa(Long id) throws BusinessException {
+        try {
+            return _getCitacionesActivasByEmpresa(id);
+        } catch (Exception ex) {
+            throw new BusinessException(ex);
+        }
+    }
+
 }

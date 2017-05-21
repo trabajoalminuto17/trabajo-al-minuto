@@ -11,7 +11,9 @@ import com.basp.trabajo_al_minuto.service.entity.Citacion;
 import com.basp.trabajo_al_minuto.service.entity.Evaluacion;
 import com.basp.trabajo_al_minuto.service.entity.Oferta;
 import com.basp.trabajo_al_minuto.service.entity.Usuario;
+import static com.basp.trabajo_al_minuto.web.model.AtributosWeb.DETALLE_EVALUACION_PAGE;
 import static com.basp.trabajo_al_minuto.web.model.AtributosWeb.DETALLE_OFERTA_PAGE;
+import static com.basp.trabajo_al_minuto.web.model.AtributosWeb.INICIO_PAGE;
 import com.basp.trabajo_al_minuto.web.model.ComponenteWeb;
 import static com.basp.trabajo_al_minuto.web.model.UtilWeb.formatDate;
 import java.io.IOException;
@@ -41,18 +43,34 @@ public class InicioView extends ComponenteWeb implements Serializable {
     private List<OfertaAplicada> ofertasPopulares;
     private List<Evaluacion> usuariosMejoresResultados;
     private List<Citacion> proximasCitaciones;
+    private Boolean pruebas_ok;
+    private Citacion citacion;
 
     @PostConstruct
     public void init() {
         try {
             usuarioSession = getUserLogin();
+            pruebas_ok = Boolean.FALSE;
             if (usuarioSession.getRol().getRolId() == 3L) {
-                ofertasPopulares = ofertaEjb.getOfertasMasAplicadas();
                 List<Citacion> response = citacionEjb.getCitacionesActivasByUsuario(usuarioSession.getUsuarioId());
-                if (response.size() <= 6) {
-                    proximasCitaciones = response;
-                } else {
-                    proximasCitaciones = response.subList(0, 5);
+                if (!response.isEmpty()) {
+                    for (Citacion c : response) {
+                        if (c.getActivarPruebas()) {
+                            citacion = c;
+                            pruebas_ok = Boolean.TRUE;
+                            break;
+                        }
+                    }
+                    if (!pruebas_ok) {
+                        if (response.size() <= 6) {
+                            proximasCitaciones = response;
+                        } else {
+                            proximasCitaciones = response.subList(0, 5);
+                        }
+                    }
+                }
+                if (!pruebas_ok) {
+                    ofertasPopulares = ofertaEjb.getOfertasMasAplicadas();
                 }
             } else {
                 ofertasPopulares = ofertaEjb.getOfertasMasAplicadasByEmpresa(usuarioSession.getEmpresa().getEmpresaId());
@@ -74,6 +92,33 @@ public class InicioView extends ComponenteWeb implements Serializable {
 
     public String getFormatDate(Date date) {
         return formatDate(LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault()));
+    }
+
+    public void rechazarPruebas() {
+        try {
+            pruebas_ok = Boolean.FALSE;
+            citacion.setActivarPruebas(pruebas_ok);
+            citacion = citacionEjb.updateCitacion(citacion);
+            FacesContext.getCurrentInstance().getExternalContext().redirect(INICIO_PAGE);
+        } catch (BusinessException ex) {
+            Logger.getLogger(InicioView.class.getName()).log(Level.SEVERE, ex.developerException());
+        } catch (IOException ex) {
+            Logger.getLogger(InicioView.class.getName()).log(Level.SEVERE, "rechazarPruebas", ex);
+        }
+    }
+
+    public void aceptarPruebas() {
+        try {
+            usuarioSession.getCandidato().setPruebasActivas(Boolean.TRUE);
+            usuarioSession = usuarioEjb.updateUsuario(usuarioSession);
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("sessionUsuario", usuarioSession);
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("pruebasOk", Boolean.TRUE);
+            FacesContext.getCurrentInstance().getExternalContext().redirect(DETALLE_EVALUACION_PAGE);
+        } catch (BusinessException ex) {
+            Logger.getLogger(InicioView.class.getName()).log(Level.SEVERE, ex.developerException());
+        } catch (IOException ex) {
+            Logger.getLogger(InicioView.class.getName()).log(Level.SEVERE, "aceptarPruebas", ex);
+        }
     }
 
 //    @Getter and Setter
@@ -107,6 +152,14 @@ public class InicioView extends ComponenteWeb implements Serializable {
 
     public void setProximasCitaciones(List<Citacion> proximasCitaciones) {
         this.proximasCitaciones = proximasCitaciones;
+    }
+
+    public Boolean getPruebas_ok() {
+        return pruebas_ok;
+    }
+
+    public void setPruebas_ok(Boolean pruebas_ok) {
+        this.pruebas_ok = pruebas_ok;
     }
 
 }

@@ -8,6 +8,7 @@ package com.basp.trabajo_al_minuto.service.dao;
 import static com.basp.trabajo_al_minuto.model.business.BusinessAttributes.PERSISTENCE_SERVICE;
 import com.basp.trabajo_al_minuto.model.business.BusinessPersistence;
 import static com.basp.trabajo_al_minuto.model.business.BusinessPersistence.JPQL;
+import static com.basp.trabajo_al_minuto.model.business.BusinessQuery.GET_MIS_OFERTAS;
 import static com.basp.trabajo_al_minuto.model.business.BusinessQuery.GET_OFERTAS_ACTIVAS;
 import static com.basp.trabajo_al_minuto.model.business.BusinessQuery.GET_OFERTAS_BY_EMPRESA;
 import static com.basp.trabajo_al_minuto.model.business.BusinessQuery.GET_OFERTAS_EXTERNAL;
@@ -91,4 +92,7 @@ public class OfertaDao {
         }
     }
 
+    protected List<Oferta> _getMisOfertas(Long id) throws Exception {
+        return BP.read(new PersistenceObject(UsuarioHasOferta.class, GET_MIS_OFERTAS, JPQL, id));
+    }
 }

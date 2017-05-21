@@ -43,5 +43,4 @@ public interface UsuarioFacade {
     public UsuarioHasOferta findUsuarioHasOferta(Long id) throws BusinessException;
 
     public UsuarioHasOferta getUsuarioHasOfertaByUsuarioAndOferta(Long usuario, Long oferta) throws BusinessException;
-
 }

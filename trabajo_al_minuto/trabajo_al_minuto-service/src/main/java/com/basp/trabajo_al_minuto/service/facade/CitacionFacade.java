@@ -17,13 +17,15 @@ import java.util.List;
 public interface CitacionFacade {
 
     public Citacion updateCitacion(Citacion c) throws BusinessException;
-    
+
     public Citacion getCitacionByOferta(Long id) throws BusinessException;
-    
+
     public Citacion findCitacion(Long pk) throws BusinessException;
-    
+
     public Evaluacion getEvaluacionByCitacion(Long id) throws BusinessException;
-    
+
     public List<Citacion> getCitacionesActivasByUsuario(Long id) throws BusinessException;
+
+    public List<Citacion> getCitacionesActivasByEmpresa(Long id) throws BusinessException;
 
 }

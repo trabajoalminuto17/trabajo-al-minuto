@@ -52,98 +52,114 @@
 
         <!-- BOX START -->
         <div class="Container90 Responsive">
-            <div class="Container50 Responsive">
-                <div class="ContainerIndent">
-                    <div class="Container100 TexAlCenter">
+            <h:panelGroup id="png_inicio">
+                <p:dialog header="Pruebas Activadas" widgetVar="dlg" modal="true" width="80%" visible="#{inicioView.pruebas_ok}" 
+                          closable="false" resizable="false">
+                    <span class="Fs14 black">Se han activado las pruebas de la oferta aplicada. ¿Deseas resolverlas?</span>
+                    <div class="EmptyBox10"/>
+                    <span class="Fs14 red">¡Recuerda, una vez las aceptes no debes regresar hasta terminarla o se cumpla el tiempo limite de las pruebas,
+                        de lo contrario serán anuladas y no podras presentarlas de nuevo!</span>
+                    <div class="EmptyBox10"/>
+                    <p:commandButton styleClass="Fright RedButton" value="No" actionListener="#{inicioView.rechazarPruebas}"
+                                     icon="fa fa-close-white" immediate="true"/>
+                    <p:commandButton styleClass="Fright GreenButton" value="Si" actionListener="#{inicioView.aceptarPruebas}"
+                                     icon="fa fa-check-white" immediate="true"/>
+                </p:dialog> 
+                <h:panelGroup rendered="#{!inicioView.pruebas_ok}">
+                    <div class="Container50 Responsive">
+                        <div class="ContainerIndent">
+                            <div class="Container100 TexAlCenter">
 
-                        <div class="DispInlBlock TexAlLeft MarTop20">
-                            <div class="Container20"><i class="fa fa-line-chart Fs40 orange Fleft MarRight10"></i></div>
-                            <div class="Container80">
-                                <div class="Fright">
-                                    <h2 class="black Fs24 FontRalewayMedium">Ofertas populares</h2>
-                                    <span class="Fs15 gray FontRalewayRegular DispBlock">Ofertas mas aplicadas. En línea</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="Seperator"></div>
-                        <div class="Container100">
-                            <ui:repeat value="#{inicioView.ofertasPopulares}" var="o">
-                                <h:commandLink styleClass="Wid45 BorderedBox Fleft TexAlCenter" actionListener="#{inicioView.goDetalleOferta(o.oferta)}">
-                                    <div class="ContainerIndent">
-                                        <div class="EmptyBox10"></div>
-                                        <div class="Fs14 gray FontRalewayRegular">#{o.oferta.perfil.titulo}</div>
-                                        <div class="EmptyBox10"></div>
-                                        <div class="Fs30 blue FontRalewayLight">#{o.cantidadPostulados}</div>
-                                        <div class="EmptyBox10"></div>
+                                <div class="DispInlBlock TexAlLeft MarTop20">
+                                    <div class="Container20"><i class="fa fa-line-chart Fs40 orange Fleft MarRight10"></i></div>
+                                    <div class="Container80">
+                                        <div class="Fright">
+                                            <h2 class="black Fs24 FontRalewayMedium">Ofertas populares</h2>
+                                            <span class="Fs15 gray FontRalewayRegular DispBlock">Ofertas mas aplicadas. En línea</span>
+                                        </div>
                                     </div>
-                                </h:commandLink>
-                            </ui:repeat>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="Container50 Responsive">
-                <div class="ContainerIndent">
-                    <div class="Container100 TexAlCenter">
-                        <h:panelGroup rendered="#{inicioView.usuarioSession.rol.rolId ne 3}">
-                            <div class="DispInlBlock TexAlLeft MarTop20">
-                                <i class="fa fa-street-view Fs40 gray Fleft MarRight10"></i>
-                                <div class="Fleft">
-                                    <h2 class="black Fs24 FontRalewayMedium">Pruebas destacadas</h2>
-                                    <span class="Fs15 gray FontRalewayRegular DispBlock">Usuarios con mejores puntajes</span>
                                 </div>
-                            </div>
-                            <div class="Seperator"></div>
-                            <div class="Container100">
-                                <ui:repeat value="#{inicioView.usuariosMejoresResultados}" var="e">
-                                    <div class="Container45">
-                                        <h:commandLink styleClass="Wid45 BorderedBox Fleft TexAlCenter">
+                                <div class="Seperator"></div>
+                                <div class="Container100">
+                                    <ui:repeat value="#{inicioView.ofertasPopulares}" var="o">
+                                        <h:commandLink styleClass="Wid45 BorderedBox Fleft TexAlCenter" actionListener="#{inicioView.goDetalleOferta(o.oferta)}">
                                             <div class="ContainerIndent">
                                                 <div class="EmptyBox10"></div>
-                                                <div class="Fs14 gray FontRalewayRegular">#{e.citacion.usuarioHasOferta.usuarioUsuarioId.persona.nombre}</div>
+                                                <div class="Fs14 gray FontRalewayRegular">#{o.oferta.perfil.titulo}</div>
                                                 <div class="EmptyBox10"></div>
-                                                <div class="Fs14 red FontRalewayRegular">#{e.citacion.usuarioHasOferta.ofertasOfertaId.perfil.titulo}</div>
-                                                <div class="EmptyBox10"></div>
-                                                <div class="Fs30 blue FontRalewayLight">#{e.porcentaje} %</div>
+                                                <div class="Fs30 blue FontRalewayLight">#{o.cantidadPostulados}</div>
                                                 <div class="EmptyBox10"></div>
                                             </div>
                                         </h:commandLink>
-                                    </div>
-                                </ui:repeat>
-                            </div>  
-                        </h:panelGroup>
-                        <h:panelGroup rendered="#{inicioView.usuarioSession.rol.rolId eq 3}">
-                            <div class="DispInlBlock TexAlLeft MarTop20">
-                                <i class="fa fa-clock-o Fs40 gray Fleft MarRight10"></i>
-                                <div class="Fleft">
-                                    <h2 class="black Fs24 FontRalewayMedium">Proximas citaciones</h2>
-                                    <span class="Fs15 gray FontRalewayRegular DispBlock">Citaciones por cumplir</span>
+                                    </ui:repeat>
                                 </div>
+
                             </div>
-                            <div class="Seperator"></div>
-                            <div class="Container100">
-                                <ui:repeat value="#{inicioView.proximasCitaciones}" var="e">
-                                    <div class="Container45">
-                                        <h:commandLink styleClass="Wid45 BorderedBox Fleft TexAlCenter">
-                                            <div class="ContainerIndent">
-                                                <div class="EmptyBox10"></div>
-                                                <div class="Fs14 gray FontRalewayRegular">#{e.usuarioHasOferta.ofertasOfertaId.perfil.titulo}</div>
-                                                <div class="EmptyBox10"></div>
-                                                <div class="Fs14 gray FontRalewayRegular">#{e.lugar}</div>
-                                                <div class="EmptyBox10"></div>
-                                                <div class="Fs14 red FontRalewayLight">#{inicioView.getFormatDate(e.fechaCitacion)}</div>
-                                                <div class="EmptyBox10"></div>
-                                            </div>
-                                        </h:commandLink>
-                                    </div>
-                                </ui:repeat>
-                            </div>  
-                        </h:panelGroup>
-                        <div class="EmptyBox90" />
+                        </div>
                     </div>
-                </div>
-            </div>
+                    <div class="Container50 Responsive">
+                        <div class="ContainerIndent">
+                            <div class="Container100 TexAlCenter">
+                                <h:panelGroup rendered="#{inicioView.usuarioSession.rol.rolId ne 3}">
+                                    <div class="DispInlBlock TexAlLeft MarTop20">
+                                        <i class="fa fa-street-view Fs40 gray Fleft MarRight10"></i>
+                                        <div class="Fleft">
+                                            <h2 class="black Fs24 FontRalewayMedium">Pruebas destacadas</h2>
+                                            <span class="Fs15 gray FontRalewayRegular DispBlock">Usuarios con mejores puntajes</span>
+                                        </div>
+                                    </div>
+                                    <div class="Seperator"></div>
+                                    <div class="Container100">
+                                        <ui:repeat value="#{inicioView.usuariosMejoresResultados}" var="e">
+                                            <div class="Container45">
+                                                <h:commandLink styleClass="Wid45 BorderedBox Fleft TexAlCenter">
+                                                    <div class="ContainerIndent">
+                                                        <div class="EmptyBox10"></div>
+                                                        <div class="Fs14 gray FontRalewayRegular">#{e.citacion.usuarioHasOferta.usuarioUsuarioId.persona.nombre}</div>
+                                                        <div class="EmptyBox10"></div>
+                                                        <div class="Fs14 red FontRalewayRegular">#{e.citacion.usuarioHasOferta.ofertasOfertaId.perfil.titulo}</div>
+                                                        <div class="EmptyBox10"></div>
+                                                        <div class="Fs30 blue FontRalewayLight">#{e.porcentaje} %</div>
+                                                        <div class="EmptyBox10"></div>
+                                                    </div>
+                                                </h:commandLink>
+                                            </div>
+                                        </ui:repeat>
+                                    </div>  
+                                </h:panelGroup>
+                                <h:panelGroup rendered="#{inicioView.usuarioSession.rol.rolId eq 3}">
+                                    <div class="DispInlBlock TexAlLeft MarTop20">
+                                        <i class="fa fa-clock-o Fs40 gray Fleft MarRight10"></i>
+                                        <div class="Fleft">
+                                            <h2 class="black Fs24 FontRalewayMedium">Proximas citaciones</h2>
+                                            <span class="Fs15 gray FontRalewayRegular DispBlock">Citaciones por cumplir</span>
+                                        </div>
+                                    </div>
+                                    <div class="Seperator"></div>
+                                    <div class="Container100">
+                                        <ui:repeat value="#{inicioView.proximasCitaciones}" var="e">
+                                            <div class="Container45">
+                                                <h:commandLink styleClass="Wid45 BorderedBox Fleft TexAlCenter" actionListener="#{inicioView.goDetalleOferta(e.usuarioHasOferta.ofertasOfertaId)}">
+                                                    <div class="ContainerIndent">
+                                                        <div class="EmptyBox10"></div>
+                                                        <div class="Fs14 gray FontRalewayRegular">#{e.usuarioHasOferta.ofertasOfertaId.perfil.titulo}</div>
+                                                        <div class="EmptyBox10"></div>
+                                                        <div class="Fs14 gray FontRalewayRegular">#{e.lugar}</div>
+                                                        <div class="EmptyBox10"></div>
+                                                        <div class="Fs14 red FontRalewayLight">#{inicioView.getFormatDate(e.fechaCitacion)}</div>
+                                                        <div class="EmptyBox10"></div>
+                                                    </div>
+                                                </h:commandLink>
+                                            </div>
+                                        </ui:repeat>
+                                    </div>  
+                                </h:panelGroup>
+                                <div class="EmptyBox90" />
+                            </div>
+                        </div>
+                    </div>
+                </h:panelGroup>
+            </h:panelGroup>
         </div>
         <!-- BOX END -->
 

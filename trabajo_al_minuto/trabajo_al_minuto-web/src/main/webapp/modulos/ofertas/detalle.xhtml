@@ -63,6 +63,11 @@
                             <div class="EmptyBox30"/>
                             <h4 class="Fs14 black  DispBlock black">Requerimientos</h4>
                             <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{detalleOfertaView.ofertaSeleccionada.perfil.requerimientos}"/>
+                            <h:panelGroup rendered="#{not empty detalleOfertaView.ofertAplicada}">
+                                <div class="EmptyBox30"/>
+                                <h4 class="Fs14 black  DispBlock black">Estado</h4>
+                                <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{detalleOfertaView.ofertAplicada.estado.valor}"/>
+                            </h:panelGroup>
                         </div>
                         <div class="Container50 Responsive MarTop10">
                             <h4 class="Fs14 black  DispBlock black">Fecha Expiración</h4>
@@ -78,8 +83,30 @@
                             <p:outputLabel styleClass="Fs14 black  DispBlock black"
                                            value="$ #{detalleOfertaView.ofertaSeleccionada.perfil.salario}"/>
                         </div>                            
-                        <div class="EmptyBox80"/>
                         <h:panelGroup rendered="#{detalleOfertaView.usuariologin.rol.rolId eq 3}">
+                            <h:panelGroup rendered="#{not empty detalleOfertaView.ofertAplicada.citacion}">
+                                <div class="EmptyBox50"/>
+                                <h4 class="Fs18 black DispBlock FontBold">Citación</h4>
+                                <h5 class="Fs13 gray DispBlock FontBold">Información detallada de la citación.</h5>
+                                <div class="Seperator"></div>
+                                <div class="Container100 Responsive">
+                                    <div class="Container100 Responsive MarTop10">
+                                        <h4 class="Fs14 black  DispBlock black">Lugar</h4>
+                                        <p:outputLabel styleClass="Fs14 black  DispBlock" value="#{detalleOfertaView.ofertAplicada.citacion.lugar}"/>
+                                    </div>
+                                    <div class="EmptyBox30"/>
+                                    <div class="Container100 Responsive MarTop10">
+                                        <h4 class="Fs14 black  DispBlock black">Detalles</h4>
+                                        <p:outputLabel styleClass="Fs14 black  DispBlock" value="#{detalleOfertaView.ofertAplicada.citacion.detalles}"/>
+                                    </div>
+                                    <div class="EmptyBox30"/>
+                                    <div class="Container100 Responsive MarTop10">
+                                        <h4 class="Fs14 black  DispBlock black">Fecha de citación</h4>
+                                        <p:outputLabel styleClass="Fs14 red  DispBlock" value="#{detalleOfertaView.getFormatDate(detalleOfertaView.ofertAplicada.citacion.fechaCitacion)}"/>
+                                    </div>
+                                </div>
+                            </h:panelGroup>
+                            <div class="EmptyBox80"/>
                             <p:commandButton styleClass="Fright RedButton" value="Regresar" action="/modulos/ofertas/ver?faces-redirect=true"  
                                              icon="fa fa-mail-reply-all-white" immediate="true"/>
                             <p:commandButton styleClass="Fright BlueButton" value="Aplicar oferta" actionListener="#{detalleOfertaView.aplicarOferta}"  
@@ -92,9 +119,9 @@
                             <h:panelGroup rendered="#{empty detalleOfertaView.usuariologin.candidato.rutaHojaDeVida}">
                                 <span class="Fs14 red">¡Debes cargar tu hoja de vida para poder aplicar a la oferta!</span>
                             </h:panelGroup>
-
                         </h:panelGroup>
                         <h:panelGroup rendered="#{detalleOfertaView.usuariologin.rol.rolId ne 3}">
+                            <div class="EmptyBox80"/>
                             <h4 class="Fs15 gray DispBlock FontBold">Candidatos</h4>
                             <h5 class="Fs13 gray DispBlock FontLight">A continuación podrá ver el listado de los usuarios postulados.</h5>
                             <div class="Seperator"></div>
@@ -117,7 +144,7 @@
                                             </f:facet>
                                         </p:toolbar>
                                     </f:facet>
-                                    <p:ajax event="rowSelect" listener="#{detalleOfertaView.onRowSelectVerUsuarioHasOfertas}" update=":main:pg_detalle_oferta"  />
+                                    <p:ajax event="rowSelect" listener="#{detalleOfertaView.onRowSelectVerUsuarioHasOfertas}"/>
                                     <p:column headerText="Nombre" filterBy="#{ofertausuario.usuarioUsuarioId.persona.nombre}"  filterStyle="display:none" styleClass="Wid40 Fs14">
                                         <h:outputText value="#{ofertausuario.usuarioUsuarioId.persona.nombre}" styleClass="Fs14" />
                                     </p:column>
@@ -161,7 +188,7 @@
                                             </f:facet>
                                         </p:toolbar>
                                     </f:facet>
-                                    <p:ajax event="rowSelect" listener="#{detalleOfertaView.onRowSelectVerPruebas}" update=":main:pg_detalle_oferta"  />
+                                    <p:ajax event="rowSelect" listener="#{detalleOfertaView.onRowSelectVerPruebas}"/>
                                     <p:column headerText="Nombre" filterBy="#{ofertaprueba.nombre}"  filterStyle="display:none" styleClass="Wid40 Fs14">
                                         <h:outputText value="#{ofertaprueba.nombre}" styleClass="Fs14" />
                                     </p:column>

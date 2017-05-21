@@ -74,7 +74,7 @@
                                     </f:facet>
                                 </p:toolbar>
                             </f:facet>
-                            <p:ajax event="rowSelect" listener="#{verPruebaView.onRowSelectVerPruebas}" update=":main:pg_ver_pruebas"  />
+                            <p:ajax event="rowSelect" listener="#{verPruebaView.onRowSelectVerPruebas}"/>
                             <p:column headerText="Nombre" filterBy="#{prueba.nombre}"  filterStyle="display:none" styleClass="Wid40 Fs14">
                                 <h:outputText value="#{prueba.nombre}" styleClass="Fs14" />
                             </p:column>
