@@ -49,6 +49,10 @@ public class Candidato implements Serializable {
     @NotNull
     @Column(name = "estado_candidato")
     private boolean estadoCandidato;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "pruebas_activas")
+    private boolean pruebasActivas;
     @OneToMany(mappedBy = "candidato")
     private List<Usuario> usuarioList;
 
@@ -104,6 +108,14 @@ public class Candidato implements Serializable {
         this.estadoCandidato = estadoCandidato;
     }
 
+    public boolean isPruebasActivas() {
+        return pruebasActivas;
+    }
+
+    public void setPruebasActivas(boolean pruebasActivas) {
+        this.pruebasActivas = pruebasActivas;
+    }
+
     public List<Usuario> getUsuarioList() {
         return usuarioList;
     }
@@ -136,5 +148,5 @@ public class Candidato implements Serializable {
     public String toString() {
         return "com.basp.trabajo_al_minuto.service.entity.Candidato[ candidatoId=" + candidatoId + " ]";
     }
-    
+
 }
