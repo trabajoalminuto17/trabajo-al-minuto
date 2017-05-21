@@ -24,6 +24,8 @@ public interface OfertaFacade {
 
     public List<OfertaAplicada> getOfertasMasAplicadasByEmpresa(Long id) throws BusinessException;
 
+    public List<OfertaAplicada> getOfertasMasAplicadas() throws BusinessException;
+
     public List<Oferta> getOfertasActivas() throws BusinessException;
 
     public List<Oferta> getOfertasExternal(Long area, List<String> palabras) throws BusinessException;

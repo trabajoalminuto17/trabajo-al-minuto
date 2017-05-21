@@ -13,6 +13,7 @@ import static com.basp.trabajo_al_minuto.model.business.BusinessQuery.GET_USUARI
 import static com.basp.trabajo_al_minuto.model.business.BusinessQuery.GET_USUARIOS_MEJORES_RESULTADOS;
 import static com.basp.trabajo_al_minuto.model.business.BusinessQuery.GET_USUARIO_BY_EMAIL;
 import static com.basp.trabajo_al_minuto.model.business.BusinessQuery.GET_USUARIO_BY_EMPRESA;
+import static com.basp.trabajo_al_minuto.model.business.BusinessQuery.GET_USUARIO_HAS_OFERTA;
 import com.basp.trabajo_al_minuto.model.dto.PersistenceObject;
 import com.basp.trabajo_al_minuto.service.entity.Evaluacion;
 import com.basp.trabajo_al_minuto.service.entity.Menu;
@@ -80,5 +81,9 @@ public class UsuarioDao {
 
     protected UsuarioHasOferta _findUsuarioHasOferta(Long pk) throws Exception {
         return (UsuarioHasOferta) BP.find(UsuarioHasOferta.class, pk);
+    }
+
+    protected UsuarioHasOferta _getUsuarioHasOfertaByUsuarioAndOferta(Long usuario, Long oferta) throws Exception {
+        return (UsuarioHasOferta) BP.readOne(new PersistenceObject(UsuarioHasOferta.class, GET_USUARIO_HAS_OFERTA, JPQL, new Object[]{usuario, oferta}));
     }
 }

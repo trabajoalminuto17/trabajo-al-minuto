@@ -60,6 +60,15 @@ public class OfertaEjb extends OfertaDao implements OfertaFacade {
     }
 
     @Override
+    public List<OfertaAplicada> getOfertasMasAplicadas() throws BusinessException {
+        try {
+            return _getOfertasMasAplicadas();
+        } catch (Exception ex) {
+            throw new BusinessException(ex);
+        }
+    }
+
+    @Override
     public List<Oferta> getOfertasActivas() throws BusinessException {
         try {
             return _getOfertasActivas();

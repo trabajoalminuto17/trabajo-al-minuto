@@ -39,7 +39,9 @@ public interface UsuarioFacade {
     public List<Menu> getMenusByRol(Long id) throws BusinessException;
 
     public List<Evaluacion> getUsuariosMejoresResultadosByEmpresa(Long id) throws BusinessException;
-    
+
     public UsuarioHasOferta findUsuarioHasOferta(Long id) throws BusinessException;
+
+    public UsuarioHasOferta getUsuarioHasOfertaByUsuarioAndOferta(Long usuario, Long oferta) throws BusinessException;
 
 }

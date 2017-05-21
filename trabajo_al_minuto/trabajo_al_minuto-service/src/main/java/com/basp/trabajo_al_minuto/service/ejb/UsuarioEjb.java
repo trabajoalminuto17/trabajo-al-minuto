@@ -132,4 +132,13 @@ public class UsuarioEjb extends UsuarioDao implements UsuarioFacade {
         }
     }
 
+    @Override
+    public UsuarioHasOferta getUsuarioHasOfertaByUsuarioAndOferta(Long usuario, Long oferta) throws BusinessException {
+        try {
+            return _getUsuarioHasOfertaByUsuarioAndOferta(usuario, oferta);
+        } catch (Exception ex) {
+            throw new BusinessException(ex);
+        }
+    }
+
 }

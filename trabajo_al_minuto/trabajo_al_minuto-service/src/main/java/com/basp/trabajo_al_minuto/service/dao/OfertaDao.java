@@ -11,6 +11,7 @@ import static com.basp.trabajo_al_minuto.model.business.BusinessPersistence.JPQL
 import static com.basp.trabajo_al_minuto.model.business.BusinessQuery.GET_OFERTAS_ACTIVAS;
 import static com.basp.trabajo_al_minuto.model.business.BusinessQuery.GET_OFERTAS_BY_EMPRESA;
 import static com.basp.trabajo_al_minuto.model.business.BusinessQuery.GET_OFERTAS_EXTERNAL;
+import static com.basp.trabajo_al_minuto.model.business.BusinessQuery.GET_OFERTAS_MAS_APLICADAS;
 import static com.basp.trabajo_al_minuto.model.business.BusinessQuery.GET_OFERTAS_MAS_APLICADAS_BY_EMPRESA;
 import com.basp.trabajo_al_minuto.model.dto.PersistenceObject;
 import com.basp.trabajo_al_minuto.service.dte.OfertaAplicada;
@@ -48,6 +49,15 @@ public class OfertaDao {
 
     protected List<OfertaAplicada> _getOfertasMasAplicadasByEmpresa(Long id) throws Exception {
         List<Object[]> response = BP.read(new PersistenceObject(UsuarioHasOferta.class, GET_OFERTAS_MAS_APLICADAS_BY_EMPRESA, JPQL, id, 6));
+        List<OfertaAplicada> list = new ArrayList();
+        for (Object[] o : response) {
+            list.add(new OfertaAplicada((Oferta) o[0], (Long) o[1]));
+        }
+        return list;
+    }
+
+    protected List<OfertaAplicada> _getOfertasMasAplicadas() throws Exception {
+        List<Object[]> response = BP.read(new PersistenceObject(UsuarioHasOferta.class, GET_OFERTAS_MAS_APLICADAS, JPQL, 6));
         List<OfertaAplicada> list = new ArrayList();
         for (Object[] o : response) {
             list.add(new OfertaAplicada((Oferta) o[0], (Long) o[1]));
