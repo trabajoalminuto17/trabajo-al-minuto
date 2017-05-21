@@ -66,7 +66,7 @@
                                 maxValue="9999999999"
                                 required="true"
                                 styleClass="Wid60"
-                                disabled="#{crearUsuario.render}"
+                                disabled="#{crearParticipanteView.render}"
                                 requiredMessage="Documento no válido" 
                                 validatorMessage="Documento no válido">
                             </p:inputNumber>  
@@ -75,7 +75,7 @@
                             <p:inputText value="#{crearParticipanteView.newPersona.nombre}"
                                          required="true" 
                                          styleClass="Wid60" 
-                                         disabled="#{crearUsuario.render}"
+                                         disabled="#{crearParticipanteView.render}"
                                          requiredMessage="Nombre no válido"
                                          validatorMessage="Nombre no válido">
 
@@ -86,7 +86,7 @@
                                            required="true" 
                                            maxValue="99"
                                            decimalPlaces="0"
-                                           disabled="#{crearUsuario.render}"
+                                           disabled="#{crearParticipanteView.render}"
                                            requiredMessage="Edad no válida" 
                                            validatorMessage="Edad no válida" 
                                            maxlength="2" />
@@ -96,7 +96,7 @@
                                          mask="(999) 999-9999"
                                          required="true"  
                                          styleClass="Wid60"
-                                         disabled="#{crearUsuario.render}"
+                                         disabled="#{crearParticipanteView.render}"
                                          requiredMessage="Teléfono no válido" 
                                          validatorMessage="Teléfono no válido" />
 
@@ -106,7 +106,7 @@
                                          mask="9999999999"
                                          required="true"
                                          styleClass="Wid60" 
-                                         disabled="#{crearUsuario.render}"
+                                         disabled="#{crearParticipanteView.render}"
                                          requiredMessage="Celular no válido" 
                                          validatorMessage="Celular no válido" />
 
@@ -150,7 +150,7 @@
                                         match="pass2"
                                         goodLabel="Alta"
                                         strongLabel="Fuerte"
-                                        disabled="#{crearUsuario.render}"
+                                        disabled="#{crearParticipanteView.render}"
                                         requiredMessage="Debe ingresar una contraseña"
                                         />
                             <div class="EmptyBox30"/>
@@ -159,7 +159,7 @@
                                         id="pass2"
                                         required="true" 
                                         styleClass="Wid60" 
-                                        disabled="#{crearUsuario.render}"
+                                        disabled="#{crearParticipanteView.render}"
                                         requiredMessage="Debe confirmar la contraseña"/>
 
                             <pe:tooltip value="Este email serà su nombre de usuario." 

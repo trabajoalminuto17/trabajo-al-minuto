@@ -6,19 +6,17 @@
 package com.basp.trabajo_al_minuto.service.entity;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
@@ -31,14 +29,10 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "OpcionPlantilla.findAll", query = "SELECT o FROM OpcionPlantilla o")})
 public class OpcionPlantilla implements Serializable {
 
-    @JoinColumn(name = "pregunta_plantilla_pregunta_id", referencedColumnName = "pregunta_id")
-    @ManyToOne(optional = false)
-    private PreguntaPlantilla preguntaPlantillaPreguntaId;
-
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "opcion_id")
     private Long opcionId;
     @Size(max = 2147483647)
@@ -46,8 +40,9 @@ public class OpcionPlantilla implements Serializable {
     private String enunciado;
     @Column(name = "correcta")
     private Boolean correcta;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "opcionPlantillaOpcionId")
-    private List<PreguntaPlantillaHasOpcionPlantilla> preguntaPlantillaHasOpcionPlantillaList;
+    @JoinColumn(name = "pregunta_plantilla_pregunta_id", referencedColumnName = "pregunta_id")
+    @ManyToOne(optional = false)
+    private PreguntaPlantilla preguntaPlantillaPreguntaId;
 
     public OpcionPlantilla() {
     }
@@ -80,12 +75,12 @@ public class OpcionPlantilla implements Serializable {
         this.correcta = correcta;
     }
 
-    public List<PreguntaPlantillaHasOpcionPlantilla> getPreguntaPlantillaHasOpcionPlantillaList() {
-        return preguntaPlantillaHasOpcionPlantillaList;
+    public PreguntaPlantilla getPreguntaPlantillaPreguntaId() {
+        return preguntaPlantillaPreguntaId;
     }
 
-    public void setPreguntaPlantillaHasOpcionPlantillaList(List<PreguntaPlantillaHasOpcionPlantilla> preguntaPlantillaHasOpcionPlantillaList) {
-        this.preguntaPlantillaHasOpcionPlantillaList = preguntaPlantillaHasOpcionPlantillaList;
+    public void setPreguntaPlantillaPreguntaId(PreguntaPlantilla preguntaPlantillaPreguntaId) {
+        this.preguntaPlantillaPreguntaId = preguntaPlantillaPreguntaId;
     }
 
     @Override
@@ -111,14 +106,6 @@ public class OpcionPlantilla implements Serializable {
     @Override
     public String toString() {
         return "com.basp.trabajo_al_minuto.service.entity.OpcionPlantilla[ opcionId=" + opcionId + " ]";
-    }
-
-    public PreguntaPlantilla getPreguntaPlantillaPreguntaId() {
-        return preguntaPlantillaPreguntaId;
-    }
-
-    public void setPreguntaPlantillaPreguntaId(PreguntaPlantilla preguntaPlantillaPreguntaId) {
-        this.preguntaPlantillaPreguntaId = preguntaPlantillaPreguntaId;
     }
     
 }

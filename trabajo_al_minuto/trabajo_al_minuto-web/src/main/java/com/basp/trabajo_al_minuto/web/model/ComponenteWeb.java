@@ -5,13 +5,17 @@
  */
 package com.basp.trabajo_al_minuto.web.model;
 
+import com.basp.trabajo_al_minuto.model.business.BusinessException;
+import com.basp.trabajo_al_minuto.service.ejb.AdminEjb;
 import com.basp.trabajo_al_minuto.service.ejb.CitacionEjb;
 import com.basp.trabajo_al_minuto.service.ejb.OfertaEjb;
 import com.basp.trabajo_al_minuto.service.ejb.PerfilEjb;
 import com.basp.trabajo_al_minuto.service.ejb.PruebaEjb;
 import com.basp.trabajo_al_minuto.service.ejb.UsuarioEjb;
+import com.basp.trabajo_al_minuto.service.entity.Catalogo;
 import com.basp.trabajo_al_minuto.service.entity.Usuario;
 import java.io.Serializable;
+import java.util.List;
 import javax.enterprise.inject.Model;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -37,6 +41,8 @@ public class ComponenteWeb implements Serializable {
     protected PerfilEjb perfilEjb;
     @Inject
     protected PruebaEjb pruebaEjb;
+    @Inject
+    protected AdminEjb adminEjb;
 
     protected FacesMessage message;
 
@@ -72,5 +78,21 @@ public class ComponenteWeb implements Serializable {
 
     protected Long getPruebaId() {
         return (Long) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("pruebaId");
+    }
+
+    protected Long getPruebaPlantillaId() {
+        return (Long) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("pruebaPlantillaId");
+    }
+
+    protected String getPerfilFiltered() {
+        return (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("perfilFiltro");
+    }
+
+    protected Long getAreaFiltered() {
+        return (Long) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("areaFiltro");
+    }
+
+    protected List<Catalogo> getCatalogosByParent(Long id) throws BusinessException {
+        return adminEjb.getCatalogosByParent(id);
     }
 }

@@ -1,0 +1,46 @@
+<ui:composition 
+
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+    <div id="layout-topbar" class="ShadowGray">
+        <div id="layout-topbar-indent">
+            <h:commandLink title="Inicio" 
+                           action="/inicio?faces-redirect=true" 
+                           immediate="true">
+                <h:graphicImage library="image" name="logo_h.png" width="20%" height="60" styleClass="Fleft" style="margin-top: 10px; margin-left: -20px; " class="Fleft"/>
+            </h:commandLink>
+            <a href="#" id="mobile-menu-button" class="BordRad3 white ShowOnMobile"><i class="fa fa-bars"></i> Menu</a>
+            <a href="#" id="mobile-menu-button-gray" class="BordRad3 white ShowOnMobile"><i class="fa fa-caret-down"></i>Top Menu</a>
+
+            <ul id="layout-topbar-menu">
+                <li>
+                    <a target="_blank" href="#" class="Animated05 CursPointer Fs14">
+                        <i class="fa fa-question-circle-red"></i> Ayuda
+                        <i class="fa fa-chevron-down Fs14 Fright ShowOnMobile"></i>
+                    </a>
+                </li>
+                <li class="fa fa-ellipsis-v menu-separator"></li>
+                <li>
+                    <a target="_blank" href="#" 
+                       class="Animated05 CursPointer Fs14">
+                        <i class="fa fa-sign-in-red"></i> Registrarse
+                        <i class="fa fa-chevron-down Fs14 Fright ShowOnMobile"></i>
+                    </a>
+                </li>
+                <li class="fa fa-ellipsis-v menu-separator"></li>
+                <li>
+                    <a target="_blank" href="#" class="Animated05 CursPointer Fs14">
+                        <i class="fa fa-user-red"></i> Iniciar Sesión
+                        <i class="fa fa-chevron-down Fs14 Fright ShowOnMobile"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="EmptyBox5"/>
+
+</ui:composition>

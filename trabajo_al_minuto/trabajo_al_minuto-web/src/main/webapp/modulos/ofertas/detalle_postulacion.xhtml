@@ -195,7 +195,8 @@
                             </div>
                             <div class="Container100 Responsive MarTop10">
                                 <h4 class="Fs14 black  DispBlock black">Fecha de citación*</h4>
-                                <p:calendar value="#{detallePostulacionView.newCitacion.fechaCitacion}" pattern="MM/dd/yyyy HH:mm" locale="es" />
+                                <p:calendar value="#{detallePostulacionView.newCitacion.fechaCitacion}" required="true" pattern="MM/dd/yyyy HH:mm" 
+                                            requiredMessage="Fecha de citación no válida" validatorMessage="Fecha de citación no válida" locale="es" />
                             </div>
                         </div>
                         <div class="EmptyBox50" />

@@ -59,52 +59,52 @@
                     <div class="Container100 Responsive">
                         <div class="Container50 Responsive MarTop10">
                             <h4 class="Fs14 black  DispBlock black">Documento*</h4>
-                            <p:inputNumber value="#{crearUsuario.newPersona.documento}" 
+                            <p:inputNumber value="#{crearUsuarioView.newPersona.documento}" 
                                            required="true" styleClass="Wid60" 
                                            minValue="0"
                                            maxValue="9999999999"
-                                           disabled="#{crearUsuario.render}"
+                                           disabled="#{crearUsuarioView.render}"
                                            requiredMessage="Documento no válido"
                                            validatorMessage="Documento no válido"/>
                            
                             <div class="EmptyBox30"/>
                             <h4 class="Fs14 black  DispBlock black">Nombre*</h4>
-                            <p:inputText value="#{crearUsuario.newPersona.nombre}" 
+                            <p:inputText value="#{crearUsuarioView.newPersona.nombre}" 
                                          required="true" styleClass="Wid60"
-                                         disabled="#{crearUsuario.render}"
+                                         disabled="#{crearUsuarioView.render}"
                                          requiredMessage="Nombre no válido" 
                                          validatorMessage="Nombre no válido"/>
                             
                             <div class="EmptyBox30"/>
                             <h4 class="Fs14 black  DispBlock black">Edad*</h4>
-                            <p:inputNumber value="#{crearUsuario.newPersona.edad}"
+                            <p:inputNumber value="#{crearUsuarioView.newPersona.edad}"
                                            required="true" 
                                            maxValue="99"
                                            decimalPlaces="0"
-                                           disabled="#{crearUsuario.render}"
+                                           disabled="#{crearUsuarioView.render}"
                                            requiredMessage="Edad no válida" 
                                            validatorMessage="Edad no válida" 
                                            maxlength="2" />
                            
                             <div class="EmptyBox30"/>
                             <h4 class="Fs14 black FontOpenSansRegular DispBlock black">Teléfono fijo* </h4>
-                            <p:inputMask value="#{crearUsuario.newPersona.telefonoFijo}" 
+                            <p:inputMask value="#{crearUsuarioView.newPersona.telefonoFijo}" 
                                          mask="(999) 999-9999"
                                          required="true"  
                                          styleClass="Wid40"
-                                         disabled="#{crearUsuario.render}"
+                                         disabled="#{crearUsuarioView.render}"
                                          requiredMessage="Teléfono no válido"
                                          validatorMessage="Teléfono no válido" />
                         </div>
                         <div class="Container50 Responsive MarTop10">
                             <h4 class="Fs14 black DispBlock black">Email*</h4>
-                            <p:inputText id="emailusuario" value="#{crearUsuario.newUsuario.email}" 
+                            <p:inputText id="emailusuario" value="#{crearUsuarioView.newUsuario.email}" 
                                          required="true"  
                                          styleClass="Wid60" 
-                                         disabled="#{crearUsuario.render}"
+                                         disabled="#{crearUsuarioView.render}"
                                          requiredMessage="Debe ingresar una dirección de correo" 
                                          validatorMessage="El Email ingresado no tiene un formato valido">
-                                         <p:ajax event="blur" listener="#{crearUsuario.validarEmail}"/>
+                                         <p:ajax event="blur" listener="#{crearUsuarioView.validarEmail}"/>
                                 <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
                             </p:inputText>
                             <pe:tooltip value="Este email serà su nombre de usuario." 
@@ -114,17 +114,17 @@
                                         atPosition="bottom left"/> 
                             <div class="EmptyBox30"/>
                             <h4 class="Fs14 black  DispBlock black">Genero*</h4>
-                            <p:selectOneMenu id="console" value="#{crearUsuario.newPersona.genero}" style="width:125px" required="true" disabled="#{crearUsuario.render}"> 
+                            <p:selectOneMenu id="console" value="#{crearUsuarioView.newPersona.genero}" style="width:125px" required="true" disabled="#{crearUsuarioView.render}"> 
                                 <f:selectItem itemLabel="Seleccione...." itemValue="" />
                                 <f:selectItem itemLabel="Hombre" itemValue="1" />
                                 <f:selectItem itemLabel="Mujer" itemValue="0" />
                             </p:selectOneMenu>
                             <div class="EmptyBox30"/>
                             <h4 class="Fs14 black FontOpenSansRegular DispBlock black">Teléfono celular* </h4>
-                            <p:inputMask value="#{crearUsuario.newPersona.celular}"
+                            <p:inputMask value="#{crearUsuarioView.newPersona.celular}"
                                          mask="9999999999"
                                          required="true" styleClass="Wid40" 
-                                         disabled="#{crearUsuario.render}"
+                                         disabled="#{crearUsuarioView.render}"
                                          requiredMessage="Celular no válido"
                                          validatorMessage="Celular no válido" />
                         </div>
@@ -134,8 +134,8 @@
                                          icon="fa fa-mail-reply-all-white" immediate="true"/>
                         <p:commandButton styleClass="Fright BlueButton"
                                          value="Guardar" 
-                                         actionListener="#{crearUsuario.createUsuario}" 
-                                         disabled="#{crearUsuario.render}"
+                                         actionListener="#{crearUsuarioView.createUsuario}" 
+                                         disabled="#{crearUsuarioView.render}"
                                          icon="fa fa-save-white" 
                                          update="pg_crear_usuario"/>
                     </div>

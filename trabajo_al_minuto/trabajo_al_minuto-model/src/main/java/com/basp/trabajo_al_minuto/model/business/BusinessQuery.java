@@ -5,6 +5,9 @@
  */
 package com.basp.trabajo_al_minuto.model.business;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author BASP
@@ -24,4 +27,26 @@ public class BusinessQuery {
     public static final String GET_OFERTAS_MAS_APLICADAS_BY_EMPRESA = "SELECT u.ofertasOfertaId, COUNT(u.usuarioUsuarioId) AS c FROM UsuarioHasOferta u WHERE u.ofertasOfertaId.usuarioAutor.empresa.empresaId = :arg GROUP BY u.ofertasOfertaId ORDER BY c";
     public static final String GET_USUARIOS_MEJORES_RESULTADOS = "SELECT e FROM Evaluacion e WHERE e.citacion.usuarioAutor.empresa.empresaId = :arg ORDER BY e.porcentaje DESC";
     public static final String GET_PRUEBAS_PLANTILLA_BY_EMPRESA = "SELECT p FROM PruebaPlantilla p WHERE p.empresaEmpresaId.empresaId = :arg";
+    public static final String GET_CATALOGOS_BY_PADRE = "SELECT c FROM Catalogo c WHERE c.catalogoPadre.catalogoId = :arg AND c.estado = TRUE AND c.catalogoPadre.estado = TRUE";
+    public static final String GET_OFERTAS_ACTIVAS = "SELECT o FROM Oferta o WHERE o.estado = TRUE";
+
+    public static final List<Object> GET_OFERTAS_EXTERNAL(Long area, String palabra) {
+        List<Object> response = new ArrayList();
+        List<Object> objs = new ArrayList();
+        StringBuilder sb = new StringBuilder("SELECT o FROM Oferta o WHERE o.estado = TRUE");
+        if (area > 0 && palabra == null) {
+            sb.append(" AND o.perfil.area.catalogoId = :arg0");
+            objs.add(area);
+        } else if (palabra != null && area <= 0) {
+            sb.append(" AND LOWER(o.perfil.titulo) LIKE CONCAT('%',:arg0,'%')");
+            objs.add(palabra);
+        } else {
+            sb.append(" AND o.perfil.area.catalogoId = :arg0 OR o.estado = TRUE AND LOWER(o.perfil.titulo) LIKE CONCAT('%',:arg1,'%')");
+            objs.add(area);
+            objs.add(palabra);
+        }
+        response.add(0, sb.toString());
+        response.add(1, objs.toArray());
+        return response;
+    }
 }

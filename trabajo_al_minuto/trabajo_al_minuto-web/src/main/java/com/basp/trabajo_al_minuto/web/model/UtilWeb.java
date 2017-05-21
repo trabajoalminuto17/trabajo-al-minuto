@@ -12,6 +12,7 @@ import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
+import javax.faces.model.SelectItem;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 
@@ -36,6 +37,12 @@ public class UtilWeb {
             }
         }
         return null;
+    }
+
+    public static SelectItem propiedadesItem(SelectItem item) {
+        item.setDisabled(false);
+        item.setNoSelectionOption(true);
+        return item;
     }
 
 }

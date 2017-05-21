@@ -69,14 +69,14 @@ public class Citacion implements Serializable {
     @NotNull
     @Column(name = "estado")
     private boolean estado;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "citacion")
-    private List<Evaluacion> evaluacionList;
     @JoinColumn(name = "usuario_autor", referencedColumnName = "usuario_id")
     @ManyToOne(optional = false)
     private Usuario usuarioAutor;
     @JoinColumn(name = "usuario_has_oferta", referencedColumnName = "usuario_has_oferta_id")
     @OneToOne(optional = false)
     private UsuarioHasOferta usuarioHasOferta;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "citacion")
+    private List<Evaluacion> evaluacionList;
 
     public Citacion() {
     }
@@ -157,14 +157,6 @@ public class Citacion implements Serializable {
         this.estado = estado;
     }
 
-    public List<Evaluacion> getEvaluacionList() {
-        return evaluacionList;
-    }
-
-    public void setEvaluacionList(List<Evaluacion> evaluacionList) {
-        this.evaluacionList = evaluacionList;
-    }
-
     public Usuario getUsuarioAutor() {
         return usuarioAutor;
     }
@@ -179,6 +171,14 @@ public class Citacion implements Serializable {
 
     public void setUsuarioHasOferta(UsuarioHasOferta usuarioHasOferta) {
         this.usuarioHasOferta = usuarioHasOferta;
+    }
+
+    public List<Evaluacion> getEvaluacionList() {
+        return evaluacionList;
+    }
+
+    public void setEvaluacionList(List<Evaluacion> evaluacionList) {
+        this.evaluacionList = evaluacionList;
     }
 
     @Override

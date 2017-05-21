@@ -16,13 +16,9 @@
     <class>com.basp.trabajo_al_minuto.service.entity.PerfilHasPrueba</class>
     <class>com.basp.trabajo_al_minuto.service.entity.Persona</class>
     <class>com.basp.trabajo_al_minuto.service.entity.Pregunta</class>
-    <class>com.basp.trabajo_al_minuto.service.entity.PreguntaHasOpcion</class>
     <class>com.basp.trabajo_al_minuto.service.entity.PreguntaPlantilla</class>
-    <class>com.basp.trabajo_al_minuto.service.entity.PreguntaPlantillaHasOpcionPlantilla</class>
     <class>com.basp.trabajo_al_minuto.service.entity.Prueba</class>
-    <class>com.basp.trabajo_al_minuto.service.entity.PruebaHasPregunta</class>
     <class>com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla</class>
-    <class>com.basp.trabajo_al_minuto.service.entity.PruebaPlantillaHasPreguntaPlantilla</class>
     <class>com.basp.trabajo_al_minuto.service.entity.Respuesta</class>
     <class>com.basp.trabajo_al_minuto.service.entity.Rol</class>
     <class>com.basp.trabajo_al_minuto.service.entity.RolHasMenu</class>

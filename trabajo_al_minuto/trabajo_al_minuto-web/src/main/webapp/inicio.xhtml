@@ -28,7 +28,7 @@
                     }
                 }
             }
-
+            
             function skinPie() {
                 this.cfg.seriesColors = ['#dae8ef', '#27aae1', '#33ccff', '#9fadb5'];
                 this.cfg.grid = {
@@ -65,37 +65,6 @@
                             </div>
                         </div>
                         <div class="Seperator"></div>
-                        <i class="fa fa-clock-o Fleft Fs15 gray MarRight10"></i>
-                        <span class="Fleft Fs12 softgray">Ultimo Ingreso - 18.08.2015  16:30</span>
-                        <div class="Container100 MarTop20">
-                            <a href="modules/user/view_users.xhtml" class="Wid30 Responsive BorderedBox Fleft TexAlCenter HoverEffect">
-                                <div class="ContainerIndent">
-                                    <div class="EmptyBox10"></div>
-                                    <i class="fa fa-users Fs24 animated swing infinite gray"></i>
-                                    <span class="Fs10 DispBlock gray">Usuarios</span>
-                                    <span class="Fs24 DispBlock red">24</span>
-                                    <div class="EmptyBox10"></div>
-                                </div>
-                            </a>
-                            <a href="modules/test/view_tests.xhtml" class="Wid30 Responsive BorderedBox Fleft TexAlCenter HoverEffect" style="margin-left:5%;">
-                                <div class="ContainerIndent">
-                                    <div class="EmptyBox10"></div>
-                                    <i class="fa fa-newspaper-o gray Fs24"></i>
-                                    <span class="Fs10 DispBlock gray">Pruebas</span>
-                                    <span class="Fs24 DispBlock red">19</span>
-                                    <div class="EmptyBox10"></div>
-                                </div>
-                            </a>
-                            <a href="#" class="Wid30 Responsive BorderedBox Fright TexAlCenter HoverEffect">
-                                <div class="ContainerIndent">
-                                    <div class="EmptyBox10"></div>
-                                    <i class="fa fa-bar-chart gray Fs24"></i>
-                                    <span class="Fs10 DispBlock gray">Reportes</span>
-                                    <span class="Fs24 DispBlock red">26</span>
-                                    <div class="EmptyBox10"></div>
-                                </div>
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -115,7 +84,7 @@
                         <div class="Seperator"></div>
                         <div class="Container100">
                             <ui:repeat value="#{inicioView.ofertasMasAplicadasByEmpresa}" var="o">
-                                <h:commandLink styleClass="Wid45 BorderedBox Fleft TexAlCenter" action="iniciar_sesion">
+                                <h:commandLink styleClass="Wid45 BorderedBox Fleft TexAlCenter" actionListener="#{inicioView.goDetalleOferta(o.oferta)}">
                                     <div class="ContainerIndent">
                                         <div class="EmptyBox10"></div>
                                         <div class="Fs14 gray FontRalewayRegular">#{o.oferta.perfil.titulo}</div>

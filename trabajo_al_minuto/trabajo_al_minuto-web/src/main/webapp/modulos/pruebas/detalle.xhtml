@@ -50,69 +50,117 @@
     </ui:define>
 
     <ui:define name="content">
-        <h:panelGroup id="pg_detalle_usuario" rendered="#{not empty principalBean.usuarioSeleccionado}">
+        <h:panelGroup id="pg_detalle_prueba" rendered="#{not empty detallePruebaView.pruebaSeleccionada}">
             <div class="Container80 Responsive MarTop20" style="margin-left: 10%">
                 <div class="ContainerIndent"> 
-                    <h4 class="Fs15 gray DispBlock FontLight">Información detallada de #{principalBean.usuarioSeleccionado.persona.nombre}</h4>
-                    <h5 class="Fs13 gray DispBlock FontBold">Modifique la información de su cuenta.</h5>
+                    <h4 class="Fs15 gray DispBlock FontLight">Información detallada</h4>
+                    <h5 class="Fs13 gray DispBlock FontBold">Modifique la información de su prueba.</h5>
                     <div class="Seperator"></div>
                     <div class="Container100 Responsive">
                         <div class="Container50 Responsive MarTop10">
-                            <h4 class="Fs14 black  DispBlock black">Documento</h4>
-                            <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{principalBean.usuarioSeleccionado.persona.documento}"/>
-                            <div class="EmptyBox30"/>
                             <h4 class="Fs14 black  DispBlock black">Nombre*</h4>
-                            <p:inputText value="#{principalBean.usuarioSeleccionado.persona.nombre}" required="true" styleClass="Wid60"
-                                         requiredMessage="Nombre no válido" validatorMessage="Nombre no válido" disabled="#{principalBean.usuarioSeleccionado.rol.rolId == 1}"/>
+                            <p:inputText value="#{detallePruebaView.pruebaSeleccionada.nombre}" required="true" styleClass="Wid60"
+                                         requiredMessage="Nombre no válido" validatorMessage="Nombre no válido"/>
                             <div class="EmptyBox30"/>
-                            <h4 class="Fs14 black  DispBlock black">Fecha de creación</h4>
-                            <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{principalBean.usuarioSeleccionado.fechaCreacion}">
-                                <f:convertDateTime pattern="dd/MM/yyyy" />
-                            </p:outputLabel>
-                            <div class="EmptyBox50"/>
-                            <h4 class="Fs14 black  DispBlock black">Edad*</h4>
-                            <p:inputText value="#{principalBean.usuarioSeleccionado.persona.edad}" required="true" disabled="#{principalBean.usuarioSeleccionado.rol.rolId == 1}"
-                                         requiredMessage="Edad no válida" validatorMessage="Edad no válida" type="number" maxlength="2" />
+                            <h4 class="Fs14 black  DispBlock black">Tiempo límite*</h4>
+                            <p:calendar value="#{detallePruebaView.pruebaSeleccionada.limiteTiempo}" required="true" pattern="HH:mm" timeOnly="true"
+                                        requiredMessage="Tiempo límite no válido" validatorMessage="Tiempo límite no válido" locale="es" />
                             <div class="EmptyBox30"/>
-                            <h4 class="Fs14 black FontOpenSansRegular DispBlock black">Teléfono fijo* </h4>
-                            <p:inputText value="#{principalBean.usuarioSeleccionado.persona.telefonoFijo}" required="true"  styleClass="Wid60" disabled="#{principalBean.usuarioSeleccionado.rol.rolId == 1}"
-                                         requiredMessage="Teléfono no válido" validatorMessage="Teléfono no válido" />
+                            <h4 class="Fs14 black  DispBlock black">Area*</h4>
+                            <p:selectOneMenu label="Area" value="#{detallePruebaView.area}" required="true"  styleClass="Container50 Fnone MarAuto Fs18"
+                                             style="width: 60%; font-weight: bold;">
+                                <f:selectItems value="#{detallePruebaView.areas}"/>
+                            </p:selectOneMenu>   
+
                         </div>
                         <div class="Container50 Responsive MarTop10">
-                            <h4 class="Fs14 black  DispBlock black">Rol</h4>
-                            <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{principalBean.usuarioSeleccionado.rol.nombre}"/>
+                            <h4 class="Fs14 black  DispBlock black">Descripción*</h4>
+                            <p:inputText value="#{detallePruebaView.pruebaSeleccionada.descripcion}" required="true" styleClass="Wid60"
+                                         requiredMessage="Descripción no válida" validatorMessage="Descripción no válida"/>
                             <div class="EmptyBox30"/>
-                            <h4 class="Fs14 black DispBlock black">Email*</h4>
-                            <p:inputText id="emailusuario" value="#{principalBean.usuarioSeleccionado.email}"  required="true"  styleClass="Wid60"
-                                         requiredMessage="Email no válido"  validatorMessage="Email no válido" disabled="#{principalBean.usuarioSeleccionado.rol.rolId == 1}" >
-                                <f:validateRegex
-                                    pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
-                            </p:inputText>
-                            <pe:tooltip value="Este email sera utilizado como loginID en la plataforma." for="emailusuario" showEvent="focus"
-                                        myPosition="top left"
-                                        atPosition="bottom left"/> 
+                            <h4 class="Fs14 black FontOpenSansRegular DispBlock black">Procentaje mínimo* </h4>
+                            <p:inputText value="#{detallePruebaView.pruebaSeleccionada.porcentajeMinimo}" type="number" required="true" styleClass="Wid60"
+                                         requiredMessage="Procentaje mínimo no válido" validatorMessage="Procentaje mínimo no válido" />
                             <div class="EmptyBox30"/>
                             <h4 class="Fs14 black  DispBlock black">Estado*</h4>
-                            <p:inputSwitch value="#{principalBean.usuarioSeleccionado.estado}" offLabel="Inactivo" onLabel="Activo" disabled="#{principalBean.usuarioSeleccionado.rol.rolId == 1}"/>
-                            <div class="EmptyBox30"/>
-                            <h4 class="Fs14 black  DispBlock black">Genero*</h4>
-                            <p:selectOneMenu id="console" value="#{principalBean.usuarioSeleccionado.persona.genero}" style="width:125px" required="true" disabled="#{principalBean.usuarioSeleccionado.rol.rolId == 1}">
-                                <f:selectItem itemLabel="Seleccione...." itemValue="" />
-                                <f:selectItem itemLabel="Hombre" itemValue="1" />
-                                <f:selectItem itemLabel="Mujer" itemValue="0" />
-                            </p:selectOneMenu>
-                            <div class="EmptyBox30"/>
-                            <h4 class="Fs14 black FontOpenSansRegular DispBlock black">Teléfono celular* </h4>
-                            <p:inputText value="#{principalBean.usuarioSeleccionado.persona.celular}" required="true" styleClass="Wid60" 
-                                         requiredMessage="Celular no válido" validatorMessage="Celular no válido" disabled="#{principalBean.usuarioSeleccionado.rol.rolId == 1}"/>
+                            <p:inputSwitch value="#{detallePruebaView.pruebaSeleccionada.estado}" offLabel="Inactivo" onLabel="Activo"/>
                         </div>
-                        <div class="EmptyBox80"/>
-
-                        <p:commandButton styleClass="Fright RedButton" value="Regresar" action="/modulos/usuarios/ver?faces-redirect=true"  
-                                         icon="fa fa-mail-reply-all-white" immediate="true"/>
-                        <p:commandButton styleClass="Fright BlueButton" value="Guardar" actionListener="#{principalBean.updateUsuario}" 
-                                         icon="fa fa-save-white" update="pg_detalle_usuario" disabled="#{principalBean.usuarioSeleccionado.rol.rolId == 1}"/>
                     </div>
+
+                    <div class="EmptyBox80"/>
+                    <div class="Container100 Responsive">
+                        <div class="Container2 Responsive">
+                            <h:commandLink  class="Fs14 DispBlock blue Underline" immediate="true" title="Agregar pregunta" actionListener="#{detallePruebaView.addPregunta}"
+                                            rendered="#{detallePruebaView.pruebaSeleccionada.preguntaPlantillaList.size() le 10}">
+                                <i class="fa fa-plus"></i>
+                                <p:ajax update="main:pg_detalle_prueba"/>
+                            </h:commandLink> 
+                        </div>
+                        <div class="Container70 Responsive">
+                            <h4 class="Fs15 gray DispBlock FontLight">Preguntas</h4>
+                            <h5 class="Fs13 gray DispBlock FontBold">Modifique la preguntas de su prueba.</h5>
+                        </div>
+                    </div>
+                    <div class="Seperator"></div>
+                    <ui:repeat value="#{detallePruebaView.pruebaSeleccionada.preguntaPlantillaList}" var="pregunta" varStatus="status_pregunta"> 
+                        <div class="EmptyBox20"/>
+                        <div class="Container2 Responsive">
+                            <h:commandLink  class="Fs14 DispBlock blue Underline" immediate="true" title="Eliminar pregunta"
+                                            rendered="#{detallePruebaView.pruebaSeleccionada.preguntaPlantillaList.size() gt 1}" actionListener="#{detallePruebaView.removePregunta(pregunta)}">
+                                <i class="fa fa-close-red"></i>
+                                <p:ajax update="main:pg_detalle_prueba"/>
+                            </h:commandLink> 
+                        </div>
+                        <div class="Container90 Responsive">
+                            <h4 class="Fs14 black FontOpenSansRegular DispBlock black">Enunciado pregunta n° #{status_pregunta.index + 1}*</h4>
+                            <p:inputText value="#{pregunta.enunciado}" required="true" styleClass="Wid60"
+                                         requiredMessage="Enunciado no válido" validatorMessage="Enunciado no válido" />
+                        </div>
+                        <div class="EmptyBox10"/>
+                        <div class="Container100 Responsive" style="margin-left: 5%">
+                            <div class="Container68 Responsive">
+                                <div class="Container5 Responsive">
+                                    <h:commandLink  class="Fs14 DispBlock blue Underline" immediate="true" title="Agregar opción"
+                                                    rendered="#{pregunta.opcionPlantillaList.size() le 3}" actionListener="#{detallePruebaView.addOpcion(pregunta)}">
+                                        <i class="fa fa-plus"></i>
+                                        <p:ajax update="main:pg_detalle_prueba"/>
+                                    </h:commandLink> 
+                                </div>
+                                <div class="Container30 Responsive">
+                                    <h4 class="Fs14 black FontOpenSansRegular DispBlock black">Opciones</h4>
+                                </div>
+                            </div>
+                            <div class="Container30 Responsive">
+                                <h4 class="Fs14 black FontOpenSansRegular DispBlock black">Correcta</h4>
+                            </div>
+                            <ui:repeat value="#{pregunta.opcionPlantillaList}" var="opcion" varStatus="status_opcion">
+                                <div class="Container70 Responsive">
+                                    <div class="Container5 Responsive">
+                                        <h:commandLink  class="Fs14 DispBlock blue Underline MarTop10" immediate="true" title="Eliminar opción"
+                                                        rendered="#{pregunta.opcionPlantillaList.size() gt 2}" actionListener="#{detallePruebaView.removeOpcion(opcion)}">
+                                            <i class="fa fa-close-red"></i>
+                                            <p:ajax update="main:pg_detalle_prueba"/>
+                                        </h:commandLink> 
+                                    </div>
+                                    <div class="Container90 Responsive">
+                                        #{status_opcion.index + 1} - * <p:inputText value="#{opcion.enunciado}" required="true" styleClass="Wid60"
+                                                         requiredMessage="Enunciado no válido" validatorMessage="Enunciado no válido" />                                
+                                    </div>
+                                </div>
+                                <div class="Container30 Responsive">
+                                    <p:selectBooleanCheckbox value="#{opcion.correcta}">
+                                        <p:ajax update="main:pg_detalle_prueba" listener="#{detallePruebaView.cambiarOpcion(pregunta, opcion)}" />
+                                    </p:selectBooleanCheckbox>
+                                </div>
+                                <div class="EmptyBox20"/>
+                            </ui:repeat>
+                        </div>
+                    </ui:repeat>
+
+                    <p:commandButton styleClass="Fright RedButton" value="Regresar" action="/modulos/pruebas/ver?faces-redirect=true"  
+                                     icon="fa fa-mail-reply-all-white" immediate="true"/>
+                    <p:commandButton styleClass="Fright BlueButton" value="Guardar" actionListener="#{detallePruebaView.updatePruebaPlantilla}" 
+                                     icon="fa fa-save-white" update="pg_detalle_prueba"/>
                 </div>
             </div>
             <div class="EmptyBox50" />

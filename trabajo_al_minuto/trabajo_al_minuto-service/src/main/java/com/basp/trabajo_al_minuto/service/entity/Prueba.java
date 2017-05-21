@@ -66,8 +66,8 @@ public class Prueba implements Serializable {
     @JoinColumn(name = "area", referencedColumnName = "catalogo_id")
     @ManyToOne(optional = false)
     private Catalogo area;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "prueba")
-    private List<PruebaHasPregunta> pruebaHasPreguntaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pruebaPruebaId")
+    private List<Pregunta> preguntaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "prueba")
     private List<PerfilHasPrueba> perfilHasPruebaList;
 
@@ -142,12 +142,12 @@ public class Prueba implements Serializable {
         this.area = area;
     }
 
-    public List<PruebaHasPregunta> getPruebaHasPreguntaList() {
-        return pruebaHasPreguntaList;
+    public List<Pregunta> getPreguntaList() {
+        return preguntaList;
     }
 
-    public void setPruebaHasPreguntaList(List<PruebaHasPregunta> pruebaHasPreguntaList) {
-        this.pruebaHasPreguntaList = pruebaHasPreguntaList;
+    public void setPreguntaList(List<Pregunta> preguntaList) {
+        this.preguntaList = preguntaList;
     }
 
     public List<PerfilHasPrueba> getPerfilHasPruebaList() {

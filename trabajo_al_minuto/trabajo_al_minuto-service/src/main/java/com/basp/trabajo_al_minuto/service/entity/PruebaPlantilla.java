@@ -12,6 +12,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -21,7 +23,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
@@ -36,8 +37,8 @@ public class PruebaPlantilla implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "prueba_id")
     private Long pruebaId;
     @Size(max = 2147483647)
@@ -54,14 +55,14 @@ public class PruebaPlantilla implements Serializable {
     private Double porcentajeMinimo;
     @Column(name = "estado")
     private Boolean estado;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pruebaPlantillaPruebaId")
-    private List<PruebaPlantillaHasPreguntaPlantilla> pruebaPlantillaHasPreguntaPlantillaList;
     @JoinColumn(name = "area", referencedColumnName = "catalogo_id")
     @ManyToOne(optional = false)
     private Catalogo area;
     @JoinColumn(name = "empresa_empresa_id", referencedColumnName = "empresa_id")
     @ManyToOne(optional = false)
     private Empresa empresaEmpresaId;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pruebaPlantillaPruebaId")
+    private List<PreguntaPlantilla> preguntaPlantillaList;
 
     public PruebaPlantilla() {
     }
@@ -118,14 +119,6 @@ public class PruebaPlantilla implements Serializable {
         this.estado = estado;
     }
 
-    public List<PruebaPlantillaHasPreguntaPlantilla> getPruebaPlantillaHasPreguntaPlantillaList() {
-        return pruebaPlantillaHasPreguntaPlantillaList;
-    }
-
-    public void setPruebaPlantillaHasPreguntaPlantillaList(List<PruebaPlantillaHasPreguntaPlantilla> pruebaPlantillaHasPreguntaPlantillaList) {
-        this.pruebaPlantillaHasPreguntaPlantillaList = pruebaPlantillaHasPreguntaPlantillaList;
-    }
-
     public Catalogo getArea() {
         return area;
     }
@@ -140,6 +133,14 @@ public class PruebaPlantilla implements Serializable {
 
     public void setEmpresaEmpresaId(Empresa empresaEmpresaId) {
         this.empresaEmpresaId = empresaEmpresaId;
+    }
+
+    public List<PreguntaPlantilla> getPreguntaPlantillaList() {
+        return preguntaPlantillaList;
+    }
+
+    public void setPreguntaPlantillaList(List<PreguntaPlantilla> preguntaPlantillaList) {
+        this.preguntaPlantillaList = preguntaPlantillaList;
     }
 
     @Override
