@@ -27,4 +27,5 @@ public class AtributosWeb {
     public static final String DETALLE_USUARIO_PAGE = FACES_PATH.concat("modulos/usuarios/detalle.xhtml").concat(REDIRECT);
     public static final String DETALLE_OFERTA_PAGE = FACES_PATH.concat("modulos/ofertas/detalle.xhtml").concat(REDIRECT);
     public static final String DETALLE_POSTULACION_PAGE = FACES_PATH.concat("modulos/ofertas/detalle_postulacion.xhtml").concat(REDIRECT);
+    public static final String RUTA_HOJA_DE_VIDA_PDF = "D:\\hojas_de_vida\\";
 }
