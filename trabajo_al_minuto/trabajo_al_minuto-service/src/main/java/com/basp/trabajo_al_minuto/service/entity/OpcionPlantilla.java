@@ -12,6 +12,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -28,6 +30,10 @@ import javax.validation.constraints.Size;
 @NamedQueries({
     @NamedQuery(name = "OpcionPlantilla.findAll", query = "SELECT o FROM OpcionPlantilla o")})
 public class OpcionPlantilla implements Serializable {
+
+    @JoinColumn(name = "pregunta_plantilla_pregunta_id", referencedColumnName = "pregunta_id")
+    @ManyToOne(optional = false)
+    private PreguntaPlantilla preguntaPlantillaPreguntaId;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -105,6 +111,14 @@ public class OpcionPlantilla implements Serializable {
     @Override
     public String toString() {
         return "com.basp.trabajo_al_minuto.service.entity.OpcionPlantilla[ opcionId=" + opcionId + " ]";
+    }
+
+    public PreguntaPlantilla getPreguntaPlantillaPreguntaId() {
+        return preguntaPlantillaPreguntaId;
+    }
+
+    public void setPreguntaPlantillaPreguntaId(PreguntaPlantilla preguntaPlantillaPreguntaId) {
+        this.preguntaPlantillaPreguntaId = preguntaPlantillaPreguntaId;
     }
     
 }
