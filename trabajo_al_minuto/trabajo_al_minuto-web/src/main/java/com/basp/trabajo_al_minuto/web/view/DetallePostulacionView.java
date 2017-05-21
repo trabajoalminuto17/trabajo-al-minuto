@@ -25,7 +25,6 @@ import com.basp.trabajo_al_minuto.service.entity.Oferta;
 import com.basp.trabajo_al_minuto.service.entity.Usuario;
 import com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta;
 import com.basp.trabajo_al_minuto.web.model.ComponenteWeb;
-import static com.basp.trabajo_al_minuto.web.model.MensajeWeb.ERROR_FECHA;
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -94,14 +93,6 @@ public class DetallePostulacionView extends ComponenteWeb implements Serializabl
         }
     }
 
-    public Boolean validarFecha() {
-        if (newCitacion.getFechaCitacion().after(new Date())) {
-            message = webMessage(ERROR_FECHA);
-            FacesContext.getCurrentInstance().addMessage(null, message);
-            return false;   
-        }
-        return true;
-    }
 
     public void createCitacion() {
         try {
