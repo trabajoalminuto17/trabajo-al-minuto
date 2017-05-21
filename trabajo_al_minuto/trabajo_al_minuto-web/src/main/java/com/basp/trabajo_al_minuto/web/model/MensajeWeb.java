@@ -36,7 +36,11 @@ public enum MensajeWeb {
     CITACION_RECHAZADA_OK(EXITO_MESSAGE, "Citación rechazada correctamente.", FacesMessage.SEVERITY_INFO),
     CITACION_RECHAZADA_NOT(ERROR_MESSAGE, "No se han podido rechazar la citacion, ".concat(INTENTE_DE_NUEVO_MESSAGE), FacesMessage.SEVERITY_ERROR),
     CITACION_RECHAZADA(ALERTA_MESSAGE, "El candidato ha sido rechazado, no es posible ver el detalle de esté!", FacesMessage.SEVERITY_WARN),
-    USUARIO_YA_EXISTE(ERROR_MESSAGE,"El Email ingresado ya se encuentra registrado", FacesMessage.SEVERITY_ERROR);
+    USUARIO_YA_EXISTE(ERROR_MESSAGE,"El Email ingresado ya se encuentra registrado", FacesMessage.SEVERITY_ERROR),
+    DOCUMENTO_OK(EXITO_MESSAGE, "El documento ha sido cargado correctamente.", FacesMessage.SEVERITY_INFO),
+    DOCUMENTO_ERROR(ERROR_MESSAGE, "Se presentó un error al cargar el documento.", FacesMessage.SEVERITY_ERROR),
+    ERROR_FECHA(ERROR_MESSAGE, "La fecha insertada no puede ser menor a la fecha actual", FacesMessage.SEVERITY_ERROR);
+   
     
     private final String TITULO;
     private final String DESCRIPCION;
