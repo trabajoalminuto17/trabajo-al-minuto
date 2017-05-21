@@ -66,25 +66,40 @@
                                          requiredMessage="Nombre no válido" validatorMessage="Nombre no válido" disabled="#{detalleUsuarioView.usuarioSeleccionado.rol.rolId == 1}"/>
                             <div class="EmptyBox30"/>
                             <h4 class="Fs14 black  DispBlock black">Fecha de creación</h4>
-                            <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{detalleUsuarioView.usuarioSeleccionado.fechaCreacion}">
+                            <p:outputLabel styleClass="Fs14 black  DispBlock black" 
+                                           value="#{detalleUsuarioView.usuarioSeleccionado.fechaCreacion}">
                                 <f:convertDateTime pattern="MMMM, dd yyyy" locale="es" />
                             </p:outputLabel>
                             <div class="EmptyBox50"/>
                             <h4 class="Fs14 black  DispBlock black">Edad*</h4>
-                            <p:inputText value="#{detalleUsuarioView.usuarioSeleccionado.persona.edad}" required="true" disabled="#{detalleUsuarioView.usuarioSeleccionado.rol.rolId == 1}"
-                                         requiredMessage="Edad no válida" validatorMessage="Edad no válida" type="number" maxlength="2" />
+                            <p:inputNumber value="#{detalleUsuarioView.usuarioSeleccionado.persona.edad}" 
+                                           required="true" 
+                                           decimalPlaces="0"
+                                           disabled="#{detalleUsuarioView.usuarioSeleccionado.rol.rolId == 1}"
+                                           requiredMessage="Edad no válida"
+                                           maxValue="99"
+                                           validatorMessage="Edad no válida" 
+                                           maxlength="2" />
                             <div class="EmptyBox30"/>
                             <h4 class="Fs14 black FontOpenSansRegular DispBlock black">Teléfono fijo* </h4>
-                            <p:inputText value="#{detalleUsuarioView.usuarioSeleccionado.persona.telefonoFijo}" required="true"  styleClass="Wid60" disabled="#{detalleUsuarioView.usuarioSeleccionado.rol.rolId == 1}"
-                                         requiredMessage="Teléfono no válido" validatorMessage="Teléfono no válido" />
+                            <p:inputMask value="#{detalleUsuarioView.usuarioSeleccionado.persona.telefonoFijo}"
+                                         required="true"  styleClass="Wid40"
+                                          mask="(999) 999-9999"
+                                         disabled="#{detalleUsuarioView.usuarioSeleccionado.rol.rolId == 1}"
+                                         requiredMessage="Teléfono no válido"
+                                         validatorMessage="Teléfono no válido" />
                         </div>
                         <div class="Container50 Responsive MarTop10">
                             <h4 class="Fs14 black  DispBlock black">Rol</h4>
                             <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{detalleUsuarioView.usuarioSeleccionado.rol.nombre}"/>
                             <div class="EmptyBox30"/>
                             <h4 class="Fs14 black DispBlock black">Email*</h4>
-                            <p:inputText id="emailusuario" value="#{detalleUsuarioView.usuarioSeleccionado.email}"  required="true"  styleClass="Wid60"
-                                         requiredMessage="Email no válido"  validatorMessage="Email no válido" disabled="#{detalleUsuarioView.usuarioSeleccionado.rol.rolId == 1}" >
+                            <p:inputText id="emailusuario" 
+                                         value="#{detalleUsuarioView.usuarioSeleccionado.email}"
+                                         required="true"  styleClass="Wid60"
+                                         requiredMessage="Email no válido" 
+                                         validatorMessage="Email no válido"
+                                         disabled="#{detalleUsuarioView.usuarioSeleccionado.rol.rolId == 1}" >
                                 <f:validateRegex
                                     pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
                             </p:inputText>
@@ -103,8 +118,13 @@
                             </p:selectOneMenu>
                             <div class="EmptyBox30"/>
                             <h4 class="Fs14 black FontOpenSansRegular DispBlock black">Teléfono celular* </h4>
-                            <p:inputText value="#{detalleUsuarioView.usuarioSeleccionado.persona.celular}" required="true" styleClass="Wid60" 
-                                         requiredMessage="Celular no válido" validatorMessage="Celular no válido" disabled="#{detalleUsuarioView.usuarioSeleccionado.rol.rolId == 1}"/>
+                            <p:inputMask value="#{detalleUsuarioView.usuarioSeleccionado.persona.celular}" 
+                                         required="true" 
+                                         mask="9999999999"
+                                         styleClass="Wid40" 
+                                         requiredMessage="Celular no válido"
+                                         validatorMessage="Celular no válido"
+                                         disabled="#{detalleUsuarioView.usuarioSeleccionado.rol.rolId == 1}"/>
                         </div>
                         <div class="EmptyBox80"/>
 

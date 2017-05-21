@@ -44,15 +44,24 @@
                                     <b>La contraseña debe tener de 6 a 12 caracteres y contener una combinación de letras y números.</b>
                                 </p>                            
                                 <div class="EmptyBox20"></div>
-                                <p:password id="pass1" value="#{claveView.clave}" placeholder="Contraseña nueva" styleClass="Wid80"
+                                <p:password id="pass1" 
+                                            value="#{claveView.clave}"
+                                            placeholder="Contraseña nueva" 
+                                            styleClass="Wid80"
                                             validatorMessage="Las contraseñas no coinciden o no cumplen con los requisitos mínimos de validación, intente de nuevo." 
-                                            required="true" match="pass2" maxlength="12">
+                                            required="true" 
+                                            match="pass2" 
+                                            maxlength="12">
                                     <f:validateLength minimum="6" maximum="12" /> 
                                     <f:validateRegex pattern="^[a-zA-Z0-9]+$" />
                                 </p:password>      
                                 <div class="EmptyBox10"></div>
-                                <p:password id="pass2" value="#{claveView.clave}" placeholder="Confirmar contraseña" styleClass="Wid80"
-                                            required="true" maxlength="12"/>  
+                                <p:password id="pass2" 
+                                            value="#{claveView.clave}" 
+                                            placeholder="Confirmar contraseña" 
+                                            styleClass="Wid80"
+                                            required="true"
+                                            maxlength="12"/>  
                                 <div class="EmptyBox10"></div>                       
                                 <div class="Container85 Fnone MarAuto softgray">
                                     <div class="EmptyBox5"></div>
@@ -72,7 +81,8 @@
                                 <div class="Container10 Responsive MarTop10"></div>
                                 <div class="Container40 Responsive MarTop10">
                                     <p:commandButton id="btn_change_ps" value="Cambiar clave" 
-                                                     icon="fa fa-key-white" disabled="#{!claveView.terminos}"
+                                                     icon="fa fa-key-white" 
+                                                     disabled="#{!claveView.terminos}"
                                                      styleClass="Fs16 RedButton"
                                                      update=":form_login:messages" 
                                                      actionListener="#{claveView.cambiarClave}" />

@@ -78,10 +78,14 @@
                             <p:column headerText="Documento" filterBy="#{usuario.persona.documento}"  filterStyle="display:none" styleClass="Wid20 Fs14">
                                 <h:outputText value="#{usuario.persona.documento}" styleClass="Fs14" />
                             </p:column>
-                            <p:column headerText="Nombre" filterBy="#{usuario.persona.nombre}"  filterStyle="display:none" styleClass="Wid40 Fs14">
+                            <p:column headerText="Nombre" filterBy="#{usuario.persona.nombre}" 
+                                      filterStyle="display:none"
+                                      styleClass="Wid40 Fs14">
                                 <h:outputText value="#{usuario.persona.nombre}" styleClass="Fs14"/>
                             </p:column>
-                            <p:column headerText="Rol" filterBy="#{usuario.rol.nombre}"  filterStyle="display:none" styleClass="Wid40 Fs14">
+                            <p:column headerText="Rol" filterBy="#{usuario.rol.nombre}" 
+                                      filterStyle="display:none" 
+                                      styleClass="Wid40 Fs14">
                                 <h:outputText value="#{usuario.rol.nombre}" styleClass="Fs14"/>
                             </p:column>
                             <p:column headerText="Estado" filterBy="#{usuario.estado ? 'Activo' : 'Inactivo'}"  filterStyle="display:none" styleClass="Wid10">

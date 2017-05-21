@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+            <meta http-equiv="cache-control" content="max-age=0" />
+            <meta http-equiv="cache-control" content="no-cache" />
+            <meta http-equiv="expires" content="0" />
+            <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+            <meta http-equiv="pragma" content="no-cache" />
+        </f:facet>
+
+        <ui:insert name="head" />
+
+
+        <h:outputStylesheet name="css/core-layout.css" library="spark-layout" />
+        <h:outputStylesheet name="css/font-awesome.css" library="spark-layout" />
+        <h:outputStylesheet name="css/animate.css" library="spark-layout" />
+        <h:outputStylesheet name="css/spark-layout-red.css" library="spark-layout" />
+        <h:outputStylesheet name="main.css" library="css" />
+
+
+        <title>Trabajo al minuto ©  2016</title>
+        <link rel="shortcut icon" type="image/png" href="#{resource['image/favicon.png']}"/>
+
+    </h:head>
+
+    <h:body>
+        <h:form id="main">
+            <div id="menu-mask"></div>
+            <p:growl id="messages"  showDetail="true" autoUpdate="true" />
+
+            <!--<ui:include src="topbar.xhtml" />-->
+
+            <!--<ps:menu model="#{mainView.menu}"/>-->
+            <div id="layout-portlets-cover">
+                <div>
+                    <div id="left">
+                        <ui:insert name="left"></ui:insert>
+                    </div>
+                    <div>
+                        <div id="right">
+                            <ui:insert name="right"></ui:insert>
+                        </div>
+                        <div id="content" class="right_content">
+                            <div class="layout-portlets-box">
+                                <ui:insert name="content"></ui:insert>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="bottom">
+                    <ui:insert name="bottom">
+                        <ui:include src="footer.xhtml" />
+                    </ui:insert>
+                </div>
+            </div>
+            <p:ajaxStatus style="width:32px;height:32px;position:fixed;right:7px;bottom:7px">
+                <f:facet name="start">
+                    <p:graphicImage name="images/preloader.gif" library="spark-layout"/>
+                </f:facet>
+
+                <f:facet name="complete">
+                    <h:outputText value="" />
+                </f:facet>
+            </p:ajaxStatus>
+        </h:form>
+    </h:body>
+
+    <h:outputScript name="js/layout.js" library="spark-layout" />
+
+</html>
