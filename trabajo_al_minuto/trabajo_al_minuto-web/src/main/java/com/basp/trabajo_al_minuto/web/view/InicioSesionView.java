@@ -6,7 +6,6 @@
 package com.basp.trabajo_al_minuto.web.view;
 
 import static com.basp.trabajo_al_minuto.web.model.AtributosWeb.CLAVE_PAGE;
-import static com.basp.trabajo_al_minuto.web.model.AtributosWeb.INICIO_PAGE;
 import static com.basp.trabajo_al_minuto.web.model.MensajeWeb.ACCESO_DENEGADO;
 import static com.basp.trabajo_al_minuto.web.model.MensajeWeb.CREDENCIALES_INCORRECTAS;
 import static com.basp.trabajo_al_minuto.web.model.MensajeWeb.USUARIO_NO_ENCONTRADO;
@@ -16,6 +15,7 @@ import com.basp.trabajo_al_minuto.model.business.BusinessException;
 import com.basp.trabajo_al_minuto.model.business.BusinessSecurity;
 import com.basp.trabajo_al_minuto.service.entity.Menu;
 import com.basp.trabajo_al_minuto.service.entity.Usuario;
+import static com.basp.trabajo_al_minuto.web.model.AtributosWeb.INICIO_PAGE;
 import com.basp.trabajo_al_minuto.web.model.ComponenteWeb;
 import java.io.IOException;
 import java.io.Serializable;

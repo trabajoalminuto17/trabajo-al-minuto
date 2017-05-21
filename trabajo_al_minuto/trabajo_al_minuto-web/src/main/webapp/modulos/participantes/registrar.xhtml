@@ -4,7 +4,7 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:pe="http://primefaces.org/ui/extensions"
-                template="../../resources/template/main2.xhtml">
+                template="../../resources/template/main_portal.xhtml">
 
     <ui:define name="head">
         <script type="text/javascript">
@@ -65,7 +65,6 @@
                                 minValue="0"
                                 maxValue="9999999999"
                                 required="true"
-                                styleClass="Wid60"
                                 disabled="#{crearParticipanteView.render}"
                                 requiredMessage="Documento no válido" 
                                 validatorMessage="Documento no válido">
@@ -114,7 +113,7 @@
                             <h4 class="Fs14 black  DispBlock black">Genero*</h4>
                             <p:selectOneMenu id="console" 
                                              value="#{crearParticipanteView.newPersona.genero}" 
-                                             style="width:125px" 
+                                             style="width:60%" 
                                              required="true" 
                                              disabled="#{crearParticipanteView.render}"> 
                                 <f:selectItem itemLabel="Seleccione...." itemValue="" />
@@ -173,7 +172,7 @@
                             <h4 class="Fs14 black  DispBlock black">Aspiración salarial*</h4>
                             <p:selectOneMenu id="salario" 
                                              value="#{crearParticipanteView.newCandidato.aspiracionSalarial}" 
-                                             style="width:150px" 
+                                             style="width:60%" 
                                              required="true" 
                                              disabled="#{crearParticipanteView.render}"> 
                                 <f:selectItem itemLabel="Seleccione...." itemValue="" />
@@ -187,7 +186,7 @@
                             <h4 class="Fs14 black  DispBlock black">Escolaridad*</h4>
                             <p:selectOneMenu id="escolaridad" 
                                              value="#{crearParticipanteView.newCandidato.escolaridad}" 
-                                             style="width:120px" 
+                                             style="width:60%" 
                                              required="true" 
                                              disabled="#{crearParticipanteView.render}"> 
                                 <f:selectItem itemLabel="Seleccione...." itemValue="" />
@@ -200,6 +199,16 @@
                                 <f:selectItem itemLabel="Magister" itemValue="Magister" />
                                 <f:selectItem itemLabel="Doctorado" itemValue="Doctorado" />
                             </p:selectOneMenu>
+                            <div class="EmptyBox40"/>
+                            <div class="Container5 Responsive MarTop10">
+                                <p:selectBooleanCheckbox value="#{crearParticipanteView.newUsuario.terminos}" required="true">
+                                    <p:ajax update="btn_save" />
+                                </p:selectBooleanCheckbox>
+                            </div>
+                            <div class="Fs14 Container80 Responsive">
+                                <p class="TexAlLeft"><b> Acepto <a 
+                                            href="#" target="_blank" class="FontSourceSansLight red">términos y condiciones</a></b></p>
+                            </div>
 
                             <!--                            <div class="EmptyBox30"/>
                                                         <h4 class="Fs14 black  DispBlock black">Anexar hoja de vida*</h4>
@@ -219,13 +228,15 @@
 
                         <p:commandButton styleClass="Fright RedButton" 
                                          value="Regresar" 
-                                         action="/iniciar_sesion?faces-redirect=true"
+                                         action="/portal?faces-redirect=true"
                                          icon="fa fa-mail-reply-all-white" 
                                          immediate="true"/>
                         <p:commandButton styleClass="Fright BlueButton" 
+                                         id="btn_save"
                                          value="Guardar"
                                          actionListener="#{crearParticipanteView.createParticipante}"
-                                         disabled="#{crearParticipanteView.render}"
+                                         disabled="#{crearParticipanteView.render or 
+                                                     !crearParticipanteView.newUsuario.terminos and !crearParticipanteView.render}"
                                          icon="fa fa-save-white" 
                                          update="pg_crear_usuario"/>
                     </div>

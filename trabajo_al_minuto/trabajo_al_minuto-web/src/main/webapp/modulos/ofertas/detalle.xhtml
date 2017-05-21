@@ -77,94 +77,111 @@
                             <h4 class="Fs14 black DispBlock black">Salario</h4>
                             <p:outputLabel styleClass="Fs14 black  DispBlock black"
                                            value="$ #{detalleOfertaView.ofertaSeleccionada.perfil.salario}"/>
-                        </div>
+                        </div>                            
                         <div class="EmptyBox80"/>
-                        <h4 class="Fs15 gray DispBlock FontBold">Candidatos</h4>
-                        <h5 class="Fs13 gray DispBlock FontLight">A continuación podrá ver el listado de los usuarios postulados.</h5>
-                        <div class="Seperator"></div>
-                        <div class="Container100 Responsive MarTop10">
-                            <p:dataTable id="dtofertasusuario" var="ofertausuario" value="#{detalleOfertaView.usuarioHasOfertaByOferta}"  widgetVar="wv_dtofertasusuario"
-                                         filteredValue="#{detalleOfertaView.usuarioHasOfertaFlitradas}" reflow="true" styleClass="borderless"
-                                         rows="10"
-                                         paginator="true"
-                                         paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                                         rowsPerPageTemplate="10,20"
-                                         paginatorPosition="bottom"
-                                         selectionMode="single" selection="#{detalleOfertaView.usuarioHasOfertaSeleccionada}" rowKey="#{ofertausuario.usuarioHasOfertaId}"
-                                         emptyMessage="No se encontraron candidatos!">
-                                <f:facet name="header">
-                                    <p:toolbar style="border: none">
-                                        <f:facet name="left">
-                                            <p:outputPanel>
-                                                <p:inputText id="globalFilter" onkeyup="PF('wv_dtofertasusuario').filter()" style="width: 250px; font-size: 12px" placeholder="Buscar"/>
-                                            </p:outputPanel>
-                                        </f:facet>
-                                    </p:toolbar>
-                                </f:facet>
-                                <p:ajax event="rowSelect" listener="#{detalleOfertaView.onRowSelectVerUsuarioHasOfertas}" update=":main:pg_detalle_oferta"  />
-                                <p:column headerText="Nombre" filterBy="#{ofertausuario.usuarioUsuarioId.persona.nombre}"  filterStyle="display:none" styleClass="Wid40 Fs14">
-                                    <h:outputText value="#{ofertausuario.usuarioUsuarioId.persona.nombre}" styleClass="Fs14" />
-                                </p:column>
-                                <p:column headerText="Aspiración Salarial" filterBy="#{ofertausuario.usuarioUsuarioId.candidato.aspiracionSalarial}" filterStyle="display:none" styleClass="Wid10 Fs14">
-                                    <h:outputText value="$ #{ofertausuario.usuarioUsuarioId.candidato.aspiracionSalarial}" styleClass="Fs14"/>
-                                </p:column>
-                                <p:column headerText="Edad" filterBy="#{ofertausuario.usuarioUsuarioId.persona.edad}" filterStyle="display:none" styleClass="Wid10 Fs14">
-                                    <h:outputText value="#{ofertausuario.usuarioUsuarioId.persona.edad}" styleClass="Fs14"/>
-                                </p:column>
-                                <p:column headerText="Genero" filterBy="#{ofertausuario.usuarioUsuarioId.persona.genero == 1 ? 'Hombre' : 'Mujer'}" filterStyle="display:none" styleClass="Wid10 Fs14">
-                                    <h:outputText value="#{ofertausuario.usuarioUsuarioId.persona.genero == 1 ? 'Hombre' : 'Mujer'}" styleClass="Fs14"/>
-                                </p:column>
-                                <p:column headerText="Estado" filterBy="#{ofertausuario.estado.valor}" filterStyle="display:none" styleClass="Wid10 Fs14">
-                                    <h:outputText value="#{ofertausuario.estado.valor}" styleClass="Fs14"/>
-                                </p:column>
-                            </p:dataTable>
-                        </div>
-                        <div class="EmptyBox80"/>
-                        <h4 class="Fs15 gray DispBlock FontBold">Pruebas</h4>
-                        <h5 class="Fs13 gray DispBlock FontLight">A continuación podrá ver el listado de las pruebas a presentar por los candidatos.</h5>
-                        <div class="Seperator"></div>
-                        <div class="Container100 Responsive MarTop10">
-                            <p:dataTable id="dtofertapruebas" var="ofertaprueba" value="#{detalleOfertaView.pruebasByPerfil}"  widgetVar="wv_dtofertapruebas"
-                                         filteredValue="#{detalleOfertaView.pruebasFlitradas}" reflow="true" styleClass="borderless"
-                                         rows="10"
-                                         paginator="true"
-                                         paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                                         rowsPerPageTemplate="10,20"
-                                         paginatorPosition="bottom"
-                                         selectionMode="single" selection="#{detalleOfertaView.preubaSeleccionada}" rowKey="#{ofertaprueba.pruebaId}"
-                                         emptyMessage="No se encontraron pruebas!">
-                                <f:facet name="header">
-                                    <p:toolbar style="border: none">
-                                        <f:facet name="left">
-                                            <p:outputPanel>
-                                                <p:inputText id="globalFilter" onkeyup="PF('wv_dtofertapruebas').filter()" style="width: 250px; font-size: 12px" placeholder="Buscar"/>
-                                            </p:outputPanel>
-                                        </f:facet>
-                                        <f:facet name="right">
-                                            <p:commandButton action="/modulos/pruebas/ver?faces-redirect=true" icon="fa fa-plus-white" value="Agregar"/>
-                                        </f:facet>
-                                    </p:toolbar>
-                                </f:facet>
-                                <p:ajax event="rowSelect" listener="#{detalleOfertaView.onRowSelectVerPruebas}" update=":main:pg_detalle_oferta"  />
-                                <p:column headerText="Nombre" filterBy="#{ofertaprueba.nombre}"  filterStyle="display:none" styleClass="Wid40 Fs14">
-                                    <h:outputText value="#{ofertaprueba.nombre}" styleClass="Fs14" />
-                                </p:column>
-                                <p:column headerText="Area" filterBy="#{ofertaprueba.area.valor}" filterStyle="display:none" styleClass="Wid10 Fs14">
-                                    <h:outputText value="#{ofertaprueba.area.valor}" styleClass="Fs14"/>
-                                </p:column>
-                                <p:column headerText="Porcentaje Minimo" filterBy="#{ofertaprueba.porcentajeMinimo}" filterStyle="display:none" styleClass="Wid10 Fs14">
-                                    <h:outputText value="#{ofertaprueba.porcentajeMinimo} %" styleClass="Fs14"/>
-                                </p:column>
-                                <p:column headerText="Limite de tiempo" filterBy="#{ofertaprueba.limiteTiempo}" filterStyle="display:none" styleClass="Wid10 Fs14">
-                                    <h:outputText value="#{ofertaprueba.limiteTiempo}" styleClass="Fs14">
-                                        <f:convertDateTime pattern="hh:mm" locale="es" />
-                                    </h:outputText>
-                                </p:column>
-                            </p:dataTable>
-                        </div>
-                        <div class="EmptyBox80"/>
-                        <p:commandButton styleClass="Fright RedButton" value="Regresar" action="/modulos/ofertas/ver?faces-redirect=true"  
-                                         icon="fa fa-mail-reply-all-white" immediate="true"/>
+                        <h:panelGroup rendered="#{detalleOfertaView.usuariologin.rol.rolId eq 3}">
+                            <p:commandButton styleClass="Fright RedButton" value="Regresar" action="/modulos/ofertas/ver?faces-redirect=true"  
+                                             icon="fa fa-mail-reply-all-white" immediate="true"/>
+                            <p:commandButton styleClass="Fright BlueButton" value="Aplicar oferta" actionListener="#{detalleOfertaView.aplicarOferta}"  
+                                             rendered="#{empty detalleOfertaView.ofertAplicada and 
+                                                         not empty detalleOfertaView.usuariologin.candidato.rutaHojaDeVida}" icon="fa fa-check-white" immediate="true"
+                                             update="pg_detalle_oferta"/>
+                            <h:panelGroup rendered="#{not empty detalleOfertaView.ofertAplicada}">
+                                <span class="Fs14 green">¡Has aplicado correctamente ha esta oferta!</span>
+                            </h:panelGroup>
+                            <h:panelGroup rendered="#{empty detalleOfertaView.usuariologin.candidato.rutaHojaDeVida}">
+                                <span class="Fs14 red">¡Debes cargar tu hoja de vida para poder aplicar a la oferta!</span>
+                            </h:panelGroup>
+
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{detalleOfertaView.usuariologin.rol.rolId ne 3}">
+                            <h4 class="Fs15 gray DispBlock FontBold">Candidatos</h4>
+                            <h5 class="Fs13 gray DispBlock FontLight">A continuación podrá ver el listado de los usuarios postulados.</h5>
+                            <div class="Seperator"></div>
+                            <div class="Container100 Responsive MarTop10">
+                                <p:dataTable id="dtofertasusuario" var="ofertausuario" value="#{detalleOfertaView.usuarioHasOfertaByOferta}"  widgetVar="wv_dtofertasusuario"
+                                             filteredValue="#{detalleOfertaView.usuarioHasOfertaFlitradas}" reflow="true" styleClass="borderless"
+                                             rows="10"
+                                             paginator="true"
+                                             paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                                             rowsPerPageTemplate="10,20"
+                                             paginatorPosition="bottom"
+                                             selectionMode="single" selection="#{detalleOfertaView.usuarioHasOfertaSeleccionada}" rowKey="#{ofertausuario.usuarioHasOfertaId}"
+                                             emptyMessage="No se encontraron candidatos!">
+                                    <f:facet name="header">
+                                        <p:toolbar style="border: none">
+                                            <f:facet name="left">
+                                                <p:outputPanel>
+                                                    <p:inputText id="globalFilter" onkeyup="PF('wv_dtofertasusuario').filter()" style="width: 250px; font-size: 12px" placeholder="Buscar"/>
+                                                </p:outputPanel>
+                                            </f:facet>
+                                        </p:toolbar>
+                                    </f:facet>
+                                    <p:ajax event="rowSelect" listener="#{detalleOfertaView.onRowSelectVerUsuarioHasOfertas}" update=":main:pg_detalle_oferta"  />
+                                    <p:column headerText="Nombre" filterBy="#{ofertausuario.usuarioUsuarioId.persona.nombre}"  filterStyle="display:none" styleClass="Wid40 Fs14">
+                                        <h:outputText value="#{ofertausuario.usuarioUsuarioId.persona.nombre}" styleClass="Fs14" />
+                                    </p:column>
+                                    <p:column headerText="Aspiración Salarial" filterBy="#{ofertausuario.usuarioUsuarioId.candidato.aspiracionSalarial}" filterStyle="display:none" styleClass="Wid10 Fs14">
+                                        <h:outputText value="$ #{ofertausuario.usuarioUsuarioId.candidato.aspiracionSalarial}" styleClass="Fs14"/>
+                                    </p:column>
+                                    <p:column headerText="Edad" filterBy="#{ofertausuario.usuarioUsuarioId.persona.edad}" filterStyle="display:none" styleClass="Wid10 Fs14">
+                                        <h:outputText value="#{ofertausuario.usuarioUsuarioId.persona.edad}" styleClass="Fs14"/>
+                                    </p:column>
+                                    <p:column headerText="Genero" filterBy="#{ofertausuario.usuarioUsuarioId.persona.genero == 1 ? 'Hombre' : 'Mujer'}" filterStyle="display:none" styleClass="Wid10 Fs14">
+                                        <h:outputText value="#{ofertausuario.usuarioUsuarioId.persona.genero == 1 ? 'Hombre' : 'Mujer'}" styleClass="Fs14"/>
+                                    </p:column>
+                                    <p:column headerText="Estado" filterBy="#{ofertausuario.estado.valor}" filterStyle="display:none" styleClass="Wid10 Fs14">
+                                        <h:outputText value="#{ofertausuario.estado.valor}" styleClass="Fs14"/>
+                                    </p:column>
+                                </p:dataTable>
+                            </div>
+                            <div class="EmptyBox80"/>
+                            <h4 class="Fs15 gray DispBlock FontBold">Pruebas</h4>
+                            <h5 class="Fs13 gray DispBlock FontLight">A continuación podrá ver el listado de las pruebas a presentar por los candidatos.</h5>
+                            <div class="Seperator"></div>
+                            <div class="Container100 Responsive MarTop10">
+                                <p:dataTable id="dtofertapruebas" var="ofertaprueba" value="#{detalleOfertaView.pruebasByPerfil}"  widgetVar="wv_dtofertapruebas"
+                                             filteredValue="#{detalleOfertaView.pruebasFlitradas}" reflow="true" styleClass="borderless"
+                                             rows="10"
+                                             paginator="true"
+                                             paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                                             rowsPerPageTemplate="10,20"
+                                             paginatorPosition="bottom"
+                                             selectionMode="single" selection="#{detalleOfertaView.preubaSeleccionada}" rowKey="#{ofertaprueba.pruebaId}"
+                                             emptyMessage="No se encontraron pruebas!">
+                                    <f:facet name="header">
+                                        <p:toolbar style="border: none">
+                                            <f:facet name="left">
+                                                <p:outputPanel>
+                                                    <p:inputText id="globalFilter" onkeyup="PF('wv_dtofertapruebas').filter()" style="width: 250px; font-size: 12px" placeholder="Buscar"/>
+                                                </p:outputPanel>
+                                            </f:facet>
+                                            <f:facet name="right">
+                                                <p:commandButton action="/modulos/pruebas/ver?faces-redirect=true" icon="fa fa-plus-white" value="Agregar"/>
+                                            </f:facet>
+                                        </p:toolbar>
+                                    </f:facet>
+                                    <p:ajax event="rowSelect" listener="#{detalleOfertaView.onRowSelectVerPruebas}" update=":main:pg_detalle_oferta"  />
+                                    <p:column headerText="Nombre" filterBy="#{ofertaprueba.nombre}"  filterStyle="display:none" styleClass="Wid40 Fs14">
+                                        <h:outputText value="#{ofertaprueba.nombre}" styleClass="Fs14" />
+                                    </p:column>
+                                    <p:column headerText="Area" filterBy="#{ofertaprueba.area.valor}" filterStyle="display:none" styleClass="Wid10 Fs14">
+                                        <h:outputText value="#{ofertaprueba.area.valor}" styleClass="Fs14"/>
+                                    </p:column>
+                                    <p:column headerText="Porcentaje Minimo" filterBy="#{ofertaprueba.porcentajeMinimo}" filterStyle="display:none" styleClass="Wid10 Fs14">
+                                        <h:outputText value="#{ofertaprueba.porcentajeMinimo} %" styleClass="Fs14"/>
+                                    </p:column>
+                                    <p:column headerText="Limite de tiempo" filterBy="#{ofertaprueba.limiteTiempo}" filterStyle="display:none" styleClass="Wid10 Fs14">
+                                        <h:outputText value="#{ofertaprueba.limiteTiempo}" styleClass="Fs14">
+                                            <f:convertDateTime pattern="hh:mm" locale="es" />
+                                        </h:outputText>
+                                    </p:column>
+                                </p:dataTable>
+                            </div>
+                            <div class="EmptyBox80"/>
+                            <p:commandButton styleClass="Fright RedButton" value="Regresar" action="/modulos/ofertas/ver?faces-redirect=true"  
+                                             icon="fa fa-mail-reply-all-white" immediate="true"/>
+                        </h:panelGroup>
                     </div>
                 </div>
             </div>

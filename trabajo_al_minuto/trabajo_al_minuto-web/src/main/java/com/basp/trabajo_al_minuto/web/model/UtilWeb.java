@@ -9,6 +9,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
@@ -43,6 +48,11 @@ public class UtilWeb {
         item.setDisabled(false);
         item.setNoSelectionOption(true);
         return item;
+    }
+
+    public static String formatDate(LocalDateTime date) {
+        String d = date.format(DateTimeFormatter.ofPattern("MMM d, yyyy HH:mm", new Locale("es")));
+        return Character.toString(d.charAt(0)).toUpperCase() + d.substring(1);
     }
 
 }

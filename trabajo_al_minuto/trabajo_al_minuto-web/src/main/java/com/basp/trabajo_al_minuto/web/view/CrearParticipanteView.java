@@ -39,6 +39,7 @@ public class CrearParticipanteView extends ComponenteWeb implements Serializable
     private Persona newPersona;
     private Candidato newCandidato;
     private Boolean render;
+    private Boolean terminos;
 
     public CrearParticipanteView() {
         newUsuario = new Usuario();
@@ -50,7 +51,7 @@ public class CrearParticipanteView extends ComponenteWeb implements Serializable
     public void init() {
         render = Boolean.FALSE;
     }
-
+    
     public void createParticipante() {
         try {
             newUsuario.setCambioClave(Boolean.FALSE);
@@ -87,6 +88,7 @@ public class CrearParticipanteView extends ComponenteWeb implements Serializable
             Logger.getLogger(CrearParticipanteView.class.getName()).log(Level.SEVERE, ex.developerException());
         }
     }
+    
 
 //    public void cargarPDF(FileUploadEvent event) {
 //        try {
@@ -131,6 +133,14 @@ public class CrearParticipanteView extends ComponenteWeb implements Serializable
 
     public void setNewCandidato(Candidato newCandidato) {
         this.newCandidato = newCandidato;
+    }
+
+    public Boolean getTerminos() {
+        return terminos;
+    }
+
+    public void setTerminos(Boolean terminos) {
+        this.terminos = terminos;
     }
 
 }

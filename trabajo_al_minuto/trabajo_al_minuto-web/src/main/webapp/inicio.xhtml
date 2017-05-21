@@ -28,7 +28,7 @@
                     }
                 }
             }
-            
+
             function skinPie() {
                 this.cfg.seriesColors = ['#dae8ef', '#27aae1', '#33ccff', '#9fadb5'];
                 this.cfg.grid = {
@@ -51,24 +51,8 @@
     <ui:define name="content">
 
         <!-- BOX START -->
-        <div class="layout-portlets-box">
-            <div class="Container20 Responsive">
-                <div class="ContainerIndent">
-                    <div class="Container100">
-                        <div class="DispInlBlock MarTop20">
-                            <div class="Container20"><i class="fa fa-user Fs50 red Fleft MarRight10"></i></div>
-                            <div class="Container80">
-                                <div class="Fright">
-                                    <h2 class="black Fs24 FontRalewayMedium">Bryan Silva</h2>
-                                    <span class="Fs15 gray FontRalewayRegular DispBlock">Administrador</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="Seperator"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="Container40 Responsive">
+        <div class="Container90 Responsive">
+            <div class="Container50 Responsive">
                 <div class="ContainerIndent">
                     <div class="Container100 TexAlCenter">
 
@@ -76,14 +60,14 @@
                             <div class="Container20"><i class="fa fa-line-chart Fs40 orange Fleft MarRight10"></i></div>
                             <div class="Container80">
                                 <div class="Fright">
-                                    <h2 class="black Fs24 FontRalewayMedium">Ofertas Aplicadas</h2>
+                                    <h2 class="black Fs24 FontRalewayMedium">Ofertas populares</h2>
                                     <span class="Fs15 gray FontRalewayRegular DispBlock">Ofertas mas aplicadas. En línea</span>
                                 </div>
                             </div>
                         </div>
                         <div class="Seperator"></div>
                         <div class="Container100">
-                            <ui:repeat value="#{inicioView.ofertasMasAplicadasByEmpresa}" var="o">
+                            <ui:repeat value="#{inicioView.ofertasPopulares}" var="o">
                                 <h:commandLink styleClass="Wid45 BorderedBox Fleft TexAlCenter" actionListener="#{inicioView.goDetalleOferta(o.oferta)}">
                                     <div class="ContainerIndent">
                                         <div class="EmptyBox10"></div>
@@ -99,35 +83,64 @@
                     </div>
                 </div>
             </div>
-            <div class="Container33 Responsive">
+            <div class="Container50 Responsive">
                 <div class="ContainerIndent">
                     <div class="Container100 TexAlCenter">
-
-                        <div class="DispInlBlock TexAlLeft MarTop20">
-                            <i class="fa fa-street-view Fs40 gray Fleft MarRight10"></i>
-                            <div class="Fleft">
-                                <h2 class="black Fs24 FontRalewayMedium">Pruebas destacadas</h2>
-                                <span class="Fs15 gray FontRalewayRegular DispBlock">Usuarios con mejores puntajes</span>
-                            </div>
-                        </div>
-                        <div class="Seperator"></div>
-                        <div class="Container100">
-                            <ui:repeat value="#{inicioView.usuariosMejoresResultados}" var="e">
-                                <div class="Container45">
-                                    <h:commandLink styleClass="Wid45 BorderedBox Fleft TexAlCenter" action="iniciar_sesion">
-                                        <div class="ContainerIndent">
-                                            <div class="EmptyBox10"></div>
-                                            <div class="Fs14 gray FontRalewayRegular">#{e.citacion.usuarioHasOferta.usuarioUsuarioId.persona.nombre}</div>
-                                            <div class="EmptyBox10"></div>
-                                            <div class="Fs14 red FontRalewayRegular">#{e.citacion.usuarioHasOferta.ofertasOfertaId.perfil.titulo}</div>
-                                            <div class="EmptyBox10"></div>
-                                            <div class="Fs30 blue FontRalewayLight">#{e.porcentaje} %</div>
-                                            <div class="EmptyBox10"></div>
-                                        </div>
-                                    </h:commandLink>
+                        <h:panelGroup rendered="#{inicioView.usuarioSession.rol.rolId ne 3}">
+                            <div class="DispInlBlock TexAlLeft MarTop20">
+                                <i class="fa fa-street-view Fs40 gray Fleft MarRight10"></i>
+                                <div class="Fleft">
+                                    <h2 class="black Fs24 FontRalewayMedium">Pruebas destacadas</h2>
+                                    <span class="Fs15 gray FontRalewayRegular DispBlock">Usuarios con mejores puntajes</span>
                                 </div>
-                            </ui:repeat>
-                        </div>            
+                            </div>
+                            <div class="Seperator"></div>
+                            <div class="Container100">
+                                <ui:repeat value="#{inicioView.usuariosMejoresResultados}" var="e">
+                                    <div class="Container45">
+                                        <h:commandLink styleClass="Wid45 BorderedBox Fleft TexAlCenter">
+                                            <div class="ContainerIndent">
+                                                <div class="EmptyBox10"></div>
+                                                <div class="Fs14 gray FontRalewayRegular">#{e.citacion.usuarioHasOferta.usuarioUsuarioId.persona.nombre}</div>
+                                                <div class="EmptyBox10"></div>
+                                                <div class="Fs14 red FontRalewayRegular">#{e.citacion.usuarioHasOferta.ofertasOfertaId.perfil.titulo}</div>
+                                                <div class="EmptyBox10"></div>
+                                                <div class="Fs30 blue FontRalewayLight">#{e.porcentaje} %</div>
+                                                <div class="EmptyBox10"></div>
+                                            </div>
+                                        </h:commandLink>
+                                    </div>
+                                </ui:repeat>
+                            </div>  
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{inicioView.usuarioSession.rol.rolId eq 3}">
+                            <div class="DispInlBlock TexAlLeft MarTop20">
+                                <i class="fa fa-clock-o Fs40 gray Fleft MarRight10"></i>
+                                <div class="Fleft">
+                                    <h2 class="black Fs24 FontRalewayMedium">Proximas citaciones</h2>
+                                    <span class="Fs15 gray FontRalewayRegular DispBlock">Citaciones por cumplir</span>
+                                </div>
+                            </div>
+                            <div class="Seperator"></div>
+                            <div class="Container100">
+                                <ui:repeat value="#{inicioView.proximasCitaciones}" var="e">
+                                    <div class="Container45">
+                                        <h:commandLink styleClass="Wid45 BorderedBox Fleft TexAlCenter">
+                                            <div class="ContainerIndent">
+                                                <div class="EmptyBox10"></div>
+                                                <div class="Fs14 gray FontRalewayRegular">#{e.usuarioHasOferta.ofertasOfertaId.perfil.titulo}</div>
+                                                <div class="EmptyBox10"></div>
+                                                <div class="Fs14 gray FontRalewayRegular">#{e.lugar}</div>
+                                                <div class="EmptyBox10"></div>
+                                                <div class="Fs14 red FontRalewayLight">#{inicioView.getFormatDate(e.fechaCitacion)}</div>
+                                                <div class="EmptyBox10"></div>
+                                            </div>
+                                        </h:commandLink>
+                                    </div>
+                                </ui:repeat>
+                            </div>  
+                        </h:panelGroup>
+                        <div class="EmptyBox90" />
                     </div>
                 </div>
             </div>

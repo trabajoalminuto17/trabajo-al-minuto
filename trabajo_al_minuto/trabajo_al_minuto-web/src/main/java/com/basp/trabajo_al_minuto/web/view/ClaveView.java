@@ -5,13 +5,13 @@
  */
 package com.basp.trabajo_al_minuto.web.view;
 
-import static com.basp.trabajo_al_minuto.web.model.AtributosWeb.INICIO_PAGE;
 import static com.basp.trabajo_al_minuto.web.model.MensajeWeb.NO_PASSWORD;
 import static com.basp.trabajo_al_minuto.web.model.UtilWeb.webMessage;
 
 import com.basp.trabajo_al_minuto.model.business.BusinessException;
 import com.basp.trabajo_al_minuto.model.business.BusinessSecurity;
 import com.basp.trabajo_al_minuto.service.entity.Usuario;
+import static com.basp.trabajo_al_minuto.web.model.AtributosWeb.INICIO_PAGE;
 import com.basp.trabajo_al_minuto.web.model.ComponenteWeb;
 import java.io.IOException;
 import java.io.Serializable;

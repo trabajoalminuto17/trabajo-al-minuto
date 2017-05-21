@@ -21,6 +21,7 @@ public class AtributosWeb {
     public static final String ALERTA_MESSAGE = "Alerta!";
 
     public static final String INICIAR_SESSION_PAGE = FACES_PATH.concat("iniciar_sesion.xhtml").concat(REDIRECT);
+    public static final String PORTAL_PAGE = FACES_PATH.concat("portal.xhtml").concat(REDIRECT);
     public static final String INICIO_PAGE = FACES_PATH.concat("inicio.xhtml").concat(REDIRECT);
     public static final String CLAVE_PAGE = FACES_PATH.concat("clave.xhtml").concat(REDIRECT);
     public static final String ERROR_PAGE = FACES_PATH.concat("error.xhtml").concat(REDIRECT);

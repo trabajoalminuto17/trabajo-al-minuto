@@ -5,7 +5,7 @@
  */
 package com.basp.trabajo_al_minuto.web.view;
 
-import static com.basp.trabajo_al_minuto.web.model.AtributosWeb.INICIAR_SESSION_PAGE;
+import static com.basp.trabajo_al_minuto.web.model.AtributosWeb.PORTAL_PAGE;
 
 import com.basp.trabajo_al_minuto.web.model.ComponenteWeb;
 import java.io.IOException;
@@ -33,13 +33,15 @@ public class TopbarView extends ComponenteWeb implements Serializable {
     @PostConstruct
     public void init() {
         usuarioNombre = getUserLogin().getPersona().getNombre();
-        usuarioEmpresa = getUserLogin().getEmpresa().getNombre();
+        if (getUserLogin().getRol().getRolId() != 3L) {
+            usuarioEmpresa = getUserLogin().getEmpresa().getNombre();
+        }
     }
 
     public void destruirSesion() {
         try {
             FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-            FacesContext.getCurrentInstance().getExternalContext().redirect(INICIAR_SESSION_PAGE);
+            FacesContext.getCurrentInstance().getExternalContext().redirect(PORTAL_PAGE);
         } catch (IOException ex) {
             Logger.getLogger(TopbarView.class.getName()).log(Level.SEVERE, "destruirSesion", ex);
         }

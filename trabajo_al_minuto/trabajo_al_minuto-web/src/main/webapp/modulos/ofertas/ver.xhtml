@@ -49,7 +49,7 @@
     </ui:define>
 
     <ui:define name="content">
-        <h:panelGroup id="pg_ver_ofertas">
+        <h:panelGroup id="pg_ver_ofertas" rendered="#{verOfertasView.usuariologin.rol.rolId ne 3}">
             <div class="Container90 Responsive MarTop20" style="margin-left: 5%">
                 <div class="ContainerIndent"> 
                     <h4 class="Fs15 gray DispBlock FontBold">Ofertas</h4>
@@ -94,6 +94,84 @@
                 </div>
             </div>
             <div class="EmptyBox50" />
+        </h:panelGroup>
+        <h:panelGroup id="png_ofertasexternal" rendered="#{verOfertasView.usuariologin.rol.rolId eq 3}">
+            <div class="Container100 Responsive">
+                <div class="ContainerIndent">
+                    <div class="Container90 TexAlCenter" style="margin-left: 5%">                    
+                        <div class="EmptyBox20"/>
+                        <div class="DispInlBlock TexAlLeft MarTop50">
+                            <div class="Container20"><i class="fa fa-search Fs40 orange Fleft MarRight10"></i></div>
+                            <div class="Container80">
+                                <div class="Fright">
+                                    <h2 class="black Fs24 FontRalewayMedium">Buscar Ofertas</h2>
+                                    <span class="Fs15 gray FontRalewayRegular DispBlock">Ofertas en línea <strong>#{verOfertasView.cantidadOfertas}</strong></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="Seperator"></div>
+                        <div class="Container33 MarTop40">
+                            <p:inputText label="Ingresa perfil profesional" size="25" maxlength="50" placeholder="Ingresa perfil profesional" 
+                                         styleClass="Container80 Fnone MarAuto Fs15" value="#{verOfertasView.perfil}"/>
+                            <span class="Fs11 gray FontRalewayRegular DispBlock">Ingresa palabras clave (Ej: Asesor, Ingeniero, Sofware ...)</span>
+
+                        </div>
+                        <div class="Container33 MarTop40">
+                            <p:selectOneMenu label="Area" value="#{verOfertasView.area}" styleClass="Container50 Fnone MarAuto Fs18"
+                                             style="width: 60%; font-weight: bold;">
+                                <f:selectItems value="#{verOfertasView.areas}"/>
+                            </p:selectOneMenu>     
+                        </div>
+                        <div class="Container33 MarTop40">
+                            <p:commandButton  value="Buscar oferta" 
+                                              icon="fa fa-search-white"
+                                              styleClass="Fs16 BlueButton"
+                                              update="png_ofertasexternal"
+                                              actionListener="#{verOfertasView.actualizarOfertas}" />
+                        </div>
+                        <div class="EmptyBox80"/>
+                        <h4 class="Fs15 gray DispBlock FontBold TexAlLeft">Ofertas</h4>
+                        <h5 class="Fs13 gray DispBlock FontLight TexAlLeft">A continuación podrá ver el listado de ofertas.</h5>
+                        <div class="Seperator"></div>
+                        <div class="EmptyBox10"/>
+                        <p:dataTable id="dtofertasexternal" var="oferta" value="#{verOfertasView.ofertasActualizadas}"  widgetVar="wv_dtofertasexternal"
+                                     filteredValue="#{verOfertasView.ofertasFlitradas}" reflow="true" styleClass="borderless"
+                                     rows="10"
+                                     paginator="true"
+                                     paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                                     rowsPerPageTemplate="10,20"
+                                     paginatorPosition="bottom"
+                                     selectionMode="single" selection="#{verOfertasView.ofertaSeleccionada}" rowKey="#{oferta.ofertaId}"
+                                     emptyMessage="No se encontraron ofertas!">
+                            <f:facet name="header">
+                                <p:toolbar style="border: none">
+                                    <f:facet name="left">
+                                        <p:outputPanel>
+                                            <p:inputText id="globalFilter" onkeyup="PF('wv_dtofertasexternal').filter()" style="width: 250px; font-size: 12px" placeholder="Buscar"/>
+                                        </p:outputPanel>
+                                    </f:facet>
+                                </p:toolbar>
+                            </f:facet>
+                            <p:ajax event="rowSelect" listener="#{verOfertasView.onRowSelectVerOfertas}"  />
+                            <p:column headerText="Título" filterBy="#{oferta.perfil.titulo}"  filterStyle="display:none" styleClass="Wid40 Fs14">
+                                <h:outputText value="#{oferta.perfil.titulo}" styleClass="Fs14" />
+                            </p:column>
+                            <p:column headerText="Area" filterBy="#{oferta.perfil.area.valor}"  filterStyle="display:none" styleClass="Wid20 Fs14">
+                                <h:outputText value="#{oferta.perfil.area.valor}" styleClass="Fs14"/>
+                            </p:column>
+                            <p:column headerText="Rango salarial" filterBy="#{oferta.perfil.salario}"  filterStyle="display:none" styleClass="Wid20 Fs14">
+                                <h:outputText value="#{oferta.perfil.salario}" styleClass="Fs14"/>
+                            </p:column>
+                            <p:column headerText="Fecha expiración" filterBy="#{oferta.fechaExpiracion}"  filterStyle="display:none" styleClass="Wid20">
+                                <h:outputText value="#{oferta.fechaExpiracion}" styleClass="Fs14">
+                                    <f:convertDateTime pattern="MMMM, dd yyyy" locale="es" />
+                                </h:outputText>
+                            </p:column>
+                        </p:dataTable>
+                    </div>
+                    <div class="EmptyBox80"/>
+                </div>
+            </div>
         </h:panelGroup>
     </ui:define>
 

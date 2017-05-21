@@ -12,11 +12,16 @@ import static com.basp.trabajo_al_minuto.web.model.UtilWeb.webMessage;
 
 import com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta;
 import com.basp.trabajo_al_minuto.model.business.BusinessException;
+import com.basp.trabajo_al_minuto.service.entity.Catalogo;
 import com.basp.trabajo_al_minuto.service.entity.Oferta;
 import com.basp.trabajo_al_minuto.service.entity.Prueba;
+import com.basp.trabajo_al_minuto.service.entity.Usuario;
 import com.basp.trabajo_al_minuto.web.model.ComponenteWeb;
+import static com.basp.trabajo_al_minuto.web.model.MensajeWeb.OFERTA_APLICADA_NOT;
+import static com.basp.trabajo_al_minuto.web.model.MensajeWeb.OFERTA_APLICADA_OK;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -41,18 +46,25 @@ public class DetalleOfertaView extends ComponenteWeb implements Serializable {
     private Prueba preubaSeleccionada;
     private List<UsuarioHasOferta> usuarioHasOfertaFlitradas;
     private List<Prueba> pruebasFlitradas;
+    private Usuario usuariologin;
+    private UsuarioHasOferta ofertAplicada;
 
     @PostConstruct
     public void init() {
         try {
+            usuariologin = getUserLogin();
             if (getOfertaId() != null) {
                 ofertaSeleccionada = ofertaEjb.findOferta(getOfertaId());
             }
-            if (getUsuarioHasOfertaId() != null) {
-                usuarioHasOfertaSeleccionada = usuarioEjb.findUsuarioHasOferta(getUsuarioHasOfertaId());
-            }
-            if (getPruebaId() != null) {
-                preubaSeleccionada = pruebaEjb.findPrueba(getPruebaId());
+            if (usuariologin.getRol().getRolId() == 3L) {
+                ofertAplicada = usuarioEjb.getUsuarioHasOfertaByUsuarioAndOferta(usuariologin.getUsuarioId(), ofertaSeleccionada.getOfertaId());
+            } else {
+                if (getUsuarioHasOfertaId() != null) {
+                    usuarioHasOfertaSeleccionada = usuarioEjb.findUsuarioHasOferta(getUsuarioHasOfertaId());
+                }
+                if (getPruebaId() != null) {
+                    preubaSeleccionada = pruebaEjb.findPrueba(getPruebaId());
+                }
             }
         } catch (BusinessException ex) {
             Logger.getLogger(DetalleOfertaView.class.getName()).log(Level.SEVERE, null, ex);
@@ -104,6 +116,23 @@ public class DetalleOfertaView extends ComponenteWeb implements Serializable {
         }
     }
 
+    public void aplicarOferta() {
+        try {
+            UsuarioHasOferta uho = new UsuarioHasOferta();
+            uho.setEstado(new Catalogo(8L));
+            uho.setFechaPostulacion(new Date());
+            uho.setOfertasOfertaId(ofertaSeleccionada);
+            uho.setUsuarioUsuarioId(usuariologin);
+            ofertAplicada = usuarioEjb.updateUsuarioHasOferta(uho);
+            message = webMessage(OFERTA_APLICADA_OK);
+        } catch (BusinessException ex) {
+            Logger.getLogger(DetalleOfertaView.class.getName()).log(Level.SEVERE, null, ex);
+            message = webMessage(OFERTA_APLICADA_NOT);
+        } finally {
+            FacesContext.getCurrentInstance().addMessage(null, message);
+        }
+    }
+
 //    @Getter and Setter
     public Oferta getOfertaSeleccionada() {
         return ofertaSeleccionada;
@@ -143,6 +172,22 @@ public class DetalleOfertaView extends ComponenteWeb implements Serializable {
 
     public void setPreubaSeleccionada(Prueba preubaSeleccionada) {
         this.preubaSeleccionada = preubaSeleccionada;
+    }
+
+    public Usuario getUsuariologin() {
+        return usuariologin;
+    }
+
+    public void setUsuariologin(Usuario usuariologin) {
+        this.usuariologin = usuariologin;
+    }
+
+    public UsuarioHasOferta getOfertAplicada() {
+        return ofertAplicada;
+    }
+
+    public void setOfertAplicada(UsuarioHasOferta ofertAplicada) {
+        this.ofertAplicada = ofertAplicada;
     }
 
 }
