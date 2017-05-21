@@ -66,7 +66,9 @@
                                      paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                                      rowsPerPageTemplate="10,20"
                                      paginatorPosition="bottom"
-                                     selectionMode="single" selection="#{verUsuariosView.usuarioSeleccionado}" rowKey="#{usuario.usuarioId}"
+                                     selectionMode="single" 
+                                     selection="#{verUsuariosView.usuarioSeleccionado}"
+                                     rowKey="#{usuario.usuarioId}"
                                      emptyMessage="No se encontraron usuarios!">
                             <f:facet name="header">
                                 <p:toolbar style="border: none">

@@ -89,20 +89,6 @@ public class CrearParticipanteView extends ComponenteWeb implements Serializable
         }
     }
     
-
-//    public void cargarPDF(FileUploadEvent event) {
-//        try {
-//            String fileName = newUsuario.getPersona().getDocumento().concat("_HV.pdf");
-//            File file = new File(RUTA_HOJA_DE_VIDA_PDF + fileName);
-//            FileUtils.copyInputStreamToFile(event.getFile().getInputstream(), file);
-//            newCandidato.setRutaHojaDeVida(file.getAbsolutePath());
-//        } catch (IOException ex) {
-//            webMessage(CHANGE_NOT);
-//            Logger.getLogger(CrearParticipanteView.class.getName()).log(Level.SEVERE, null, ex);
-//        } finally {
-//            FacesContext.getCurrentInstance().addMessage(null, message);
-//        }
-//    }
     public Usuario getNewUsuario() {
         return newUsuario;
     }

@@ -43,12 +43,13 @@ public class InicioSesionView extends ComponenteWeb implements Serializable {
 
     private String usuario;
     private String clave;
+    Usuario session_usuario;
 
     public void iniciarSesion() {
         FacesContext context = FacesContext.getCurrentInstance();
         context.getExternalContext().getSessionMap().clear();
         try {
-            Usuario session_usuario = usuarioEjb.getUsuarioByEmail(usuario.toLowerCase());
+            session_usuario = usuarioEjb.getUsuarioByEmail(usuario.toLowerCase());
             if (session_usuario != null) {
                 if (session_usuario.getEstado()) {
                     if (session_usuario.getCambioClave()) {
@@ -60,16 +61,14 @@ public class InicioSesionView extends ComponenteWeb implements Serializable {
                         } else {
                             message = webMessage(CREDENCIALES_INCORRECTAS);
                         }
+                    } else if (session_usuario.getPassword().equals(session_usuario.getEmail()) && session_usuario.getPassword().equals(clave)
+                            || session_usuario.getPassword().equals(BusinessSecurity.encrypt(clave))) {
+                        context.getExternalContext().getSessionMap().put("sessionUsuario", session_usuario);
+                        context.getExternalContext().getSessionMap().put("menusUsuario", getMenuInicio(session_usuario.getRol().getRolId()));
+                        context.getExternalContext().getSessionMap().put("userAgent", context.getExternalContext().getRequestHeaderMap().get("User-Agent"));
+                        context.getExternalContext().redirect(CLAVE_PAGE);
                     } else {
-                        if (session_usuario.getPassword().equals(session_usuario.getEmail()) && session_usuario.getPassword().equals(clave)
-                                || session_usuario.getPassword().equals(BusinessSecurity.encrypt(clave))) {
-                            context.getExternalContext().getSessionMap().put("sessionUsuario", session_usuario);
-                            context.getExternalContext().getSessionMap().put("menusUsuario", getMenuInicio(session_usuario.getRol().getRolId()));
-                            context.getExternalContext().getSessionMap().put("userAgent", context.getExternalContext().getRequestHeaderMap().get("User-Agent"));
-                            context.getExternalContext().redirect(CLAVE_PAGE);
-                        } else {
-                            message = webMessage(CREDENCIALES_INCORRECTAS);
-                        }
+                        message = webMessage(CREDENCIALES_INCORRECTAS);
                     }
                 } else {
                     message = webMessage(ACCESO_DENEGADO);

@@ -54,7 +54,7 @@
             <div class="Container80 Responsive MarTop20" style="margin-left: 10%">
                 <div class="ContainerIndent"> 
                     <h4 class="Fs15 gray DispBlock FontLight">Información detallada de #{detalleUsuarioView.usuarioSeleccionado.persona.nombre}</h4>
-                    <h5 class="Fs13 gray DispBlock FontBold">Modifique la información de su cuenta.</h5>
+                    <h5 class="Fs13 gray DispBlock FontBold">En este módulo puede habilitar o inhabilitar el usuario.</h5>
                     <div class="Seperator"></div>
                     <div class="Container100 Responsive">
                         <div class="Container50 Responsive MarTop10">
@@ -62,9 +62,10 @@
                             <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{detalleUsuarioView.usuarioSeleccionado.persona.documento}"/>
                             <div class="EmptyBox30"/>
                             <h4 class="Fs14 black  DispBlock black">Nombre*</h4>
-                            <p:inputText value="#{detalleUsuarioView.usuarioSeleccionado.persona.nombre}" required="true" styleClass="Wid60"
-                                         requiredMessage="Nombre no válido" validatorMessage="Nombre no válido" disabled="#{detalleUsuarioView.usuarioSeleccionado.rol.rolId == 1}"/>
+                            <p:outputLabel value="#{detalleUsuarioView.usuarioSeleccionado.persona.nombre}" 
+                                           />
                             <div class="EmptyBox30"/>
+
                             <h4 class="Fs14 black  DispBlock black">Fecha de creación</h4>
                             <p:outputLabel styleClass="Fs14 black  DispBlock black" 
                                            value="#{detalleUsuarioView.usuarioSeleccionado.fechaCreacion}">
@@ -72,37 +73,23 @@
                             </p:outputLabel>
                             <div class="EmptyBox50"/>
                             <h4 class="Fs14 black  DispBlock black">Edad*</h4>
-                            <p:inputNumber value="#{detalleUsuarioView.usuarioSeleccionado.persona.edad}" 
-                                           required="true" 
-                                           decimalPlaces="0"
-                                           disabled="#{detalleUsuarioView.usuarioSeleccionado.rol.rolId == 1}"
-                                           requiredMessage="Edad no válida"
-                                           maxValue="99"
-                                           validatorMessage="Edad no válida" 
-                                           maxlength="2" />
+                            <p:outputLabel value="#{detalleUsuarioView.usuarioSeleccionado.persona.edad}" 
+                                           />
                             <div class="EmptyBox30"/>
                             <h4 class="Fs14 black FontOpenSansRegular DispBlock black">Teléfono fijo* </h4>
-                            <p:inputMask value="#{detalleUsuarioView.usuarioSeleccionado.persona.telefonoFijo}"
-                                         required="true"  styleClass="Wid40"
-                                          mask="(999) 999-9999"
-                                         disabled="#{detalleUsuarioView.usuarioSeleccionado.rol.rolId == 1}"
-                                         requiredMessage="Teléfono no válido"
-                                         validatorMessage="Teléfono no válido" />
+                            <p:outputLabel value="#{detalleUsuarioView.usuarioSeleccionado.persona.telefonoFijo}"
+                                           />
                         </div>
                         <div class="Container50 Responsive MarTop10">
                             <h4 class="Fs14 black  DispBlock black">Rol</h4>
                             <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{detalleUsuarioView.usuarioSeleccionado.rol.nombre}"/>
                             <div class="EmptyBox30"/>
                             <h4 class="Fs14 black DispBlock black">Email*</h4>
-                            <p:inputText id="emailusuario" 
-                                         value="#{detalleUsuarioView.usuarioSeleccionado.email}"
-                                         required="true"  styleClass="Wid60"
-                                         requiredMessage="Email no válido" 
-                                         validatorMessage="Email no válido"
-                                         disabled="#{detalleUsuarioView.usuarioSeleccionado.rol.rolId == 1}" >
-                                <f:validateRegex
-                                    pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
-                            </p:inputText>
+                            <p:outputLabel id="emailusuario" 
+                                           value="#{detalleUsuarioView.usuarioSeleccionado.email}"
+                                           >
+
+                            </p:outputLabel>
                             <pe:tooltip value="Este email sera utilizado como loginID en la plataforma." for="emailusuario" showEvent="focus"
                                         myPosition="top left"
                                         atPosition="bottom left"/> 
@@ -111,20 +98,12 @@
                             <p:inputSwitch value="#{detalleUsuarioView.usuarioSeleccionado.estado}" offLabel="Inactivo" onLabel="Activo" disabled="#{detalleUsuarioView.usuarioSeleccionado.rol.rolId == 1}"/>
                             <div class="EmptyBox30"/>
                             <h4 class="Fs14 black  DispBlock black">Genero*</h4>
-                            <p:selectOneMenu id="console" value="#{detalleUsuarioView.usuarioSeleccionado.persona.genero}" style="width:125px" required="true" disabled="#{detalleUsuarioView.usuarioSeleccionado.rol.rolId == 1}">
-                                <f:selectItem itemLabel="Seleccione...." itemValue="" />
-                                <f:selectItem itemLabel="Hombre" itemValue="1" />
-                                <f:selectItem itemLabel="Mujer" itemValue="0" />
-                            </p:selectOneMenu>
-                            <div class="EmptyBox30"/>
-                            <h4 class="Fs14 black FontOpenSansRegular DispBlock black">Teléfono celular* </h4>
-                            <p:inputMask value="#{detalleUsuarioView.usuarioSeleccionado.persona.celular}" 
-                                         required="true" 
-                                         mask="9999999999"
-                                         styleClass="Wid40" 
-                                         requiredMessage="Celular no válido"
-                                         validatorMessage="Celular no válido"
-                                         disabled="#{detalleUsuarioView.usuarioSeleccionado.rol.rolId == 1}"/>
+                            <p:outputLabel id="console" value="#{detalleUsuarioView.usuarioSeleccionado.persona.genero == 1 ? 'Hombre' : 'Mujer'}"
+                                           style="width:125px" />
+                                <div class="EmptyBox30"/>
+                                <h4 class="Fs14 black FontOpenSansRegular DispBlock black">Teléfono celular* </h4>
+                                <p:outputLabel value="#{detalleUsuarioView.usuarioSeleccionado.persona.celular}" 
+                                               />
                         </div>
                         <div class="EmptyBox80"/>
 

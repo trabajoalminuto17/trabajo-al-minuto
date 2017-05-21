@@ -1,0 +1,195 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pe="http://primefaces.org/ui/extensions"
+                template="../../resources/template/main.xhtml">
+
+    <ui:define name="head">
+        <script type="text/javascript">
+            function skinChart() {
+                this.cfg.shadow = false;
+                this.cfg.seriesColors = ['#71CC8D', '#33AFDE', '#F7941E'];
+                this.cfg.grid = {
+                    background: '#EDF3F6',
+                    borderColor: '#D9E3E8',
+                    gridLineColor: '#D9E3E8',
+                    shadow: false
+                };
+                this.cfg.axesDefaults = {
+                    rendererOptions: {
+                        textColor: '#778D9B'
+                    }
+                };
+                this.cfg.seriesDefaults = {
+                    shadow: false,
+                    markerOptions: {
+                        shadow: false
+                    }
+                }
+            }
+
+            function skinPie() {
+                this.cfg.seriesColors = ['#dae8ef', '#27aae1', '#33ccff', '#9fadb5'];
+                this.cfg.grid = {
+                    background: '#ffffff',
+                    borderColor: '#eaeaea',
+                    gridLineColor: '#e5ebf0',
+                    shadow: false,
+                    borderWidth: 0
+                };
+                this.cfg.seriesDefaults.shadow = false;
+            }
+        </script>
+        <style type="text/css">
+            .jqplot-target, .jqplot-axis {
+                color: #778D9B;
+            }
+        </style>
+    </ui:define>
+
+    <ui:define name="content">
+        <h:panelGroup id="pg_detalle_usuario" rendered="#{not empty detallePerfilView.usuarioLogueado}">                
+            <div class="Container80 Responsive MarTop20" style="margin-left: 10%">
+                <div class="ContainerIndent"> 
+                    <h4 class="Fs15 gray DispBlock FontLight">Información detallada de #{detallePerfilView.usuarioLogueado.persona.nombre}</h4>
+                    <h5 class="Fs13 gray DispBlock FontBold">Modifique la información de su cuenta.</h5>
+                    <div class="Seperator"></div>
+                    <div class="Container100 Responsive">
+                        <div class="Container50 Responsive MarTop10">
+                            <h4 class="Fs14 black  DispBlock black">Documento</h4>
+                            <p:outputLabel styleClass="Fs14 black  DispBlock black"
+                                           value="#{detallePerfilView.usuarioLogueado.persona.documento}"/>
+                            <div class="EmptyBox30"/>
+                            <h4 class="Fs14 black  DispBlock black">Nombre*</h4>
+                            <p:inputText value="#{detallePerfilView.usuarioLogueado.persona.nombre}" 
+                                         required="true" 
+                                         styleClass="Wid60"
+                                         requiredMessage="Nombre no válido"
+                                         validatorMessage="Nombre no válido" 
+                                         />
+                            <div class="EmptyBox30"/>
+                            <h4 class="Fs14 black  DispBlock black">Fecha de creación</h4>
+                            <p:outputLabel styleClass="Fs14 black  DispBlock black" 
+                                           value="#{detallePerfilView.usuarioLogueado.fechaCreacion}">
+                                <f:convertDateTime pattern="MMMM, dd yyyy" locale="es" />
+                            </p:outputLabel>
+                            <div class="EmptyBox50"/>
+                            <h4 class="Fs14 black  DispBlock black">Edad*</h4>
+                            <p:inputNumber value="#{detallePerfilView.usuarioLogueado.persona.edad}" 
+                                           required="true" 
+                                           decimalPlaces="0"
+                                           requiredMessage="Edad no válida"
+                                           maxValue="99"
+                                           validatorMessage="Edad no válida" 
+                                           maxlength="2" />
+
+                            <div class="EmptyBox30"/>
+                            <h4 class="Fs14 black FontOpenSansRegular DispBlock black">Teléfono celular* </h4>
+                            <p:inputMask value="#{detallePerfilView.usuarioLogueado.persona.celular}" 
+                                         required="true" 
+                                         mask="9999999999"
+                                         styleClass="Wid40" 
+                                         requiredMessage="Celular no válido"
+                                         validatorMessage="Celular no válido"
+                                         />
+
+                            <div class="EmptyBox30"/>
+                            <h4 class="Fs14 black FontOpenSansRegular DispBlock black">Teléfono fijo* </h4>
+                            <p:inputMask value="#{detallePerfilView.usuarioLogueado.persona.telefonoFijo}"
+                                         required="true"  styleClass="Wid40"
+                                         mask="(999) 999-9999"
+                                         requiredMessage="Teléfono no válido"
+                                         validatorMessage="Teléfono no válido" />
+                        </div>
+                        <div class="Container50 Responsive MarTop10" >
+
+                            <div class="EmptyBox30"/>
+                            <h4 class="Fs14 black DispBlock black">Email*</h4>
+                            <p:inputText id="emailusuario" 
+                                         value="#{detallePerfilView.usuarioLogueado.email}"
+                                         required="true"  styleClass="Wid60"
+                                         requiredMessage="Email no válido" 
+                                         validatorMessage="Email no válido"
+                                         >
+                                <f:validateRegex
+                                    pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                            </p:inputText>
+                            <pe:tooltip value="Este email sera utilizado como loginID en la plataforma." for="emailusuario" showEvent="focus"
+                                        myPosition="top left"
+                                        atPosition="bottom left"/> 
+
+                            <h:panelGroup rendered="#{detallePerfilView.usuarioLogueado.rol.rolId == 3}">
+
+                                <div class="EmptyBox30"/>
+                                <h4 class="Fs14 black  DispBlock black">Genero*</h4>
+                                <p:selectOneMenu id="console" value="#{detallePerfilView.usuarioLogueado.persona.genero}" style="width:125px" required="true" disabled="#{detallePerfilView.usuarioLogueado.rol.rolId == 1}">
+                                    <f:selectItem itemLabel="Seleccione...." itemValue="" />
+                                    <f:selectItem itemLabel="Hombre" itemValue="1" />
+                                    <f:selectItem itemLabel="Mujer" itemValue="0" />
+                                </p:selectOneMenu>
+
+                                <div class="EmptyBox30"/>
+                                <h4 class="Fs14 black  DispBlock black">Aspiración salarial*</h4>
+                                <p:selectOneMenu id="salario" 
+                                                 value="#{detallePerfilView.usuarioLogueado.candidato.aspiracionSalarial}" 
+                                                 style="width:60%" 
+                                                 required="true" 
+                                                 > 
+                                    <f:selectItem itemLabel="Seleccione...." itemValue="" />
+                                    <f:selectItem itemLabel="$500.000-$1.000.000" itemValue="$500.000-$1.000.000" />
+                                    <f:selectItem itemLabel="$1.000.001-$2.000.000" itemValue="$1.000.001-$2.000.000" />
+                                    <f:selectItem itemLabel="$2.000.001-3.000.000" itemValue="$2.000.001-$3.000.000" />
+                                    <f:selectItem itemLabel="Mayor a 3.000.000" itemValue="Mayor a $3.000.000" />
+                                </p:selectOneMenu>
+
+
+                                <div class="EmptyBox30"/>
+                                <h4 class="Fs14 black  DispBlock black">Escolaridad*</h4>
+                                <p:selectOneMenu id="escolaridad" 
+                                                 value="#{detallePerfilView.usuarioLogueado.candidato.escolaridad}" 
+                                                 style="width:60%" 
+                                                 required="true"                                                  > 
+                                    <f:selectItem itemLabel="Seleccione...." itemValue="" />
+                                    <f:selectItem itemLabel="Primaria" itemValue="Primaria" />
+                                    <f:selectItem itemLabel="Bachillerato" itemValue="Bachillerato" />
+                                    <f:selectItem itemLabel="Técnico" itemValue="Técnico" />
+                                    <f:selectItem itemLabel="Tecnólogo" itemValue="Tecnólogo" />
+                                    <f:selectItem itemLabel="Pregrado" itemValue="Pregrado" />
+                                    <f:selectItem itemLabel="Especialización" itemValue="Especialización" />
+                                    <f:selectItem itemLabel="Magister" itemValue="Magister" />
+                                    <f:selectItem itemLabel="Doctorado" itemValue="Doctorado" />
+                                </p:selectOneMenu>
+
+                                <div class="EmptyBox30"/>
+                                <h4 class="Fs14 black  DispBlock black">Anexar hoja de vida*</h4>
+                                <div class="EmptyBox30"/>
+                                <p:fileUpload fileUploadListener="#{detallePerfilView.cargarPDF}" 
+                                              mode="advanced" 
+                                              dragDropSupport="false"
+                                              update="messages" 
+                                              label="Seleccionar"
+                                              uploadLabel="Cargar"
+                                              cancelLabel="Cancelar"
+                                              invalidFileMessage="El archivo debe estar en formato PDF"
+                                              allowTypes="/(\.|\/)(pdf)$/" />
+
+                            </h:panelGroup>
+                        </div>
+                        <div class="EmptyBox80"/>
+
+                        <p:commandButton styleClass="Fright RedButton" value="Regresar" action="/modulos/usuarios/ver?faces-redirect=true"  
+                                         icon="fa fa-mail-reply-all-white" immediate="true"/>
+                        <p:commandButton styleClass="Fright BlueButton" value="Guardar"
+                                         actionListener="#{detallePerfilView.updateUsuario}" 
+                                         icon="fa fa-save-white" update="pg_detalle_usuario"
+                                         />
+                    </div>
+                </div>
+            </div>
+            <div class="EmptyBox50" />
+        </h:panelGroup>
+    </ui:define>
+
+</ui:composition>
