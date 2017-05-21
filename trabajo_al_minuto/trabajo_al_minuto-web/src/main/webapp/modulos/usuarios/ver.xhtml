@@ -56,8 +56,11 @@
                     <h5 class="Fs13 gray DispBlock FontLight">A continuación podrá ver el listado de sus usuarios.</h5>
                     <div class="Seperator"></div>
                     <div class="Container100 Responsive MarTop10">
-                        <p:dataTable id="dtusers" var="usuario" value="#{verUsuariosView.usuariosByEmpresa}"  widgetVar="wv_dtusers"
-                                     filteredValue="#{verUsuariosView.usuariosFlitrados}" reflow="true" styleClass="borderless"
+                        <p:dataTable id="dtusers" var="usuario" 
+                                     value="#{verUsuariosView.usuariosByEmpresa}"  
+                                     widgetVar="wv_dtusers"
+                                     filteredValue="#{verUsuariosView.usuariosFlitrados}" 
+                                     reflow="true" styleClass="borderless"
                                      rows="10"
                                      paginator="true"
                                      paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
@@ -74,8 +77,13 @@
                                     </f:facet>
                                 </p:toolbar>
                             </f:facet>
-                            <p:ajax event="rowSelect" listener="#{verUsuariosView.onRowSelectVerUsuarios}" update=":main:pg_ver_usuarios"  />
-                            <p:column headerText="Documento" filterBy="#{usuario.persona.documento}"  filterStyle="display:none" styleClass="Wid20 Fs14">
+                            <p:ajax event="rowSelect"
+                                    listener="#{verUsuariosView.onRowSelectVerUsuarios}"
+                                    update=":main:pg_ver_usuarios"  />
+                            <p:column headerText="Documento" 
+                                      filterBy="#{usuario.persona.documento}"  
+                                      filterStyle="display:none"
+                                      styleClass="Wid20 Fs14">
                                 <h:outputText value="#{usuario.persona.documento}" styleClass="Fs14" />
                             </p:column>
                             <p:column headerText="Nombre" filterBy="#{usuario.persona.nombre}" 
