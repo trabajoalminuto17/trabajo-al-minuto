@@ -8,6 +8,8 @@ package com.basp.trabajo_al_minuto.web.view;
 import static com.basp.trabajo_al_minuto.web.model.AtributosWeb.PORTAL_PAGE;
 
 import com.basp.trabajo_al_minuto.web.model.ComponenteWeb;
+import static com.basp.trabajo_al_minuto.web.model.MensajeWeb.SALIR_NOT;
+import static com.basp.trabajo_al_minuto.web.model.UtilWeb.webMessage;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.logging.Level;
@@ -35,15 +37,27 @@ public class TopbarView extends ComponenteWeb implements Serializable {
         usuarioNombre = getUserLogin().getPersona().getNombre();
         if (getUserLogin().getRol().getRolId() != 3L) {
             usuarioEmpresa = getUserLogin().getEmpresa().getNombre();
+        } else {
+            if (getPruebasOk()) {
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("menusUsuario", null);
+            }
         }
     }
 
     public void destruirSesion() {
         try {
-            FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-            FacesContext.getCurrentInstance().getExternalContext().redirect(PORTAL_PAGE);
+            if (!getPruebasOk()) {
+                FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+                FacesContext.getCurrentInstance().getExternalContext().redirect(PORTAL_PAGE);
+            } else {
+                message = webMessage(SALIR_NOT);
+            }
         } catch (IOException ex) {
             Logger.getLogger(TopbarView.class.getName()).log(Level.SEVERE, "destruirSesion", ex);
+        } finally {
+            if (message != null) {
+                FacesContext.getCurrentInstance().addMessage(null, message);
+            }
         }
     }
 

@@ -74,7 +74,7 @@
                                     </f:facet>
                                 </p:toolbar>
                             </f:facet>
-                            <p:ajax event="rowSelect" listener="#{verOfertasView.onRowSelectVerOfertas}" update=":main:pg_ver_ofertas"  />
+                            <p:ajax event="rowSelect" listener="#{verOfertasView.onRowSelectVerOfertas}"/>
                             <p:column headerText="Título" filterBy="#{oferta.perfil.titulo}"  filterStyle="display:none" styleClass="Wid40 Fs14">
                                 <h:outputText value="#{oferta.perfil.titulo}" styleClass="Fs14" />
                             </p:column>

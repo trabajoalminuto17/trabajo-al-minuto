@@ -84,6 +84,10 @@ public class ComponenteWeb implements Serializable {
         return (Long) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("pruebaPlantillaId");
     }
 
+    protected Boolean getPruebasOk() {
+        return (Boolean) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("pruebasOk");
+    }
+
     protected Long getOfertaExternalId() {
         return (Long) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("ofertaexternalId");
     }

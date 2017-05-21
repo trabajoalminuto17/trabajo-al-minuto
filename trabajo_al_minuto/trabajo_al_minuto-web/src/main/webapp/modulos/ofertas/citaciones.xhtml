@@ -49,43 +49,46 @@
     </ui:define>
 
     <ui:define name="content">
-        <h:panelGroup id="pg_mis_ofertas">
+        <h:panelGroup id="pg_citaciones">
             <div class="Container90 Responsive MarTop20" style="margin-left: 5%">
                 <div class="ContainerIndent"> 
-                    <h4 class="Fs15 gray DispBlock FontBold">Mis Ofertas</h4>
-                    <h5 class="Fs13 gray DispBlock FontLight">A continuación podrá ver el listado de sus ofertas.</h5>
+                    <h4 class="Fs15 gray DispBlock FontBold">Citaciones</h4>
+                    <h5 class="Fs13 gray DispBlock FontLight">A continuación podrá ver el listado de sus citaciones.</h5>
                     <div class="Seperator"></div>
                     <div class="Container100 Responsive MarTop10">
-                        <p:dataTable id="dtofertas" var="oferta" value="#{misOfertasView.misOfertas}"  widgetVar="wv_dtofertas"
-                                     filteredValue="#{verOfertasView.ofertasFlitradas}" reflow="true" styleClass="borderless"
+                        <p:dataTable id="dtcitaciones" var="citacion" value="#{verCitacionesView.citaciones}"  widgetVar="wv_citaciones"
+                                     filteredValue="#{verCitacionesView.citacionesFiltradas}" reflow="true" styleClass="borderless"
                                      rows="10"
                                      paginator="true"
                                      paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                                      rowsPerPageTemplate="10,20"
                                      paginatorPosition="bottom"
-                                     selectionMode="single" selection="#{misOfertasView.ofertaSeleccionada}" rowKey="#{oferta.ofertaId}"
+                                     selectionMode="single" selection="#{verCitacionesView.citacionSeleccionada}" rowKey="#{citacion.citacionId}"
                                      emptyMessage="No se encontraron ofertas!">
                             <f:facet name="header">
                                 <p:toolbar style="border: none">
                                     <f:facet name="left">
                                         <p:outputPanel>
-                                            <p:inputText id="globalFilter" onkeyup="PF('wv_dtofertas').filter()" style="width: 250px; font-size: 12px" placeholder="Buscar"/>
+                                            <p:inputText id="globalFilter" onkeyup="PF('wv_citaciones').filter()" style="width: 250px; font-size: 12px" placeholder="Buscar"/>
                                         </p:outputPanel>
                                     </f:facet>
                                 </p:toolbar>
                             </f:facet>
-                            <p:ajax event="rowSelect" listener="#{misOfertasView.onRowSelectVerOfertas}" />
-                            <p:column headerText="Título" filterBy="#{oferta.perfil.titulo}"  filterStyle="display:none" styleClass="Wid40 Fs14">
-                                <h:outputText value="#{oferta.perfil.titulo}" styleClass="Fs14" />
+                            <p:ajax event="rowSelect" listener="#{verCitacionesView.onRowSelectVerCitacion}" />
+                            <p:column headerText="Título" filterBy="#{citacion.usuarioHasOferta.ofertasOfertaId.perfil.titulo}"  filterStyle="display:none" styleClass="Wid30 Fs14">
+                                <h:outputText value="#{citacion.usuarioHasOferta.ofertasOfertaId.perfil.titulo}" styleClass="Fs14" />
                             </p:column>
-                            <p:column headerText="Area" filterBy="#{oferta.perfil.area.valor}"  filterStyle="display:none" styleClass="Wid20 Fs14">
-                                <h:outputText value="#{oferta.perfil.area.valor}" styleClass="Fs14"/>
+                            <p:column rendered="#{verCitacionesView.usuarioLogin.rol.rolId ne 3}" headerText="Candidato" filterBy="#{citacion.usuarioHasOferta.usuarioUsuarioId.persona.nombre}" filterStyle="display:none" styleClass="Wid30 Fs14">
+                                <h:outputText value="#{citacion.usuarioHasOferta.usuarioUsuarioId.persona.nombre}" styleClass="Fs14" />
                             </p:column>
-                            <p:column headerText="Rango salarial" filterBy="#{oferta.perfil.salario}"  filterStyle="display:none" styleClass="Wid20 Fs14">
-                                <h:outputText value="#{oferta.perfil.salario}" styleClass="Fs14"/>
+                            <p:column headerText="Lugar" filterBy="#{citacion.lugar}"  filterStyle="display:none" styleClass="Wid30 Fs14">
+                                <h:outputText value="#{citacion.lugar}" styleClass="Fs14"/>
                             </p:column>
-                            <p:column headerText="Fecha expiración" filterBy="#{oferta.fechaExpiracion}"  filterStyle="display:none" styleClass="Wid20">
-                                <h:outputText value="#{oferta.fechaExpiracion}" styleClass="Fs14">
+                            <p:column rendered="#{verCitacionesView.usuarioLogin.rol.rolId eq 3}" headerText="Rango salarial" filterBy="#{citacion.usuarioHasOferta.ofertasOfertaId.perfil.salario}"  filterStyle="display:none" styleClass="Wid20 Fs14">
+                                <h:outputText value="#{citacion.usuarioHasOferta.ofertasOfertaId.perfil.salario}" styleClass="Fs14"/>
+                            </p:column>
+                            <p:column headerText="Fecha Citación" filterBy="#{citacion.fechaCitacion}"  filterStyle="display:none" styleClass="Wid20">
+                                <h:outputText value="#{citacion.fechaCitacion}" styleClass="Fs14">
                                     <f:convertDateTime pattern="MMMM, dd yyyy" locale="es" />
                                 </h:outputText>
                             </p:column>

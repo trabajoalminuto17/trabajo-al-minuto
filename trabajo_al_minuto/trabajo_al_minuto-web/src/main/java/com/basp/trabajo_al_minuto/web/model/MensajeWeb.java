@@ -20,6 +20,7 @@ import javax.faces.application.FacesMessage.Severity;
 public enum MensajeWeb {
 
     ACCESO_DENEGADO("Acceso denegado!", CONTACT_ADMIN_MESSAGE, FacesMessage.SEVERITY_ERROR),
+    ACCESO_DENEGADO_PRUEBAS("Acceso denegado!", "Usuario en pruebas", FacesMessage.SEVERITY_ERROR),
     CREDENCIALES_INCORRECTAS("Credenciales Incorrectas", INTENTE_DE_NUEVO_MESSAGE, FacesMessage.SEVERITY_ERROR),
     USUARIO_NO_ENCONTRADO(ERROR_MESSAGE, "Usuario no encontrado, ".concat(INTENTE_DE_NUEVO_MESSAGE), FacesMessage.SEVERITY_ERROR),
     NO_PASSWORD(ERROR_MESSAGE, "No se ha podido cambiar la contraseña, ".concat(INTENTE_DE_NUEVO_MESSAGE), FacesMessage.SEVERITY_ERROR),
@@ -36,6 +37,7 @@ public enum MensajeWeb {
     CITACION_RECHAZADA_OK(EXITO_MESSAGE, "Citación rechazada correctamente.", FacesMessage.SEVERITY_INFO),
     CITACION_RECHAZADA_NOT(ERROR_MESSAGE, "No se han podido rechazar la citacion, ".concat(INTENTE_DE_NUEVO_MESSAGE), FacesMessage.SEVERITY_ERROR),
     CITACION_RECHAZADA(ALERTA_MESSAGE, "El candidato ha sido rechazado, no es posible ver el detalle de esté!", FacesMessage.SEVERITY_WARN),
+    SALIR_NOT(ALERTA_MESSAGE, "Se encuentra presentando una prueba, debe finalizarla para poder salir!", FacesMessage.SEVERITY_WARN),
     USUARIO_YA_EXISTE(ERROR_MESSAGE,"El Email ingresado ya se encuentra registrado", FacesMessage.SEVERITY_ERROR);
     
     private final String TITULO;

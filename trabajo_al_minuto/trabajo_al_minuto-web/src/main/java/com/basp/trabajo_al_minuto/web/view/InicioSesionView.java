@@ -13,10 +13,12 @@ import static com.basp.trabajo_al_minuto.web.model.UtilWeb.webMessage;
 
 import com.basp.trabajo_al_minuto.model.business.BusinessException;
 import com.basp.trabajo_al_minuto.model.business.BusinessSecurity;
+import com.basp.trabajo_al_minuto.service.entity.Citacion;
 import com.basp.trabajo_al_minuto.service.entity.Menu;
 import com.basp.trabajo_al_minuto.service.entity.Usuario;
 import static com.basp.trabajo_al_minuto.web.model.AtributosWeb.INICIO_PAGE;
 import com.basp.trabajo_al_minuto.web.model.ComponenteWeb;
+import static com.basp.trabajo_al_minuto.web.model.MensajeWeb.ACCESO_DENEGADO_PRUEBAS;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
@@ -53,10 +55,23 @@ public class InicioSesionView extends ComponenteWeb implements Serializable {
                 if (session_usuario.getEstado()) {
                     if (session_usuario.getCambioClave()) {
                         context.getExternalContext().getSessionMap().put("sessionUsuario", session_usuario);
+                        if (session_usuario.getRol().getRolId() == 3L) {
+                            if (session_usuario.getCandidato().isPruebasActivas()) {
+                                context.getExternalContext().getSessionMap().put("pruebasOk", Boolean.TRUE);
+                            } else {
+                                context.getExternalContext().getSessionMap().put("pruebasOk", Boolean.FALSE);
+                            }
+                        } else {
+                            context.getExternalContext().getSessionMap().put("pruebasOk", Boolean.FALSE);
+                        }
                         context.getExternalContext().getSessionMap().put("menusUsuario", getMenuInicio(session_usuario.getRol().getRolId()));
                         context.getExternalContext().getSessionMap().put("userAgent", context.getExternalContext().getRequestHeaderMap().get("User-Agent"));
                         if (session_usuario.getPassword().equals(BusinessSecurity.encrypt(clave))) {
-                            context.getExternalContext().redirect(INICIO_PAGE);
+                            if (!getPruebasOk()) {
+                                context.getExternalContext().redirect(INICIO_PAGE);
+                            } else {
+                                message = webMessage(ACCESO_DENEGADO_PRUEBAS);
+                            }
                         } else {
                             message = webMessage(CREDENCIALES_INCORRECTAS);
                         }
@@ -66,7 +81,11 @@ public class InicioSesionView extends ComponenteWeb implements Serializable {
                             context.getExternalContext().getSessionMap().put("sessionUsuario", session_usuario);
                             context.getExternalContext().getSessionMap().put("menusUsuario", getMenuInicio(session_usuario.getRol().getRolId()));
                             context.getExternalContext().getSessionMap().put("userAgent", context.getExternalContext().getRequestHeaderMap().get("User-Agent"));
-                            context.getExternalContext().redirect(CLAVE_PAGE);
+                            if (!getPruebasOk()) {
+                                context.getExternalContext().redirect(CLAVE_PAGE);
+                            } else {
+                                message = webMessage(ACCESO_DENEGADO_PRUEBAS);
+                            }
                         } else {
                             message = webMessage(CREDENCIALES_INCORRECTAS);
                         }
@@ -95,6 +114,12 @@ public class InicioSesionView extends ComponenteWeb implements Serializable {
         separator.setStyleClass("fa fa-ellipsis-v menu-separator");
         try {
             MenuModel model = new DefaultMenuModel();
+            DefaultMenuItem home = new DefaultMenuItem("Inicio");
+            home.setCommand("/inicio?faces-redirect=true");
+            home.setIcon("fa fa-home");
+            home.setImmediate(Boolean.TRUE);
+            model.addElement(home);
+            model.addElement(separator);
             List<Menu> response = usuarioEjb.getMenusByRol(rolId);
             for (int i = 0; i < response.size(); i++) {
                 DefaultSubMenu menu = new DefaultSubMenu(response.get(i).getMenuPadre().getNombre());

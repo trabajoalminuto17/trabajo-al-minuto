@@ -78,8 +78,7 @@
                                 </p:toolbar>
                             </f:facet>
                             <p:ajax event="rowSelect"
-                                    listener="#{verUsuariosView.onRowSelectVerUsuarios}"
-                                    update=":main:pg_ver_usuarios"  />
+                                    listener="#{verUsuariosView.onRowSelectVerUsuarios}"/>
                             <p:column headerText="Documento" 
                                       filterBy="#{usuario.persona.documento}"  
                                       filterStyle="display:none"

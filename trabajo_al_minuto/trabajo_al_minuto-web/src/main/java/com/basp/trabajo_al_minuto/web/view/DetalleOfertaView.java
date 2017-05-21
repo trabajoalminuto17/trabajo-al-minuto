@@ -19,8 +19,11 @@ import com.basp.trabajo_al_minuto.service.entity.Usuario;
 import com.basp.trabajo_al_minuto.web.model.ComponenteWeb;
 import static com.basp.trabajo_al_minuto.web.model.MensajeWeb.OFERTA_APLICADA_NOT;
 import static com.basp.trabajo_al_minuto.web.model.MensajeWeb.OFERTA_APLICADA_OK;
+import static com.basp.trabajo_al_minuto.web.model.UtilWeb.formatDate;
 import java.io.IOException;
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -131,6 +134,10 @@ public class DetalleOfertaView extends ComponenteWeb implements Serializable {
         } finally {
             FacesContext.getCurrentInstance().addMessage(null, message);
         }
+    }
+    
+    public String getFormatDate(Date date) {
+        return formatDate(LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault()));
     }
 
 //    @Getter and Setter
