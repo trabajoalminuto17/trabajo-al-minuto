@@ -1,0 +1,90 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pe="http://primefaces.org/ui/extensions"
+                template="../../resources/template/main_portal.xhtml">
+
+    <ui:define name="head">
+        <script type="text/javascript">
+            function skinChart() {
+                this.cfg.shadow = false;
+                this.cfg.seriesColors = ['#71CC8D', '#33AFDE', '#F7941E'];
+                this.cfg.grid = {
+                    background: '#EDF3F6',
+                    borderColor: '#D9E3E8',
+                    gridLineColor: '#D9E3E8',
+                    shadow: false
+                };
+                this.cfg.axesDefaults = {
+                    rendererOptions: {
+                        textColor: '#778D9B'
+                    }
+                };
+                this.cfg.seriesDefaults = {
+                    shadow: false,
+                    markerOptions: {
+                        shadow: false
+                    }
+                }
+            }
+
+            function skinPie() {
+                this.cfg.seriesColors = ['#dae8ef', '#27aae1', '#33ccff', '#9fadb5'];
+                this.cfg.grid = {
+                    background: '#ffffff',
+                    borderColor: '#eaeaea',
+                    gridLineColor: '#e5ebf0',
+                    shadow: false,
+                    borderWidth: 0
+                };
+                this.cfg.seriesDefaults.shadow = false;
+            }
+        </script>
+        <style type="text/css">
+            .jqplot-target, .jqplot-axis {
+                color: #778D9B;
+            }
+        </style>
+    </ui:define>
+
+    <ui:define name="content">
+        <h:panelGroup id="pg_detalle_oferta" rendered="#{not empty detalleOfertaExternalView.ofertaSeleccionada}">
+            <div class="Container80 Responsive MarTop20" style="margin-left: 10%">
+                <div class="ContainerIndent"> 
+                    <h4 class="Fs15 gray DispBlock FontLight">Información detallada de #{detalleOfertaExternalView.ofertaSeleccionada.perfil.titulo}</h4>
+                    <h5 class="Fs13 gray DispBlock FontBold">A continuación se encuentra la información de su oferta.</h5>
+                    <div class="Seperator"></div>
+                    <div class="Container100 Responsive">
+                        <div class="Container50 Responsive MarTop10">
+                            <h4 class="Fs14 black  DispBlock black">Descripción</h4>
+                            <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{detalleOfertaExternalView.ofertaSeleccionada.perfil.descripcion}"/>
+                            <div class="EmptyBox30"/>
+                            <h4 class="Fs14 black  DispBlock black">Requerimientos</h4>
+                            <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{detalleOfertaExternalView.ofertaSeleccionada.perfil.requerimientos}"/>
+                        </div>
+                        <div class="Container50 Responsive MarTop10">
+                            <h4 class="Fs14 black  DispBlock black">Fecha Expiración</h4>
+                            <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{detalleOfertaExternalView.ofertaSeleccionada.fechaExpiracion}">
+                                <f:convertDateTime pattern="MMMM, dd yyyy" locale="es" />
+                            </p:outputLabel>
+                            <div class="EmptyBox30"/>
+                            <h4 class="Fs14 black DispBlock black">Area</h4>
+                            <p:outputLabel styleClass="Fs14 black  DispBlock black" value="#{detalleOfertaExternalView.ofertaSeleccionada.perfil.area.valor}"/>
+                            <div class="EmptyBox30"/>
+                            <h4 class="Fs14 black DispBlock black">Salario</h4>
+                            <p:outputLabel styleClass="Fs14 black  DispBlock black" value="$ #{detalleOfertaExternalView.ofertaSeleccionada.perfil.salario}"/>
+                        </div>
+                        <div class="EmptyBox80"/>
+                        <p:commandButton styleClass="Fright RedButton" value="Regresar" action="/portal?faces-redirect=true"  
+                                         icon="fa fa-mail-reply-all-white" immediate="true"/>
+                        <span class="Fs14 red">¡Debes <h:commandLink class="Fs14 red FontBold HoverLink Underline" action="/iniciar_sesion?faces-redirect=true" >iniciar sesión </h:commandLink> para poder aplicar a nuestras ofertas!</span>
+                    </div>
+                </div>
+            </div>
+            <div class="EmptyBox50" />
+        </h:panelGroup>
+    </ui:define>
+
+</ui:composition>

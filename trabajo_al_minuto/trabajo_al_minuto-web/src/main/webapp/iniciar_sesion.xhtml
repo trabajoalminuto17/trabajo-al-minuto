@@ -31,8 +31,11 @@
                         <div class="login-pages-box Container50 Responsive50 MarAuto Fnone TexAlCenter"
                              style="margin-top:5%; background-position:center; background-size:cover; border-radius: 15px; background-color: #fff">
                             <div class="Container90 Fnone MarAuto TexAlCenter">
-
-                                <p:graphicImage  name="logo.png" library="image" style="width: 50%; top: 10px;position: relative;"/>
+                                <h:commandLink title="Portal" 
+                                               action="portal?faces-redirect=true" 
+                                               immediate="true">
+                                    <p:graphicImage  name="logo.png" library="image" style="width: 50%; top: 10px;position: relative;"/>
+                                </h:commandLink>
                                 <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
                                 <div class="EmptyBox20"></div>
                                 <p:inputText label="Usuario" size="25" placeholder="Usuario" styleClass="Container80 Fnone MarAuto Fs15" value="#{inicioSesionView.usuario}" required="true" />
@@ -49,8 +52,11 @@
                                                   actionListener="#{inicioSesionView.iniciarSesion}" />
 
                                 <div class="EmptyBox20"></div>
-                                <div class="Container40 Responsive MarTop10 Fs13">
+                                <div class="Container50 Responsive MarTop10 Fs13 TexAlRight">
                                     <h:commandLink styleClass="HoverLink red" action="restaurar?faces-redirect=true" immediate="true">¿Olvidó su contraseña?</h:commandLink>
+                                </div>
+                                <div class="Container40 Responsive MarTop10 Fs13 TexAlLeft" style="margin-left: 5%">
+                                    <h:commandLink styleClass="HoverLink red" action="restaurar?faces-redirect=true" immediate="true">Registrarse!</h:commandLink>
                                 </div>
                                 <div class="EmptyBox20"></div>
                             </div>

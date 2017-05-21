@@ -7,12 +7,14 @@ package com.basp.trabajo_al_minuto.web.view;
 
 import com.basp.trabajo_al_minuto.model.business.BusinessException;
 import com.basp.trabajo_al_minuto.service.entity.Catalogo;
-import static com.basp.trabajo_al_minuto.web.model.AtributosWeb.VER_OFERTA_EXTERNAL;
+import com.basp.trabajo_al_minuto.service.entity.Oferta;
+import static com.basp.trabajo_al_minuto.web.model.AtributosWeb.DETALLE_OFERTA_EXTERNAL_PAGE;
 import com.basp.trabajo_al_minuto.web.model.ComponenteWeb;
 import static com.basp.trabajo_al_minuto.web.model.UtilWeb.propiedadesItem;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,6 +23,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import org.primefaces.event.SelectEvent;
 
 /**
  *
@@ -35,11 +38,15 @@ public class PortalView extends ComponenteWeb implements Serializable {
     private String perfil;
     private Long area;
     private Integer cantidadOfertas;
+    private List<Oferta> ofertasFlitradas;
+    private List<Oferta> ofertasActualizadas;
+    private Oferta ofertaSeleccionada;
 
     @PostConstruct
     public void init() {
         try {
-            cantidadOfertas = ofertaEjb.getOfertasActivas().size();
+            ofertasActualizadas = ofertaEjb.getOfertasActivas();
+            cantidadOfertas = ofertasActualizadas.size();
         } catch (BusinessException ex) {
             Logger.getLogger(PortalView.class.getName()).log(Level.SEVERE, ex.developerException());
         }
@@ -59,13 +66,24 @@ public class PortalView extends ComponenteWeb implements Serializable {
         return response;
     }
 
-    public void filteredOferta() {
+    public void actualizarOfertas() {
         try {
-            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("perfilFiltro", perfil);
-            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("areaFiltro", area);
-            FacesContext.getCurrentInstance().getExternalContext().redirect(VER_OFERTA_EXTERNAL);
+            List<String> palabras = new ArrayList();
+            if (perfil != null && !("").equals(perfil)) {
+                palabras = Arrays.asList(perfil.toLowerCase().split(","));
+            }
+            ofertasActualizadas = ofertaEjb.getOfertasExternal(area, palabras);
+        } catch (BusinessException ex) {
+            Logger.getLogger(PortalView.class.getName()).log(Level.SEVERE, ex.developerException());
+        }
+    }
+
+    public void onRowSelectVerExternalOfertas(SelectEvent event) {
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("ofertaexternalId", ((Oferta) event.getObject()).getOfertaId());
+            FacesContext.getCurrentInstance().getExternalContext().redirect(DETALLE_OFERTA_EXTERNAL_PAGE);
         } catch (IOException ex) {
-            Logger.getLogger(PortalView.class.getName()).log(Level.SEVERE, "filteredOferta", ex);
+            Logger.getLogger(PortalView.class.getName()).log(Level.SEVERE, "onRowSelectVerExternalOfertas", ex);
         }
     }
 
@@ -92,6 +110,30 @@ public class PortalView extends ComponenteWeb implements Serializable {
 
     public void setCantidadOfertas(Integer cantidadOfertas) {
         this.cantidadOfertas = cantidadOfertas;
+    }
+
+    public List<Oferta> getOfertasFlitradas() {
+        return ofertasFlitradas;
+    }
+
+    public void setOfertasFlitradas(List<Oferta> ofertasFlitradas) {
+        this.ofertasFlitradas = ofertasFlitradas;
+    }
+
+    public Oferta getOfertaSeleccionada() {
+        return ofertaSeleccionada;
+    }
+
+    public void setOfertaSeleccionada(Oferta ofertaSeleccionada) {
+        this.ofertaSeleccionada = ofertaSeleccionada;
+    }
+
+    public List<Oferta> getOfertasActualizadas() {
+        return ofertasActualizadas;
+    }
+
+    public void setOfertasActualizadas(List<Oferta> ofertasActualizadas) {
+        this.ofertasActualizadas = ofertasActualizadas;
     }
 
 }
