@@ -14,6 +14,8 @@ import com.basp.trabajo_al_minuto.service.entity.Persona;
 import com.basp.trabajo_al_minuto.service.entity.Rol;
 import com.basp.trabajo_al_minuto.service.entity.Usuario;
 import com.basp.trabajo_al_minuto.web.model.ComponenteWeb;
+import static com.basp.trabajo_al_minuto.web.model.MensajeWeb.USUARIO_YA_EXISTE;
+import static com.basp.trabajo_al_minuto.web.model.UtilWeb.webMessage;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.logging.Level;
@@ -65,6 +67,17 @@ public class CrearUsuario extends ComponenteWeb implements Serializable {
             Logger.getLogger(CrearUsuario.class.getName()).log(Level.SEVERE, ex.developerException());
         } finally {
             FacesContext.getCurrentInstance().addMessage(null, message);
+        }
+    }
+
+    public void validarEmail() {
+        try {
+            if (usuarioEjb.getUsuarioByEmail(newUsuario.getEmail().toLowerCase()) != null) {
+                message = webMessage(USUARIO_YA_EXISTE);
+                FacesContext.getCurrentInstance().addMessage(null, message);
+            }
+        } catch (BusinessException ex) {
+            Logger.getLogger(CrearParticipanteView.class.getName()).log(Level.SEVERE, ex.developerException());
         }
     }
 
