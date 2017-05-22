@@ -50,7 +50,45 @@
     </ui:define>
 
     <ui:define name="content">
-        Hola Putito
+        <h:panelGroup id="pg_evauluacion">
+            <div class="Container80 Responsive MarTop20" style="margin-left: 10%">
+                <div class="ContainerIndent"> 
+                    <div class="Container80 Responsive">
+                        <h4 class="Fs15 gray DispBlock FontLight">Prueba #{evaluacionView.pruebaEvaluacion.nombre}</h4>
+                        <h5 class="Fs13 gray DispBlock FontBold">Resuelve la prueba.</h5>
+                    </div>
+                    <div class="Container20 Responsive">
+                        <pe:timer
+                            timeout="#{evaluacionView.pruebaEvaluacion.tiempo}"  
+                            format="HH:mm:ss"
+                            listener="#{evaluacionView.onTimeout}"/>  
+                    </div>
+                    <div class="Seperator"></div>
+                    <ui:repeat value="#{evaluacionView.pruebaEvaluacion.preguntas}" var="pregunta" varStatus="status_pregunta"> 
+                        <div class="EmptyBox20"/>
+                        <p:outputLabel styleClass="Fs14 DispBlock red FontBold" value="#{status_pregunta.index + 1} - #{pregunta.enunciado}"/>
+                        <div class="EmptyBox10"/>
+                        <div class="Container100 Responsive" style="margin-left: 5%">
+                            <ui:repeat value="#{pregunta.opciones}" var="opcion" varStatus="status_opcion">
+                                <div class="Container60 Responsive">
+                                    <p:outputLabel styleClass="Fs14 DispBlock black" value="#{opcion.enunciado}"/>
+                                </div>
+                                <div class="Container30 Responsive">
+                                    <p:selectBooleanCheckbox value="#{opcion.respuesta}">
+                                        <p:ajax update="main:pg_evauluacion" listener="#{evaluacionView.cambiarOpcion(pregunta, opcion)}" />
+                                    </p:selectBooleanCheckbox>
+                                </div>
+                                <div class="EmptyBox20"/>
+                            </ui:repeat>
+                        </div>
+                    </ui:repeat>
+                </div>
+                <div class="EmptyBox50"/>
+                <p:commandButton styleClass="Fright GreenButton" value="Finalizar" actionListener="#{evaluacionView.finalizarPrueba}" 
+                                 icon="fa fa-check-white"/>
+            </div>
+            <div class="EmptyBox80"/>
+        </h:panelGroup>
     </ui:define>
 
 </ui:composition>

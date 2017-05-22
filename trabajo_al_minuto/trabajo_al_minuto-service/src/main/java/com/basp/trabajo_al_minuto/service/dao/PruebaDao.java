@@ -11,6 +11,8 @@ import static com.basp.trabajo_al_minuto.model.business.BusinessPersistence.JPQL
 import static com.basp.trabajo_al_minuto.model.business.BusinessQuery.GET_PRUEBAS_BY_PERFIL;
 import static com.basp.trabajo_al_minuto.model.business.BusinessQuery.GET_PRUEBAS_PLANTILLA_BY_EMPRESA;
 import com.basp.trabajo_al_minuto.model.dto.PersistenceObject;
+import com.basp.trabajo_al_minuto.service.entity.Evaluacion;
+import com.basp.trabajo_al_minuto.service.entity.Opcion;
 import com.basp.trabajo_al_minuto.service.entity.OpcionPlantilla;
 import com.basp.trabajo_al_minuto.service.entity.PerfilHasPrueba;
 import com.basp.trabajo_al_minuto.service.entity.Prueba;
@@ -60,5 +62,17 @@ public class PruebaDao {
 
     protected Boolean _removeOpcionPlantilla(Long id) throws Exception {
         return BP.delete(OpcionPlantilla.class, id);
+    }
+
+    protected Evaluacion _updateEvaluacion(Evaluacion e) throws Exception {
+        return (Evaluacion) BP.update(e);
+    }
+
+    protected Evaluacion _findEvaluacion(Long id) throws Exception {
+        return (Evaluacion) BP.find(Evaluacion.class, id);
+    }
+
+    protected Opcion _updateOpcion(Opcion o) throws Exception {
+        return (Opcion) BP.update(o);
     }
 }

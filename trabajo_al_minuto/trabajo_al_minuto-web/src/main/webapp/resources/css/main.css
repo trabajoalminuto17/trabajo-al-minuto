@@ -10,6 +10,9 @@ and open the template in the editor.
 .ui-toolbar {
     background-color: #D0525D !important;
 }
+.ui-timer {
+    color: #D0525D !important;
+}
 #dialogBoxId{
     top: 50% !important;
     left:50% !important;

@@ -8,14 +8,22 @@ package com.basp.trabajo_al_minuto.web.view;
 import static com.basp.trabajo_al_minuto.web.model.AtributosWeb.DETALLE_PRUEBA_PLANTILLA_PAGE;
 
 import com.basp.trabajo_al_minuto.model.business.BusinessException;
+import com.basp.trabajo_al_minuto.service.entity.Oferta;
+import com.basp.trabajo_al_minuto.service.entity.Prueba;
 import com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla;
 import com.basp.trabajo_al_minuto.service.entity.Usuario;
+import static com.basp.trabajo_al_minuto.web.model.AtributosWeb.DETALLE_EVALUACION_PAGE;
 import com.basp.trabajo_al_minuto.web.model.ComponenteWeb;
+import static com.basp.trabajo_al_minuto.web.model.UtilWeb.formatDateTime;
 import java.io.IOException;
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -31,43 +39,115 @@ public class VerPruebaView extends ComponenteWeb implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private List<PruebaPlantilla> filteredPruebas;
-    private PruebaPlantilla pruebaSeleccionada;
+    private List<PruebaPlantilla> filteredPruebasPlantilla;
+    private List<Prueba> filteredPruebas;
+    private PruebaPlantilla pruebaPlantillaSeleccionada;
+    private Prueba pruebaSeleccionada;
+    private List<Prueba> pruebasByPerfil;
+    private List<PruebaPlantilla> pruebasByEmpresa;
+    private Usuario usuariologin;
 
-    public List<PruebaPlantilla> getPruebasByEmpresa() {
+    @PostConstruct
+    public void init() {
         try {
-            Usuario u = getUserLogin();
-            return pruebaEjb.getPruebasPlantillaByEmpresa(u.getEmpresa().getEmpresaId());
+            usuariologin = getUserLogin();
+            if (usuariologin.getRol().getRolId() == 3L) {
+                if (getOfertaId() != null) {
+                    Oferta o = ofertaEjb.findOferta(getOfertaId());
+                    pruebasByPerfil = pruebaEjb.getPruebasByPerfil(o.getPerfil().getPerfilId());
+                }
+            } else {
+                pruebasByEmpresa = pruebaEjb.getPruebasPlantillaByEmpresa(usuariologin.getEmpresa().getEmpresaId());
+            }
         } catch (BusinessException ex) {
-            Logger.getLogger(VerPruebaView.class.getName()).log(Level.SEVERE, ex.developerException());
-            return null;
+            Logger.getLogger(EvaluacionView.class.getName()).log(Level.SEVERE, ex.developerException());
         }
     }
 
     public void onRowSelectVerPruebas(SelectEvent event) {
         try {
-            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("pruebaPlantillaId", ((PruebaPlantilla) event.getObject()).getPruebaId());
-            FacesContext.getCurrentInstance().getExternalContext().redirect(DETALLE_PRUEBA_PLANTILLA_PAGE);
+            if (usuariologin.getRol().getRolId() == 3L) {
+                pruebaSeleccionada = (Prueba) event.getObject();
+            } else {
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("pruebaPlantillaId", ((PruebaPlantilla) event.getObject()).getPruebaId());
+                FacesContext.getCurrentInstance().getExternalContext().redirect(DETALLE_PRUEBA_PLANTILLA_PAGE);
+            }
         } catch (IOException ex) {
             Logger.getLogger(VerPruebaView.class.getName()).log(Level.SEVERE, "onRowSelectVerOfertas", ex);
         }
     }
 
+    public void comenzarPrueba() {
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("pruebaId", pruebaSeleccionada.getPruebaId());
+            FacesContext.getCurrentInstance().getExternalContext().redirect(DETALLE_EVALUACION_PAGE);
+        } catch (IOException ex) {
+            Logger.getLogger(VerPruebaView.class.getName()).log(Level.SEVERE, "comenzarPrueba", ex);
+        }
+    }
+
+    public String getFormatDate(Date date) {
+        if (date != null) {
+            return formatDateTime(LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault()));
+        }
+        return "";
+    }
+
 //    @Getter and Setter
-    public List<PruebaPlantilla> getFilteredPruebas() {
+    public List<PruebaPlantilla> getFilteredPruebasPlantilla() {
+        return filteredPruebasPlantilla;
+    }
+
+    public void setFilteredPruebasPlantilla(List<PruebaPlantilla> filteredPruebasPlantilla) {
+        this.filteredPruebasPlantilla = filteredPruebasPlantilla;
+    }
+
+    public List<Prueba> getFilteredPruebas() {
         return filteredPruebas;
     }
 
-    public void setFilteredPruebas(List<PruebaPlantilla> filteredPruebas) {
+    public void setFilteredPruebas(List<Prueba> filteredPruebas) {
         this.filteredPruebas = filteredPruebas;
     }
 
-    public PruebaPlantilla getPruebaSeleccionada() {
+    public PruebaPlantilla getPruebaPlantillaSeleccionada() {
+        return pruebaPlantillaSeleccionada;
+    }
+
+    public void setPruebaPlantillaSeleccionada(PruebaPlantilla pruebaPlantillaSeleccionada) {
+        this.pruebaPlantillaSeleccionada = pruebaPlantillaSeleccionada;
+    }
+
+    public Prueba getPruebaSeleccionada() {
         return pruebaSeleccionada;
     }
 
-    public void setPruebaSeleccionada(PruebaPlantilla pruebaSeleccionada) {
+    public void setPruebaSeleccionada(Prueba pruebaSeleccionada) {
         this.pruebaSeleccionada = pruebaSeleccionada;
+    }
+
+    public List<Prueba> getPruebasByPerfil() {
+        return pruebasByPerfil;
+    }
+
+    public void setPruebasByPerfil(List<Prueba> pruebasByPerfil) {
+        this.pruebasByPerfil = pruebasByPerfil;
+    }
+
+    public List<PruebaPlantilla> getPruebasByEmpresa() {
+        return pruebasByEmpresa;
+    }
+
+    public void setPruebasByEmpresa(List<PruebaPlantilla> pruebasByEmpresa) {
+        this.pruebasByEmpresa = pruebasByEmpresa;
+    }
+
+    public Usuario getUsuariologin() {
+        return usuariologin;
+    }
+
+    public void setUsuariologin(Usuario usuariologin) {
+        this.usuariologin = usuariologin;
     }
 
 }

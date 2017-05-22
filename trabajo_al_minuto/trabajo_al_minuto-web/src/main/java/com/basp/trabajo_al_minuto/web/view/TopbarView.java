@@ -5,9 +5,11 @@
  */
 package com.basp.trabajo_al_minuto.web.view;
 
+import static com.basp.trabajo_al_minuto.web.model.AtributosWeb.DETALLE_PERFIL_PAGE;
 import static com.basp.trabajo_al_minuto.web.model.AtributosWeb.PORTAL_PAGE;
 
 import com.basp.trabajo_al_minuto.web.model.ComponenteWeb;
+import static com.basp.trabajo_al_minuto.web.model.MensajeWeb.PERFIL_NOT;
 import static com.basp.trabajo_al_minuto.web.model.MensajeWeb.SALIR_NOT;
 import static com.basp.trabajo_al_minuto.web.model.UtilWeb.webMessage;
 import java.io.IOException;
@@ -54,6 +56,23 @@ public class TopbarView extends ComponenteWeb implements Serializable {
             }
         } catch (IOException ex) {
             Logger.getLogger(TopbarView.class.getName()).log(Level.SEVERE, "destruirSesion", ex);
+        } finally {
+            if (message != null) {
+                FacesContext.getCurrentInstance().addMessage(null, message);
+            }
+        }
+    }
+
+    public void renderPerfil() {
+        try {
+            if (!getPruebasOk()) {
+                FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+                FacesContext.getCurrentInstance().getExternalContext().redirect(DETALLE_PERFIL_PAGE);
+            } else {
+                message = webMessage(PERFIL_NOT);
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(TopbarView.class.getName()).log(Level.SEVERE, "renderPerfil", ex);
         } finally {
             if (message != null) {
                 FacesContext.getCurrentInstance().addMessage(null, message);
