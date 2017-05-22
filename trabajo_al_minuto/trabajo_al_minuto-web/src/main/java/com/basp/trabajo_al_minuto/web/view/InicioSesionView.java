@@ -13,7 +13,6 @@ import static com.basp.trabajo_al_minuto.web.model.UtilWeb.webMessage;
 
 import com.basp.trabajo_al_minuto.model.business.BusinessException;
 import com.basp.trabajo_al_minuto.model.business.BusinessSecurity;
-import com.basp.trabajo_al_minuto.service.entity.Citacion;
 import com.basp.trabajo_al_minuto.service.entity.Menu;
 import com.basp.trabajo_al_minuto.service.entity.Usuario;
 import static com.basp.trabajo_al_minuto.web.model.AtributosWeb.INICIO_PAGE;

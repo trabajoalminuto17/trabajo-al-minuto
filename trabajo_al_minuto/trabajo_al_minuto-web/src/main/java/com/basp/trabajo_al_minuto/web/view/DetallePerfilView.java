@@ -9,10 +9,9 @@ import com.basp.trabajo_al_minuto.model.business.BusinessException;
 import com.basp.trabajo_al_minuto.service.entity.Usuario;
 import static com.basp.trabajo_al_minuto.web.model.AtributosWeb.RUTA_HOJA_DE_VIDA_PDF;
 import com.basp.trabajo_al_minuto.web.model.ComponenteWeb;
+import com.basp.trabajo_al_minuto.web.model.MensajeWeb;
 import static com.basp.trabajo_al_minuto.web.model.MensajeWeb.CHANGE_NOT;
 import static com.basp.trabajo_al_minuto.web.model.MensajeWeb.CHANGE_OK;
-import static com.basp.trabajo_al_minuto.web.model.MensajeWeb.DOCUMENTO_ERROR;
-import static com.basp.trabajo_al_minuto.web.model.MensajeWeb.DOCUMENTO_OK;
 import static com.basp.trabajo_al_minuto.web.model.UtilWeb.webMessage;
 import java.io.File;
 import java.io.IOException;
@@ -62,14 +61,14 @@ public class DetallePerfilView extends ComponenteWeb implements Serializable {
             FileUtils.copyInputStreamToFile(event.getFile().getInputstream(), file);
             usuarioLogueado.getCandidato().setRutaHojaDeVida(file.getAbsolutePath());
             usuarioLogueado = usuarioEjb.updateUsuario(usuarioLogueado);
-            message = webMessage(DOCUMENTO_OK);
+            message = webMessage(MensajeWeb.ARCHIVO_OK);
             return true;
         } catch (IOException ex) {
-            message = webMessage(DOCUMENTO_ERROR);
-            Logger.getLogger(CrearParticipanteView.class.getName()).log(Level.SEVERE, "cargarPDF", ex);
+            message = webMessage(MensajeWeb.ARCHIVO_ERROR);
+            Logger.getLogger(CrearParticipanteView.class.getName()).log(Level.SEVERE, null, ex);
         } catch (BusinessException ex) {
-            message = webMessage(DOCUMENTO_ERROR);
-            Logger.getLogger(DetallePerfilView.class.getName()).log(Level.SEVERE, ex.developerException());
+            message = webMessage(MensajeWeb.ARCHIVO_ERROR);
+            Logger.getLogger(DetallePerfilView.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             FacesContext.getCurrentInstance().addMessage(null, message);
         }

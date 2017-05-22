@@ -25,6 +25,8 @@ import com.basp.trabajo_al_minuto.service.entity.Oferta;
 import com.basp.trabajo_al_minuto.service.entity.Usuario;
 import com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta;
 import com.basp.trabajo_al_minuto.web.model.ComponenteWeb;
+import static com.basp.trabajo_al_minuto.web.model.MensajeWeb.PRUEBA_ACTIVADA;
+import static com.basp.trabajo_al_minuto.web.model.MensajeWeb.PRUEBA_NO_ACTIVADA;
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -93,7 +95,6 @@ public class DetallePostulacionView extends ComponenteWeb implements Serializabl
         }
     }
 
-
     public void createCitacion() {
         try {
             Usuario u = getUserLogin();
@@ -129,13 +130,15 @@ public class DetallePostulacionView extends ComponenteWeb implements Serializabl
         }
     }
 
-    public void citacionRechazada() {
+    public void activarPrueba() {
         try {
-            citacionSeleccionada = citacionEjb.updateCitacion(citacionSeleccionada);
-            citacionRechazada(citacionSeleccionada, usuarioHasOfertaSeleccionada);
-            message = webMessage(CHANGE_OK);
+            if (citacionEjb.activarPrueba(citacionSeleccionada.getCitacionId()) == 1) {
+                message = webMessage(PRUEBA_ACTIVADA);
+            } else {
+                message = webMessage(PRUEBA_NO_ACTIVADA);
+            }
         } catch (BusinessException ex) {
-            message = webMessage(CHANGE_NOT);
+            message = webMessage(PRUEBA_NO_ACTIVADA);
             Logger.getLogger(DetallePostulacionView.class.getName()).log(Level.SEVERE, ex.developerException());
         } finally {
             FacesContext.getCurrentInstance().addMessage(null, message);
@@ -175,27 +178,7 @@ public class DetallePostulacionView extends ComponenteWeb implements Serializabl
         em.setStarttls(Boolean.TRUE);
         em.setMask("Trabajo al minuto");
         em.setSubject("Proceso selección!");
-        em.setBodyMessage(BusinessHtmlTemplates.actualizarCitacion(hasOferta.getOfertasOfertaId().getUsuarioAutor().getEmpresa().getNombre(), fechaCitacion, hasOferta.getUsuarioUsuarioId().getPersona().getNombre(), citacion.getLugar(), citacion.getDetalles()));
-        em.setToList(lisTo);
-        em.setHost(HOST_EMAIL_SERVER);
-        em.setMimeTypeMessage("text/html; charset=utf-8");
-        return sendEmail(em);
-    }
-
-    public Boolean citacionRechazada(Citacion citacion, UsuarioHasOferta hasOferta) throws BusinessException {
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-        String fechaCitacion = df.format(citacion.getFechaCitacion());
-        List<String> lisTo = new ArrayList();
-        lisTo.add(hasOferta.getUsuarioUsuarioId().getEmail());
-        EmailMessage em = new EmailMessage();
-        em.setFrom("trabajoalminuto@gmail.com");
-        em.setUser("trabajoalminuto@gmail.com");
-        em.setPassword("tam12345");
-        em.setPort(587);
-        em.setStarttls(Boolean.TRUE);
-        em.setMask("Trabajo al minuto");
-        em.setSubject("Proceso selección!");
-        em.setBodyMessage(BusinessHtmlTemplates.actualizarCitacion(hasOferta.getOfertasOfertaId().getPerfil().getTitulo(), fechaCitacion, hasOferta.getUsuarioUsuarioId().getPersona().getNombre(), citacion.getLugar(), citacion.getDetalles()));
+        em.setBodyMessage(BusinessHtmlTemplates.citacionRechazada(hasOferta.getOfertasOfertaId().getUsuarioAutor().getEmpresa().getNombre(), fechaCitacion, hasOferta.getUsuarioUsuarioId().getPersona().getNombre(), citacion.getLugar(), citacion.getDetalles()));
         em.setToList(lisTo);
         em.setHost(HOST_EMAIL_SERVER);
         em.setMimeTypeMessage("text/html; charset=utf-8");
@@ -250,7 +233,5 @@ public class DetallePostulacionView extends ComponenteWeb implements Serializabl
     public void setFechaActual(Date fechaActual) {
         this.fechaActual = fechaActual;
     }
-    
-    
 
 }

@@ -196,7 +196,8 @@
                             <div class="Container100 Responsive MarTop10">
                                 <h4 class="Fs14 black  DispBlock black">Fecha de citación*</h4>
                                 <p:calendar value="#{detallePostulacionView.newCitacion.fechaCitacion}" 
-                                            required="true" pattern="MM/dd/yyyy HH:mm" 
+                                            required="true"
+                                            pattern="MM/dd/yyyy HH:mm" 
                                             requiredMessage="Fecha de citación no válida" 
                                             mindate="#{detallePostulacionView.fechaActual}"
                                             validatorMessage="Fecha de citación no válida" 
@@ -240,8 +241,23 @@
                             </div>
                         </div>
                         <div class="EmptyBox50" />
+
                         <p:commandButton styleClass="Fright RedButton" value="Regresar" action="/modulos/ofertas/detalle?faces-redirect=true"  
                                          icon="fa fa-mail-reply-all-white" immediate="true"/>
+                        <p:commandButton styleClass="Fright GreenButton" 
+                                         value="Activar Pruebas"
+                                         actionListener="#{detallePostulacionView.activarPrueba}" 
+                                         icon="fa fa-envelope-white">
+                            <p:confirm header="Mensaje de confirmaciòn" message="Desea activar las pruebas?" icon="ui-icon-alert" />
+                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                <p:commandButton value="Si" type="button" 
+                                                 styleClass="ui-confirmdialog-yes"
+                                                 icon="ui-icon-check" />
+                                <p:commandButton value="No" type="button" 
+                                                 styleClass="ui-confirmdialog-no"
+                                                 icon="ui-icon-close" />
+                            </p:confirmDialog>
+                        </p:commandButton>
                         <p:commandButton styleClass="Fright BlueButton" 
                                          value="Re-enviar"
                                          actionListener="#{detallePostulacionView.updateCitacion}" 

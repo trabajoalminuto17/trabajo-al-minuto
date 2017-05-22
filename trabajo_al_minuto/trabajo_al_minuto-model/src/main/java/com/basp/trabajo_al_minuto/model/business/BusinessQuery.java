@@ -33,6 +33,7 @@ public class BusinessQuery {
     public static final String GET_OFERTAS_ACTIVAS = "SELECT o FROM Oferta o WHERE o.estado = TRUE ORDER BY o.fechaExpiracion";
     public static final String GET_USUARIO_HAS_OFERTA = "SELECT u FROM UsuarioHasOferta u WHERE u.usuarioUsuarioId.usuarioId = :arg0 AND u.ofertasOfertaId.ofertaId = :arg1";
     public static final String GET_MIS_OFERTAS = "SELECT u.ofertasOfertaId FROM UsuarioHasOferta u WHERE u.usuarioUsuarioId.usuarioId = :arg AND u.estado.catalogoId IN (8, 11) ORDER BY u.fechaPostulacion";
+    public static final String ACTIVAR_PRUEBA = "UPDATE Citacion c SET c.activarPruebas = TRUE WHERE c.citacionId = :arg";
 
     public static final List<Object> GET_OFERTAS_EXTERNAL(Long area, String palabra) {
         List<Object> response = new ArrayList();
