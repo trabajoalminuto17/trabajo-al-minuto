@@ -56,40 +56,93 @@
                     <h5 class="Fs13 gray DispBlock FontLight">A continuación podrá ver el listado de sus pruebas.</h5>
                     <div class="Seperator"></div>
                     <div class="Container100 Responsive MarTop10">
-                        <p:dataTable id="dtpruebas" var="prueba" value="#{verPruebaView.pruebasByEmpresa}"  widgetVar="wv_dtpruebas"
-                                     filteredValue="#{verPruebaView.filteredPruebas}" reflow="true" styleClass="borderless"
-                                     rows="10"
-                                     paginator="true"
-                                     paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                                     rowsPerPageTemplate="10,20"
-                                     paginatorPosition="bottom"
-                                     selectionMode="single" selection="#{verPruebaView.pruebaSeleccionada}" rowKey="#{prueba.pruebaId}"
-                                     emptyMessage="No se encontraron ofertas!">
-                            <f:facet name="header">
-                                <p:toolbar style="border: none">
-                                    <f:facet name="left">
-                                        <p:outputPanel>
-                                            <p:inputText id="globalFilter" onkeyup="PF('wv_dtpruebas').filter()" style="width: 250px; font-size: 12px" placeholder="Buscar"/>
-                                        </p:outputPanel>
-                                    </f:facet>
-                                </p:toolbar>
-                            </f:facet>
-                            <p:ajax event="rowSelect" listener="#{verPruebaView.onRowSelectVerPruebas}"/>
-                            <p:column headerText="Nombre" filterBy="#{prueba.nombre}"  filterStyle="display:none" styleClass="Wid40 Fs14">
-                                <h:outputText value="#{prueba.nombre}" styleClass="Fs14" />
-                            </p:column>
-                            <p:column headerText="Area" filterBy="#{prueba.area.valor}" filterStyle="display:none" styleClass="Wid10 Fs14">
-                                <h:outputText value="#{prueba.area.valor}" styleClass="Fs14"/>
-                            </p:column>
-                            <p:column headerText="Porcentaje Minimo" filterBy="#{prueba.porcentajeMinimo}" filterStyle="display:none" styleClass="Wid10 Fs14">
-                                <h:outputText value="#{prueba.porcentajeMinimo} %" styleClass="Fs14"/>
-                            </p:column>
-                            <p:column headerText="Limite de tiempo" filterBy="#{prueba.limiteTiempo}" filterStyle="display:none" styleClass="Wid10 Fs14">
-                                <h:outputText value="#{prueba.limiteTiempo}" styleClass="Fs14">
-                                    <f:convertDateTime pattern="hh:mm" locale="es" />
-                                </h:outputText>
-                            </p:column>
-                        </p:dataTable>
+                        <h:panelGroup rendered="#{verPruebaView.usuariologin.rol.rolId eq 3}" id="png_pruebas">
+                            <p:dialog header="Comenzar prueba" widgetVar="dlg" modal="true" width="80%"
+                                      closable="false" resizable="false">
+                                <h:panelGroup id="png_prueba_dlg">
+                                    <span class="Fs14 black">Iniciar prueba <strong>#{verPruebaView.pruebaSeleccionada.nombre}</strong> 
+                                        con un limite de tiempo de <strong>#{verPruebaView.getFormatDate(verPruebaView.pruebaSeleccionada.limiteTiempo)}</strong> ? </span>
+                                    <div class="EmptyBox10"/>
+                                    <span class="Fs14 red">¡Recuerda, una vez de inicio no debes regresar hasta terminarla o se cumpla el tiempo limite de la prueba,
+                                        de lo contrario será anulada y no podra presentarla de nuevo!</span>
+                                    <div class="EmptyBox10"/>
+                                    <p:commandButton styleClass="Fright RedButton" value="No" update="png_pruebas"
+                                                     icon="fa fa-close-white" immediate="true"/>
+                                    <p:commandButton styleClass="Fright GreenButton" value="Si" actionListener="#{verPruebaView.comenzarPrueba}"
+                                                     icon="fa fa-check-white" immediate="true"/>
+                                </h:panelGroup>
+                            </p:dialog> 
+                            <p:dataTable id="dtpruebas" var="prueba" value="#{verPruebaView.pruebasByPerfil}"  widgetVar="wv_dtpruebas"
+                                         filteredValue="#{verPruebaView.filteredPruebas}" reflow="true" styleClass="borderless"
+                                         rows="10"
+                                         paginator="true"
+                                         paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                                         rowsPerPageTemplate="10,20"
+                                         paginatorPosition="bottom"
+                                         selectionMode="single" selection="#{verPruebaView.pruebaSeleccionada}" rowKey="#{prueba.pruebaId}"
+                                         emptyMessage="No se encontraron ofertas!">
+                                <f:facet name="header">
+                                    <p:toolbar style="border: none">
+                                        <f:facet name="left">
+                                            <p:outputPanel>
+                                                <p:inputText id="globalFilter" onkeyup="PF('wv_dtpruebas').filter()" style="width: 250px; font-size: 12px" placeholder="Buscar"/>
+                                            </p:outputPanel>
+                                        </f:facet>
+                                    </p:toolbar>
+                                </f:facet>
+                                <p:ajax event="rowSelect" listener="#{verPruebaView.onRowSelectVerPruebas}" oncomplete="PF('dlg').show()" update=":main:png_prueba_dlg"/>
+                                <p:column headerText="Nombre" filterBy="#{prueba.nombre}"  filterStyle="display:none" styleClass="Wid40 Fs14">
+                                    <h:outputText value="#{prueba.nombre}" styleClass="Fs14" />
+                                </p:column>
+                                <p:column headerText="Area" filterBy="#{prueba.area.valor}" filterStyle="display:none" styleClass="Wid10 Fs14">
+                                    <h:outputText value="#{prueba.area.valor}" styleClass="Fs14"/>
+                                </p:column>
+                                <p:column headerText="Porcentaje Minimo" filterBy="#{prueba.porcentajeMinimo}" filterStyle="display:none" styleClass="Wid10 Fs14">
+                                    <h:outputText value="#{prueba.porcentajeMinimo} %" styleClass="Fs14"/>
+                                </p:column>
+                                <p:column headerText="Limite de tiempo" filterBy="#{prueba.limiteTiempo}" filterStyle="display:none" styleClass="Wid10 Fs14">
+                                    <h:outputText value="#{prueba.limiteTiempo}" styleClass="Fs14">
+                                        <f:convertDateTime pattern="hh:mm" locale="es" />
+                                    </h:outputText>
+                                </p:column>
+                            </p:dataTable>
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{verPruebaView.usuariologin.rol.rolId ne 3}">
+                            <p:dataTable id="dtpruebasplantilla" var="pruebaplantilla" value="#{verPruebaView.pruebasByEmpresa}"  widgetVar="wv_dtpruebasplantilla"
+                                         filteredValue="#{verPruebaView.filteredPruebasPlantilla}" reflow="true" styleClass="borderless"
+                                         rows="10"
+                                         paginator="true"
+                                         paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                                         rowsPerPageTemplate="10,20"
+                                         paginatorPosition="bottom"
+                                         selectionMode="single" selection="#{verPruebaView.pruebaPlantillaSeleccionada}" rowKey="#{pruebaplantilla.pruebaId}"
+                                         emptyMessage="No se encontraron ofertas!">
+                                <f:facet name="header">
+                                    <p:toolbar style="border: none">
+                                        <f:facet name="left">
+                                            <p:outputPanel>
+                                                <p:inputText id="globalFilter" onkeyup="PF('wv_dtpruebasplantilla').filter()" style="width: 250px; font-size: 12px" placeholder="Buscar"/>
+                                            </p:outputPanel>
+                                        </f:facet>
+                                    </p:toolbar>
+                                </f:facet>
+                                <p:ajax event="rowSelect" listener="#{verPruebaView.onRowSelectVerPruebas}"/>
+                                <p:column headerText="Nombre" filterBy="#{pruebaplantilla.nombre}"  filterStyle="display:none" styleClass="Wid40 Fs14">
+                                    <h:outputText value="#{pruebaplantilla.nombre}" styleClass="Fs14" />
+                                </p:column>
+                                <p:column headerText="Area" filterBy="#{pruebaplantilla.area.valor}" filterStyle="display:none" styleClass="Wid10 Fs14">
+                                    <h:outputText value="#{pruebaplantilla.area.valor}" styleClass="Fs14"/>
+                                </p:column>
+                                <p:column headerText="Porcentaje Minimo" filterBy="#{pruebaplantilla.porcentajeMinimo}" filterStyle="display:none" styleClass="Wid10 Fs14">
+                                    <h:outputText value="#{pruebaplantilla.porcentajeMinimo} %" styleClass="Fs14"/>
+                                </p:column>
+                                <p:column headerText="Limite de tiempo" filterBy="#{pruebaplantilla.limiteTiempo}" filterStyle="display:none" styleClass="Wid10 Fs14">
+                                    <h:outputText value="#{pruebaplantilla.limiteTiempo}" styleClass="Fs14">
+                                        <f:convertDateTime pattern="hh:mm" locale="es" />
+                                    </h:outputText>
+                                </p:column>
+                            </p:dataTable>
+                        </h:panelGroup>
                     </div>
                 </div>
             </div>

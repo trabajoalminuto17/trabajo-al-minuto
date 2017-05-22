@@ -30,14 +30,10 @@
                 <li>
                     <a class="Animated05 CursPointer Fs14">
                         <h:commandLink  class="Animated05 CursPointer Fs14"
-                                        action="/modulos/usuarios/detalle_perfil?faces-redirect=true"
-                                        actionListener="#{detallePerfilView.init}"
+                                        actionListener="#{topbarView.renderPerfil}" 
                                         immediate="true">
-                            <f:ajax execute="@this" render="@form"/>
                             <i class="fa fa-user-red"></i>
                             #{topbarView.usuarioNombre}
-
-
                         </h:commandLink>
                     </a>
                 </li>

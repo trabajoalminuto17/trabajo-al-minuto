@@ -60,7 +60,6 @@ public class ComponenteWeb implements Serializable {
         if (menus != null) {
             return menus;
         }
-        System.out.println("Menus de usuario es nulo");
         return null;
     }
 
@@ -70,6 +69,10 @@ public class ComponenteWeb implements Serializable {
 
     protected Long getOfertaId() {
         return (Long) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("ofertaId");
+    }
+
+    protected Long getCitacionId() {
+        return (Long) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("citacionId");
     }
 
     protected Long getUsuarioHasOfertaId() {
@@ -90,6 +93,10 @@ public class ComponenteWeb implements Serializable {
 
     protected Long getOfertaExternalId() {
         return (Long) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("ofertaexternalId");
+    }
+
+    protected Long getEvaluacionId() {
+        return (Long) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("evaluacionId");
     }
 
     protected List<Catalogo> getCatalogosByParent(Long id) throws BusinessException {

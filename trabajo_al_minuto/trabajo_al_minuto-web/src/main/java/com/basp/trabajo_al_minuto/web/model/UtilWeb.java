@@ -55,4 +55,9 @@ public class UtilWeb {
         return Character.toString(d.charAt(0)).toUpperCase() + d.substring(1);
     }
 
+    public static String formatDateTime(LocalDateTime date) {
+        String d = date.format(DateTimeFormatter.ofPattern("HH:mm", new Locale("es")));
+        return Character.toString(d.charAt(0)).toUpperCase() + d.substring(1);
+    }
+
 }

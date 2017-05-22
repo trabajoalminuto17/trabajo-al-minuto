@@ -14,6 +14,7 @@ import com.basp.trabajo_al_minuto.service.entity.Usuario;
 import static com.basp.trabajo_al_minuto.web.model.AtributosWeb.DETALLE_EVALUACION_PAGE;
 import static com.basp.trabajo_al_minuto.web.model.AtributosWeb.DETALLE_OFERTA_PAGE;
 import static com.basp.trabajo_al_minuto.web.model.AtributosWeb.INICIO_PAGE;
+import static com.basp.trabajo_al_minuto.web.model.AtributosWeb.PRUEBA_PLANTILLA_PAGE;
 import com.basp.trabajo_al_minuto.web.model.ComponenteWeb;
 import static com.basp.trabajo_al_minuto.web.model.UtilWeb.formatDate;
 import java.io.IOException;
@@ -111,9 +112,18 @@ public class InicioView extends ComponenteWeb implements Serializable {
         try {
             usuarioSession.getCandidato().setPruebasActivas(Boolean.TRUE);
             usuarioSession = usuarioEjb.updateUsuario(usuarioSession);
+            Evaluacion e = new Evaluacion();
+            e.setCitacion(citacion);
+            e.setEstado(Boolean.TRUE);
+            e.setPorcentaje(0D);
+            e.setTiempoEmpleado(new Date());
+            e = pruebaEjb.updateEvaluacion(e);
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("evaluacionId", e.getEvaluacionId());
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("citacionId", citacion.getCitacionId());
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("ofertaId", citacion.getUsuarioHasOferta().getOfertasOfertaId().getOfertaId());
             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("sessionUsuario", usuarioSession);
             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("pruebasOk", Boolean.TRUE);
-            FacesContext.getCurrentInstance().getExternalContext().redirect(DETALLE_EVALUACION_PAGE);
+            FacesContext.getCurrentInstance().getExternalContext().redirect(PRUEBA_PLANTILLA_PAGE);
         } catch (BusinessException ex) {
             Logger.getLogger(InicioView.class.getName()).log(Level.SEVERE, ex.developerException());
         } catch (IOException ex) {

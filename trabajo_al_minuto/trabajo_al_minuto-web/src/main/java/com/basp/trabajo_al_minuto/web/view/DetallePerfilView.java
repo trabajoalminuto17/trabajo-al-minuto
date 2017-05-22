@@ -66,10 +66,10 @@ public class DetallePerfilView extends ComponenteWeb implements Serializable {
             return true;
         } catch (IOException ex) {
             message = webMessage(DOCUMENTO_ERROR);
-            Logger.getLogger(CrearParticipanteView.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CrearParticipanteView.class.getName()).log(Level.SEVERE, "cargarPDF", ex);
         } catch (BusinessException ex) {
             message = webMessage(DOCUMENTO_ERROR);
-            Logger.getLogger(DetallePerfilView.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DetallePerfilView.class.getName()).log(Level.SEVERE, ex.developerException());
         } finally {
             FacesContext.getCurrentInstance().addMessage(null, message);
         }

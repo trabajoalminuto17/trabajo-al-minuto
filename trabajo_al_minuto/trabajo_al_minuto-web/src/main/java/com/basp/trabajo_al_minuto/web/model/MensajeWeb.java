@@ -27,6 +27,8 @@ public enum MensajeWeb {
     CLAVE_RESTAURAD_NOT(ERROR_MESSAGE, "No se ha podido restaurar la contraseña, ".concat(INTENTE_DE_NUEVO_MESSAGE), FacesMessage.SEVERITY_ERROR),
     CLAVE_RESTAURADA_OK(EXITO_MESSAGE, "Se ha enviado la contraseña de restauración al email registrado.", FacesMessage.SEVERITY_INFO),
     CHANGE_OK(EXITO_MESSAGE, "Cambios realizados correctamente.", FacesMessage.SEVERITY_INFO),
+    QUESTION_REPEAT(ERROR_MESSAGE, "Hay preguntas sin responder.", FacesMessage.SEVERITY_INFO),
+    QUESTION_NULL(ERROR_MESSAGE, "Hay preguntas sin responder.", FacesMessage.SEVERITY_INFO),
     CHANGE_NOT(ERROR_MESSAGE, "No se han podido guardar los cambios, ".concat(INTENTE_DE_NUEVO_MESSAGE), FacesMessage.SEVERITY_ERROR),
     USUARIO_OK(EXITO_MESSAGE, "Usuario creado correctamente.", FacesMessage.SEVERITY_INFO),
     USUARIO_NOT(ERROR_MESSAGE, "No se han podido crear el usuario, ".concat(INTENTE_DE_NUEVO_MESSAGE), FacesMessage.SEVERITY_ERROR),
@@ -38,11 +40,11 @@ public enum MensajeWeb {
     CITACION_RECHAZADA_NOT(ERROR_MESSAGE, "No se han podido rechazar la citacion, ".concat(INTENTE_DE_NUEVO_MESSAGE), FacesMessage.SEVERITY_ERROR),
     CITACION_RECHAZADA(ALERTA_MESSAGE, "El candidato ha sido rechazado, no es posible ver el detalle de esté!", FacesMessage.SEVERITY_WARN),
     SALIR_NOT(ALERTA_MESSAGE, "Se encuentra presentando una prueba, debe finalizarla para poder salir!", FacesMessage.SEVERITY_WARN),
-    USUARIO_YA_EXISTE(ERROR_MESSAGE,"El Email ingresado ya se encuentra registrado", FacesMessage.SEVERITY_ERROR),
+    PERFIL_NOT(ALERTA_MESSAGE, "Se encuentra presentando una prueba, debe finalizarla para poder ir al perfil!", FacesMessage.SEVERITY_WARN),
+    USUARIO_YA_EXISTE(ERROR_MESSAGE, "El Email ingresado ya se encuentra registrado", FacesMessage.SEVERITY_ERROR),
     DOCUMENTO_OK(EXITO_MESSAGE, "El documento ha sido cargado correctamente.", FacesMessage.SEVERITY_INFO),
     DOCUMENTO_ERROR(ERROR_MESSAGE, "Se presentó un error al cargar el documento.", FacesMessage.SEVERITY_ERROR);
-   
-    
+
     private final String TITULO;
     private final String DESCRIPCION;
     private final Severity SEVERITY;
