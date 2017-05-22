@@ -63,11 +63,17 @@
                                          requiredMessage="Nombre no válido" validatorMessage="Nombre no válido"/>
                             <div class="EmptyBox30"/>
                             <h4 class="Fs14 black  DispBlock black">Tiempo límite*</h4>
-                            <p:calendar value="#{detallePruebaView.pruebaSeleccionada.limiteTiempo}" required="true" pattern="HH:mm" timeOnly="true"
-                                        requiredMessage="Tiempo límite no válido" validatorMessage="Tiempo límite no válido" locale="es" />
+                            <p:calendar value="#{detallePruebaView.pruebaSeleccionada.limiteTiempo}" 
+                                        required="true" pattern="HH:mm" 
+                                        timeOnly="true"
+                                        requiredMessage="Tiempo límite no válido" 
+                                        validatorMessage="Tiempo límite no válido" locale="es" />
                             <div class="EmptyBox30"/>
                             <h4 class="Fs14 black  DispBlock black">Area*</h4>
-                            <p:selectOneMenu label="Area" value="#{detallePruebaView.area}" required="true"  styleClass="Container50 Fnone MarAuto Fs18"
+                            <p:selectOneMenu label="Area" 
+                                             value="#{detallePruebaView.area}" 
+                                             required="true" 
+                                             styleClass="Container50 Fnone MarAuto Fs18"
                                              style="width: 60%; font-weight: bold;">
                                 <f:selectItems value="#{detallePruebaView.areas}"/>
                             </p:selectOneMenu>   

@@ -17,6 +17,7 @@ import com.basp.trabajo_al_minuto.service.entity.Oferta;
 import com.basp.trabajo_al_minuto.service.entity.Prueba;
 import com.basp.trabajo_al_minuto.service.entity.Usuario;
 import com.basp.trabajo_al_minuto.web.model.ComponenteWeb;
+import com.basp.trabajo_al_minuto.web.model.MensajeWeb;
 import static com.basp.trabajo_al_minuto.web.model.MensajeWeb.OFERTA_APLICADA_NOT;
 import static com.basp.trabajo_al_minuto.web.model.MensajeWeb.OFERTA_APLICADA_OK;
 import static com.basp.trabajo_al_minuto.web.model.UtilWeb.formatDate;
@@ -86,11 +87,15 @@ public class DetalleOfertaView extends ComponenteWeb implements Serializable {
     public void onRowSelectVerUsuarioHasOfertas(SelectEvent event) {
         try {
             UsuarioHasOferta uho = (UsuarioHasOferta) event.getObject();
-            if (uho.getEstado().getCatalogoId() != 9L) {
-                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuarioHasOfertaId", ((UsuarioHasOferta) event.getObject()).getUsuarioHasOfertaId());
-                FacesContext.getCurrentInstance().getExternalContext().redirect(DETALLE_POSTULACION_PAGE);
+            if (!uho.getCitacion().getActivarPruebas()) {
+                if (uho.getEstado().getCatalogoId() != 9L) {
+                    FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuarioHasOfertaId", ((UsuarioHasOferta) event.getObject()).getUsuarioHasOfertaId());
+                    FacesContext.getCurrentInstance().getExternalContext().redirect(DETALLE_POSTULACION_PAGE);
+                } else {
+                    message = webMessage(CITACION_RECHAZADA);
+                }
             } else {
-                message = webMessage(CITACION_RECHAZADA);
+                message = webMessage(MensajeWeb.USUARIO_EN_PRUEBAS);
             }
         } catch (IOException ex) {
             Logger.getLogger(DetalleOfertaView.class.getName()).log(Level.SEVERE, "onRowSelectVerUsuarioHasOfertas", ex);
@@ -135,7 +140,7 @@ public class DetalleOfertaView extends ComponenteWeb implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, message);
         }
     }
-    
+
     public String getFormatDate(Date date) {
         return formatDate(LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault()));
     }

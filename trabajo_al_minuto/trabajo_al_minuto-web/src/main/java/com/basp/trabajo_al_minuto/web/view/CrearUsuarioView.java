@@ -7,7 +7,6 @@ package com.basp.trabajo_al_minuto.web.view;
 
 import static com.basp.trabajo_al_minuto.web.model.MensajeWeb.USUARIO_NOT;
 import static com.basp.trabajo_al_minuto.web.model.MensajeWeb.USUARIO_OK;
-import static com.basp.trabajo_al_minuto.web.model.UtilWeb.webMessage;
 
 import com.basp.trabajo_al_minuto.model.business.BusinessException;
 import com.basp.trabajo_al_minuto.service.entity.Persona;

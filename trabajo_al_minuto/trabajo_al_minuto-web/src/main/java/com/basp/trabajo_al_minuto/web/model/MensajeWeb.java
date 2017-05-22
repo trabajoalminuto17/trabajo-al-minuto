@@ -35,13 +35,15 @@ public enum MensajeWeb {
     OFERTA_APLICADA_OK(EXITO_MESSAGE, "Has aplicado correctamente ha esta oferta.", FacesMessage.SEVERITY_INFO),
     OFERTA_APLICADA_NOT(ERROR_MESSAGE, "No es posible aplicar a esta oferta, ".concat(INTENTE_DE_NUEVO_MESSAGE), FacesMessage.SEVERITY_ERROR),
     CITACION_RECHAZADA_OK(EXITO_MESSAGE, "Citación rechazada correctamente.", FacesMessage.SEVERITY_INFO),
-    CITACION_RECHAZADA_NOT(ERROR_MESSAGE, "No se han podido rechazar la citacion, ".concat(INTENTE_DE_NUEVO_MESSAGE), FacesMessage.SEVERITY_ERROR),
+    CITACION_RECHAZADA_NOT(ERROR_MESSAGE, "No se ha podido rechazar la citacion, ".concat(INTENTE_DE_NUEVO_MESSAGE), FacesMessage.SEVERITY_ERROR),
     CITACION_RECHAZADA(ALERTA_MESSAGE, "El candidato ha sido rechazado, no es posible ver el detalle de esté!", FacesMessage.SEVERITY_WARN),
     SALIR_NOT(ALERTA_MESSAGE, "Se encuentra presentando una prueba, debe finalizarla para poder salir!", FacesMessage.SEVERITY_WARN),
     USUARIO_YA_EXISTE(ERROR_MESSAGE,"El Email ingresado ya se encuentra registrado", FacesMessage.SEVERITY_ERROR),
-    DOCUMENTO_OK(EXITO_MESSAGE, "El documento ha sido cargado correctamente.", FacesMessage.SEVERITY_INFO),
-    DOCUMENTO_ERROR(ERROR_MESSAGE, "Se presentó un error al cargar el documento.", FacesMessage.SEVERITY_ERROR);
-   
+    ARCHIVO_OK(EXITO_MESSAGE, "El archivo ha sido cargado correctamente.", FacesMessage.SEVERITY_INFO),
+    ARCHIVO_ERROR(ERROR_MESSAGE, "Se presentó un error al cargar el archivo.", FacesMessage.SEVERITY_ERROR),
+    PRUEBA_ACTIVADA(EXITO_MESSAGE, "La prueba ha sido activada.", FacesMessage.SEVERITY_INFO),
+    PRUEBA_NO_ACTIVADA(ERROR_MESSAGE, "Se presentò un error al activar prueba.", FacesMessage.SEVERITY_ERROR),
+    USUARIO_EN_PRUEBAS(ALERTA_MESSAGE, "El usuario se encuentra en pruebas.", FacesMessage.SEVERITY_WARN);
     
     private final String TITULO;
     private final String DESCRIPCION;

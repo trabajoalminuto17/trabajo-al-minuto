@@ -3,6 +3,7 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui"
+                xmlns:pe="http://primefaces.org/ui/extensions"
                 template="../../resources/template/main.xhtml">
 
     <ui:define name="head">
@@ -49,191 +50,126 @@
     </ui:define>
 
     <ui:define name="content">
+        <h:panelGroup id="pg_crear_oferta">
+            <div class="Container80 Responsive MarTop20" style="margin-left: 10%">
+                <div class="ContainerIndent"> 
+                    <h4 class="Fs15 gray DispBlock FontLight">Crear oferta</h4>
+                    <h5 class="Fs13 gray DispBlock FontBold">Ingrese los datos de la oferta.</h5>
+                    <div class="Seperator"></div>
+                    <div class="Container100 Responsive">
+                        <div class="Container50 Responsive MarTop10">
 
-        <!-- BOX START -->
-        <div class="layout-portlets-box">
-            <div class="Container20 Responsive">
-                <div class="ContainerIndent">
-                    <div class="Container100">
-                        <div class="DispInlBlock MarTop20">
-                            <div class="Container20"><i class="fa fa-user Fs50 red Fleft MarRight10"></i></div>
-                            <div class="Container80">
-                                <div class="Fright">
-                                    <h2 class="black Fs24 FontRalewayMedium">Bryan Silva</h2>
-                                    <span class="Fs15 gray FontRalewayRegular DispBlock">Administrador</span>
-                                </div>
-                            </div>
+                            <h4 class="Fs14 black  DispBlock black">Titulo*</h4>
+                            <p:inputTextarea value="#{crearOfertaView.newPerfil.titulo}" 
+                                             required="true" 
+                                             maxlength="40"
+                                             counterTemplate="{0} caracteres restantes."
+                                             counter="display"
+                                             styleClass="Wid60"/>
+                            <div class="EmptyBox5"/>
+                            <h:outputText id="display" class="Fs13" />
+                            <div class="EmptyBox30"/>
+
+                            <h4 class="Fs14 black  DispBlock black">Descripción*</h4>
+                            <p:inputTextarea value="#{crearOfertaView.newPerfil.descripcion}" 
+                                             required="true" 
+                                             styleClass="Wid80" 
+                                             requiredMessage="Descripción no valida"
+                                             validatorMessage="Descripción no valida"/>
+
+                            <div class="EmptyBox30"/>
+                            <h4 class="Fs14 black  DispBlock black">Requerimientos*</h4>
+                            <p:inputTextarea value="#{crearOfertaView.newPerfil.requerimientos}" 
+                                             required="true" 
+                                             styleClass="Wid80"
+                                             />
+
+
                         </div>
-                        <div class="Seperator"></div>
-                        <i class="fa fa-clock-o Fleft Fs15 gray MarRight10"></i>
-                        <span class="Fleft Fs12 softgray">Ultimo Ingreso - 18.08.2015  16:30</span>
-                        <div class="Container100 MarTop20">
-                            <a href="modules/user/view_users.xhtml" class="Wid30 Responsive BorderedBox Fleft TexAlCenter HoverEffect">
-                                <div class="ContainerIndent">
-                                    <div class="EmptyBox10"></div>
-                                    <i class="fa fa-users Fs24 animated swing infinite gray"></i>
-                                    <span class="Fs10 DispBlock gray">Usuarios</span>
-                                    <span class="Fs24 DispBlock red">24</span>
-                                    <div class="EmptyBox10"></div>
-                                </div>
-                            </a>
-                            <a href="modules/test/view_tests.xhtml" class="Wid30 Responsive BorderedBox Fleft TexAlCenter HoverEffect" style="margin-left:5%;">
-                                <div class="ContainerIndent">
-                                    <div class="EmptyBox10"></div>
-                                    <i class="fa fa-newspaper-o gray Fs24"></i>
-                                    <span class="Fs10 DispBlock gray">Pruebas</span>
-                                    <span class="Fs24 DispBlock red">19</span>
-                                    <div class="EmptyBox10"></div>
-                                </div>
-                            </a>
-                            <a href="#" class="Wid30 Responsive BorderedBox Fright TexAlCenter HoverEffect">
-                                <div class="ContainerIndent">
-                                    <div class="EmptyBox10"></div>
-                                    <i class="fa fa-bar-chart gray Fs24"></i>
-                                    <span class="Fs10 DispBlock gray">Reportes</span>
-                                    <span class="Fs24 DispBlock red">26</span>
-                                    <div class="EmptyBox10"></div>
-                                </div>
-                            </a>
+                        <div class="Container50 Responsive MarTop10">
+                            <h4 class="Fs14 black DispBlock black">Salario</h4>
+                            <p:inputNumber id="emailusuario" value="#{crearOfertaView.newPerfil.salario}" 
+                                           required="true"  
+                                           styleClass="Wid60" 
+                                           requiredMessage="Debe ingresar una dirección de correo" 
+                                           validatorMessage="El Email ingresado no tiene un formato valido"/>
+
+                            <div class="EmptyBox30"/>
+                            <h4 class="Fs14 black  DispBlock black">Fecha expiración*</h4>
+                            <p:calendar value="#{crearOfertaView.newOferta.fechaExpiracion}"
+                                        required="true"
+                                        pattern="MM/dd/yyyy HH:mm" 
+                                        requiredMessage="Fecha de citación no válida" 
+                                        mindate="#{detallePostulacionView.fechaActual}"
+                                        validatorMessage="Fecha de citación no válida" 
+                                        locale="es"
+                                        />
+
+                            <div class="EmptyBox30"/>
+                            <h4 class="Fs14 black FontOpenSansRegular DispBlock black">Area* </h4>
+                            <p:selectOneMenu label="Area" value="#{crearOfertaView.area}" 
+                                             required="true"  
+                                             styleClass="Container50 Fnone MarAuto Fs18"
+                                             style="width: 60%; font-weight: bold;">
+                                <f:selectItems value="#{crearOfertaView.areas}"/>
+                            </p:selectOneMenu> 
                         </div>
+                        <div class="EmptyBox50"/>
+
+                        <div class="Container100 Responsive">
+                            <h:panelGroup id="pg_add_pruebas">
+
+                                <div class="Container50 Responsive">
+                                    <h4 class="Fs15 gray DispBlock FontBold">Plantillas Pruebas</h4>
+                                    <h5 class="Fs13 gray DispBlock FontLight">A continuación podrá ver el listado de las pruebas creadas.</h5>
+
+                                    <p:dataTable 
+                                        id="dtusers" 
+                                        var="usuario" 
+                                        value="#{crearOfertaView.pruebasSource}"  
+                                        widgetVar="wv_dtusers"
+                                        filteredValue="#{verUsuariosView.usuariosFlitrados}" 
+                                        reflow="true" 
+                                        styleClass="borderless"
+                                        rows="10"
+                                        paginator="true"
+                                        paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                                        rowsPerPageTemplate="10,20"
+                                        paginatorPosition="bottom"
+                                        selectionMode="single" 
+                                        selection="#{crearOfertaView.pruebaPlantillaSeleccionada}"
+                                        rowKey="#{usuario.pruebaId}"
+                                        emptyMessage="No se encontraron usuarios!">
+                                        
+                                        <p:column headerText="Documento" 
+                                                  filterBy="#{usuario.nombre}"  
+                                                  filterStyle="display:none"
+                                                  styleClass="Wid20 Fs14">
+                                            <h:outputText value="#{usuario.nombre}" styleClass="Fs14" />
+                                        </p:column>
+
+                                    </p:dataTable>
+
+
+
+
+                                </div>
+
+                            
+
+                            </h:panelGroup>
+                        </div>
+                        <!--                        <p:commandButton styleClass="Fright RedButton" value="Regresar" action="/modulos/usuarios/ver?faces-redirect=true"
+                                                                 icon="fa fa-mail-reply-all-white" immediate="true"/>
+                                                <p:commandButton styleClass="Fright BlueButton"
+                                                                 value="Guardar" 
+                                                                 icon="fa fa-save-white" 
+                                                                 update="pg_crear_oferta"/>-->
                     </div>
                 </div>
             </div>
-            <div class="Container40 Responsive">
-                <div class="ContainerIndent">
-                    <div class="Container100 TexAlCenter">
-
-                        <div class="DispInlBlock TexAlLeft MarTop20">
-                            <div class="Container20"><i class="fa fa-line-chart Fs40 orange Fleft MarRight10"></i></div>
-                            <div class="Container80">
-                                <div class="Fright">
-                                    <h2 class="black Fs24 FontRalewayMedium">Ofertas Aplicadas</h2>
-                                    <span class="Fs15 gray FontRalewayRegular DispBlock">Ofertas mas aplicadas. En línea</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="Seperator"></div>
-                        <div class="Container100">
-                            <div class="Wid45 BorderedBox Fleft TexAlCenter">
-                                <div class="ContainerIndent">
-                                    <div class="EmptyBox10"></div>
-                                    <div class="Fs14 gray FontRalewayRegular">Desarrollador de Software</div>
-                                    <div class="EmptyBox10"></div>
-                                    <div class="Fs30 blue FontRalewayLight">795</div>
-                                    <div class="EmptyBox10"></div>
-                                </div>
-                            </div>
-                            <div class="Wid45 BorderedBox Fright TexAlCenter">
-                                <div class="ContainerIndent">
-                                    <div class="EmptyBox10"></div>
-                                    <div class="Fs14 gray FontRalewayRegular">Profesor de Inglés</div>
-                                    <div class="EmptyBox10"></div>
-                                    <div class="Fs30 blue FontRalewayLight">3.455</div>
-                                    <div class="EmptyBox10"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="Container100">
-                            <div class="Wid45 BorderedBox Fleft TexAlCenter">
-                                <div class="ContainerIndent">
-                                    <div class="EmptyBox10"></div>
-                                    <div class="Fs14 gray FontRalewayRegular">Desarrollador de Software</div>
-                                    <div class="EmptyBox10"></div>
-                                    <div class="Fs30 blue FontRalewayLight">795</div>
-                                    <div class="EmptyBox10"></div>
-                                </div>
-                            </div>
-                            <div class="Wid45 BorderedBox Fright TexAlCenter">
-                                <div class="ContainerIndent">
-                                    <div class="EmptyBox10"></div>
-                                    <div class="Fs14 gray FontRalewayRegular">Profesor de Inglés</div>
-                                    <div class="EmptyBox10"></div>
-                                    <div class="Fs30 blue FontRalewayLight">3.455</div>
-                                    <div class="EmptyBox10"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="Container100">
-                            <div class="Wid45 BorderedBox Fleft TexAlCenter">
-                                <div class="ContainerIndent">
-                                    <div class="EmptyBox10"></div>
-                                    <div class="Fs14 gray FontRalewayRegular">Desarrollador de Software</div>
-                                    <div class="EmptyBox10"></div>
-                                    <div class="Fs30 blue FontRalewayLight">795</div>
-                                    <div class="EmptyBox10"></div>
-                                </div>
-                            </div>
-                            <div class="Wid45 BorderedBox Fright TexAlCenter">
-                                <div class="ContainerIndent">
-                                    <div class="EmptyBox10"></div>
-                                    <div class="Fs14 gray FontRalewayRegular">Profesor de Inglés</div>
-                                    <div class="EmptyBox10"></div>
-                                    <div class="Fs30 blue FontRalewayLight">3.455</div>
-                                    <div class="EmptyBox10"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="Container33 Responsive">
-                <div class="ContainerIndent">
-                    <div class="Container100 TexAlCenter">
-
-                        <div class="DispInlBlock TexAlLeft MarTop20">
-                            <i class="fa fa-street-view Fs40 gray Fleft MarRight10"></i>
-                            <div class="Fleft">
-                                <h2 class="black Fs24 FontRalewayMedium">Pruebas destacadas</h2>
-                                <span class="Fs15 gray FontRalewayRegular DispBlock">Usuarios con mejores puntajes</span>
-                            </div>
-                        </div>
-                        <div class="Seperator"></div>
-                        <div class="Container100">
-                            <a href="#" class="Wid45 BorderedBox Fleft TexAlCenter HoverEffect">
-                                <div class="ContainerIndent">
-                                    <div class="EmptyBox10"></div>
-                                    <h:graphicImage name="images/usa.png" styleClass="Fleft Wid60" library="demo"/>
-                                    <div class="Fs14 gray">USA</div>
-                                    <div class="Fs24 red FontRalewayRegular">54.657</div>
-                                    <div class="EmptyBox10"></div>
-                                </div>
-                            </a>
-                            <a href="#" class="Wid45 BorderedBox Fright TexAlCenter HoverEffect">
-                                <div class="ContainerIndent">
-                                    <div class="EmptyBox10"></div>
-                                    <h:graphicImage name="images/southamerica.png" styleClass="Fleft Wid60" library="demo"/>
-                                    <div class="Fs14 gray">South America</div>
-                                    <div class="Fs24 red FontRalewayRegular">13.365</div>
-                                    <div class="EmptyBox10"></div>
-                                </div>
-                            </a>
-                            <a href="#" class="Wid45 BorderedBox Fleft TexAlCenter HoverEffect">
-                                <div class="ContainerIndent">
-                                    <div class="EmptyBox10"></div>
-                                    <h:graphicImage name="images/europe.png" styleClass="Fleft Wid60" library="demo"/>
-                                    <div class="Fs14 gray">Europe</div>
-                                    <div class="Fs24 red FontRalewayRegular">29.456</div>
-                                    <div class="EmptyBox10"></div>
-                                </div>
-                            </a>
-                            <a href="#" class="Wid45 BorderedBox Fright TexAlCenter HoverEffect">
-                                <div class="ContainerIndent">
-                                    <div class="EmptyBox10"></div>
-                                    <h:graphicImage name="images/africa.png" styleClass="Fleft Wid60" library="demo" />
-                                    <div class="Fs14 gray">Africa</div>
-                                    <div class="Fs24 red FontRalewayRegular">44.657</div>
-                                    <div class="EmptyBox10"></div>
-                                </div>
-                            </a>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- BOX END -->
-
+            <div class="EmptyBox50" />
+        </h:panelGroup>
     </ui:define>
 
 </ui:composition>

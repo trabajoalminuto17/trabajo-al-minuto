@@ -5,21 +5,32 @@
  */
 package com.basp.trabajo_al_minuto.web.view;
 
+import static com.basp.trabajo_al_minuto.model.business.BusinessAttributes.HOST_EMAIL_SERVER;
 import com.basp.trabajo_al_minuto.model.business.BusinessException;
+import com.basp.trabajo_al_minuto.model.business.BusinessHtmlTemplates;
+import static com.basp.trabajo_al_minuto.model.business.BusinessUtils.sendEmail;
+import com.basp.trabajo_al_minuto.model.dto.EmailMessage;
 import com.basp.trabajo_al_minuto.service.dte.OfertaAplicada;
 import com.basp.trabajo_al_minuto.service.entity.Citacion;
 import com.basp.trabajo_al_minuto.service.entity.Evaluacion;
 import com.basp.trabajo_al_minuto.service.entity.Oferta;
 import com.basp.trabajo_al_minuto.service.entity.Usuario;
+import com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta;
 import static com.basp.trabajo_al_minuto.web.model.AtributosWeb.DETALLE_EVALUACION_PAGE;
 import static com.basp.trabajo_al_minuto.web.model.AtributosWeb.DETALLE_OFERTA_PAGE;
 import static com.basp.trabajo_al_minuto.web.model.AtributosWeb.INICIO_PAGE;
 import com.basp.trabajo_al_minuto.web.model.ComponenteWeb;
+import static com.basp.trabajo_al_minuto.web.model.MensajeWeb.CHANGE_NOT;
+import static com.basp.trabajo_al_minuto.web.model.MensajeWeb.CHANGE_OK;
 import static com.basp.trabajo_al_minuto.web.model.UtilWeb.formatDate;
+import static com.basp.trabajo_al_minuto.web.model.UtilWeb.webMessage;
 import java.io.IOException;
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -99,6 +110,7 @@ public class InicioView extends ComponenteWeb implements Serializable {
             pruebas_ok = Boolean.FALSE;
             citacion.setActivarPruebas(pruebas_ok);
             citacion = citacionEjb.updateCitacion(citacion);
+            citacionRechazada(citacion);
             FacesContext.getCurrentInstance().getExternalContext().redirect(INICIO_PAGE);
         } catch (BusinessException ex) {
             Logger.getLogger(InicioView.class.getName()).log(Level.SEVERE, ex.developerException());
@@ -121,7 +133,30 @@ public class InicioView extends ComponenteWeb implements Serializable {
         }
     }
 
-//    @Getter and Setter
+    private Boolean citacionRechazada(Citacion citacion) throws BusinessException {
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        String fechaCitacion = df.format(citacion.getFechaCitacion());
+        List<String> lisTo = new ArrayList();
+        lisTo.add(citacion.getUsuarioAutor().getEmail());
+        EmailMessage em = new EmailMessage();
+        em.setFrom("trabajoalminuto@gmail.com");
+        em.setUser("trabajoalminuto@gmail.com");
+        em.setPassword("tam12345");
+        em.setPort(587);
+        em.setStarttls(Boolean.TRUE);
+        em.setMask("Trabajo al minuto");
+        em.setSubject("Citación rechazada!");
+        em.setBodyMessage(BusinessHtmlTemplates.citacionRechazada(
+                citacion.getUsuarioHasOferta().getOfertasOfertaId().getPerfil().getTitulo(),
+                fechaCitacion, citacion.getUsuarioHasOferta().getUsuarioUsuarioId().getPersona().
+                getNombre(), citacion.getLugar(), citacion.getDetalles()));
+        em.setToList(lisTo);
+        em.setHost(HOST_EMAIL_SERVER);
+        em.setMimeTypeMessage("text/html; charset=utf-8");
+        return sendEmail(em);
+    }
+
+    //    @Getter and Setter
     public Usuario getUsuarioSession() {
         return usuarioSession;
     }
