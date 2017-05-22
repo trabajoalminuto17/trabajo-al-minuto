@@ -11,6 +11,7 @@ import com.basp.trabajo_al_minuto.service.entity.Opcion;
 import com.basp.trabajo_al_minuto.service.entity.OpcionPlantilla;
 import com.basp.trabajo_al_minuto.service.entity.Prueba;
 import com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla;
+import com.basp.trabajo_al_minuto.service.entity.Respuesta;
 import java.util.List;
 
 /**
@@ -40,4 +41,6 @@ public interface PruebaFacade {
     public Evaluacion findEvaluacion(Long id) throws BusinessException;
 
     public Opcion updateOpcion(Opcion o) throws BusinessException;
+
+    public Respuesta updateRespuesta(Respuesta r) throws BusinessException;
 }
