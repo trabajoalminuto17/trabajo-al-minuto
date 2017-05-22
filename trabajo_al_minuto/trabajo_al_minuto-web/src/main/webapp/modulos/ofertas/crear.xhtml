@@ -41,6 +41,12 @@
                 };
                 this.cfg.seriesDefaults.shadow = false;
             }
+
+            function handleDrop(event, ui) {
+                var droppedCar = ui.draggable;
+
+                droppedCar.fadeOut('fast');
+            }
         </script>
         <style type="text/css">
             .jqplot-target, .jqplot-axis {
@@ -120,42 +126,80 @@
                             <h:panelGroup id="pg_add_pruebas">
 
                                 <div class="Container50 Responsive">
-                                    <h4 class="Fs15 gray DispBlock FontBold">Plantillas Pruebas</h4>
-                                    <h5 class="Fs13 gray DispBlock FontLight">A continuación podrá ver el listado de las pruebas creadas.</h5>
+                                    <!--<h4 class="Fs15 gray DispBlock FontBold">Plantillas Pruebas</h4>-->
+                                    <!--<h5 class="Fs13 gray DispBlock FontLight">A continuación podrá ver el listado de las pruebas creadas.</h5>-->
+                                    <p:fieldset id="availableCarsField" legend="Plantilla">
+                                        <p:dataTable 
+                                            id="dtusers" 
+                                            var="pruebaplantilla" 
+                                            value="#{crearOfertaView.pruebasSource}"  
+                                            widgetVar="wv_dtusers"
+                                            filteredValue="#{verUsuariosView.usuariosFlitrados}" 
+                                            reflow="true" 
+                                            styleClass="borderless"
+                                            rows="10"
+                                            paginator="true"
+                                            paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                                            rowsPerPageTemplate="10,20"
+                                            paginatorPosition="bottom"
+                                            selection="#{crearOfertaView.pruebaPlantillaSeleccionada}"
+                                            rowKey="#{pruebaplantilla.pruebaId}"
+                                            emptyMessage="No se encontraron usuarios!">
+                                            <!--<p:ajax event="rowSelect" listener="#{crearOfertaView.onRowSelectPruebas}" update=":main:pg_add_pruebas"/>-->
+                                            <p:column styleClass="Wid10">
+                                                <h:outputText id="dragIcon" styleClass="ui-icon ui-icon-arrow-4" />
+                                                <p:draggable for="dragIcon" revert="true" helper="clone"/>
+                                            </p:column>
+                                            <p:column headerText="Nombre" filterBy="#{pruebaplantilla.nombre}"  
+                                                      filterStyle="display:none" 
+                                                      styleClass="Wid40 Fs14">
+                                                <h:outputText value="#{pruebaplantilla.nombre}" styleClass="Fs14" />
+                                            </p:column>
+                                            <p:column headerText="% aprobar" filterBy="#{pruebaplantilla.porcentajeMinimo}" filterStyle="display:none" styleClass="Wid10 Fs14">
+                                                <h:outputText value="#{pruebaplantilla.porcentajeMinimo} %" styleClass="Fs14"/>
+                                            </p:column>
+                                        </p:dataTable>
+                                    </p:fieldset>
 
-                                    <p:dataTable 
-                                        id="dtusers" 
-                                        var="usuario" 
-                                        value="#{crearOfertaView.pruebasSource}"  
-                                        widgetVar="wv_dtusers"
-                                        filteredValue="#{verUsuariosView.usuariosFlitrados}" 
-                                        reflow="true" 
-                                        styleClass="borderless"
-                                        rows="10"
-                                        paginator="true"
-                                        paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                                        rowsPerPageTemplate="10,20"
-                                        paginatorPosition="bottom"
-                                        selectionMode="single" 
-                                        selection="#{crearOfertaView.pruebaPlantillaSeleccionada}"
-                                        rowKey="#{usuario.pruebaId}"
-                                        emptyMessage="No se encontraron usuarios!">
-                                        
-                                        <p:column headerText="Documento" 
-                                                  filterBy="#{usuario.nombre}"  
-                                                  filterStyle="display:none"
-                                                  styleClass="Wid20 Fs14">
-                                            <h:outputText value="#{usuario.nombre}" styleClass="Fs14" />
-                                        </p:column>
-
-                                    </p:dataTable>
-
-
-
-
+                                    <p:droppable for="selectedCars" 
+                                                 tolerance="touch" 
+                                                 activeStyleClass="ui-state-highlight"
+                                                 datasource="availableCars" 
+                                                 onDrop="handleDrop">
+                                        <p:ajax listener="#{dndCarsView.onCarDrop}" update="dropArea availableCars" />
+                                    </p:droppable>
                                 </div>
 
-                            
+                                <div class="Container50 Responsive">
+                                    <!--                                    <h4 class="Fs15 gray DispBlock FontBold">Plantillas Pruebas</h4>
+                                                                        <h5 class="Fs13 gray DispBlock FontLight">A continuación podrá ver el listado de las pruebas creadas.</h5>-->
+                                    <p:fieldset id="availableCarsField" legend="Prueba">
+                                        <p:dataTable id="dtpruebas" 
+                                                     var="prueba"
+                                                     value="#{crearOfertaView.pruebasTarget}" 
+                                                     widgetVar="wv_dtpruebas"
+                                                     reflow="true" 
+                                                     styleClass="borderless"
+                                                     rows="10"
+                                                     paginator="true"
+                                                     paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                                                     rowsPerPageTemplate="10,20"
+                                                     paginatorPosition="bottom"
+                                                     selection="#{crearOfertaView.pruebaPlantillaSeleccionada}" 
+                                                     rowKey="#{prueba.prueba.pruebaId}"
+                                                     emptyMessage="No se encontraron ofertas!">
+                                            <p:ajax event="rowSelect" listener="#{crearOfertaView.onRowSelectPruebas}" update=":main:pg_add_pruebas"/>
+                                            <p:column headerText="Nombre" filterBy="#{prueba.prueba.nombre}"  filterStyle="display:none" styleClass="Wid40 Fs14">
+                                                <h:outputText value="#{prueba.prueba.nombre}" styleClass="Fs14" />
+                                            </p:column>
+                                            <p:column headerText="Porcentaje Minimo" filterBy="#{prueba.prueba.porcentajeMinimo}" filterStyle="display:none" styleClass="Wid10 Fs14">
+                                                <h:outputText value="#{prueba.prueba.porcentajeMinimo} %" styleClass="Fs14"/>
+                                            </p:column>
+                                        </p:dataTable>
+                                    </p:fieldset>
+                                </div>
+
+
 
                             </h:panelGroup>
                         </div>

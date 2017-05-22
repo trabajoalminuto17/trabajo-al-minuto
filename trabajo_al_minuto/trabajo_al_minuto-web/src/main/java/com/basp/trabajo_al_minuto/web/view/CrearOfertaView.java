@@ -10,27 +10,22 @@ import com.basp.trabajo_al_minuto.service.entity.Catalogo;
 import com.basp.trabajo_al_minuto.service.entity.Oferta;
 import com.basp.trabajo_al_minuto.service.entity.Perfil;
 import com.basp.trabajo_al_minuto.service.entity.PerfilHasPrueba;
-import static com.basp.trabajo_al_minuto.service.entity.Perfil_.perfilHasPruebaList;
 import com.basp.trabajo_al_minuto.service.entity.Prueba;
 import com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla;
 import com.basp.trabajo_al_minuto.service.entity.Usuario;
-import static com.basp.trabajo_al_minuto.web.model.AtributosWeb.DETALLE_PRUEBA_PLANTILLA_PAGE;
 import com.basp.trabajo_al_minuto.web.model.ComponenteWeb;
 import static com.basp.trabajo_al_minuto.web.model.UtilWeb.propiedadesItem;
-import java.awt.geom.Area;
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
-import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import org.primefaces.event.DragDropEvent;
 import org.primefaces.event.SelectEvent;
-import org.primefaces.model.DualListModel;
 
 /**
  *
@@ -114,11 +109,6 @@ public class CrearOfertaView extends ComponenteWeb implements Serializable {
         php.setPrueba(p);
         pruebasTarget.add(php);
 
-    }
-
-    public void onRowSelectPruebas(SelectEvent event) {
-        PerfilHasPrueba php = (PerfilHasPrueba) event.getObject();
-        pruebasTarget.remove(php);
     }
 
     public Oferta getNewOferta() {
