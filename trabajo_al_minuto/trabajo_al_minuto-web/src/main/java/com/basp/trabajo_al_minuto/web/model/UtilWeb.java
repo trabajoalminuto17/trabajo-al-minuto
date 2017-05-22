@@ -56,7 +56,7 @@ public class UtilWeb {
     }
 
     public static String formatDateTime(LocalDateTime date) {
-        String d = date.format(DateTimeFormatter.ofPattern("HH:mm", new Locale("es")));
+        String d = date.format(DateTimeFormatter.ofPattern("HH:mm:ss", new Locale("es")));
         return Character.toString(d.charAt(0)).toUpperCase() + d.substring(1);
     }
 

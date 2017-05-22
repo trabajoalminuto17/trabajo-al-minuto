@@ -72,6 +72,15 @@
                                                      icon="fa fa-check-white" immediate="true"/>
                                 </h:panelGroup>
                             </p:dialog> 
+                            <p:dialog header="Pruebas completadas" widgetVar="dlg" modal="true" width="80%" visible="#{verPruebaView.pruebasCompletas}"
+                                      closable="false" resizable="false">
+                                <h:panelGroup id="png_prueba_dlg">
+                                    <span class="Fs14 black">¡Felicitaciones, has completado todas las pruebas.!</span>
+                                    <div class="EmptyBox10"/>
+                                    <p:commandButton styleClass="Fright GreenButton" value="Salir" actionListener="#{verPruebaView.comenzarPrueba}"
+                                                     icon="fa fa-mail-reply-all-white" immediate="true"/>
+                                </h:panelGroup>
+                            </p:dialog> 
                             <p:dataTable id="dtpruebas" var="prueba" value="#{verPruebaView.pruebasByPerfil}"  widgetVar="wv_dtpruebas"
                                          filteredValue="#{verPruebaView.filteredPruebas}" reflow="true" styleClass="borderless"
                                          rows="10"
@@ -101,9 +110,7 @@
                                     <h:outputText value="#{prueba.porcentajeMinimo} %" styleClass="Fs14"/>
                                 </p:column>
                                 <p:column headerText="Limite de tiempo" filterBy="#{prueba.limiteTiempo}" filterStyle="display:none" styleClass="Wid10 Fs14">
-                                    <h:outputText value="#{prueba.limiteTiempo}" styleClass="Fs14">
-                                        <f:convertDateTime pattern="hh:mm" locale="es" />
-                                    </h:outputText>
+                                    <h:outputText value="#{verPruebaView.getFormatDate(prueba.limiteTiempo)}" styleClass="Fs14"/>
                                 </p:column>
                             </p:dataTable>
                         </h:panelGroup>
@@ -137,9 +144,7 @@
                                     <h:outputText value="#{pruebaplantilla.porcentajeMinimo} %" styleClass="Fs14"/>
                                 </p:column>
                                 <p:column headerText="Limite de tiempo" filterBy="#{pruebaplantilla.limiteTiempo}" filterStyle="display:none" styleClass="Wid10 Fs14">
-                                    <h:outputText value="#{pruebaplantilla.limiteTiempo}" styleClass="Fs14">
-                                        <f:convertDateTime pattern="hh:mm" locale="es" />
-                                    </h:outputText>
+                                    <h:outputText value="#{verPruebaView.getFormatDate(pruebaplantilla.limiteTiempo)}" styleClass="Fs14"/>
                                 </p:column>
                             </p:dataTable>
                         </h:panelGroup>

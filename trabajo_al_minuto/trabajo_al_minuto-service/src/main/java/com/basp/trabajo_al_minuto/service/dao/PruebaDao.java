@@ -17,6 +17,7 @@ import com.basp.trabajo_al_minuto.service.entity.OpcionPlantilla;
 import com.basp.trabajo_al_minuto.service.entity.PerfilHasPrueba;
 import com.basp.trabajo_al_minuto.service.entity.Prueba;
 import com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla;
+import com.basp.trabajo_al_minuto.service.entity.Respuesta;
 import java.util.List;
 import javax.persistence.Persistence;
 
@@ -74,5 +75,9 @@ public class PruebaDao {
 
     protected Opcion _updateOpcion(Opcion o) throws Exception {
         return (Opcion) BP.update(o);
+    }
+
+    protected Respuesta _updateRespuesta(Respuesta r) throws Exception {
+        return (Respuesta) BP.update(r);
     }
 }

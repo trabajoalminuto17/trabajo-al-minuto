@@ -13,6 +13,7 @@ import com.basp.trabajo_al_minuto.service.ejb.PerfilEjb;
 import com.basp.trabajo_al_minuto.service.ejb.PruebaEjb;
 import com.basp.trabajo_al_minuto.service.ejb.UsuarioEjb;
 import com.basp.trabajo_al_minuto.service.entity.Catalogo;
+import com.basp.trabajo_al_minuto.service.entity.Prueba;
 import com.basp.trabajo_al_minuto.service.entity.Usuario;
 import java.io.Serializable;
 import java.util.List;
@@ -97,6 +98,10 @@ public class ComponenteWeb implements Serializable {
 
     protected Long getEvaluacionId() {
         return (Long) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("evaluacionId");
+    }
+
+    protected List<Prueba> getPreubasResueltas() {
+        return (List<Prueba>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("preubasResueltasId");
     }
 
     protected List<Catalogo> getCatalogosByParent(Long id) throws BusinessException {

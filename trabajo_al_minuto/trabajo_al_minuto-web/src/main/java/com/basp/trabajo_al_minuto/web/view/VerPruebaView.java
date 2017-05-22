@@ -8,11 +8,14 @@ package com.basp.trabajo_al_minuto.web.view;
 import static com.basp.trabajo_al_minuto.web.model.AtributosWeb.DETALLE_PRUEBA_PLANTILLA_PAGE;
 
 import com.basp.trabajo_al_minuto.model.business.BusinessException;
+import com.basp.trabajo_al_minuto.service.entity.Catalogo;
+import com.basp.trabajo_al_minuto.service.entity.Citacion;
 import com.basp.trabajo_al_minuto.service.entity.Oferta;
 import com.basp.trabajo_al_minuto.service.entity.Prueba;
 import com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla;
 import com.basp.trabajo_al_minuto.service.entity.Usuario;
 import static com.basp.trabajo_al_minuto.web.model.AtributosWeb.DETALLE_EVALUACION_PAGE;
+import static com.basp.trabajo_al_minuto.web.model.AtributosWeb.PORTAL_PAGE;
 import com.basp.trabajo_al_minuto.web.model.ComponenteWeb;
 import static com.basp.trabajo_al_minuto.web.model.UtilWeb.formatDateTime;
 import java.io.IOException;
@@ -46,15 +49,32 @@ public class VerPruebaView extends ComponenteWeb implements Serializable {
     private List<Prueba> pruebasByPerfil;
     private List<PruebaPlantilla> pruebasByEmpresa;
     private Usuario usuariologin;
+    private Boolean pruebasCompletas;
 
     @PostConstruct
     public void init() {
         try {
             usuariologin = getUserLogin();
+            pruebasCompletas = Boolean.FALSE;
             if (usuariologin.getRol().getRolId() == 3L) {
                 if (getOfertaId() != null) {
                     Oferta o = ofertaEjb.findOferta(getOfertaId());
                     pruebasByPerfil = pruebaEjb.getPruebasByPerfil(o.getPerfil().getPerfilId());
+                    if (getPreubasResueltas() != null) {
+                        for (Prueba p : getPreubasResueltas()) {
+                            pruebasByPerfil.remove(p);
+                        }
+                    }
+                    if (pruebasByPerfil.isEmpty()) {
+                        usuariologin.getCandidato().setPruebasActivas(Boolean.FALSE);
+                        usuariologin = usuarioEjb.updateUsuario(usuariologin);
+                        pruebasCompletas = Boolean.TRUE;
+                        Citacion c = citacionEjb.findCitacion(getCitacionId());
+                        c.setActivarPruebas(Boolean.FALSE);
+                        c.setResuelto(Boolean.TRUE);
+                        c.getUsuarioHasOferta().setEstado(new Catalogo(12L));
+                        citacionEjb.updateCitacion(c);
+                    }
                 }
             } else {
                 pruebasByEmpresa = pruebaEjb.getPruebasPlantillaByEmpresa(usuariologin.getEmpresa().getEmpresaId());
@@ -83,6 +103,15 @@ public class VerPruebaView extends ComponenteWeb implements Serializable {
             FacesContext.getCurrentInstance().getExternalContext().redirect(DETALLE_EVALUACION_PAGE);
         } catch (IOException ex) {
             Logger.getLogger(VerPruebaView.class.getName()).log(Level.SEVERE, "comenzarPrueba", ex);
+        }
+    }
+
+    public void finalizarPrueba() {
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+            FacesContext.getCurrentInstance().getExternalContext().redirect(PORTAL_PAGE);
+        } catch (IOException ex) {
+            Logger.getLogger(VerPruebaView.class.getName()).log(Level.SEVERE, "finalizarPrueba", ex);
         }
     }
 
@@ -148,6 +177,14 @@ public class VerPruebaView extends ComponenteWeb implements Serializable {
 
     public void setUsuariologin(Usuario usuariologin) {
         this.usuariologin = usuariologin;
+    }
+
+    public Boolean getPruebasCompletas() {
+        return pruebasCompletas;
+    }
+
+    public void setPruebasCompletas(Boolean pruebasCompletas) {
+        this.pruebasCompletas = pruebasCompletas;
     }
 
 }

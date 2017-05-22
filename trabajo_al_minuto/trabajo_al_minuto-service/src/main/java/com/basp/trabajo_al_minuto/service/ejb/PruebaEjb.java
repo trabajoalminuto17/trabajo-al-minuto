@@ -11,6 +11,7 @@ import com.basp.trabajo_al_minuto.service.entity.Evaluacion;
 import com.basp.trabajo_al_minuto.service.entity.Opcion;
 import com.basp.trabajo_al_minuto.service.entity.Prueba;
 import com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla;
+import com.basp.trabajo_al_minuto.service.entity.Respuesta;
 import com.basp.trabajo_al_minuto.service.facade.PruebaFacade;
 import java.util.List;
 import javax.ejb.LocalBean;
@@ -118,6 +119,15 @@ public class PruebaEjb extends PruebaDao implements PruebaFacade {
     public Opcion updateOpcion(Opcion o) throws BusinessException {
         try {
             return _updateOpcion(o);
+        } catch (Exception ex) {
+            throw new BusinessException(ex);
+        }
+    }
+
+    @Override
+    public Respuesta updateRespuesta(Respuesta r) throws BusinessException {
+        try {
+            return _updateRespuesta(r);
         } catch (Exception ex) {
             throw new BusinessException(ex);
         }
