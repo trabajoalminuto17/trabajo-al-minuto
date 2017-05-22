@@ -7,7 +7,8 @@ package com.basp.trabajo_al_minuto.service.ejb;
 
 import com.basp.trabajo_al_minuto.model.business.BusinessException;
 import com.basp.trabajo_al_minuto.service.dao.PruebaDao;
-import com.basp.trabajo_al_minuto.service.entity.OpcionPlantilla;
+import com.basp.trabajo_al_minuto.service.entity.Evaluacion;
+import com.basp.trabajo_al_minuto.service.entity.Opcion;
 import com.basp.trabajo_al_minuto.service.entity.Prueba;
 import com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla;
 import com.basp.trabajo_al_minuto.service.facade.PruebaFacade;
@@ -90,6 +91,33 @@ public class PruebaEjb extends PruebaDao implements PruebaFacade {
     public Boolean removeOpcionPlantilla(Long id) throws BusinessException {
         try {
             return _removeOpcionPlantilla(id);
+        } catch (Exception ex) {
+            throw new BusinessException(ex);
+        }
+    }
+
+    @Override
+    public Evaluacion updateEvaluacion(Evaluacion e) throws BusinessException {
+        try {
+            return _updateEvaluacion(e);
+        } catch (Exception ex) {
+            throw new BusinessException(ex);
+        }
+    }
+
+    @Override
+    public Evaluacion findEvaluacion(Long id) throws BusinessException {
+        try {
+            return _findEvaluacion(id);
+        } catch (Exception ex) {
+            throw new BusinessException(ex);
+        }
+    }
+
+    @Override
+    public Opcion updateOpcion(Opcion o) throws BusinessException {
+        try {
+            return _updateOpcion(o);
         } catch (Exception ex) {
             throw new BusinessException(ex);
         }

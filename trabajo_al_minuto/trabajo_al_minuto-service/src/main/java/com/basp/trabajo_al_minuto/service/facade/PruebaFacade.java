@@ -6,6 +6,8 @@
 package com.basp.trabajo_al_minuto.service.facade;
 
 import com.basp.trabajo_al_minuto.model.business.BusinessException;
+import com.basp.trabajo_al_minuto.service.entity.Evaluacion;
+import com.basp.trabajo_al_minuto.service.entity.Opcion;
 import com.basp.trabajo_al_minuto.service.entity.OpcionPlantilla;
 import com.basp.trabajo_al_minuto.service.entity.Prueba;
 import com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla;
@@ -32,4 +34,10 @@ public interface PruebaFacade {
     public PruebaPlantilla updatePruebaPlantilla(PruebaPlantilla p) throws BusinessException;
 
     public Boolean removeOpcionPlantilla(Long id) throws BusinessException;
+
+    public Evaluacion updateEvaluacion(Evaluacion e) throws BusinessException;
+
+    public Evaluacion findEvaluacion(Long id) throws BusinessException;
+
+    public Opcion updateOpcion(Opcion o) throws BusinessException;
 }
