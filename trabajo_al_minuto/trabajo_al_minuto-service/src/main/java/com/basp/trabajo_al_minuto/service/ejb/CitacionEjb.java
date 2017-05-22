@@ -76,4 +76,13 @@ public class CitacionEjb extends CitacionDao implements CitacionFacade {
         }
     }
 
+    @Override
+    public Integer activarPrueba(Long pk) throws BusinessException {
+        try {
+            return activarPruebas(pk);
+        } catch (Exception ex) {
+            throw new BusinessException(ex);
+        }
+    }
+
 }

@@ -28,4 +28,6 @@ public interface CitacionFacade {
 
     public List<Citacion> getCitacionesActivasByEmpresa(Long id) throws BusinessException;
 
+    public Integer activarPrueba(Long id) throws BusinessException;
+
 }
