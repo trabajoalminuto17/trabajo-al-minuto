@@ -14,11 +14,12 @@ import com.basp.trabajo_al_minuto.service.entity.Opcion;
 import com.basp.trabajo_al_minuto.service.entity.Pregunta;
 import com.basp.trabajo_al_minuto.service.entity.Prueba;
 import com.basp.trabajo_al_minuto.service.entity.Respuesta;
+import static com.basp.trabajo_al_minuto.web.model.AtributosWeb.PRUEBA_PLANTILLA_PAGE;
 import com.basp.trabajo_al_minuto.web.model.ComponenteWeb;
-import static com.basp.trabajo_al_minuto.web.model.MensajeWeb.CHANGE_OK;
 import static com.basp.trabajo_al_minuto.web.model.MensajeWeb.QUESTION_NULL;
 import static com.basp.trabajo_al_minuto.web.model.MensajeWeb.QUESTION_REPEAT;
 import static com.basp.trabajo_al_minuto.web.model.UtilWeb.webMessage;
+import java.io.IOException;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -45,6 +46,7 @@ public class EvaluacionView extends ComponenteWeb implements Serializable {
 
     private PruebaEvaluacion pruebaEvaluacion;
     private Evaluacion evaluacion;
+    private Boolean finalizada;
 
     @PostConstruct
     public void init() {
@@ -54,6 +56,7 @@ public class EvaluacionView extends ComponenteWeb implements Serializable {
                 evaluacion = pruebaEjb.findEvaluacion(getEvaluacionId());
                 Prueba p = pruebaEjb.findPrueba(getPruebaId());
                 pruebaEvaluacion = setPrueba(p);
+                finalizada = Boolean.FALSE;
             }
         } catch (BusinessException ex) {
             Logger.getLogger(EvaluacionView.class.getName()).log(Level.SEVERE, ex.developerException());
@@ -63,15 +66,20 @@ public class EvaluacionView extends ComponenteWeb implements Serializable {
     public void finalizarPrueba() {
         try {
             Boolean b;
+            List<Respuesta> respuestas = new ArrayList();
             for (PreguntaEvaluacion pe : pruebaEvaluacion.getPreguntas()) {
                 b = validarPreguntaNull(pe);
-                if (!b) {
+                if (b) {
                     b = validarPreguntaRepeat(pe);
                     if (!b) {
                         for (OpcionEvaluacion oe : pe.getOpciones()) {
-                            Respuesta r = new Respuesta();
-                            r.setEvaluacion(evaluacion);
-                            r.setOpcion(new Opcion(oe.getId()));
+                            if (oe.getRespuesta()) {
+                                Respuesta r = new Respuesta();
+                                r.setEvaluacion(evaluacion);
+                                r.setOpcion(new Opcion(oe.getId()));
+                                respuestas.add(r);
+                                break;
+                            }
                         }
                     } else {
                         message = webMessage(QUESTION_REPEAT);
@@ -80,6 +88,17 @@ public class EvaluacionView extends ComponenteWeb implements Serializable {
                     message = webMessage(QUESTION_NULL);
                 }
             }
+            if (!respuestas.isEmpty()) {
+                for (Respuesta r : respuestas) {
+                    pruebaEjb.updateRespuesta(r);
+                }
+                finalizada = Boolean.TRUE;
+                FacesContext.getCurrentInstance().getExternalContext().redirect(PRUEBA_PLANTILLA_PAGE);
+            }
+        } catch (BusinessException ex) {
+            Logger.getLogger(EvaluacionView.class.getName()).log(Level.SEVERE, ex.developerException());
+        } catch (IOException ex) {
+            Logger.getLogger(EvaluacionView.class.getName()).log(Level.SEVERE, "finalizarPrueba", ex);
         } finally {
             if (message != null) {
                 FacesContext.getCurrentInstance().addMessage(null, message);
@@ -89,26 +108,46 @@ public class EvaluacionView extends ComponenteWeb implements Serializable {
     }
 
     public void onTimeout() {
-        try {
-            for (PreguntaEvaluacion pe : pruebaEvaluacion.getPreguntas()) {
-                Boolean a = validarPreguntaNull(pe);
-                Boolean b = validarPreguntaRepeat(pe);
-                if (a || b) {
-                    
-                } else {
-                    for (OpcionEvaluacion oe : pe.getOpciones()) {
-                        if (oe.getRespuesta()) {
-                            Respuesta r = new Respuesta();
-                            r.setEvaluacion(evaluacion);
-                            r.setOpcion(new Opcion(oe.getId()));
-                            break;
+        if (!finalizada) {
+            try {
+                List<Respuesta> respuestas = new ArrayList();
+                for (PreguntaEvaluacion pe : pruebaEvaluacion.getPreguntas()) {
+                    Boolean a = validarPreguntaNull(pe);
+                    Boolean b = validarPreguntaRepeat(pe);
+                    Respuesta r = new Respuesta();
+                    if (!a || b) {
+                        Opcion o = new Opcion();
+                        o.setCorrecta(Boolean.FALSE);
+                        o.setEnunciado("No responde");
+                        o.setPreguntaPreguntaId(new Pregunta(pe.getId()));
+                        o = pruebaEjb.updateOpcion(o);
+                        r.setEvaluacion(evaluacion);
+                        r.setOpcion(o);
+                    } else {
+                        for (OpcionEvaluacion oe : pe.getOpciones()) {
+                            if (oe.getRespuesta()) {
+                                r.setEvaluacion(evaluacion);
+                                r.setOpcion(new Opcion(oe.getId()));
+                                break;
+                            }
                         }
                     }
+                    respuestas.add(r);
                 }
-            }
-        } finally {
-            if (message != null) {
-                FacesContext.getCurrentInstance().addMessage(null, message);
+                if (!respuestas.isEmpty()) {
+                    for (Respuesta r : respuestas) {
+                        pruebaEjb.updateRespuesta(r);
+                    }
+                }
+                FacesContext.getCurrentInstance().getExternalContext().redirect(PRUEBA_PLANTILLA_PAGE);
+            } catch (BusinessException ex) {
+                Logger.getLogger(EvaluacionView.class.getName()).log(Level.SEVERE, ex.developerException());
+            } catch (IOException ex) {
+                Logger.getLogger(EvaluacionView.class.getName()).log(Level.SEVERE, "onTimeout", ex);
+            } finally {
+                if (message != null) {
+                    FacesContext.getCurrentInstance().addMessage(null, message);
+                }
             }
         }
     }

@@ -50,13 +50,13 @@
     </ui:define>
 
     <ui:define name="content">
-        <h:panelGroup id="pg_evauluacion">
-            <div class="Container80 Responsive MarTop20" style="margin-left: 10%">
-                <div class="ContainerIndent"> 
-                    <div class="Container80 Responsive">
-                        <h4 class="Fs15 gray DispBlock FontLight">Prueba #{evaluacionView.pruebaEvaluacion.nombre}</h4>
-                        <h5 class="Fs13 gray DispBlock FontBold">Resuelve la prueba.</h5>
-                    </div>
+        <div class="Container80 Responsive MarTop20" style="margin-left: 10%">
+            <div class="ContainerIndent"> 
+                <div class="Container80 Responsive">
+                    <h4 class="Fs15 gray DispBlock FontLight">Prueba #{evaluacionView.pruebaEvaluacion.nombre}</h4>
+                    <h5 class="Fs13 gray DispBlock FontBold">Resuelve la prueba.</h5>
+                </div>
+                <h:panelGroup id="pg_evauluacion">
                     <div class="Container20 Responsive">
                         <pe:timer
                             timeout="#{evaluacionView.pruebaEvaluacion.tiempo}"  
@@ -82,13 +82,13 @@
                             </ui:repeat>
                         </div>
                     </ui:repeat>
-                </div>
-                <div class="EmptyBox50"/>
-                <p:commandButton styleClass="Fright GreenButton" value="Finalizar" actionListener="#{evaluacionView.finalizarPrueba}" 
-                                 icon="fa fa-check-white"/>
+                </h:panelGroup>
             </div>
-            <div class="EmptyBox80"/>
-        </h:panelGroup>
+            <div class="EmptyBox50"/>
+            <p:commandButton styleClass="Fright GreenButton" value="Finalizar" actionListener="#{evaluacionView.finalizarPrueba}" 
+                             icon="fa fa-check-white"/>
+        </div>
+        <div class="EmptyBox80"/>
     </ui:define>
 
 </ui:composition>
