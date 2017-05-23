@@ -38,16 +38,26 @@ public class CrearUsuarioView extends ComponenteWeb implements Serializable {
     private Persona newPersona;
     private Boolean render;
 
+    /**
+     * Constructor*
+     */
     public CrearUsuarioView() {
         newUsuario = new Usuario();
         newPersona = new Persona();
     }
 
+    /**
+     * Codigo a ejecutar una vez se ha instanciado la clase
+     */
     @PostConstruct
     public void init() {
         render = Boolean.FALSE;
     }
 
+    /**
+     * Metodo que captura la informacion diligenciada por el usuario cada vez
+     * que se va a ingresar un nuevo usuario y la inserta en la tabla usuario
+     */
     public void createUsuario() {
         try {
             newUsuario.setCambioClave(Boolean.FALSE);
@@ -69,6 +79,9 @@ public class CrearUsuarioView extends ComponenteWeb implements Serializable {
         }
     }
 
+    /**
+     * Valida si el email ingresado por el participante ya existe
+     */
     public void validarEmail() {
         try {
             if (usuarioEjb.getUsuarioByEmail(newUsuario.getEmail().toLowerCase()) != null) {

@@ -32,6 +32,10 @@ public class ComponenteWeb implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * Injectamos los EJB para poder acceder a las propiedades de cada una de
+     * las clases*
+     */
     @Inject
     protected OfertaEjb ofertaEjb;
     @Inject
@@ -47,6 +51,9 @@ public class ComponenteWeb implements Serializable {
 
     protected FacesMessage message;
 
+    /**
+     * Captura la sesión del usuario *
+     */
     protected Usuario getUserLogin() {
         Usuario userlogin = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sessionUsuario");
         if (userlogin != null) {
@@ -56,6 +63,9 @@ public class ComponenteWeb implements Serializable {
         return null;
     }
 
+    /**
+     * Genera los menus de usuario *
+     */
     protected MenuModel getMenus() {
         MenuModel menus = (MenuModel) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("menusUsuario");
         if (menus != null) {
@@ -64,26 +74,44 @@ public class ComponenteWeb implements Serializable {
         return null;
     }
 
+    /**
+     * captura el id del usuario *
+     */
     protected Long getUsuarioId() {
         return (Long) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuarioId");
     }
 
+    /**
+     * captura el id de la oferta *
+     */
     protected Long getOfertaId() {
         return (Long) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("ofertaId");
     }
 
+    /**
+     * captura el id de la citacion *
+     */
     protected Long getCitacionId() {
         return (Long) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("citacionId");
     }
 
+    /**
+     * Captura el id de la oferta que tiene asignado un usuario *
+     */
     protected Long getUsuarioHasOfertaId() {
         return (Long) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuarioHasOfertaId");
     }
 
+    /**
+     * captura el de una prueba *
+     */
     protected Long getPruebaId() {
         return (Long) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("pruebaId");
     }
 
+    /**
+     * captura el id de la prueba planilla *
+     */
     protected Long getPruebaPlantillaId() {
         return (Long) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("pruebaPlantillaId");
     }
@@ -92,18 +120,30 @@ public class ComponenteWeb implements Serializable {
         return (Boolean) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("pruebasOk");
     }
 
+    /**
+     * captura el id de las ofertas *
+     */
     protected Long getOfertaExternalId() {
         return (Long) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("ofertaexternalId");
     }
 
+    /**
+     * captura el id de una evaluacion *
+     */
     protected Long getEvaluacionId() {
         return (Long) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("evaluacionId");
     }
 
+    /**
+     * Retorna todas aquellas pruebas que han sido resueltas *
+     */
     protected List<Prueba> getPreubasResueltas() {
         return (List<Prueba>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("preubasResueltasId");
     }
 
+    /**
+     * Retorna una lista de los catalogos hijos según el id del padre
+     */
     protected List<Catalogo> getCatalogosByParent(Long id) throws BusinessException {
         return adminEjb.getCatalogosByParent(id);
     }

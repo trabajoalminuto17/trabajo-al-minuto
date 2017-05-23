@@ -37,11 +37,17 @@ public class DetallePerfilView extends ComponenteWeb implements Serializable {
 
     private Usuario usuarioLogueado;
 
+    /**
+     * Codigo a ejecutar una vez se ha instanciado la clase
+     */
     @PostConstruct
     public void init() {
         usuarioLogueado = getUserLogin();
     }
 
+    /**
+     * Actualiza los datos del usuario*
+     */
     public void updateUsuario() {
         try {
             usuarioLogueado = usuarioEjb.updateUsuario(usuarioLogueado);
@@ -54,13 +60,16 @@ public class DetallePerfilView extends ComponenteWeb implements Serializable {
         }
     }
 
+    /**
+     * Copia el PDF seleccionado por el usuario*
+     */
     public Boolean cargarPDF(FileUploadEvent event) {
         try {
-            String fileName = usuarioLogueado.getPersona().getDocumento().concat("_HV.pdf");
-            File file = new File(RUTA_HOJA_DE_VIDA_PDF + fileName);
-            FileUtils.copyInputStreamToFile(event.getFile().getInputstream(), file);
-            usuarioLogueado.getCandidato().setRutaHojaDeVida(file.getAbsolutePath());
-            usuarioLogueado = usuarioEjb.updateUsuario(usuarioLogueado);
+            String fileName = usuarioLogueado.getPersona().getDocumento().concat("_HV.pdf");//Nombre del archivo que será guardado
+            File file = new File(RUTA_HOJA_DE_VIDA_PDF + fileName);//Ruta donde será guardado el archivo
+            FileUtils.copyInputStreamToFile(event.getFile().getInputstream(), file);//copia el archivo en la ruta indicada
+            usuarioLogueado.getCandidato().setRutaHojaDeVida(file.getAbsolutePath());//inserta la descripcion de la ruta donde se guarda el archivo
+            usuarioLogueado = usuarioEjb.updateUsuario(usuarioLogueado);//Actualiza la informacion del usuario
             message = webMessage(MensajeWeb.ARCHIVO_OK);
             return true;
         } catch (IOException ex) {

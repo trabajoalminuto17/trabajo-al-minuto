@@ -5,8 +5,6 @@
  */
 package com.basp.trabajo_al_minuto.model.business;
 
-import java.io.InputStream;
-import java.io.OutputStream;
 import javax.activation.DataSource;
 import javax.mail.BodyPart;
 import javax.mail.Multipart;
@@ -74,7 +72,6 @@ import org.json.JSONObject;
 import org.xml.sax.SAXException;
 import com.google.gson.Gson;
 
-
 /**
  *
  * @author Bryan Silva
@@ -85,8 +82,6 @@ public class BusinessUtils implements Serializable {
     private static BodyPart bodyPart;
     private static Multipart multipart;
     private static DataSource dataSource;
-    private static InputStream inStream;
-    private static OutputStream outStream;
 
     private static final long serialVersionUID = 1L;
 
@@ -157,6 +152,9 @@ public class BusinessUtils implements Serializable {
         }
     }
 
+    /**
+     * Confirma que el mensaje de correo electronico fue enviado correctamente
+     */
     public static void sendMassEmail(List<EmailMessage> emdtos) throws BusinessException {
         for (EmailMessage emdto : emdtos) {
             sendEmail(emdto);
@@ -164,6 +162,9 @@ public class BusinessUtils implements Serializable {
         System.out.println("Send Mass Email Sucessfully!");
     }
 
+    /**
+     * Se encarga de enviar el mensaje de correo electronico *
+     */
     public static Boolean sendEmail(final EmailMessage emdto) throws BusinessException {
         try {
             Session session;
@@ -231,6 +232,9 @@ public class BusinessUtils implements Serializable {
         return Boolean.TRUE;
     }
 
+    /**
+     * Genera el reporte Jasper *
+     */
     public static JasperPrint reportGenerate(Map param, String file, Connection conn) throws BusinessException {
         try {
             JasperReport report = JasperCompileManager.compileReport(file);
@@ -241,6 +245,9 @@ public class BusinessUtils implements Serializable {
         }
     }
 
+    /**
+     * Exporta el reporte al formato indicado por el usuario *
+     */
     public static byte[] reportExport(JasperPrint jasperPrint) throws BusinessException {
         try {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();

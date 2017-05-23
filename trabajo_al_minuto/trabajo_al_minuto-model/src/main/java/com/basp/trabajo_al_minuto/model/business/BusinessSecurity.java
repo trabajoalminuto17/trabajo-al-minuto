@@ -18,6 +18,9 @@ import org.apache.commons.codec.binary.Base64;
  */
 public class BusinessSecurity {
 
+    /**
+     * Se encarga de encriptar la contraseña ingresada por el usuario *
+     */
     public static String encrypt(String value) throws BusinessException {
         String secretKey = "e-business";
         String base64EncryptedString = "";
@@ -38,6 +41,9 @@ public class BusinessSecurity {
         return base64EncryptedString;
     }
 
+    /**
+     * Se encarga de desencriptar la contraseña ingresada por el usuario *
+     */
     public static String decrypt(String encryptValue) throws BusinessException {
         String secretKey = "e-business";
         String base64EncryptedString = "";

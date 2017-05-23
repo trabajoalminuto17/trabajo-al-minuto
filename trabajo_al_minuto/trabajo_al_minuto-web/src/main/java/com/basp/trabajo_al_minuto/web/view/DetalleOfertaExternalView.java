@@ -27,6 +27,9 @@ public class DetalleOfertaExternalView extends ComponenteWeb implements Serializ
 
     private Oferta ofertaSeleccionada;
 
+    /**
+     * Codigo a ejecutar una vez se ha instanciado la clase
+     */
     @PostConstruct
     public void init() {
         try {

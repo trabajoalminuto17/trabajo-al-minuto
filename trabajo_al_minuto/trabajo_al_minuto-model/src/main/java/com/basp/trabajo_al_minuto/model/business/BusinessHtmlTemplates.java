@@ -11,6 +11,10 @@ package com.basp.trabajo_al_minuto.model.business;
  */
 public class BusinessHtmlTemplates {
 
+    /**
+     * Encargado de generar mediante codigo html el cuerpo del mensaje que le
+     * llega al usuario cada vez que se restaura la clave *
+     */
     public static String restourarClaveTemplate(String password, String name, String email) throws BusinessException {
         StringBuilder response = new StringBuilder();
         response.append("<center><table width='800' border='0' cellspacing='0' cellpadding='5'>");
@@ -32,6 +36,10 @@ public class BusinessHtmlTemplates {
         return response.toString();
     }
 
+    /**
+     * Encargado de generar mediante codigo html el cuerpo del mensaje que le
+     * llega al usuario cada vez que se genera una citacion *
+     */
     public static String enviarCitacion(String empresa, String fecha, String name, String lugar, String detalles, String tituloOferta) throws BusinessException {
         StringBuilder response = new StringBuilder();
         response.append("<center><table width='800' border='0' cellspacing='0' cellpadding='5'>");
@@ -57,6 +65,10 @@ public class BusinessHtmlTemplates {
         return response.toString();
     }
 
+    /**
+     * Encargado de generar mediante codigo html el cuerpo del mensaje que le
+     * llega al usuario cada vez que se reprograma una citacion *
+     */
     public static String actualizarCitacion(String empresa, String fecha, String name, String lugar, String detalles) throws BusinessException {
         StringBuilder response = new StringBuilder();
         response.append("<center><table width='800' border='0' cellspacing='0' cellpadding='5'>");
@@ -81,6 +93,10 @@ public class BusinessHtmlTemplates {
         return response.toString();
     }
 
+    /**
+     * Encargado de generar mediante codigo html el cuerpo del mensaje que le
+     * llega al usuario cada vez que el participante rechaza una citacion *
+     */
     public static String citacionRechazada(String titulo, String fecha, String name, String lugar, String detalles) throws BusinessException {
         StringBuilder response = new StringBuilder();
         response.append("<center><table width='800' border='0' cellspacing='0' cellpadding='5'>");

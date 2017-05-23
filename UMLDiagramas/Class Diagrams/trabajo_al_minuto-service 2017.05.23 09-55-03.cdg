@@ -1,0 +1,685 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="trabajo_al_minuto-service">
+  <ClassDiagramComponents>
+    <Class name="AdminDao" package="com.basp.trabajo_al_minuto.service.dao" visibility="public" xPosition="1459.0" yPosition="611.0">
+      <Fields>
+        <Field name="BP" type="BusinessPersistence" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="protected"/>
+      </Constructors>
+      <Methods>
+        <Method name="_getCatalogosByParent" returnType="List&lt;Catalogo&gt;" visibility="protected">
+          <Argument type="Long" name="id"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="CitacionDao" package="com.basp.trabajo_al_minuto.service.dao" visibility="public" xPosition="85.0" yPosition="144.0">
+      <Fields>
+        <Field name="BP" type="BusinessPersistence" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="protected"/>
+      </Constructors>
+      <Methods>
+        <Method name="_updateCitacion" returnType="Citacion" visibility="protected">
+          <Argument type="Citacion" name="c"/>
+        </Method>
+        <Method name="_getCitacionByOferta" returnType="Citacion" visibility="protected">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="_findCitacion" returnType="Citacion" visibility="protected">
+          <Argument type="Long" name="pk"/>
+        </Method>
+        <Method name="_getEvaluacionByCitacion" returnType="Evaluacion" visibility="protected">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="_getCitacionesActivasByUsuario" returnType="List&lt;Citacion&gt;" visibility="protected">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="_getCitacionesActivasByEmpresa" returnType="List&lt;Citacion&gt;" visibility="protected">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="activarPruebas" returnType="Integer" visibility="protected">
+          <Argument type="Long" name="id"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="OfertaDao" package="com.basp.trabajo_al_minuto.service.dao" visibility="public" xPosition="952.0" yPosition="557.0">
+      <Fields>
+        <Field name="BP" type="BusinessPersistence" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="protected"/>
+      </Constructors>
+      <Methods>
+        <Method name="_getOfertasByEmpresa" returnType="List&lt;Oferta&gt;" visibility="protected">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="_findOferta" returnType="Oferta" visibility="protected">
+          <Argument type="Long" name="pk"/>
+        </Method>
+        <Method name="_updateOferta" returnType="Oferta" visibility="protected">
+          <Argument type="Oferta" name="o"/>
+        </Method>
+        <Method name="_getOfertasMasAplicadasByEmpresa" returnType="List&lt;OfertaAplicada&gt;" visibility="protected">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="_getOfertasMasAplicadas" returnType="List&lt;OfertaAplicada&gt;" visibility="protected"/>
+        <Method name="_getOfertasActivas" returnType="List&lt;Oferta&gt;" visibility="protected"/>
+        <Method name="_getOfertasExternal" returnType="List&lt;Oferta&gt;" visibility="protected">
+          <Argument type="Long" name="area"/>
+          <Argument type="List&lt;String&gt;" name="palabras"/>
+        </Method>
+        <Method name="_getMisOfertas" returnType="List&lt;Oferta&gt;" visibility="protected">
+          <Argument type="Long" name="id"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="PerfilDao" package="com.basp.trabajo_al_minuto.service.dao" visibility="public" xPosition="696.0" yPosition="1204.0">
+      <Fields>
+        <Field name="BP" type="BusinessPersistence" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="protected"/>
+      </Constructors>
+      <Methods>
+        <Method name="_getPerfilesByEmpresa" returnType="List&lt;Perfil&gt;" visibility="protected">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="_findPerfil" returnType="Perfil" visibility="protected">
+          <Argument type="Long" name="pk"/>
+        </Method>
+        <Method name="_updatePerfil" returnType="Perfil" visibility="protected">
+          <Argument type="Perfil" name="p"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="PruebaDao" package="com.basp.trabajo_al_minuto.service.dao" visibility="public" xPosition="1432.0" yPosition="144.0">
+      <Fields>
+        <Field name="BP" type="BusinessPersistence" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="protected"/>
+      </Constructors>
+      <Methods>
+        <Method name="_getPruebasByEmpresa" returnType="List&lt;Prueba&gt;" visibility="protected">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="_findPrueba" returnType="Prueba" visibility="protected">
+          <Argument type="Long" name="pk"/>
+        </Method>
+        <Method name="_updatePrueba" returnType="Prueba" visibility="protected">
+          <Argument type="Prueba" name="p"/>
+        </Method>
+        <Method name="_getPruebasByPerfil" returnType="List&lt;Prueba&gt;" visibility="protected">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="_getPruebasPlantillaByEmpresa" returnType="List&lt;PruebaPlantilla&gt;" visibility="protected">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="_findPruebaPlantilla" returnType="PruebaPlantilla" visibility="protected">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="_updatePruebaPlantilla" returnType="PruebaPlantilla" visibility="protected">
+          <Argument type="PruebaPlantilla" name="p"/>
+        </Method>
+        <Method name="_removeOpcionPlantilla" returnType="Boolean" visibility="protected">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="_updateEvaluacion" returnType="Evaluacion" visibility="protected">
+          <Argument type="Evaluacion" name="e"/>
+        </Method>
+        <Method name="_findEvaluacion" returnType="Evaluacion" visibility="protected">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="_updateOpcion" returnType="Opcion" visibility="protected">
+          <Argument type="Opcion" name="o"/>
+        </Method>
+        <Method name="_updateRespuesta" returnType="Respuesta" visibility="protected">
+          <Argument type="Respuesta" name="r"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="UsuarioDao" package="com.basp.trabajo_al_minuto.service.dao" visibility="public" xPosition="2043.0" yPosition="144.0">
+      <Fields>
+        <Field name="BP" type="BusinessPersistence" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="protected"/>
+      </Constructors>
+      <Methods>
+        <Method name="_getUsuarioByEmail" returnType="Usuario" visibility="protected">
+          <Argument type="String" name="email"/>
+        </Method>
+        <Method name="_validarCredenciales" returnType="Boolean" visibility="protected">
+          <Argument type="Usuario" name="u"/>
+        </Method>
+        <Method name="_cambiarClave" returnType="Boolean" visibility="protected">
+          <Argument type="Usuario" name="u"/>
+        </Method>
+        <Method name="_getUsuariosByEmpresa" returnType="List&lt;Usuario&gt;" visibility="protected">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="_findUsuario" returnType="Usuario" visibility="protected">
+          <Argument type="Long" name="pk"/>
+        </Method>
+        <Method name="_updateUsuario" returnType="Usuario" visibility="protected">
+          <Argument type="Usuario" name="u"/>
+        </Method>
+        <Method name="_createUsuario" returnType="void" visibility="protected">
+          <Argument type="Usuario" name="u"/>
+        </Method>
+        <Method name="_getUsuariosByOferta" returnType="List&lt;UsuarioHasOferta&gt;" visibility="protected">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="_updateUsuarioHasOferta" returnType="UsuarioHasOferta" visibility="protected">
+          <Argument type="UsuarioHasOferta" name="uho"/>
+        </Method>
+        <Method name="_getMenusByRol" returnType="List&lt;Menu&gt;" visibility="protected">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="_getUsuariosMejoresResultadosByEmpresa" returnType="List&lt;Evaluacion&gt;" visibility="protected">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="_findUsuarioHasOferta" returnType="UsuarioHasOferta" visibility="protected">
+          <Argument type="Long" name="pk"/>
+        </Method>
+        <Method name="_getUsuarioHasOfertaByUsuarioAndOferta" returnType="UsuarioHasOferta" visibility="protected">
+          <Argument type="Long" name="usuario"/>
+          <Argument type="Long" name="oferta"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="OfertaAplicada" package="com.basp.trabajo_al_minuto.service.dte" visibility="public" xPosition="2701.0" yPosition="232.0">
+      <Fields>
+        <Field name="oferta" type="Oferta" visibility="private"/>
+        <Field name="cantidadPostulados" type="Long" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Oferta" name="oferta"/>
+          <Argument type="Long" name="cantidadPostulados"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getOferta" returnType="Oferta" visibility="public"/>
+        <Method name="setOferta" returnType="void" visibility="public">
+          <Argument type="Oferta" name="oferta"/>
+        </Method>
+        <Method name="getCantidadPostulados" returnType="Long" visibility="public"/>
+        <Method name="setCantidadPostulados" returnType="void" visibility="public">
+          <Argument type="Long" name="cantidadPostulados"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="AdminEjb" package="com.basp.trabajo_al_minuto.service.ejb" visibility="public" xPosition="1466.0" yPosition="950.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="getCatalogosByParent" returnType="List&lt;Catalogo&gt;" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="CitacionEjb" package="com.basp.trabajo_al_minuto.service.ejb" visibility="public" xPosition="108.0" yPosition="585.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="updateCitacion" returnType="Citacion" visibility="public">
+          <Argument type="Citacion" name="c"/>
+        </Method>
+        <Method name="getCitacionByOferta" returnType="Citacion" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="findCitacion" returnType="Citacion" visibility="public">
+          <Argument type="Long" name="pk"/>
+        </Method>
+        <Method name="getEvaluacionByCitacion" returnType="Evaluacion" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="getCitacionesActivasByUsuario" returnType="List&lt;Citacion&gt;" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="getCitacionesActivasByEmpresa" returnType="List&lt;Citacion&gt;" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="activarPrueba" returnType="Integer" visibility="public">
+          <Argument type="Long" name="pk"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="OfertaEjb" package="com.basp.trabajo_al_minuto.service.ejb" visibility="public" xPosition="636.0" yPosition="144.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="getOfertasByEmpresa" returnType="List&lt;Oferta&gt;" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="findOferta" returnType="Oferta" visibility="public">
+          <Argument type="Long" name="pk"/>
+        </Method>
+        <Method name="updateOferta" returnType="Oferta" visibility="public">
+          <Argument type="Oferta" name="o"/>
+        </Method>
+        <Method name="getOfertasMasAplicadasByEmpresa" returnType="List&lt;OfertaAplicada&gt;" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="getOfertasMasAplicadas" returnType="List&lt;OfertaAplicada&gt;" visibility="public"/>
+        <Method name="getOfertasActivas" returnType="List&lt;Oferta&gt;" visibility="public"/>
+        <Method name="getOfertasExternal" returnType="List&lt;Oferta&gt;" visibility="public">
+          <Argument type="Long" name="area"/>
+          <Argument type="List&lt;String&gt;" name="palabras"/>
+        </Method>
+        <Method name="getMisOfertas" returnType="List&lt;Oferta&gt;" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="PerfilEjb" package="com.basp.trabajo_al_minuto.service.ejb" visibility="public" xPosition="1008.0" yPosition="972.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="getPerfilesByEmpresa" returnType="List&lt;Perfil&gt;" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="findPerfil" returnType="Perfil" visibility="public">
+          <Argument type="Long" name="pk"/>
+        </Method>
+        <Method name="updatePerfil" returnType="Perfil" visibility="public">
+          <Argument type="Perfil" name="p"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="PruebaEjb" package="com.basp.trabajo_al_minuto.service.ejb" visibility="public" xPosition="1870.0" yPosition="676.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="getPruebasByEmpresa" returnType="List&lt;Prueba&gt;" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="findPrueba" returnType="Prueba" visibility="public">
+          <Argument type="Long" name="pk"/>
+        </Method>
+        <Method name="updatePrueba" returnType="Prueba" visibility="public">
+          <Argument type="Prueba" name="p"/>
+        </Method>
+        <Method name="getPruebasByPerfil" returnType="List&lt;Prueba&gt;" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="getPruebasPlantillaByEmpresa" returnType="List&lt;PruebaPlantilla&gt;" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="findPruebaPlantilla" returnType="PruebaPlantilla" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="updatePruebaPlantilla" returnType="PruebaPlantilla" visibility="public">
+          <Argument type="PruebaPlantilla" name="p"/>
+        </Method>
+        <Method name="removeOpcionPlantilla" returnType="Boolean" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="updateEvaluacion" returnType="Evaluacion" visibility="public">
+          <Argument type="Evaluacion" name="e"/>
+        </Method>
+        <Method name="findEvaluacion" returnType="Evaluacion" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="updateOpcion" returnType="Opcion" visibility="public">
+          <Argument type="Opcion" name="o"/>
+        </Method>
+        <Method name="updateRespuesta" returnType="Respuesta" visibility="public">
+          <Argument type="Respuesta" name="r"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="UsuarioEjb" package="com.basp.trabajo_al_minuto.service.ejb" visibility="public" xPosition="2409.0" yPosition="676.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="getUsuarioByEmail" returnType="Usuario" visibility="public">
+          <Argument type="String" name="email"/>
+        </Method>
+        <Method name="validarCredenciales" returnType="Boolean" visibility="public">
+          <Argument type="Usuario" name="u"/>
+        </Method>
+        <Method name="cambiarClave" returnType="Boolean" visibility="public">
+          <Argument type="Usuario" name="u"/>
+        </Method>
+        <Method name="getUsuariosByEmpresa" returnType="List&lt;Usuario&gt;" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="findUsuario" returnType="Usuario" visibility="public">
+          <Argument type="Long" name="pk"/>
+        </Method>
+        <Method name="updateUsuario" returnType="Usuario" visibility="public">
+          <Argument type="Usuario" name="u"/>
+        </Method>
+        <Method name="createUsuario" returnType="void" visibility="public">
+          <Argument type="Usuario" name="u"/>
+        </Method>
+        <Method name="getUsuariosByOferta" returnType="List&lt;UsuarioHasOferta&gt;" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="updateUsuarioHasOferta" returnType="UsuarioHasOferta" visibility="public">
+          <Argument type="UsuarioHasOferta" name="uho"/>
+        </Method>
+        <Method name="getMenusByRol" returnType="List&lt;Menu&gt;" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="getUsuariosMejoresResultadosByEmpresa" returnType="List&lt;Evaluacion&gt;" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="findUsuarioHasOferta" returnType="UsuarioHasOferta" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="getUsuarioHasOfertaByUsuarioAndOferta" returnType="UsuarioHasOferta" visibility="public">
+          <Argument type="Long" name="usuario"/>
+          <Argument type="Long" name="oferta"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Interface name="AdminFacade" package="com.basp.trabajo_al_minuto.service.facade" visibility="public" xPosition="1604.0" yPosition="1188.0">
+      <Methods>
+        <Method name="getCatalogosByParent" returnType="List&lt;Catalogo&gt;" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="CitacionFacade" package="com.basp.trabajo_al_minuto.service.facade" visibility="public" xPosition="54.0" yPosition="1024.0">
+      <Methods>
+        <Method name="updateCitacion" returnType="Citacion" visibility="public">
+          <Argument type="Citacion" name="c"/>
+        </Method>
+        <Method name="getCitacionByOferta" returnType="Citacion" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="findCitacion" returnType="Citacion" visibility="public">
+          <Argument type="Long" name="pk"/>
+        </Method>
+        <Method name="getEvaluacionByCitacion" returnType="Evaluacion" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="getCitacionesActivasByUsuario" returnType="List&lt;Citacion&gt;" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="getCitacionesActivasByEmpresa" returnType="List&lt;Citacion&gt;" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="activarPrueba" returnType="Integer" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="OfertaFacade" package="com.basp.trabajo_al_minuto.service.facade" visibility="public" xPosition="489.0" yPosition="694.0">
+      <Methods>
+        <Method name="getOfertasByEmpresa" returnType="List&lt;Oferta&gt;" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="findOferta" returnType="Oferta" visibility="public">
+          <Argument type="Long" name="pk"/>
+        </Method>
+        <Method name="updateOferta" returnType="Oferta" visibility="public">
+          <Argument type="Oferta" name="o"/>
+        </Method>
+        <Method name="getOfertasMasAplicadasByEmpresa" returnType="List&lt;OfertaAplicada&gt;" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="getOfertasMasAplicadas" returnType="List&lt;OfertaAplicada&gt;" visibility="public"/>
+        <Method name="getOfertasActivas" returnType="List&lt;Oferta&gt;" visibility="public"/>
+        <Method name="getOfertasExternal" returnType="List&lt;Oferta&gt;" visibility="public">
+          <Argument type="Long" name="area"/>
+          <Argument type="List&lt;String&gt;" name="palabras"/>
+        </Method>
+        <Method name="getMisOfertas" returnType="List&lt;Oferta&gt;" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="PerfilFacade" package="com.basp.trabajo_al_minuto.service.facade" visibility="public" xPosition="1237.0" yPosition="1229.0">
+      <Methods>
+        <Method name="getPerfilesByEmpresa" returnType="List&lt;Perfil&gt;" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="findPerfil" returnType="Perfil" visibility="public">
+          <Argument type="Long" name="pk"/>
+        </Method>
+        <Method name="updatePerfil" returnType="Perfil" visibility="public">
+          <Argument type="Perfil" name="p"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="PruebaFacade" package="com.basp.trabajo_al_minuto.service.facade" visibility="public" xPosition="2033.0" yPosition="1188.0">
+      <Methods>
+        <Method name="getPruebasByEmpresa" returnType="List&lt;Prueba&gt;" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="findPrueba" returnType="Prueba" visibility="public">
+          <Argument type="Long" name="pk"/>
+        </Method>
+        <Method name="updatePrueba" returnType="Prueba" visibility="public">
+          <Argument type="Prueba" name="p"/>
+        </Method>
+        <Method name="getPruebasByPerfil" returnType="List&lt;Prueba&gt;" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="getPruebasPlantillaByEmpresa" returnType="List&lt;PruebaPlantilla&gt;" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="findPruebaPlantilla" returnType="PruebaPlantilla" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="updatePruebaPlantilla" returnType="PruebaPlantilla" visibility="public">
+          <Argument type="PruebaPlantilla" name="p"/>
+        </Method>
+        <Method name="removeOpcionPlantilla" returnType="Boolean" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="updateEvaluacion" returnType="Evaluacion" visibility="public">
+          <Argument type="Evaluacion" name="e"/>
+        </Method>
+        <Method name="findEvaluacion" returnType="Evaluacion" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="updateOpcion" returnType="Opcion" visibility="public">
+          <Argument type="Opcion" name="o"/>
+        </Method>
+        <Method name="updateRespuesta" returnType="Respuesta" visibility="public">
+          <Argument type="Respuesta" name="r"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="UsuarioFacade" package="com.basp.trabajo_al_minuto.service.facade" visibility="public" xPosition="2582.0" yPosition="1188.0">
+      <Methods>
+        <Method name="getUsuarioByEmail" returnType="Usuario" visibility="public">
+          <Argument type="String" name="email"/>
+        </Method>
+        <Method name="validarCredenciales" returnType="Boolean" visibility="public">
+          <Argument type="Usuario" name="u"/>
+        </Method>
+        <Method name="cambiarClave" returnType="Boolean" visibility="public">
+          <Argument type="Usuario" name="u"/>
+        </Method>
+        <Method name="getUsuariosByEmpresa" returnType="List&lt;Usuario&gt;" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="findUsuario" returnType="Usuario" visibility="public">
+          <Argument type="Long" name="pk"/>
+        </Method>
+        <Method name="updateUsuario" returnType="Usuario" visibility="public">
+          <Argument type="Usuario" name="u"/>
+        </Method>
+        <Method name="createUsuario" returnType="void" visibility="public">
+          <Argument type="Usuario" name="u"/>
+        </Method>
+        <Method name="getUsuariosByOferta" returnType="List&lt;UsuarioHasOferta&gt;" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="updateUsuarioHasOferta" returnType="UsuarioHasOferta" visibility="public">
+          <Argument type="UsuarioHasOferta" name="uho"/>
+        </Method>
+        <Method name="getMenusByRol" returnType="List&lt;Menu&gt;" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="getUsuariosMejoresResultadosByEmpresa" returnType="List&lt;Evaluacion&gt;" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="findUsuarioHasOferta" returnType="UsuarioHasOferta" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="getUsuarioHasOfertaByUsuarioAndOferta" returnType="UsuarioHasOferta" visibility="public">
+          <Argument type="Long" name="usuario"/>
+          <Argument type="Long" name="oferta"/>
+        </Method>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="com.basp.trabajo_al_minuto.service.ejb.UsuarioEjb" target="com.basp.trabajo_al_minuto.service.facade.UsuarioFacade"/>
+    <HasRelation name="rolHasMenuList" source="com.basp.trabajo_al_minuto.service.entity.Rol" target="com.basp.trabajo_al_minuto.service.entity.RolHasMenu" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;RolHasMenu&gt;"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta" target="com.basp.trabajo_al_minuto.service.entity.Oferta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="menuList" source="com.basp.trabajo_al_minuto.service.entity.Menu" target="com.basp.trabajo_al_minuto.service.entity.Menu" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Menu&gt;"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.dao.PruebaDao" target="com.basp.trabajo_al_minuto.service.entity.Opcion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Rol" target="com.basp.trabajo_al_minuto.service.entity.RolHasMenu" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="com.basp.trabajo_al_minuto.service.ejb.PruebaEjb" target="com.basp.trabajo_al_minuto.service.facade.PruebaFacade"/>
+    <HasRelation name="perfilList" source="com.basp.trabajo_al_minuto.service.entity.Catalogo" target="com.basp.trabajo_al_minuto.service.entity.Perfil" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Perfil&gt;"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Oferta" target="com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.dao.PruebaDao" target="com.basp.trabajo_al_minuto.service.entity.Respuesta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="com.basp.trabajo_al_minuto.service.ejb.PerfilEjb" target="com.basp.trabajo_al_minuto.service.dao.PerfilDao"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.facade.PruebaFacade" target="com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Perfil" target="com.basp.trabajo_al_minuto.service.entity.Catalogo" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="area" source="com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla" target="com.basp.trabajo_al_minuto.service.entity.Catalogo" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.dao.PerfilDao" target="com.basp.trabajo_al_minuto.service.entity.Perfil" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="usuarioUsuarioId" source="com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta" target="com.basp.trabajo_al_minuto.service.entity.Usuario" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Oferta" target="com.basp.trabajo_al_minuto.service.entity.Perfil" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Citacion" target="com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="com.basp.trabajo_al_minuto.service.ejb.AdminEjb" target="com.basp.trabajo_al_minuto.service.dao.AdminDao"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Usuario" target="com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="com.basp.trabajo_al_minuto.service.ejb.AdminEjb" target="com.basp.trabajo_al_minuto.service.facade.AdminFacade"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="com.basp.trabajo_al_minuto.service.ejb.CitacionEjb" target="com.basp.trabajo_al_minuto.service.facade.CitacionFacade"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Menu" target="com.basp.trabajo_al_minuto.service.entity.RolHasMenu" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.ejb.PerfilEjb" target="com.basp.trabajo_al_minuto.service.entity.Perfil" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ofertaList" source="com.basp.trabajo_al_minuto.service.entity.Perfil" target="com.basp.trabajo_al_minuto.service.entity.Oferta" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Oferta&gt;"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.ejb.PruebaEjb" target="com.basp.trabajo_al_minuto.service.entity.Evaluacion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="usuarioHasOfertaList" source="com.basp.trabajo_al_minuto.service.entity.Catalogo" target="com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;UsuarioHasOferta&gt;"/>
+    <IsRelation name="is" source="com.basp.trabajo_al_minuto.service.ejb.PruebaEjb" target="com.basp.trabajo_al_minuto.service.dao.PruebaDao"/>
+    <HasRelation name="usuarioAutor" source="com.basp.trabajo_al_minuto.service.entity.Oferta" target="com.basp.trabajo_al_minuto.service.entity.Usuario" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="catalogoList" source="com.basp.trabajo_al_minuto.service.entity.Catalogo" target="com.basp.trabajo_al_minuto.service.entity.Catalogo" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Catalogo&gt;"/>
+    <HasRelation name="pruebaList" source="com.basp.trabajo_al_minuto.service.entity.Catalogo" target="com.basp.trabajo_al_minuto.service.entity.Prueba" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Prueba&gt;"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.ejb.CitacionEjb" target="com.basp.trabajo_al_minuto.service.entity.Evaluacion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.dao.UsuarioDao" target="com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="rol" source="com.basp.trabajo_al_minuto.service.entity.Usuario" target="com.basp.trabajo_al_minuto.service.entity.Rol" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.facade.PruebaFacade" target="com.basp.trabajo_al_minuto.service.entity.Evaluacion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.ejb.PruebaEjb" target="com.basp.trabajo_al_minuto.service.entity.Prueba" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.dao.PruebaDao" target="com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Usuario" target="com.basp.trabajo_al_minuto.service.entity.Candidato" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.dao.PruebaDao" target="com.basp.trabajo_al_minuto.service.entity.Evaluacion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Prueba" target="com.basp.trabajo_al_minuto.service.entity.Prueba" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Evaluacion" target="com.basp.trabajo_al_minuto.service.entity.Respuesta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.ejb.UsuarioEjb" target="com.basp.trabajo_al_minuto.service.entity.Usuario" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="candidato" source="com.basp.trabajo_al_minuto.service.entity.Usuario" target="com.basp.trabajo_al_minuto.service.entity.Candidato" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta" target="com.basp.trabajo_al_minuto.service.entity.Citacion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="empresaEmpresaId" source="com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla" target="com.basp.trabajo_al_minuto.service.entity.Empresa" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="pruebaPlantillaList" source="com.basp.trabajo_al_minuto.service.entity.Catalogo" target="com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;PruebaPlantilla&gt;"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Candidato" target="com.basp.trabajo_al_minuto.service.entity.Usuario" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.ejb.OfertaEjb" target="com.basp.trabajo_al_minuto.service.entity.Oferta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.PerfilHasPrueba" target="com.basp.trabajo_al_minuto.service.entity.Perfil" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.ejb.PruebaEjb" target="com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.dao.PruebaDao" target="com.basp.trabajo_al_minuto.service.entity.Prueba" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.ejb.PruebaEjb" target="com.basp.trabajo_al_minuto.service.entity.Opcion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="preguntaPlantillaPreguntaId" source="com.basp.trabajo_al_minuto.service.entity.OpcionPlantilla" target="com.basp.trabajo_al_minuto.service.entity.PreguntaPlantilla" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="catalogoPadre" source="com.basp.trabajo_al_minuto.service.entity.Catalogo" target="com.basp.trabajo_al_minuto.service.entity.Catalogo" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="menuPadre" source="com.basp.trabajo_al_minuto.service.entity.Menu" target="com.basp.trabajo_al_minuto.service.entity.Menu" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="opcionPlantillaList" source="com.basp.trabajo_al_minuto.service.entity.PreguntaPlantilla" target="com.basp.trabajo_al_minuto.service.entity.OpcionPlantilla" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;OpcionPlantilla&gt;"/>
+    <HasRelation name="area" source="com.basp.trabajo_al_minuto.service.entity.Perfil" target="com.basp.trabajo_al_minuto.service.entity.Catalogo" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.RolHasMenu" target="com.basp.trabajo_al_minuto.service.entity.Menu" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.facade.PruebaFacade" target="com.basp.trabajo_al_minuto.service.entity.Prueba" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="citacionList" source="com.basp.trabajo_al_minuto.service.entity.Usuario" target="com.basp.trabajo_al_minuto.service.entity.Citacion" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Citacion&gt;"/>
+    <HasRelation name="opcion" source="com.basp.trabajo_al_minuto.service.entity.Respuesta" target="com.basp.trabajo_al_minuto.service.entity.Opcion" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.dao.UsuarioDao" target="com.basp.trabajo_al_minuto.service.entity.Menu" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.dao.AdminDao" target="com.basp.trabajo_al_minuto.service.entity.Catalogo" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.ejb.CitacionEjb" target="com.basp.trabajo_al_minuto.service.entity.Citacion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Empresa" target="com.basp.trabajo_al_minuto.service.entity.Usuario" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="preguntaPlantillaList" source="com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla" target="com.basp.trabajo_al_minuto.service.entity.PreguntaPlantilla" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;PreguntaPlantilla&gt;"/>
+    <HasRelation name="citacion" source="com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta" target="com.basp.trabajo_al_minuto.service.entity.Citacion" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="citacion" source="com.basp.trabajo_al_minuto.service.entity.Evaluacion" target="com.basp.trabajo_al_minuto.service.entity.Citacion" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ofertasOfertaId" source="com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta" target="com.basp.trabajo_al_minuto.service.entity.Oferta" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.ejb.UsuarioEjb" target="com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Rol" target="com.basp.trabajo_al_minuto.service.entity.Usuario" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Evaluacion" target="com.basp.trabajo_al_minuto.service.entity.Citacion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.facade.CitacionFacade" target="com.basp.trabajo_al_minuto.service.entity.Citacion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ofertaList" source="com.basp.trabajo_al_minuto.service.entity.Usuario" target="com.basp.trabajo_al_minuto.service.entity.Oferta" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Oferta&gt;"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Citacion" target="com.basp.trabajo_al_minuto.service.entity.Evaluacion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.dao.CitacionDao" target="com.basp.trabajo_al_minuto.service.entity.Citacion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="com.basp.trabajo_al_minuto.service.ejb.UsuarioEjb" target="com.basp.trabajo_al_minuto.service.dao.UsuarioDao"/>
+    <HasRelation name="usuarioList" source="com.basp.trabajo_al_minuto.service.entity.Empresa" target="com.basp.trabajo_al_minuto.service.entity.Usuario" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Usuario&gt;"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.facade.OfertaFacade" target="com.basp.trabajo_al_minuto.service.entity.Oferta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Opcion" target="com.basp.trabajo_al_minuto.service.entity.Pregunta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.facade.UsuarioFacade" target="com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="empresa" source="com.basp.trabajo_al_minuto.service.entity.Usuario" target="com.basp.trabajo_al_minuto.service.entity.Empresa" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="com.basp.trabajo_al_minuto.service.ejb.OfertaEjb" target="com.basp.trabajo_al_minuto.service.facade.OfertaFacade"/>
+    <HasRelation name="perfilHasPruebaList" source="com.basp.trabajo_al_minuto.service.entity.Perfil" target="com.basp.trabajo_al_minuto.service.entity.PerfilHasPrueba" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;PerfilHasPrueba&gt;"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.ejb.PruebaEjb" target="com.basp.trabajo_al_minuto.service.entity.Respuesta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="opcionList" source="com.basp.trabajo_al_minuto.service.entity.Pregunta" target="com.basp.trabajo_al_minuto.service.entity.Opcion" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Opcion&gt;"/>
+    <IsRelation name="is" source="com.basp.trabajo_al_minuto.service.ejb.OfertaEjb" target="com.basp.trabajo_al_minuto.service.dao.OfertaDao"/>
+    <HasRelation name="respuestaList" source="com.basp.trabajo_al_minuto.service.entity.Opcion" target="com.basp.trabajo_al_minuto.service.entity.Respuesta" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Respuesta&gt;"/>
+    <HasRelation name="prueba" source="com.basp.trabajo_al_minuto.service.entity.PerfilHasPrueba" target="com.basp.trabajo_al_minuto.service.entity.Prueba" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.facade.PruebaFacade" target="com.basp.trabajo_al_minuto.service.entity.Opcion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Pregunta" target="com.basp.trabajo_al_minuto.service.entity.Opcion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Empresa" target="com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.dao.OfertaDao" target="com.basp.trabajo_al_minuto.service.entity.Oferta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.RolHasMenu" target="com.basp.trabajo_al_minuto.service.entity.Rol" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Menu" target="com.basp.trabajo_al_minuto.service.entity.Menu" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Usuario" target="com.basp.trabajo_al_minuto.service.entity.Empresa" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.PerfilHasPrueba" target="com.basp.trabajo_al_minuto.service.entity.Prueba" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.PreguntaPlantilla" target="com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Respuesta" target="com.basp.trabajo_al_minuto.service.entity.Evaluacion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Catalogo" target="com.basp.trabajo_al_minuto.service.entity.Prueba" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Prueba" target="com.basp.trabajo_al_minuto.service.entity.Pregunta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Usuario" target="com.basp.trabajo_al_minuto.service.entity.Rol" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.dao.UsuarioDao" target="com.basp.trabajo_al_minuto.service.entity.Evaluacion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.facade.UsuarioFacade" target="com.basp.trabajo_al_minuto.service.entity.Menu" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="respuestaList" source="com.basp.trabajo_al_minuto.service.entity.Evaluacion" target="com.basp.trabajo_al_minuto.service.entity.Respuesta" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Respuesta&gt;"/>
+    <HasRelation name="perfil" source="com.basp.trabajo_al_minuto.service.entity.Oferta" target="com.basp.trabajo_al_minuto.service.entity.Perfil" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="evaluacionList" source="com.basp.trabajo_al_minuto.service.entity.Citacion" target="com.basp.trabajo_al_minuto.service.entity.Evaluacion" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Evaluacion&gt;"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.dte.OfertaAplicada" target="com.basp.trabajo_al_minuto.service.entity.Oferta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="usuarioHasOferta" source="com.basp.trabajo_al_minuto.service.entity.Citacion" target="com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.facade.PruebaFacade" target="com.basp.trabajo_al_minuto.service.entity.Respuesta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="oferta" source="com.basp.trabajo_al_minuto.service.dte.OfertaAplicada" target="com.basp.trabajo_al_minuto.service.entity.Oferta" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="usuarioHasOfertaList" source="com.basp.trabajo_al_minuto.service.entity.Usuario" target="com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;UsuarioHasOferta&gt;"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.facade.PerfilFacade" target="com.basp.trabajo_al_minuto.service.entity.Perfil" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.ejb.UsuarioEjb" target="com.basp.trabajo_al_minuto.service.entity.Evaluacion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Usuario" target="com.basp.trabajo_al_minuto.service.entity.Oferta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="usuarioHasOfertaList" source="com.basp.trabajo_al_minuto.service.entity.Oferta" target="com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;UsuarioHasOferta&gt;"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta" target="com.basp.trabajo_al_minuto.service.entity.Usuario" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="pruebaPlantillaPruebaId" source="com.basp.trabajo_al_minuto.service.entity.PreguntaPlantilla" target="com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.facade.AdminFacade" target="com.basp.trabajo_al_minuto.service.entity.Catalogo" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Persona" target="com.basp.trabajo_al_minuto.service.entity.Usuario" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="com.basp.trabajo_al_minuto.service.ejb.PerfilEjb" target="com.basp.trabajo_al_minuto.service.facade.PerfilFacade"/>
+    <HasRelation name="preguntaPreguntaId" source="com.basp.trabajo_al_minuto.service.entity.Opcion" target="com.basp.trabajo_al_minuto.service.entity.Pregunta" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="com.basp.trabajo_al_minuto.service.ejb.CitacionEjb" target="com.basp.trabajo_al_minuto.service.dao.CitacionDao"/>
+    <HasRelation name="persona" source="com.basp.trabajo_al_minuto.service.entity.Usuario" target="com.basp.trabajo_al_minuto.service.entity.Persona" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.facade.UsuarioFacade" target="com.basp.trabajo_al_minuto.service.entity.Usuario" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.dao.CitacionDao" target="com.basp.trabajo_al_minuto.service.entity.Evaluacion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.ejb.AdminEjb" target="com.basp.trabajo_al_minuto.service.entity.Catalogo" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Catalogo" target="com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Perfil" target="com.basp.trabajo_al_minuto.service.entity.Oferta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="perfil" source="com.basp.trabajo_al_minuto.service.entity.PerfilHasPrueba" target="com.basp.trabajo_al_minuto.service.entity.Perfil" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.PreguntaPlantilla" target="com.basp.trabajo_al_minuto.service.entity.OpcionPlantilla" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="usuarioAutor" source="com.basp.trabajo_al_minuto.service.entity.Citacion" target="com.basp.trabajo_al_minuto.service.entity.Usuario" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Prueba" target="com.basp.trabajo_al_minuto.service.entity.Catalogo" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.ejb.UsuarioEjb" target="com.basp.trabajo_al_minuto.service.entity.Menu" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Catalogo" target="com.basp.trabajo_al_minuto.service.entity.Catalogo" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.facade.CitacionFacade" target="com.basp.trabajo_al_minuto.service.entity.Evaluacion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="usuarioList" source="com.basp.trabajo_al_minuto.service.entity.Rol" target="com.basp.trabajo_al_minuto.service.entity.Usuario" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Usuario&gt;"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Pregunta" target="com.basp.trabajo_al_minuto.service.entity.Prueba" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Perfil" target="com.basp.trabajo_al_minuto.service.entity.Prueba" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Citacion" target="com.basp.trabajo_al_minuto.service.entity.Usuario" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta" target="com.basp.trabajo_al_minuto.service.entity.Catalogo" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="pruebaPlantillaList" source="com.basp.trabajo_al_minuto.service.entity.Empresa" target="com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;PruebaPlantilla&gt;"/>
+    <HasRelation name="usuarioList" source="com.basp.trabajo_al_minuto.service.entity.Persona" target="com.basp.trabajo_al_minuto.service.entity.Usuario" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Usuario&gt;"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.facade.UsuarioFacade" target="com.basp.trabajo_al_minuto.service.entity.Evaluacion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="preguntaList" source="com.basp.trabajo_al_minuto.service.entity.Prueba" target="com.basp.trabajo_al_minuto.service.entity.Pregunta" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Pregunta&gt;"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

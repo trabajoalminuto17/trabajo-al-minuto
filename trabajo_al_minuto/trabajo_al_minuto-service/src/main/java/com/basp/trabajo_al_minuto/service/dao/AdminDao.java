@@ -26,6 +26,12 @@ public class AdminDao {
         BP = new BusinessPersistence(Persistence.createEntityManagerFactory(PERSISTENCE_SERVICE));
     }
 
+    /**
+     * Recibe como parametro el id del catalogo padre y retorna los catalogos hijo*
+     * @param id
+     * @return 
+     * @throws java.lang.Exception 
+     */
     protected List<Catalogo> _getCatalogosByParent(Long id) throws Exception {
         return BP.read(new PersistenceObject(Catalogo.class, GET_CATALOGOS_BY_PADRE, JPQL, id));
     }

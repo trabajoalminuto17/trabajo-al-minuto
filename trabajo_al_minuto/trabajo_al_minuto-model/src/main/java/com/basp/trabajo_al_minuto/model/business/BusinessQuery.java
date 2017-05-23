@@ -10,7 +10,8 @@ import java.util.List;
 
 /**
  *
- * @author BASP
+ * En esta clase se almacenan todos los querys personalizados necesarios para
+ * generar la informacion
  */
 public class BusinessQuery {
 
@@ -35,6 +36,10 @@ public class BusinessQuery {
     public static final String GET_MIS_OFERTAS = "SELECT u.ofertasOfertaId FROM UsuarioHasOferta u WHERE u.usuarioUsuarioId.usuarioId = :arg AND u.estado.catalogoId IN (8, 11) ORDER BY u.fechaPostulacion";
     public static final String ACTIVAR_PRUEBA = "UPDATE Citacion c SET c.activarPruebas = TRUE WHERE c.citacionId = :arg";
 
+    /**
+     * Mediante el uso de query nativo consulta todas ofertas disponibles según
+     * los parametros ingresados (área o palabra clave) *
+     */
     public static final List<Object> GET_OFERTAS_EXTERNAL(Long area, String palabra) {
         List<Object> response = new ArrayList();
         List<Object> objs = new ArrayList();

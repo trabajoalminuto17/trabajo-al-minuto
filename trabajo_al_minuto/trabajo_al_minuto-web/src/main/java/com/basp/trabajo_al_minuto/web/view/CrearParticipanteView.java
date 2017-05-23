@@ -41,17 +41,27 @@ public class CrearParticipanteView extends ComponenteWeb implements Serializable
     private Boolean render;
     private Boolean terminos;
 
+    /**
+     * Constructor *
+     */
     public CrearParticipanteView() {
         newUsuario = new Usuario();
         newPersona = new Persona();
         newCandidato = new Candidato();
     }
 
+    /**
+     * Codigo a ejecutar una vez se ha instanciado la clase
+     */
     @PostConstruct
     public void init() {
         render = Boolean.FALSE;
     }
-    
+
+    /**
+     * Metodo que captura la informacion diligenciada por el participante cada
+     * vez que se va a registrar y la inserta en las tablas usuario y candidato
+     */
     public void createParticipante() {
         try {
             newUsuario.setCambioClave(Boolean.FALSE);
@@ -78,6 +88,9 @@ public class CrearParticipanteView extends ComponenteWeb implements Serializable
         }
     }
 
+    /**
+     * Valida si el email ingresado por el participante ya existe
+     */
     public void validarEmail() {
         try {
             if (usuarioEjb.getUsuarioByEmail(newUsuario.getEmail().toLowerCase()) != null) {
@@ -88,7 +101,10 @@ public class CrearParticipanteView extends ComponenteWeb implements Serializable
             Logger.getLogger(CrearParticipanteView.class.getName()).log(Level.SEVERE, ex.developerException());
         }
     }
-    
+
+    /**
+     * metodos get y set*
+     */
     public Usuario getNewUsuario() {
         return newUsuario;
     }

@@ -36,18 +36,32 @@ public class OfertaDao {
         BP = new BusinessPersistence(Persistence.createEntityManagerFactory(PERSISTENCE_SERVICE));
     }
 
+    /**
+     * Retorna todas las ofertas creadas por la empresa*
+     */
     protected List<Oferta> _getOfertasByEmpresa(Long id) throws Exception {
         return BP.read(new PersistenceObject(Oferta.class, GET_OFERTAS_BY_EMPRESA, JPQL, id));
     }
 
+    /**
+     * Retorna la informacion de una oferta, recibe como parametro la pk
+     */
     protected Oferta _findOferta(Long pk) throws Exception {
         return (Oferta) BP.find(Oferta.class, pk);
     }
 
+    /**
+     * actualiza la informacion de una oferta, recibe como parametro el objeto
+     * Oferta*
+     */
     protected Oferta _updateOferta(Oferta o) throws Exception {
         return (Oferta) BP.update(o);
     }
 
+    /**
+     * Retorna las ofertas por empresa, las cuales tienen un gran numero de
+     * postulaciones *
+     */
     protected List<OfertaAplicada> _getOfertasMasAplicadasByEmpresa(Long id) throws Exception {
         List<Object[]> response = BP.read(new PersistenceObject(UsuarioHasOferta.class, GET_OFERTAS_MAS_APLICADAS_BY_EMPRESA, JPQL, id, 6));
         List<OfertaAplicada> list = new ArrayList();
@@ -57,6 +71,9 @@ public class OfertaDao {
         return list;
     }
 
+    /**
+     * Retorna las ofertas, las cuales tienen un gran numero de postulaciones *
+     */
     protected List<OfertaAplicada> _getOfertasMasAplicadas() throws Exception {
         List<Object[]> response = BP.read(new PersistenceObject(UsuarioHasOferta.class, GET_OFERTAS_MAS_APLICADAS, JPQL, 6));
         List<OfertaAplicada> list = new ArrayList();
@@ -66,10 +83,17 @@ public class OfertaDao {
         return list;
     }
 
+    /**
+     * Retorna todas las ofertas que se encuentran activas*
+     */
     protected List<Oferta> _getOfertasActivas() throws Exception {
         return BP.read(new PersistenceObject(Oferta.class, GET_OFERTAS_ACTIVAS, JPQL));
     }
 
+    /**
+     * Permite realizar la busqueda de ofertas según el perfil y las palabras
+     * claves ingresadas en el buscador*
+     */
     protected List<Oferta> _getOfertasExternal(Long area, List<String> palabras) throws Exception {
         List<Oferta> response = new ArrayList();
         if (!palabras.isEmpty()) {
@@ -82,16 +106,17 @@ public class OfertaDao {
             response.clear();
             response.addAll(hs);
             return response;
+        } else if (area > 0) {
+            List<Object> request = GET_OFERTAS_EXTERNAL(area, null);
+            return BP.read(new PersistenceObject(Oferta.class, (String) request.get(0), JPQL, (Object[]) request.get(1)));
         } else {
-            if (area > 0) {
-                List<Object> request = GET_OFERTAS_EXTERNAL(area, null);
-                return BP.read(new PersistenceObject(Oferta.class, (String) request.get(0), JPQL, (Object[]) request.get(1)));
-            } else {
-                return _getOfertasActivas();
-            }
+            return _getOfertasActivas();
         }
     }
 
+    /**
+     *Lista todas las ofertas a las cuales se ha postulado el candidato *
+     */
     protected List<Oferta> _getMisOfertas(Long id) throws Exception {
         return BP.read(new PersistenceObject(UsuarioHasOferta.class, GET_MIS_OFERTAS, JPQL, id));
     }

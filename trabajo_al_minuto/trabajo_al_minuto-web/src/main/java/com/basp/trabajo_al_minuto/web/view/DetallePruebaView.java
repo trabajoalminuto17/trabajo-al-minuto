@@ -39,6 +39,9 @@ public class DetallePruebaView extends ComponenteWeb implements Serializable {
     private PruebaPlantilla pruebaSeleccionada;
     private Long area;
 
+    /**
+     * Codigo a ejecutar una vez se ha instanciado la clase
+     */
     @PostConstruct
     public void init() {
         try {
@@ -51,6 +54,10 @@ public class DetallePruebaView extends ComponenteWeb implements Serializable {
         }
     }
 
+    /**
+     * Genera la lista que será mostrada al usuario con las áreas a las cuales
+     * se pueden asociar una oferta
+     */
     public List<SelectItem> getAreas() {
         List<SelectItem> response = new ArrayList();
         response.add(propiedadesItem(new SelectItem(-1, "Seleccione area..")));
@@ -65,6 +72,9 @@ public class DetallePruebaView extends ComponenteWeb implements Serializable {
         return response;
     }
 
+    /**
+     **
+     */
     public void cambiarOpcion(PreguntaPlantilla pregunta, OpcionPlantilla opcion) {
         Boolean b = Boolean.FALSE;
         if (opcion.getCorrecta()) {

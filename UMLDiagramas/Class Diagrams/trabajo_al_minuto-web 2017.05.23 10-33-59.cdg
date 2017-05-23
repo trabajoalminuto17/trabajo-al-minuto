@@ -1,0 +1,871 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="trabajo_al_minuto-web">
+  <ClassDiagramComponents>
+    <Class name="AtributosWeb" package="com.basp.trabajo_al_minuto.web.model" visibility="public" xPosition="2798.0" yPosition="2420.0">
+      <Fields>
+        <Field name="REDIRECT" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="FACES_PATH" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="CONTACT_ADMIN_MESSAGE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="INTENTE_DE_NUEVO_MESSAGE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="EXITO_MESSAGE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="ERROR_MESSAGE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="ALERTA_MESSAGE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="INICIAR_SESSION_PAGE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="PORTAL_PAGE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="INICIO_PAGE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="CLAVE_PAGE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="ERROR_PAGE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="DETALLE_USUARIO_PAGE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="DETALLE_OFERTA_PAGE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="DETALLE_OFERTA_EXTERNAL_PAGE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="DETALLE_POSTULACION_PAGE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="PRUEBA_PLANTILLA_PAGE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="DETALLE_PRUEBA_PLANTILLA_PAGE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="DETALLE_EVALUACION_PAGE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="DETALLE_PERFIL_PAGE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="RUTA_HOJA_DE_VIDA_PDF" type="String" visibility="public" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="ComponenteWeb" package="com.basp.trabajo_al_minuto.web.model" visibility="public" xPosition="2745.0" yPosition="1207.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="ofertaEjb" type="OfertaEjb" visibility="protected"/>
+        <Field name="usuarioEjb" type="UsuarioEjb" visibility="protected"/>
+        <Field name="citacionEjb" type="CitacionEjb" visibility="protected"/>
+        <Field name="perfilEjb" type="PerfilEjb" visibility="protected"/>
+        <Field name="pruebaEjb" type="PruebaEjb" visibility="protected"/>
+        <Field name="adminEjb" type="AdminEjb" visibility="protected"/>
+        <Field name="message" type="FacesMessage" visibility="protected"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getUserLogin" returnType="Usuario" visibility="protected"/>
+        <Method name="getMenus" returnType="MenuModel" visibility="protected"/>
+        <Method name="getUsuarioId" returnType="Long" visibility="protected"/>
+        <Method name="getOfertaId" returnType="Long" visibility="protected"/>
+        <Method name="getCitacionId" returnType="Long" visibility="protected"/>
+        <Method name="getUsuarioHasOfertaId" returnType="Long" visibility="protected"/>
+        <Method name="getPruebaId" returnType="Long" visibility="protected"/>
+        <Method name="getPruebaPlantillaId" returnType="Long" visibility="protected"/>
+        <Method name="getPruebasOk" returnType="Boolean" visibility="protected"/>
+        <Method name="getOfertaExternalId" returnType="Long" visibility="protected"/>
+        <Method name="getEvaluacionId" returnType="Long" visibility="protected"/>
+        <Method name="getPreubasResueltas" returnType="List&lt;Prueba&gt;" visibility="protected"/>
+        <Method name="getCatalogosByParent" returnType="List&lt;Catalogo&gt;" visibility="protected">
+          <Argument type="Long" name="id"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="UtilWeb" package="com.basp.trabajo_al_minuto.web.model" visibility="public" xPosition="1281.0" yPosition="78.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="webMessage" returnType="FacesMessage" visibility="public" isStatic="true">
+          <Argument type="MensajeWeb" name="me"/>
+        </Method>
+        <Method name="descargarArchivoPdf" returnType="StreamedContent" visibility="public" isStatic="true">
+          <Argument type="String" name="url"/>
+        </Method>
+        <Method name="propiedadesItem" returnType="SelectItem" visibility="public" isStatic="true">
+          <Argument type="SelectItem" name="item"/>
+        </Method>
+        <Method name="formatDate" returnType="String" visibility="public" isStatic="true">
+          <Argument type="LocalDateTime" name="date"/>
+        </Method>
+        <Method name="formatDateTime" returnType="String" visibility="public" isStatic="true">
+          <Argument type="LocalDateTime" name="date"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ClaveView" package="com.basp.trabajo_al_minuto.web.view" visibility="public" xPosition="1721.0" yPosition="286.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="clave" type="String" visibility="private"/>
+        <Field name="terminos" type="Boolean" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="init" returnType="void" visibility="public"/>
+        <Method name="claveArriba" returnType="void" visibility="public"/>
+        <Method name="cambiarClave" returnType="void" visibility="public"/>
+        <Method name="getClave" returnType="String" visibility="public"/>
+        <Method name="setClave" returnType="void" visibility="public">
+          <Argument type="String" name="clave"/>
+        </Method>
+        <Method name="getTerminos" returnType="Boolean" visibility="public"/>
+        <Method name="setTerminos" returnType="void" visibility="public">
+          <Argument type="Boolean" name="terminos"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="CrearOfertaView" package="com.basp.trabajo_al_minuto.web.view" visibility="public" xPosition="2226.0" yPosition="64.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="newOferta" type="Oferta" visibility="private"/>
+        <Field name="newPerfil" type="Perfil" visibility="private"/>
+        <Field name="area" type="Long" visibility="private"/>
+        <Field name="pruebaPlantillaSeleccionada" type="PruebaPlantilla" visibility="private"/>
+        <Field name="pruebaSeleccionada" type="PerfilHasPrueba" visibility="private"/>
+        <Field name="pruebasSource" type="List&lt;PruebaPlantilla&gt;" visibility="private"/>
+        <Field name="pruebasTarget" type="List&lt;PerfilHasPrueba&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="init" returnType="void" visibility="public"/>
+        <Method name="createOferta" returnType="void" visibility="public"/>
+        <Method name="getAreas" returnType="List&lt;SelectItem&gt;" visibility="public"/>
+        <Method name="onRowSelectPruebasPlantilla" returnType="void" visibility="public">
+          <Argument type="SelectEvent" name="event"/>
+        </Method>
+        <Method name="getNewOferta" returnType="Oferta" visibility="public"/>
+        <Method name="setNewOferta" returnType="void" visibility="public">
+          <Argument type="Oferta" name="newOferta"/>
+        </Method>
+        <Method name="getNewPerfil" returnType="Perfil" visibility="public"/>
+        <Method name="setNewPerfil" returnType="void" visibility="public">
+          <Argument type="Perfil" name="newPerfil"/>
+        </Method>
+        <Method name="getArea" returnType="Long" visibility="public"/>
+        <Method name="setArea" returnType="void" visibility="public">
+          <Argument type="Long" name="area"/>
+        </Method>
+        <Method name="getPruebasSource" returnType="List&lt;PruebaPlantilla&gt;" visibility="public"/>
+        <Method name="setPruebasSource" returnType="void" visibility="public">
+          <Argument type="List&lt;PruebaPlantilla&gt;" name="pruebasSource"/>
+        </Method>
+        <Method name="getPruebasTarget" returnType="List&lt;PerfilHasPrueba&gt;" visibility="public"/>
+        <Method name="setPruebasTarget" returnType="void" visibility="public">
+          <Argument type="List&lt;PerfilHasPrueba&gt;" name="pruebasTarget"/>
+        </Method>
+        <Method name="getPruebaPlantillaSeleccionada" returnType="PruebaPlantilla" visibility="public"/>
+        <Method name="setPruebaPlantillaSeleccionada" returnType="void" visibility="public">
+          <Argument type="PruebaPlantilla" name="pruebaPlantillaSeleccionada"/>
+        </Method>
+        <Method name="getPruebaSeleccionada" returnType="PerfilHasPrueba" visibility="public"/>
+        <Method name="setPruebaSeleccionada" returnType="void" visibility="public">
+          <Argument type="PerfilHasPrueba" name="pruebaSeleccionada"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="CrearParticipanteView" package="com.basp.trabajo_al_minuto.web.view" visibility="public" xPosition="2821.0" yPosition="222.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="newUsuario" type="Usuario" visibility="private"/>
+        <Field name="newPersona" type="Persona" visibility="private"/>
+        <Field name="newCandidato" type="Candidato" visibility="private"/>
+        <Field name="render" type="Boolean" visibility="private"/>
+        <Field name="terminos" type="Boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="init" returnType="void" visibility="public"/>
+        <Method name="createParticipante" returnType="void" visibility="public"/>
+        <Method name="validarEmail" returnType="void" visibility="public"/>
+        <Method name="getNewUsuario" returnType="Usuario" visibility="public"/>
+        <Method name="setNewUsuario" returnType="void" visibility="public">
+          <Argument type="Usuario" name="newUsuario"/>
+        </Method>
+        <Method name="getNewPersona" returnType="Persona" visibility="public"/>
+        <Method name="setNewPersona" returnType="void" visibility="public">
+          <Argument type="Persona" name="newPersona"/>
+        </Method>
+        <Method name="getRender" returnType="Boolean" visibility="public"/>
+        <Method name="setRender" returnType="void" visibility="public">
+          <Argument type="Boolean" name="render"/>
+        </Method>
+        <Method name="getNewCandidato" returnType="Candidato" visibility="public"/>
+        <Method name="setNewCandidato" returnType="void" visibility="public">
+          <Argument type="Candidato" name="newCandidato"/>
+        </Method>
+        <Method name="getTerminos" returnType="Boolean" visibility="public"/>
+        <Method name="setTerminos" returnType="void" visibility="public">
+          <Argument type="Boolean" name="terminos"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="CrearUsuarioView" package="com.basp.trabajo_al_minuto.web.view" visibility="public" xPosition="120.0" yPosition="471.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="newUsuario" type="Usuario" visibility="private"/>
+        <Field name="newPersona" type="Persona" visibility="private"/>
+        <Field name="render" type="Boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="init" returnType="void" visibility="public"/>
+        <Method name="createUsuario" returnType="void" visibility="public"/>
+        <Method name="validarEmail" returnType="void" visibility="public"/>
+        <Method name="getNewUsuario" returnType="Usuario" visibility="public"/>
+        <Method name="setNewUsuario" returnType="void" visibility="public">
+          <Argument type="Usuario" name="newUsuario"/>
+        </Method>
+        <Method name="getNewPersona" returnType="Persona" visibility="public"/>
+        <Method name="setNewPersona" returnType="void" visibility="public">
+          <Argument type="Persona" name="newPersona"/>
+        </Method>
+        <Method name="getRender" returnType="Boolean" visibility="public"/>
+        <Method name="setRender" returnType="void" visibility="public">
+          <Argument type="Boolean" name="render"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="DetalleOfertaExternalView" package="com.basp.trabajo_al_minuto.web.view" visibility="public" xPosition="1120.0" yPosition="678.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="ofertaSeleccionada" type="Oferta" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="init" returnType="void" visibility="public"/>
+        <Method name="getOfertaSeleccionada" returnType="Oferta" visibility="public"/>
+        <Method name="setOfertaSeleccionada" returnType="void" visibility="public">
+          <Argument type="Oferta" name="ofertaSeleccionada"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="DetalleOfertaView" package="com.basp.trabajo_al_minuto.web.view" visibility="public" xPosition="2057.0" yPosition="2420.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="ofertaSeleccionada" type="Oferta" visibility="private"/>
+        <Field name="usuarioHasOfertaSeleccionada" type="UsuarioHasOferta" visibility="private"/>
+        <Field name="preubaSeleccionada" type="Prueba" visibility="private"/>
+        <Field name="usuarioHasOfertaFlitradas" type="List&lt;UsuarioHasOferta&gt;" visibility="private"/>
+        <Field name="pruebasFlitradas" type="List&lt;Prueba&gt;" visibility="private"/>
+        <Field name="usuariologin" type="Usuario" visibility="private"/>
+        <Field name="ofertAplicada" type="UsuarioHasOferta" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="init" returnType="void" visibility="public"/>
+        <Method name="getUsuarioHasOfertaByOferta" returnType="List&lt;UsuarioHasOferta&gt;" visibility="public"/>
+        <Method name="onRowSelectVerUsuarioHasOfertas" returnType="void" visibility="public">
+          <Argument type="SelectEvent" name="event"/>
+        </Method>
+        <Method name="getPruebasByPerfil" returnType="List&lt;Prueba&gt;" visibility="public"/>
+        <Method name="onRowSelectVerPruebas" returnType="void" visibility="public">
+          <Argument type="SelectEvent" name="event"/>
+        </Method>
+        <Method name="aplicarOferta" returnType="void" visibility="public"/>
+        <Method name="getFormatDate" returnType="String" visibility="public">
+          <Argument type="Date" name="date"/>
+        </Method>
+        <Method name="getOfertaSeleccionada" returnType="Oferta" visibility="public"/>
+        <Method name="setOfertaSeleccionada" returnType="void" visibility="public">
+          <Argument type="Oferta" name="ofertaSeleccionada"/>
+        </Method>
+        <Method name="getUsuarioHasOfertaFlitradas" returnType="List&lt;UsuarioHasOferta&gt;" visibility="public"/>
+        <Method name="setUsuarioHasOfertaFlitradas" returnType="void" visibility="public">
+          <Argument type="List&lt;UsuarioHasOferta&gt;" name="usuarioHasOfertaFlitradas"/>
+        </Method>
+        <Method name="getUsuarioHasOfertaSeleccionada" returnType="UsuarioHasOferta" visibility="public"/>
+        <Method name="setUsuarioHasOfertaSeleccionada" returnType="void" visibility="public">
+          <Argument type="UsuarioHasOferta" name="usuarioHasOfertaSeleccionada"/>
+        </Method>
+        <Method name="getPruebasFlitradas" returnType="List&lt;Prueba&gt;" visibility="public"/>
+        <Method name="setPruebasFlitradas" returnType="void" visibility="public">
+          <Argument type="List&lt;Prueba&gt;" name="pruebasFlitradas"/>
+        </Method>
+        <Method name="getPreubaSeleccionada" returnType="Prueba" visibility="public"/>
+        <Method name="setPreubaSeleccionada" returnType="void" visibility="public">
+          <Argument type="Prueba" name="preubaSeleccionada"/>
+        </Method>
+        <Method name="getUsuariologin" returnType="Usuario" visibility="public"/>
+        <Method name="setUsuariologin" returnType="void" visibility="public">
+          <Argument type="Usuario" name="usuariologin"/>
+        </Method>
+        <Method name="getOfertAplicada" returnType="UsuarioHasOferta" visibility="public"/>
+        <Method name="setOfertAplicada" returnType="void" visibility="public">
+          <Argument type="UsuarioHasOferta" name="ofertAplicada"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="DetallePerfilView" package="com.basp.trabajo_al_minuto.web.view" visibility="public" xPosition="1754.0" yPosition="640.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="usuarioLogueado" type="Usuario" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="init" returnType="void" visibility="public"/>
+        <Method name="updateUsuario" returnType="void" visibility="public"/>
+        <Method name="cargarPDF" returnType="Boolean" visibility="public">
+          <Argument type="FileUploadEvent" name="event"/>
+        </Method>
+        <Method name="getUsuarioLogueado" returnType="Usuario" visibility="public"/>
+        <Method name="setUsuarioLogueado" returnType="void" visibility="public">
+          <Argument type="Usuario" name="usuarioLogueado"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="DetallePostulacionView" package="com.basp.trabajo_al_minuto.web.view" visibility="public" xPosition="3354.0" yPosition="2299.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="ofertaSeleccionada" type="Oferta" visibility="private"/>
+        <Field name="citacionSeleccionada" type="Citacion" visibility="private"/>
+        <Field name="usuarioHasOfertaSeleccionada" type="UsuarioHasOferta" visibility="private"/>
+        <Field name="streamedContent" type="StreamedContent" visibility="private"/>
+        <Field name="newCitacion" type="Citacion" visibility="private"/>
+        <Field name="fechaActual" type="Date" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="init" returnType="void" visibility="public"/>
+        <Method name="descargarHojaDeVida" returnType="void" visibility="public">
+          <Argument type="String" name="url"/>
+        </Method>
+        <Method name="rechazarCitacion" returnType="void" visibility="public"/>
+        <Method name="createCitacion" returnType="void" visibility="public"/>
+        <Method name="updateCitacion" returnType="void" visibility="public"/>
+        <Method name="activarPrueba" returnType="void" visibility="public"/>
+        <Method name="enviarCitacion" returnType="Boolean" visibility="public">
+          <Argument type="Citacion" name="citacion"/>
+          <Argument type="UsuarioHasOferta" name="hasOferta"/>
+        </Method>
+        <Method name="actualizarCitacion" returnType="Boolean" visibility="public">
+          <Argument type="Citacion" name="citacion"/>
+          <Argument type="UsuarioHasOferta" name="hasOferta"/>
+        </Method>
+        <Method name="getOfertaSeleccionada" returnType="Oferta" visibility="public"/>
+        <Method name="setOfertaSeleccionada" returnType="void" visibility="public">
+          <Argument type="Oferta" name="ofertaSeleccionada"/>
+        </Method>
+        <Method name="getUsuarioHasOfertaSeleccionada" returnType="UsuarioHasOferta" visibility="public"/>
+        <Method name="setUsuarioHasOfertaSeleccionada" returnType="void" visibility="public">
+          <Argument type="UsuarioHasOferta" name="usuarioHasOfertaSeleccionada"/>
+        </Method>
+        <Method name="getStreamedContent" returnType="StreamedContent" visibility="public"/>
+        <Method name="setStreamedContent" returnType="void" visibility="public">
+          <Argument type="StreamedContent" name="streamedContent"/>
+        </Method>
+        <Method name="getNewCitacion" returnType="Citacion" visibility="public"/>
+        <Method name="setNewCitacion" returnType="void" visibility="public">
+          <Argument type="Citacion" name="newCitacion"/>
+        </Method>
+        <Method name="getCitacionSeleccionada" returnType="Citacion" visibility="public"/>
+        <Method name="setCitacionSeleccionada" returnType="void" visibility="public">
+          <Argument type="Citacion" name="citacionSeleccionada"/>
+        </Method>
+        <Method name="getFechaActual" returnType="Date" visibility="public"/>
+        <Method name="setFechaActual" returnType="void" visibility="public">
+          <Argument type="Date" name="fechaActual"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="DetallePruebaView" package="com.basp.trabajo_al_minuto.web.view" visibility="public" xPosition="3980.0" yPosition="837.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="pruebaSeleccionada" type="PruebaPlantilla" visibility="private"/>
+        <Field name="area" type="Long" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="init" returnType="void" visibility="public"/>
+        <Method name="getAreas" returnType="List&lt;SelectItem&gt;" visibility="public"/>
+        <Method name="cambiarOpcion" returnType="void" visibility="public">
+          <Argument type="PreguntaPlantilla" name="pregunta"/>
+          <Argument type="OpcionPlantilla" name="opcion"/>
+        </Method>
+        <Method name="addPregunta" returnType="void" visibility="public"/>
+        <Method name="addOpcion" returnType="OpcionPlantilla" visibility="public"/>
+        <Method name="addOpcion" returnType="void" visibility="public">
+          <Argument type="PreguntaPlantilla" name="pregunta"/>
+        </Method>
+        <Method name="removePregunta" returnType="void" visibility="public">
+          <Argument type="PreguntaPlantilla" name="pregunta"/>
+        </Method>
+        <Method name="removeOpcion" returnType="void" visibility="public">
+          <Argument type="PreguntaPlantilla" name="pregunta"/>
+          <Argument type="OpcionPlantilla" name="opcion"/>
+        </Method>
+        <Method name="updatePruebaPlantilla" returnType="void" visibility="public"/>
+        <Method name="getPruebaSeleccionada" returnType="PruebaPlantilla" visibility="public"/>
+        <Method name="setPruebaSeleccionada" returnType="void" visibility="public">
+          <Argument type="PruebaPlantilla" name="pruebaSeleccionada"/>
+        </Method>
+        <Method name="getArea" returnType="Long" visibility="public"/>
+        <Method name="setArea" returnType="void" visibility="public">
+          <Argument type="Long" name="area"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="DetalleUsuarioView" package="com.basp.trabajo_al_minuto.web.view" visibility="public" xPosition="1026.0" yPosition="1251.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="usuarioSeleccionado" type="Usuario" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="init" returnType="void" visibility="public"/>
+        <Method name="updateUsuario" returnType="void" visibility="public"/>
+        <Method name="getUsuarioSeleccionado" returnType="Usuario" visibility="public"/>
+        <Method name="setUsuarioSeleccionado" returnType="void" visibility="public">
+          <Argument type="Usuario" name="usuarioSeleccionado"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="EvaluacionView" package="com.basp.trabajo_al_minuto.web.view" visibility="public" xPosition="3870.0" yPosition="211.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="pruebaEvaluacion" type="PruebaEvaluacion" visibility="private"/>
+        <Field name="evaluacion" type="Evaluacion" visibility="private"/>
+        <Field name="finalizada" type="Boolean" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="init" returnType="void" visibility="public"/>
+        <Method name="finalizarPrueba" returnType="void" visibility="public"/>
+        <Method name="onTimeout" returnType="void" visibility="public"/>
+        <Method name="setPrueba" returnType="PruebaEvaluacion" visibility="private">
+          <Argument type="Prueba" name="p"/>
+        </Method>
+        <Method name="setPreguntas" returnType="List&lt;PreguntaEvaluacion&gt;" visibility="private">
+          <Argument type="Prueba" name="p"/>
+        </Method>
+        <Method name="setOpciones" returnType="List&lt;OpcionEvaluacion&gt;" visibility="private">
+          <Argument type="Pregunta" name="p"/>
+        </Method>
+        <Method name="cambiarOpcion" returnType="void" visibility="public">
+          <Argument type="PreguntaEvaluacion" name="pregunta"/>
+          <Argument type="OpcionEvaluacion" name="opcion"/>
+        </Method>
+        <Method name="validarPreguntaNull" returnType="Boolean" visibility="private">
+          <Argument type="PreguntaEvaluacion" name="pe"/>
+        </Method>
+        <Method name="validarPreguntaRepeat" returnType="Boolean" visibility="private">
+          <Argument type="PreguntaEvaluacion" name="pe"/>
+        </Method>
+        <Method name="getFormatDate" returnType="Long" visibility="public">
+          <Argument type="Date" name="date"/>
+        </Method>
+        <Method name="getPruebaEvaluacion" returnType="PruebaEvaluacion" visibility="public"/>
+        <Method name="setPruebaEvaluacion" returnType="void" visibility="public">
+          <Argument type="PruebaEvaluacion" name="pruebaEvaluacion"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="InicioSesionView" package="com.basp.trabajo_al_minuto.web.view" visibility="public" xPosition="76.0" yPosition="903.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="usuario" type="String" visibility="private"/>
+        <Field name="clave" type="String" visibility="private"/>
+        <Field name="session_usuario" type="Usuario" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="iniciarSesion" returnType="void" visibility="public"/>
+        <Method name="getMenuInicio" returnType="MenuModel" visibility="private">
+          <Argument type="Long" name="rolId"/>
+        </Method>
+        <Method name="getUsuario" returnType="String" visibility="public"/>
+        <Method name="setUsuario" returnType="void" visibility="public">
+          <Argument type="String" name="usuario"/>
+        </Method>
+        <Method name="getClave" returnType="String" visibility="public"/>
+        <Method name="setClave" returnType="void" visibility="public">
+          <Argument type="String" name="clave"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="InicioView" package="com.basp.trabajo_al_minuto.web.view" visibility="public" xPosition="330.0" yPosition="1269.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="usuarioSession" type="Usuario" visibility="private"/>
+        <Field name="ofertasPopulares" type="List&lt;OfertaAplicada&gt;" visibility="private"/>
+        <Field name="usuariosMejoresResultados" type="List&lt;Evaluacion&gt;" visibility="private"/>
+        <Field name="proximasCitaciones" type="List&lt;Citacion&gt;" visibility="private"/>
+        <Field name="pruebas_ok" type="Boolean" visibility="private"/>
+        <Field name="citacion" type="Citacion" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="init" returnType="void" visibility="public"/>
+        <Method name="goDetalleOferta" returnType="void" visibility="public">
+          <Argument type="Oferta" name="o"/>
+        </Method>
+        <Method name="getFormatDate" returnType="String" visibility="public">
+          <Argument type="Date" name="date"/>
+        </Method>
+        <Method name="rechazarPruebas" returnType="void" visibility="public"/>
+        <Method name="aceptarPruebas" returnType="void" visibility="public"/>
+        <Method name="citacionRechazada" returnType="Boolean" visibility="private">
+          <Argument type="Citacion" name="citacion"/>
+        </Method>
+        <Method name="getUsuarioSession" returnType="Usuario" visibility="public"/>
+        <Method name="setUsuarioSession" returnType="void" visibility="public">
+          <Argument type="Usuario" name="usuarioSession"/>
+        </Method>
+        <Method name="getOfertasPopulares" returnType="List&lt;OfertaAplicada&gt;" visibility="public"/>
+        <Method name="setOfertasPopulares" returnType="void" visibility="public">
+          <Argument type="List&lt;OfertaAplicada&gt;" name="ofertasPopulares"/>
+        </Method>
+        <Method name="getUsuariosMejoresResultados" returnType="List&lt;Evaluacion&gt;" visibility="public"/>
+        <Method name="setUsuariosMejoresResultados" returnType="void" visibility="public">
+          <Argument type="List&lt;Evaluacion&gt;" name="usuariosMejoresResultados"/>
+        </Method>
+        <Method name="getProximasCitaciones" returnType="List&lt;Citacion&gt;" visibility="public"/>
+        <Method name="setProximasCitaciones" returnType="void" visibility="public">
+          <Argument type="List&lt;Citacion&gt;" name="proximasCitaciones"/>
+        </Method>
+        <Method name="getPruebas_ok" returnType="Boolean" visibility="public"/>
+        <Method name="setPruebas_ok" returnType="void" visibility="public">
+          <Argument type="Boolean" name="pruebas_ok"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="MainView" package="com.basp.trabajo_al_minuto.web.view" visibility="public" xPosition="573.0" yPosition="820.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="menu" type="MenuModel" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="init" returnType="void" visibility="public"/>
+        <Method name="getMenu" returnType="MenuModel" visibility="public"/>
+        <Method name="setMenu" returnType="void" visibility="public">
+          <Argument type="MenuModel" name="menu"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="MisOfertasView" package="com.basp.trabajo_al_minuto.web.view" visibility="public" xPosition="3584.0" yPosition="1605.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="ofertasFlitradas" type="List&lt;Oferta&gt;" visibility="private"/>
+        <Field name="ofertaSeleccionada" type="Oferta" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getMisOfertas" returnType="List&lt;Oferta&gt;" visibility="public"/>
+        <Method name="onRowSelectVerOfertas" returnType="void" visibility="public">
+          <Argument type="SelectEvent" name="event"/>
+        </Method>
+        <Method name="getOfertasFlitradas" returnType="List&lt;Oferta&gt;" visibility="public"/>
+        <Method name="setOfertasFlitradas" returnType="void" visibility="public">
+          <Argument type="List&lt;Oferta&gt;" name="ofertasFlitradas"/>
+        </Method>
+        <Method name="getOfertaSeleccionada" returnType="Oferta" visibility="public"/>
+        <Method name="setOfertaSeleccionada" returnType="void" visibility="public">
+          <Argument type="Oferta" name="ofertaSeleccionada"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="PortalView" package="com.basp.trabajo_al_minuto.web.view" visibility="public" xPosition="3225.0" yPosition="78.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="perfil" type="String" visibility="private"/>
+        <Field name="area" type="Long" visibility="private"/>
+        <Field name="cantidadOfertas" type="Integer" visibility="private"/>
+        <Field name="ofertasFlitradas" type="List&lt;Oferta&gt;" visibility="private"/>
+        <Field name="ofertasActualizadas" type="List&lt;Oferta&gt;" visibility="private"/>
+        <Field name="ofertaSeleccionada" type="Oferta" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="init" returnType="void" visibility="public"/>
+        <Method name="getAreas" returnType="List&lt;SelectItem&gt;" visibility="public"/>
+        <Method name="actualizarOfertas" returnType="void" visibility="public"/>
+        <Method name="onRowSelectVerExternalOfertas" returnType="void" visibility="public">
+          <Argument type="SelectEvent" name="event"/>
+        </Method>
+        <Method name="getPerfil" returnType="String" visibility="public"/>
+        <Method name="setPerfil" returnType="void" visibility="public">
+          <Argument type="String" name="perfil"/>
+        </Method>
+        <Method name="getArea" returnType="Long" visibility="public"/>
+        <Method name="setArea" returnType="void" visibility="public">
+          <Argument type="Long" name="area"/>
+        </Method>
+        <Method name="getCantidadOfertas" returnType="Integer" visibility="public"/>
+        <Method name="setCantidadOfertas" returnType="void" visibility="public">
+          <Argument type="Integer" name="cantidadOfertas"/>
+        </Method>
+        <Method name="getOfertasFlitradas" returnType="List&lt;Oferta&gt;" visibility="public"/>
+        <Method name="setOfertasFlitradas" returnType="void" visibility="public">
+          <Argument type="List&lt;Oferta&gt;" name="ofertasFlitradas"/>
+        </Method>
+        <Method name="getOfertaSeleccionada" returnType="Oferta" visibility="public"/>
+        <Method name="setOfertaSeleccionada" returnType="void" visibility="public">
+          <Argument type="Oferta" name="ofertaSeleccionada"/>
+        </Method>
+        <Method name="getOfertasActualizadas" returnType="List&lt;Oferta&gt;" visibility="public"/>
+        <Method name="setOfertasActualizadas" returnType="void" visibility="public">
+          <Argument type="List&lt;Oferta&gt;" name="ofertasActualizadas"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="RestaurarView" package="com.basp.trabajo_al_minuto.web.view" visibility="public" xPosition="2735.0" yPosition="1997.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="usuario" type="String" visibility="private"/>
+        <Field name="ok" type="Boolean" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="restaurarClave" returnType="void" visibility="public"/>
+        <Method name="enviarClaveRestaurada" returnType="Boolean" visibility="private">
+          <Argument type="String" name="email"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="clave"/>
+        </Method>
+        <Method name="ok_off" returnType="void" visibility="public"/>
+        <Method name="getUsuario" returnType="String" visibility="public"/>
+        <Method name="setUsuario" returnType="void" visibility="public">
+          <Argument type="String" name="usuario"/>
+        </Method>
+        <Method name="getOk" returnType="Boolean" visibility="public"/>
+        <Method name="setOk" returnType="void" visibility="public">
+          <Argument type="Boolean" name="ok"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="TopbarView" package="com.basp.trabajo_al_minuto.web.view" visibility="public" xPosition="3749.0" yPosition="1921.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="usuarioNombre" type="String" visibility="private"/>
+        <Field name="usuarioEmpresa" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="init" returnType="void" visibility="public"/>
+        <Method name="destruirSesion" returnType="void" visibility="public"/>
+        <Method name="renderPerfil" returnType="void" visibility="public"/>
+        <Method name="getUsuarioNombre" returnType="String" visibility="public"/>
+        <Method name="setUsuarioNombre" returnType="void" visibility="public">
+          <Argument type="String" name="usuarioNombre"/>
+        </Method>
+        <Method name="getUsuarioEmpresa" returnType="String" visibility="public"/>
+        <Method name="setUsuarioEmpresa" returnType="void" visibility="public">
+          <Argument type="String" name="usuarioEmpresa"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="VerCitacionesView" package="com.basp.trabajo_al_minuto.web.view" visibility="public" xPosition="3945.0" yPosition="1292.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="citacionesFiltradas" type="List&lt;Citacion&gt;" visibility="private"/>
+        <Field name="citaciones" type="List&lt;Citacion&gt;" visibility="private"/>
+        <Field name="citacionSeleccionada" type="Citacion" visibility="private"/>
+        <Field name="usuarioLogin" type="Usuario" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="init" returnType="void" visibility="public"/>
+        <Method name="onRowSelectVerCitacion" returnType="void" visibility="public">
+          <Argument type="SelectEvent" name="event"/>
+        </Method>
+        <Method name="getCitacionesFiltradas" returnType="List&lt;Citacion&gt;" visibility="public"/>
+        <Method name="setCitacionesFiltradas" returnType="void" visibility="public">
+          <Argument type="List&lt;Citacion&gt;" name="citacionesFiltradas"/>
+        </Method>
+        <Method name="getCitacionSeleccionada" returnType="Citacion" visibility="public"/>
+        <Method name="setCitacionSeleccionada" returnType="void" visibility="public">
+          <Argument type="Citacion" name="citacionSeleccionada"/>
+        </Method>
+        <Method name="getCitaciones" returnType="List&lt;Citacion&gt;" visibility="public"/>
+        <Method name="setCitaciones" returnType="void" visibility="public">
+          <Argument type="List&lt;Citacion&gt;" name="citaciones"/>
+        </Method>
+        <Method name="getUsuarioLogin" returnType="Usuario" visibility="public"/>
+        <Method name="setUsuarioLogin" returnType="void" visibility="public">
+          <Argument type="Usuario" name="usuarioLogin"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="VerOfertasView" package="com.basp.trabajo_al_minuto.web.view" visibility="public" xPosition="646.0" yPosition="1997.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="ofertasFlitradas" type="List&lt;Oferta&gt;" visibility="private"/>
+        <Field name="ofertaSeleccionada" type="Oferta" visibility="private"/>
+        <Field name="perfil" type="String" visibility="private"/>
+        <Field name="area" type="Long" visibility="private"/>
+        <Field name="cantidadOfertas" type="Integer" visibility="private"/>
+        <Field name="ofertasActualizadas" type="List&lt;Oferta&gt;" visibility="private"/>
+        <Field name="usuariologin" type="Usuario" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="init" returnType="void" visibility="public"/>
+        <Method name="getOfertasByEmpreas" returnType="List&lt;Oferta&gt;" visibility="public"/>
+        <Method name="getAreas" returnType="List&lt;SelectItem&gt;" visibility="public"/>
+        <Method name="actualizarOfertas" returnType="void" visibility="public"/>
+        <Method name="onRowSelectVerOfertas" returnType="void" visibility="public">
+          <Argument type="SelectEvent" name="event"/>
+        </Method>
+        <Method name="getOfertasFlitradas" returnType="List&lt;Oferta&gt;" visibility="public"/>
+        <Method name="setOfertasFlitradas" returnType="void" visibility="public">
+          <Argument type="List&lt;Oferta&gt;" name="ofertasFlitradas"/>
+        </Method>
+        <Method name="getOfertaSeleccionada" returnType="Oferta" visibility="public"/>
+        <Method name="setOfertaSeleccionada" returnType="void" visibility="public">
+          <Argument type="Oferta" name="ofertaSeleccionada"/>
+        </Method>
+        <Method name="getPerfil" returnType="String" visibility="public"/>
+        <Method name="setPerfil" returnType="void" visibility="public">
+          <Argument type="String" name="perfil"/>
+        </Method>
+        <Method name="getArea" returnType="Long" visibility="public"/>
+        <Method name="setArea" returnType="void" visibility="public">
+          <Argument type="Long" name="area"/>
+        </Method>
+        <Method name="getCantidadOfertas" returnType="Integer" visibility="public"/>
+        <Method name="setCantidadOfertas" returnType="void" visibility="public">
+          <Argument type="Integer" name="cantidadOfertas"/>
+        </Method>
+        <Method name="getUsuariologin" returnType="Usuario" visibility="public"/>
+        <Method name="setUsuariologin" returnType="void" visibility="public">
+          <Argument type="Usuario" name="usuariologin"/>
+        </Method>
+        <Method name="getOfertasActualizadas" returnType="List&lt;Oferta&gt;" visibility="public"/>
+        <Method name="setOfertasActualizadas" returnType="void" visibility="public">
+          <Argument type="List&lt;Oferta&gt;" name="ofertasActualizadas"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="VerPruebaView" package="com.basp.trabajo_al_minuto.web.view" visibility="public" xPosition="1182.0" yPosition="2299.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="filteredPruebasPlantilla" type="List&lt;PruebaPlantilla&gt;" visibility="private"/>
+        <Field name="filteredPruebas" type="List&lt;Prueba&gt;" visibility="private"/>
+        <Field name="pruebaPlantillaSeleccionada" type="PruebaPlantilla" visibility="private"/>
+        <Field name="pruebaSeleccionada" type="Prueba" visibility="private"/>
+        <Field name="pruebasByPerfil" type="List&lt;Prueba&gt;" visibility="private"/>
+        <Field name="pruebasByEmpresa" type="List&lt;PruebaPlantilla&gt;" visibility="private"/>
+        <Field name="usuariologin" type="Usuario" visibility="private"/>
+        <Field name="pruebasCompletas" type="Boolean" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="init" returnType="void" visibility="public"/>
+        <Method name="onRowSelectVerPruebas" returnType="void" visibility="public">
+          <Argument type="SelectEvent" name="event"/>
+        </Method>
+        <Method name="comenzarPrueba" returnType="void" visibility="public"/>
+        <Method name="finalizarPrueba" returnType="void" visibility="public"/>
+        <Method name="getFormatDate" returnType="String" visibility="public">
+          <Argument type="Date" name="date"/>
+        </Method>
+        <Method name="getFilteredPruebasPlantilla" returnType="List&lt;PruebaPlantilla&gt;" visibility="public"/>
+        <Method name="setFilteredPruebasPlantilla" returnType="void" visibility="public">
+          <Argument type="List&lt;PruebaPlantilla&gt;" name="filteredPruebasPlantilla"/>
+        </Method>
+        <Method name="getFilteredPruebas" returnType="List&lt;Prueba&gt;" visibility="public"/>
+        <Method name="setFilteredPruebas" returnType="void" visibility="public">
+          <Argument type="List&lt;Prueba&gt;" name="filteredPruebas"/>
+        </Method>
+        <Method name="getPruebaPlantillaSeleccionada" returnType="PruebaPlantilla" visibility="public"/>
+        <Method name="setPruebaPlantillaSeleccionada" returnType="void" visibility="public">
+          <Argument type="PruebaPlantilla" name="pruebaPlantillaSeleccionada"/>
+        </Method>
+        <Method name="getPruebaSeleccionada" returnType="Prueba" visibility="public"/>
+        <Method name="setPruebaSeleccionada" returnType="void" visibility="public">
+          <Argument type="Prueba" name="pruebaSeleccionada"/>
+        </Method>
+        <Method name="getPruebasByPerfil" returnType="List&lt;Prueba&gt;" visibility="public"/>
+        <Method name="setPruebasByPerfil" returnType="void" visibility="public">
+          <Argument type="List&lt;Prueba&gt;" name="pruebasByPerfil"/>
+        </Method>
+        <Method name="getPruebasByEmpresa" returnType="List&lt;PruebaPlantilla&gt;" visibility="public"/>
+        <Method name="setPruebasByEmpresa" returnType="void" visibility="public">
+          <Argument type="List&lt;PruebaPlantilla&gt;" name="pruebasByEmpresa"/>
+        </Method>
+        <Method name="getUsuariologin" returnType="Usuario" visibility="public"/>
+        <Method name="setUsuariologin" returnType="void" visibility="public">
+          <Argument type="Usuario" name="usuariologin"/>
+        </Method>
+        <Method name="getPruebasCompletas" returnType="Boolean" visibility="public"/>
+        <Method name="setPruebasCompletas" returnType="void" visibility="public">
+          <Argument type="Boolean" name="pruebasCompletas"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="VerUsuariosView" package="com.basp.trabajo_al_minuto.web.view" visibility="public" xPosition="1282.0" yPosition="1689.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="usuarioSeleccionado" type="Usuario" visibility="private"/>
+        <Field name="usuariosFlitrados" type="List&lt;Usuario&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getUsuariosByEmpresa" returnType="List&lt;Usuario&gt;" visibility="public"/>
+        <Method name="onRowSelectVerUsuarios" returnType="void" visibility="public">
+          <Argument type="SelectEvent" name="event"/>
+        </Method>
+        <Method name="getUsuarioSeleccionado" returnType="Usuario" visibility="public"/>
+        <Method name="setUsuarioSeleccionado" returnType="void" visibility="public">
+          <Argument type="Usuario" name="usuarioSeleccionado"/>
+        </Method>
+        <Method name="getUsuariosFlitrados" returnType="List&lt;Usuario&gt;" visibility="public"/>
+        <Method name="setUsuariosFlitrados" returnType="void" visibility="public">
+          <Argument type="List&lt;Usuario&gt;" name="usuariosFlitrados"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Enum name="MensajeWeb" package="com.basp.trabajo_al_minuto.web.model" visibility="public" xPosition="810.0" yPosition="130.0">
+      <Literals>
+        <Literal name="ACCESO_DENEGADO"/>
+        <Literal name="ACCESO_DENEGADO_PRUEBAS"/>
+        <Literal name="CREDENCIALES_INCORRECTAS"/>
+        <Literal name="USUARIO_NO_ENCONTRADO"/>
+        <Literal name="NO_PASSWORD"/>
+        <Literal name="CLAVE_RESTAURAD_NOT"/>
+        <Literal name="CLAVE_RESTAURADA_OK"/>
+        <Literal name="CHANGE_OK"/>
+        <Literal name="QUESTION_REPEAT"/>
+        <Literal name="QUESTION_NULL"/>
+        <Literal name="CHANGE_NOT"/>
+        <Literal name="USUARIO_OK"/>
+        <Literal name="USUARIO_NOT"/>
+        <Literal name="CITACION_OK"/>
+        <Literal name="CITACION_NOT"/>
+        <Literal name="OFERTA_APLICADA_OK"/>
+        <Literal name="OFERTA_APLICADA_NOT"/>
+        <Literal name="CITACION_RECHAZADA_OK"/>
+        <Literal name="CITACION_RECHAZADA_NOT"/>
+        <Literal name="CITACION_RECHAZADA"/>
+        <Literal name="SALIR_NOT"/>
+        <Literal name="PERFIL_NOT"/>
+        <Literal name="USUARIO_YA_EXISTE"/>
+        <Literal name="ARCHIVO_OK"/>
+        <Literal name="ARCHIVO_ERROR"/>
+        <Literal name="PRUEBA_ACTIVADA"/>
+        <Literal name="PRUEBA_NO_ACTIVADA"/>
+        <Literal name="USUARIO_EN_PRUEBAS"/>
+      </Literals>
+    </Enum>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="com.basp.trabajo_al_minuto.web.view.InicioSesionView" target="com.basp.trabajo_al_minuto.web.model.ComponenteWeb"/>
+    <IsRelation name="is" source="com.basp.trabajo_al_minuto.web.view.CrearOfertaView" target="com.basp.trabajo_al_minuto.web.model.ComponenteWeb"/>
+    <IsRelation name="is" source="com.basp.trabajo_al_minuto.web.view.CrearUsuarioView" target="com.basp.trabajo_al_minuto.web.model.ComponenteWeb"/>
+    <IsRelation name="is" source="com.basp.trabajo_al_minuto.web.view.DetallePostulacionView" target="com.basp.trabajo_al_minuto.web.model.ComponenteWeb"/>
+    <IsRelation name="is" source="com.basp.trabajo_al_minuto.web.view.VerOfertasView" target="com.basp.trabajo_al_minuto.web.model.ComponenteWeb"/>
+    <IsRelation name="is" source="com.basp.trabajo_al_minuto.web.view.MisOfertasView" target="com.basp.trabajo_al_minuto.web.model.ComponenteWeb"/>
+    <IsRelation name="is" source="com.basp.trabajo_al_minuto.web.view.DetalleOfertaView" target="com.basp.trabajo_al_minuto.web.model.ComponenteWeb"/>
+    <IsRelation name="is" source="com.basp.trabajo_al_minuto.web.view.VerCitacionesView" target="com.basp.trabajo_al_minuto.web.model.ComponenteWeb"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.web.model.UtilWeb" target="com.basp.trabajo_al_minuto.web.model.MensajeWeb" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="com.basp.trabajo_al_minuto.web.view.DetalleUsuarioView" target="com.basp.trabajo_al_minuto.web.model.ComponenteWeb"/>
+    <IsRelation name="is" source="com.basp.trabajo_al_minuto.web.view.RestaurarView" target="com.basp.trabajo_al_minuto.web.model.ComponenteWeb"/>
+    <IsRelation name="is" source="com.basp.trabajo_al_minuto.web.view.VerPruebaView" target="com.basp.trabajo_al_minuto.web.model.ComponenteWeb"/>
+    <IsRelation name="is" source="com.basp.trabajo_al_minuto.web.view.DetallePerfilView" target="com.basp.trabajo_al_minuto.web.model.ComponenteWeb"/>
+    <IsRelation name="is" source="com.basp.trabajo_al_minuto.web.view.InicioView" target="com.basp.trabajo_al_minuto.web.model.ComponenteWeb"/>
+    <IsRelation name="is" source="com.basp.trabajo_al_minuto.web.view.TopbarView" target="com.basp.trabajo_al_minuto.web.model.ComponenteWeb"/>
+    <IsRelation name="is" source="com.basp.trabajo_al_minuto.web.view.PortalView" target="com.basp.trabajo_al_minuto.web.model.ComponenteWeb"/>
+    <IsRelation name="is" source="com.basp.trabajo_al_minuto.web.view.ClaveView" target="com.basp.trabajo_al_minuto.web.model.ComponenteWeb"/>
+    <IsRelation name="is" source="com.basp.trabajo_al_minuto.web.view.DetalleOfertaExternalView" target="com.basp.trabajo_al_minuto.web.model.ComponenteWeb"/>
+    <IsRelation name="is" source="com.basp.trabajo_al_minuto.web.view.MainView" target="com.basp.trabajo_al_minuto.web.model.ComponenteWeb"/>
+    <IsRelation name="is" source="com.basp.trabajo_al_minuto.web.view.VerUsuariosView" target="com.basp.trabajo_al_minuto.web.model.ComponenteWeb"/>
+    <IsRelation name="is" source="com.basp.trabajo_al_minuto.web.view.CrearParticipanteView" target="com.basp.trabajo_al_minuto.web.model.ComponenteWeb"/>
+    <IsRelation name="is" source="com.basp.trabajo_al_minuto.web.view.EvaluacionView" target="com.basp.trabajo_al_minuto.web.model.ComponenteWeb"/>
+    <IsRelation name="is" source="com.basp.trabajo_al_minuto.web.view.DetallePruebaView" target="com.basp.trabajo_al_minuto.web.model.ComponenteWeb"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

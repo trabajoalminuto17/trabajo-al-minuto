@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="trabajo_al_minuto-model">
+  <ClassDiagramComponents>
+    <Class name="BusinessAttributes" package="com.basp.trabajo_al_minuto.model.business" visibility="public" xPosition="1012.0" yPosition="1380.0">
+      <Fields>
+        <Field name="HOST_EMAIL_SERVER" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="TAM_SERVICE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="PERSISTENCE_SERVICE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="BusinessException" package="com.basp.trabajo_al_minuto.model.business" visibility="public" xPosition="105.0" yPosition="82.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="CAUGHT" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="clazz" type="Class" visibility="private"/>
+        <Field name="message" type="String" visibility="private"/>
+        <Field name="stackTraceElement" type="StackTraceElement[]" visibility="private"/>
+        <Field name="errorMethod" type="String" visibility="private"/>
+        <Field name="errorLine" type="Integer" visibility="private"/>
+        <Field name="errorMessage" type="ErrorMessage" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Exception" name="e"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="developerException" returnType="String" visibility="public"/>
+        <Method name="getTraceFor" returnType="String" visibility="private">
+          <Argument type="StackTraceElement[]" name="elements"/>
+        </Method>
+        <Method name="finalTrace" returnType="void" visibility="private">
+          <Argument type="StackTraceElement[]" name="elements"/>
+        </Method>
+        <Method name="getClazz" returnType="Class" visibility="public"/>
+        <Method name="gerErrorMethod" returnType="String" visibility="public"/>
+        <Method name="getErrorLine" returnType="Integer" visibility="public"/>
+        <Method name="getErrorMessage" returnType="ErrorMessage" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="BusinessHtmlTemplates" package="com.basp.trabajo_al_minuto.model.business" visibility="public" xPosition="542.0" yPosition="1171.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="restourarClaveTemplate" returnType="String" visibility="public" isStatic="true">
+          <Argument type="String" name="password"/>
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="email"/>
+        </Method>
+        <Method name="enviarCitacion" returnType="String" visibility="public" isStatic="true">
+          <Argument type="String" name="empresa"/>
+          <Argument type="String" name="fecha"/>
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="lugar"/>
+          <Argument type="String" name="detalles"/>
+          <Argument type="String" name="tituloOferta"/>
+        </Method>
+        <Method name="actualizarCitacion" returnType="String" visibility="public" isStatic="true">
+          <Argument type="String" name="empresa"/>
+          <Argument type="String" name="fecha"/>
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="lugar"/>
+          <Argument type="String" name="detalles"/>
+        </Method>
+        <Method name="citacionRechazada" returnType="String" visibility="public" isStatic="true">
+          <Argument type="String" name="titulo"/>
+          <Argument type="String" name="fecha"/>
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="lugar"/>
+          <Argument type="String" name="detalles"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="BusinessPersistence" package="com.basp.trabajo_al_minuto.model.business" visibility="public" xPosition="1309.0" yPosition="82.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="JPQL" type="Integer" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="NAMED_QUERY" type="Integer" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="NATIVE" type="Integer" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="EM" type="EntityManager" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="EntityManagerFactory" name="EMF"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getEntityManager" returnType="EntityManager" visibility="public"/>
+        <Method name="readOne" returnType="Object" visibility="public">
+          <Argument type="PersistenceObject" name="persistenceObject"/>
+        </Method>
+        <Method name="read" returnType="List" visibility="public">
+          <Argument type="PersistenceObject" name="persistenceObject"/>
+        </Method>
+        <Method name="readExecuted" returnType="Integer" visibility="public">
+          <Argument type="PersistenceObject" name="persistenceObject"/>
+        </Method>
+        <Method name="readStoreProcedure" returnType="List" visibility="public">
+          <Argument type="PersistenceObject" name="persistenceObject"/>
+        </Method>
+        <Method name="find" returnType="Object" visibility="public">
+          <Argument type="Class&lt;?&gt;" name="t"/>
+          <Argument type="Object" name="PK"/>
+        </Method>
+        <Method name="create" returnType="Boolean" visibility="public">
+          <Argument type="Object" name="t"/>
+        </Method>
+        <Method name="update" returnType="Object" visibility="public">
+          <Argument type="Object" name="t"/>
+        </Method>
+        <Method name="createMass" returnType="Boolean" visibility="public">
+          <Argument type="List" name="t"/>
+        </Method>
+        <Method name="updateMass" returnType="Boolean" visibility="public">
+          <Argument type="List" name="t"/>
+        </Method>
+        <Method name="delete" returnType="Boolean" visibility="public">
+          <Argument type="Class&lt;?&gt;" name="t"/>
+          <Argument type="Object" name="PK"/>
+        </Method>
+        <Method name="getConnection" returnType="Connection" visibility="public"/>
+        <Method name="createConnection" returnType="Connection" visibility="public">
+          <Argument type="String" name="driver"/>
+          <Argument type="String" name="jdbc"/>
+          <Argument type="String" name="user"/>
+          <Argument type="String" name="password"/>
+          <Argument type="String" name="server"/>
+          <Argument type="Integer" name="port"/>
+          <Argument type="String" name="dbName"/>
+        </Method>
+        <Method name="closeConnection" returnType="Boolean" visibility="public">
+          <Argument type="Connection" name="connection"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="BusinessQuery" package="com.basp.trabajo_al_minuto.model.business" visibility="public" xPosition="72.0" yPosition="1146.0">
+      <Fields>
+        <Field name="GET_USUARIO_BY_EMAIL" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="GET_MENUS_BY_ROL" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="GET_OFERTAS_BY_EMPRESA" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="GET_USUARIO_BY_EMPRESA" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="GET_CITACIONES_BY_OFERTA" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="GET_EVALUACION_BY_CITACION" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="GET_CITACIONES_ACTIVAS_BY_USUARIO" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="GET_CITACIONES_ACTIVAS_BY_EMPRESA" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="GET_PERFILES_BY_EMPRESA" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="GET_PRUEBAS_BY_PERFIL" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="GET_USUARIOS_BY_OFERTA" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="GET_OFERTAS_MAS_APLICADAS_BY_EMPRESA" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="GET_OFERTAS_MAS_APLICADAS" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="GET_USUARIOS_MEJORES_RESULTADOS" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="GET_PRUEBAS_PLANTILLA_BY_EMPRESA" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="GET_CATALOGOS_BY_PADRE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="GET_OFERTAS_ACTIVAS" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="GET_USUARIO_HAS_OFERTA" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="GET_MIS_OFERTAS" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="ACTIVAR_PRUEBA" type="String" visibility="public" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="GET_OFERTAS_EXTERNAL" returnType="List&lt;Object&gt;" visibility="public" isStatic="true" isFinal="true">
+          <Argument type="Long" name="area"/>
+          <Argument type="String" name="palabra"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="BusinessSecurity" package="com.basp.trabajo_al_minuto.model.business" visibility="public" xPosition="1012.0" yPosition="1556.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="encrypt" returnType="String" visibility="public" isStatic="true">
+          <Argument type="String" name="value"/>
+        </Method>
+        <Method name="decrypt" returnType="String" visibility="public" isStatic="true">
+          <Argument type="String" name="encryptValue"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="BusinessUtils" package="com.basp.trabajo_al_minuto.model.business" visibility="public" xPosition="2135.0" yPosition="82.0">
+      <Fields>
+        <Field name="message" type="MimeMessage" visibility="private" isStatic="true"/>
+        <Field name="bodyPart" type="BodyPart" visibility="private" isStatic="true"/>
+        <Field name="multipart" type="Multipart" visibility="private" isStatic="true"/>
+        <Field name="dataSource" type="DataSource" visibility="private" isStatic="true"/>
+        <Field name="inStream" type="InputStream" visibility="private" isStatic="true"/>
+        <Field name="outStream" type="OutputStream" visibility="private" isStatic="true"/>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="propertiesFile" returnType="Properties" visibility="public" isStatic="true">
+          <Argument type="String" name="pathFile"/>
+        </Method>
+        <Method name="executeCommandLine" returnType="int" visibility="public" isStatic="true">
+          <Argument type="String" name="file"/>
+          <Argument type="String" name="dir"/>
+        </Method>
+        <Method name="characterStreamString" returnType="InputSource" visibility="public" isStatic="true">
+          <Argument type="StringReader" name="reader"/>
+        </Method>
+        <Method name="normalizeDocument" returnType="Document" visibility="public" isStatic="true">
+          <Argument type="InputSource" name="inputSource"/>
+        </Method>
+        <Method name="writeLog" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="file"/>
+          <Argument type="List&lt;LogRecord&gt;" name="records"/>
+        </Method>
+        <Method name="sendMassEmail" returnType="void" visibility="public" isStatic="true">
+          <Argument type="List&lt;EmailMessage&gt;" name="emdtos"/>
+        </Method>
+        <Method name="sendEmail" returnType="Boolean" visibility="public" isStatic="true">
+          <Argument type="EmailMessage" name="emdto"/>
+        </Method>
+        <Method name="reportGenerate" returnType="JasperPrint" visibility="public" isStatic="true">
+          <Argument type="Map" name="param"/>
+          <Argument type="String" name="file"/>
+          <Argument type="Connection" name="conn"/>
+        </Method>
+        <Method name="reportExport" returnType="byte[]" visibility="public" isStatic="true">
+          <Argument type="JasperPrint" name="jasperPrint"/>
+        </Method>
+        <Method name="ldapConnection" returnType="LDAPConnection" visibility="public" isStatic="true">
+          <Argument type="String" name="host"/>
+          <Argument type="Integer" name="port"/>
+        </Method>
+        <Method name="ldapSearchResults" returnType="LDAPSearchResults" visibility="public" isStatic="true">
+          <Argument type="LDAPConnection" name="ldapConnection"/>
+          <Argument type="String" name="base"/>
+          <Argument type="Integer" name="scope"/>
+          <Argument type="String" name="filter"/>
+          <Argument type="String[]" name="attr"/>
+        </Method>
+        <Method name="ldapEntryResult" returnType="LDAPEntry" visibility="public" isStatic="true">
+          <Argument type="LDAPSearchResults" name="results"/>
+        </Method>
+        <Method name="toMap" returnType="Map&lt;String, Object&gt;" visibility="public" isStatic="true">
+          <Argument type="JSONObject" name="object"/>
+        </Method>
+        <Method name="toList" returnType="List&lt;Object&gt;" visibility="public" isStatic="true">
+          <Argument type="JSONArray" name="array"/>
+        </Method>
+        <Method name="toLocalDate" returnType="LocalDate" visibility="public" isStatic="true">
+          <Argument type="Date" name="date"/>
+        </Method>
+        <Method name="toDate" returnType="Date" visibility="public" isStatic="true">
+          <Argument type="LocalDate" name="localDate"/>
+        </Method>
+        <Method name="toDate" returnType="Date" visibility="public" isStatic="true">
+          <Argument type="LocalDateTime" name="localDateTime"/>
+        </Method>
+        <Method name="rollbackValidation" returnType="String" visibility="public" isStatic="true">
+          <Argument type="ConstraintViolationException" name="cve"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="EmailMessage" package="com.basp.trabajo_al_minuto.model.dto" visibility="public" xPosition="2347.0" yPosition="902.0">
+      <Fields>
+        <Field name="user" type="String" visibility="private"/>
+        <Field name="password" type="String" visibility="private"/>
+        <Field name="from" type="String" visibility="private"/>
+        <Field name="mask" type="String" visibility="private"/>
+        <Field name="host" type="String" visibility="private"/>
+        <Field name="port" type="Integer" visibility="private"/>
+        <Field name="subject" type="String" visibility="private"/>
+        <Field name="bodyMessage" type="String" visibility="private"/>
+        <Field name="mimeTypeMessage" type="String" visibility="private"/>
+        <Field name="starttls" type="Boolean" visibility="private"/>
+        <Field name="toList" type="List&lt;String&gt;" visibility="private"/>
+        <Field name="ccList" type="List&lt;String&gt;" visibility="private"/>
+        <Field name="ccoList" type="List&lt;String&gt;" visibility="private"/>
+        <Field name="filePaths" type="List&lt;String&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getUser" returnType="String" visibility="public"/>
+        <Method name="setUser" returnType="void" visibility="public">
+          <Argument type="String" name="user"/>
+        </Method>
+        <Method name="getPassword" returnType="String" visibility="public"/>
+        <Method name="setPassword" returnType="void" visibility="public">
+          <Argument type="String" name="password"/>
+        </Method>
+        <Method name="getFrom" returnType="String" visibility="public"/>
+        <Method name="setFrom" returnType="void" visibility="public">
+          <Argument type="String" name="from"/>
+        </Method>
+        <Method name="getHost" returnType="String" visibility="public"/>
+        <Method name="setHost" returnType="void" visibility="public">
+          <Argument type="String" name="host"/>
+        </Method>
+        <Method name="getSubject" returnType="String" visibility="public"/>
+        <Method name="setSubject" returnType="void" visibility="public">
+          <Argument type="String" name="subject"/>
+        </Method>
+        <Method name="getBodyMessage" returnType="String" visibility="public"/>
+        <Method name="setBodyMessage" returnType="void" visibility="public">
+          <Argument type="String" name="bodyMessage"/>
+        </Method>
+        <Method name="getToList" returnType="List&lt;String&gt;" visibility="public"/>
+        <Method name="setToList" returnType="void" visibility="public">
+          <Argument type="List&lt;String&gt;" name="toList"/>
+        </Method>
+        <Method name="getCcList" returnType="List&lt;String&gt;" visibility="public"/>
+        <Method name="setCcList" returnType="void" visibility="public">
+          <Argument type="List&lt;String&gt;" name="ccList"/>
+        </Method>
+        <Method name="getCcoList" returnType="List&lt;String&gt;" visibility="public"/>
+        <Method name="setCcoList" returnType="void" visibility="public">
+          <Argument type="List&lt;String&gt;" name="ccoList"/>
+        </Method>
+        <Method name="getFilePaths" returnType="List&lt;String&gt;" visibility="public"/>
+        <Method name="setFilePaths" returnType="void" visibility="public">
+          <Argument type="List&lt;String&gt;" name="filePaths"/>
+        </Method>
+        <Method name="getMask" returnType="String" visibility="public"/>
+        <Method name="setMask" returnType="void" visibility="public">
+          <Argument type="String" name="mask"/>
+        </Method>
+        <Method name="getMimeTypeMessage" returnType="String" visibility="public"/>
+        <Method name="setMimeTypeMessage" returnType="void" visibility="public">
+          <Argument type="String" name="mimeTypeMessage"/>
+        </Method>
+        <Method name="getPort" returnType="Integer" visibility="public"/>
+        <Method name="setPort" returnType="void" visibility="public">
+          <Argument type="Integer" name="port"/>
+        </Method>
+        <Method name="getStarttls" returnType="Boolean" visibility="public"/>
+        <Method name="setStarttls" returnType="void" visibility="public">
+          <Argument type="Boolean" name="starttls"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ErrorMessage" package="com.basp.trabajo_al_minuto.model.dto" visibility="public" xPosition="58.0" yPosition="735.0">
+      <Fields>
+        <Field name="clazz" type="String" visibility="private"/>
+        <Field name="method" type="String" visibility="private"/>
+        <Field name="line" type="Integer" visibility="private"/>
+        <Field name="message" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="clazz"/>
+          <Argument type="String" name="method"/>
+          <Argument type="Integer" name="line"/>
+          <Argument type="String" name="message"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getClazz" returnType="String" visibility="public"/>
+        <Method name="setClazz" returnType="void" visibility="public">
+          <Argument type="String" name="clazz"/>
+        </Method>
+        <Method name="getMethod" returnType="String" visibility="public"/>
+        <Method name="setMethod" returnType="void" visibility="public">
+          <Argument type="String" name="method"/>
+        </Method>
+        <Method name="getLine" returnType="Integer" visibility="public"/>
+        <Method name="setLine" returnType="void" visibility="public">
+          <Argument type="Integer" name="line"/>
+        </Method>
+        <Method name="getMessage" returnType="String" visibility="public"/>
+        <Method name="setMessage" returnType="void" visibility="public">
+          <Argument type="String" name="message"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="OpcionEvaluacion" package="com.basp.trabajo_al_minuto.model.dto" visibility="public" xPosition="483.0" yPosition="82.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="id" type="Long" visibility="private"/>
+        <Field name="enunciado" type="String" visibility="private"/>
+        <Field name="correcta" type="Boolean" visibility="private"/>
+        <Field name="respuesta" type="Boolean" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getId" returnType="Long" visibility="public"/>
+        <Method name="setId" returnType="void" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="getEnunciado" returnType="String" visibility="public"/>
+        <Method name="setEnunciado" returnType="void" visibility="public">
+          <Argument type="String" name="enunciado"/>
+        </Method>
+        <Method name="getCorrecta" returnType="Boolean" visibility="public"/>
+        <Method name="setCorrecta" returnType="void" visibility="public">
+          <Argument type="Boolean" name="correcta"/>
+        </Method>
+        <Method name="getRespuesta" returnType="Boolean" visibility="public"/>
+        <Method name="setRespuesta" returnType="void" visibility="public">
+          <Argument type="Boolean" name="respuesta"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="PersistenceObject" package="com.basp.trabajo_al_minuto.model.dto" visibility="public" xPosition="1362.0" yPosition="701.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="resultClass" type="Class" visibility="private"/>
+        <Field name="sqlResultSetMapping" type="String" visibility="private"/>
+        <Field name="querySql" type="String" visibility="private"/>
+        <Field name="queryType" type="Integer" visibility="private"/>
+        <Field name="arg" type="Object" visibility="private"/>
+        <Field name="args" type="Object[]" visibility="private"/>
+        <Field name="limitResults" type="Integer" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="querySql"/>
+          <Argument type="Integer" name="queryType"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="querySql"/>
+          <Argument type="Integer" name="queryType"/>
+          <Argument type="Object" name="arg"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="querySql"/>
+          <Argument type="Integer" name="queryType"/>
+          <Argument type="Object[]" name="args"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Class" name="resultClass"/>
+          <Argument type="String" name="querySql"/>
+          <Argument type="Integer" name="queryType"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Class" name="resultClass"/>
+          <Argument type="String" name="querySql"/>
+          <Argument type="Integer" name="queryType"/>
+          <Argument type="Object" name="arg"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Class" name="resultClass"/>
+          <Argument type="String" name="querySql"/>
+          <Argument type="Integer" name="queryType"/>
+          <Argument type="Object[]" name="args"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="querySql"/>
+          <Argument type="Integer" name="queryType"/>
+          <Argument type="Integer" name="limitResults"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="querySql"/>
+          <Argument type="Integer" name="queryType"/>
+          <Argument type="Object" name="arg"/>
+          <Argument type="Integer" name="limitResults"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="querySql"/>
+          <Argument type="Integer" name="queryType"/>
+          <Argument type="Object[]" name="args"/>
+          <Argument type="Integer" name="limitResults"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Class" name="resultClass"/>
+          <Argument type="String" name="querySql"/>
+          <Argument type="Integer" name="queryType"/>
+          <Argument type="Integer" name="limitResults"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Class" name="resultClass"/>
+          <Argument type="String" name="querySql"/>
+          <Argument type="Integer" name="queryType"/>
+          <Argument type="Object" name="arg"/>
+          <Argument type="Integer" name="limitResults"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Class" name="resultClass"/>
+          <Argument type="String" name="querySql"/>
+          <Argument type="Integer" name="queryType"/>
+          <Argument type="Object[]" name="args"/>
+          <Argument type="Integer" name="limitResults"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="sqlResultSetMapping"/>
+          <Argument type="String" name="querySql"/>
+          <Argument type="Integer" name="queryType"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="sqlResultSetMapping"/>
+          <Argument type="String" name="querySql"/>
+          <Argument type="Integer" name="queryType"/>
+          <Argument type="Object" name="arg"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="sqlResultSetMapping"/>
+          <Argument type="String" name="querySql"/>
+          <Argument type="Integer" name="queryType"/>
+          <Argument type="Object[]" name="args"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getResultClass" returnType="Class" visibility="public"/>
+        <Method name="setResultClass" returnType="void" visibility="public">
+          <Argument type="Class" name="resultClass"/>
+        </Method>
+        <Method name="getQuerySql" returnType="String" visibility="public"/>
+        <Method name="setQuerySql" returnType="void" visibility="public">
+          <Argument type="String" name="querySql"/>
+        </Method>
+        <Method name="getQueryType" returnType="Integer" visibility="public"/>
+        <Method name="setQueryType" returnType="void" visibility="public">
+          <Argument type="Integer" name="queryType"/>
+        </Method>
+        <Method name="getArg" returnType="Object" visibility="public"/>
+        <Method name="setArg" returnType="void" visibility="public">
+          <Argument type="Object" name="arg"/>
+        </Method>
+        <Method name="getArgs" returnType="Object[]" visibility="public"/>
+        <Method name="setArgs" returnType="void" visibility="public">
+          <Argument type="Object[]" name="args"/>
+        </Method>
+        <Method name="getSqlResultSetMapping" returnType="String" visibility="public"/>
+        <Method name="setSqlResultSetMapping" returnType="void" visibility="public">
+          <Argument type="String" name="sqlResultSetMapping"/>
+        </Method>
+        <Method name="getLimitResults" returnType="Integer" visibility="public"/>
+        <Method name="setLimitResults" returnType="void" visibility="public">
+          <Argument type="Integer" name="limitResults"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="PreguntaEvaluacion" package="com.basp.trabajo_al_minuto.model.dto" visibility="public" xPosition="595.0" yPosition="841.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="id" type="Long" visibility="private"/>
+        <Field name="enunciado" type="String" visibility="private"/>
+        <Field name="opciones" type="List&lt;OpcionEvaluacion&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getId" returnType="Long" visibility="public"/>
+        <Method name="setId" returnType="void" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="getEnunciado" returnType="String" visibility="public"/>
+        <Method name="setEnunciado" returnType="void" visibility="public">
+          <Argument type="String" name="enunciado"/>
+        </Method>
+        <Method name="getOpciones" returnType="List&lt;OpcionEvaluacion&gt;" visibility="public"/>
+        <Method name="setOpciones" returnType="void" visibility="public">
+          <Argument type="List&lt;OpcionEvaluacion&gt;" name="opciones"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="PruebaEvaluacion" package="com.basp.trabajo_al_minuto.model.dto" visibility="public" xPosition="868.0" yPosition="82.0">
+      <Fields>
+        <Field name="id" type="Long" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="descripcion" type="String" visibility="private"/>
+        <Field name="tiempo" type="Long" visibility="private"/>
+        <Field name="porcentaje" type="Double" visibility="private"/>
+        <Field name="area" type="String" visibility="private"/>
+        <Field name="areaId" type="Long" visibility="private"/>
+        <Field name="resuelta" type="Boolean" visibility="private"/>
+        <Field name="preguntas" type="List&lt;PreguntaEvaluacion&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getId" returnType="Long" visibility="public"/>
+        <Method name="setId" returnType="void" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="getDescripcion" returnType="String" visibility="public"/>
+        <Method name="setDescripcion" returnType="void" visibility="public">
+          <Argument type="String" name="descripcion"/>
+        </Method>
+        <Method name="getTiempo" returnType="Long" visibility="public"/>
+        <Method name="setTiempo" returnType="void" visibility="public">
+          <Argument type="Long" name="tiempo"/>
+        </Method>
+        <Method name="getPorcentaje" returnType="Double" visibility="public"/>
+        <Method name="setPorcentaje" returnType="void" visibility="public">
+          <Argument type="Double" name="porcentaje"/>
+        </Method>
+        <Method name="getArea" returnType="String" visibility="public"/>
+        <Method name="setArea" returnType="void" visibility="public">
+          <Argument type="String" name="area"/>
+        </Method>
+        <Method name="getPreguntas" returnType="List&lt;PreguntaEvaluacion&gt;" visibility="public"/>
+        <Method name="setPreguntas" returnType="void" visibility="public">
+          <Argument type="List&lt;PreguntaEvaluacion&gt;" name="preguntas"/>
+        </Method>
+        <Method name="getAreaId" returnType="Long" visibility="public"/>
+        <Method name="setAreaId" returnType="void" visibility="public">
+          <Argument type="Long" name="areaId"/>
+        </Method>
+        <Method name="getResuelta" returnType="Boolean" visibility="public"/>
+        <Method name="setResuelta" returnType="void" visibility="public">
+          <Argument type="Boolean" name="resuelta"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="RollbackResult" package="com.basp.trabajo_al_minuto.model.dto" visibility="public" xPosition="542.0" yPosition="1380.0">
+      <Fields>
+        <Field name="className" type="String" visibility="private"/>
+        <Field name="cause" type="String" visibility="private"/>
+        <Field name="invalidValue" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="className"/>
+          <Argument type="String" name="cause"/>
+          <Argument type="String" name="invalidValue"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getClassName" returnType="String" visibility="public"/>
+        <Method name="setClassName" returnType="void" visibility="public">
+          <Argument type="String" name="className"/>
+        </Method>
+        <Method name="getCause" returnType="String" visibility="public"/>
+        <Method name="setCause" returnType="void" visibility="public">
+          <Argument type="String" name="cause"/>
+        </Method>
+        <Method name="getInvalidValue" returnType="String" visibility="public"/>
+        <Method name="setInvalidValue" returnType="void" visibility="public">
+          <Argument type="String" name="invalidValue"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="com.basp.trabajo_al_minuto.model.dto.PruebaEvaluacion" target="com.basp.trabajo_al_minuto.model.dto.PreguntaEvaluacion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.model.business.BusinessException" target="com.basp.trabajo_al_minuto.model.dto.ErrorMessage" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.model.business.BusinessUtils" target="com.basp.trabajo_al_minuto.model.dto.EmailMessage" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="preguntas" source="com.basp.trabajo_al_minuto.model.dto.PruebaEvaluacion" target="com.basp.trabajo_al_minuto.model.dto.PreguntaEvaluacion" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;PreguntaEvaluacion&gt;"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.model.dto.PreguntaEvaluacion" target="com.basp.trabajo_al_minuto.model.dto.OpcionEvaluacion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="opciones" source="com.basp.trabajo_al_minuto.model.dto.PreguntaEvaluacion" target="com.basp.trabajo_al_minuto.model.dto.OpcionEvaluacion" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;OpcionEvaluacion&gt;"/>
+    <HasRelation name="errorMessage" source="com.basp.trabajo_al_minuto.model.business.BusinessException" target="com.basp.trabajo_al_minuto.model.dto.ErrorMessage" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.model.business.BusinessPersistence" target="com.basp.trabajo_al_minuto.model.dto.PersistenceObject" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

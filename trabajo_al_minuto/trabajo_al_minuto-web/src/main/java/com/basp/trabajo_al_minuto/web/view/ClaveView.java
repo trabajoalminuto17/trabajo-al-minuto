@@ -40,6 +40,9 @@ public class ClaveView extends ComponenteWeb implements Serializable {
         terminos = getUserLogin().getTerminos();
     }
 
+    /**
+     * Valida si el usuario ya ha realizado cambio clave*
+     */
     public void claveArriba() {
         Usuario u = getUserLogin();
         try {
@@ -51,6 +54,9 @@ public class ClaveView extends ComponenteWeb implements Serializable {
         }
     }
 
+    /**
+     * Actualiza la clave del usuario *
+     */
     public void cambiarClave() throws IOException {
         FacesContext context = FacesContext.getCurrentInstance();
         try {

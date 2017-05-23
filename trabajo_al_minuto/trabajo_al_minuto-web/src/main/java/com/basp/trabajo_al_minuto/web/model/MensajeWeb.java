@@ -15,7 +15,7 @@ import javax.faces.application.FacesMessage.Severity;
 
 /**
  *
- * @author BASP
+ * Contiene todos los mensajes personalizados que serán mostrados al usuario
  */
 public enum MensajeWeb {
 
@@ -47,17 +47,23 @@ public enum MensajeWeb {
     PRUEBA_ACTIVADA(EXITO_MESSAGE, "La prueba ha sido activada.", FacesMessage.SEVERITY_INFO),
     PRUEBA_NO_ACTIVADA(ERROR_MESSAGE, "Se presentò un error al activar prueba.", FacesMessage.SEVERITY_ERROR),
     USUARIO_EN_PRUEBAS(ALERTA_MESSAGE, "El usuario se encuentra en pruebas.", FacesMessage.SEVERITY_WARN);
-    
+
     private final String TITULO;
     private final String DESCRIPCION;
     private final Severity SEVERITY;
 
+    /**
+     * Constructor *
+     */
     private MensajeWeb(String title, String description, Severity severity) {
         this.TITULO = title;
         this.DESCRIPCION = description;
         this.SEVERITY = severity;
     }
 
+    /**
+     * Metodos get y set *
+     */
     public String getDESCRIPCION() {
         return DESCRIPCION;
     }

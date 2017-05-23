@@ -10,8 +10,10 @@ import com.basp.trabajo_al_minuto.service.entity.Perfil;
 import java.util.List;
 
 /**
+ * Los metodos contenidos en esta clase son los encargados de delegar las
+ * peticiones hechas por el cliente y permite que más de una clase pueda acceder
+ * a estos metodos
  *
- * @author BASP
  */
 public interface PerfilFacade {
 

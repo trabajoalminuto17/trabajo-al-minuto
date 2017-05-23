@@ -16,6 +16,12 @@ import java.util.List;
  */
 public interface CitacionFacade {
 
+    /**
+     * Los metodos contenidos en esta clase son los encargados de delegar las
+     * peticiones hechas por el cliente y permite que más de una clase pueda
+     * acceder a estos metodos
+     *
+     */
     public Citacion updateCitacion(Citacion c) throws BusinessException;
 
     public Citacion getCitacionByOferta(Long id) throws BusinessException;

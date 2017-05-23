@@ -27,14 +27,25 @@ public class PerfilDao {
         BP = new BusinessPersistence(Persistence.createEntityManagerFactory(PERSISTENCE_SERVICE));
     }
 
+    /**
+     * Retorna todos los perfiles que pertenecen a una empresa*
+     */
     protected List<Perfil> _getPerfilesByEmpresa(Long id) throws Exception {
         return BP.read(new PersistenceObject(Oferta.class, GET_PERFILES_BY_EMPRESA, JPQL, id));
     }
 
+    /**
+     * Retorna la informacion de un perfil especifico, se envia como parametro
+     * la pK de la tabla perfil*
+     */
     protected Perfil _findPerfil(Long pk) throws Exception {
         return (Perfil) BP.find(Perfil.class, pk);
     }
 
+    /**
+     * Actualiza la informacion de un perfil, recibe como parametro el Objeto
+     * Perfil
+     */
     protected Perfil _updatePerfil(Perfil p) throws Exception {
         return (Perfil) BP.update(p);
     }

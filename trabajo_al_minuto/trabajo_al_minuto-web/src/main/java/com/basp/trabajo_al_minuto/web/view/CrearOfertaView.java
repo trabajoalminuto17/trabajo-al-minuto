@@ -24,7 +24,6 @@ import javax.annotation.PostConstruct;
 import javax.faces.model.SelectItem;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-import org.primefaces.event.DragDropEvent;
 import org.primefaces.event.SelectEvent;
 
 /**
@@ -45,11 +44,17 @@ public class CrearOfertaView extends ComponenteWeb implements Serializable {
     private List<PruebaPlantilla> pruebasSource;
     private List<PerfilHasPrueba> pruebasTarget;
 
+    /**
+     * Constructor*
+     */
     public CrearOfertaView() {
         newOferta = new Oferta();
         newPerfil = new Perfil();
     }
 
+    /**
+     * Codigo a ejecutar una vez se ha instanciado la clase
+     */
     @PostConstruct
     public void init() {
         try {
@@ -61,6 +66,10 @@ public class CrearOfertaView extends ComponenteWeb implements Serializable {
         }
     }
 
+    /**
+     * Se envían los datos de la nueva oferta y del perfil ingresados por el
+     * usuario
+     */
     public void createOferta() {
         try {
             newOferta.setPerfil(newPerfil);
@@ -81,9 +90,13 @@ public class CrearOfertaView extends ComponenteWeb implements Serializable {
         }
     }
 
+    /**
+     * Genera la lista que será mostrada al usuario con las áreas a las cuales
+     * se pueden asociar una oferta
+     */
     public List<SelectItem> getAreas() {
         List<SelectItem> response = new ArrayList();
-        response.add(propiedadesItem(new SelectItem(-1, "Seleccione area..")));
+        response.add(propiedadesItem(new SelectItem(-1, "Seleccione área..")));
         try {
             List<Catalogo> list = getCatalogosByParent(1L);
             for (Catalogo c : list) {
@@ -95,6 +108,9 @@ public class CrearOfertaView extends ComponenteWeb implements Serializable {
         return response;
     }
 
+    /**
+     * *
+     */
     public void onRowSelectPruebasPlantilla(SelectEvent event) {
         PruebaPlantilla pp = (PruebaPlantilla) event.getObject();
         PerfilHasPrueba php = new PerfilHasPrueba();
@@ -111,6 +127,9 @@ public class CrearOfertaView extends ComponenteWeb implements Serializable {
 
     }
 
+    /**
+     * Metodos get y set *
+     */
     public Oferta getNewOferta() {
         return newOferta;
     }

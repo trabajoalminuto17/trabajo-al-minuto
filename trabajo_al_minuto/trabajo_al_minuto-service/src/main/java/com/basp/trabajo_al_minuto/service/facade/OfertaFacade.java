@@ -10,10 +10,12 @@ import com.basp.trabajo_al_minuto.service.dte.OfertaAplicada;
 import com.basp.trabajo_al_minuto.service.entity.Oferta;
 import java.util.List;
 
-/**
- *
- * @author BASP
- */
+   /**
+     * Los metodos contenidos en esta clase son los encargados de delegar las
+     * peticiones hechas por el cliente y permite que más de una clase pueda
+     * acceder a estos metodos
+     *
+     */
 public interface OfertaFacade {
 
     public List<Oferta> getOfertasByEmpresa(Long id) throws BusinessException;
@@ -31,7 +33,5 @@ public interface OfertaFacade {
     public List<Oferta> getOfertasExternal(Long area, List<String> palabras) throws BusinessException;
 
     public List<Oferta> getMisOfertas(Long id) throws BusinessException;
-    
-
 
 }

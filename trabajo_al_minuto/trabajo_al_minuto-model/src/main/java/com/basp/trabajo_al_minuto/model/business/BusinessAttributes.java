@@ -8,6 +8,8 @@ package com.basp.trabajo_al_minuto.model.business;
 /**
  *
  * @author BASP
+ * Contiene las variables que serán unicas para los objetos de la
+ * clase
  */
 public class BusinessAttributes {
 

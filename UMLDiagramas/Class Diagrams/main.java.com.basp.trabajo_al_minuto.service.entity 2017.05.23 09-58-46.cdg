@@ -1,0 +1,1302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="main.java.com.basp.trabajo_al_minuto.service.entity">
+  <ClassDiagramComponents>
+    <Class name="Candidato" package="com.basp.trabajo_al_minuto.service.entity" visibility="public" xPosition="408.0" yPosition="1166.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="candidatoId" type="Long" visibility="private"/>
+        <Field name="aspiracionSalarial" type="String" visibility="private"/>
+        <Field name="rutaHojaDeVida" type="String" visibility="private"/>
+        <Field name="escolaridad" type="String" visibility="private"/>
+        <Field name="estadoCandidato" type="boolean" visibility="private"/>
+        <Field name="pruebasActivas" type="boolean" visibility="private"/>
+        <Field name="usuarioList" type="List&lt;Usuario&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Long" name="candidatoId"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Long" name="candidatoId"/>
+          <Argument type="boolean" name="estadoCandidato"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getCandidatoId" returnType="Long" visibility="public"/>
+        <Method name="setCandidatoId" returnType="void" visibility="public">
+          <Argument type="Long" name="candidatoId"/>
+        </Method>
+        <Method name="getAspiracionSalarial" returnType="String" visibility="public"/>
+        <Method name="setAspiracionSalarial" returnType="void" visibility="public">
+          <Argument type="String" name="aspiracionSalarial"/>
+        </Method>
+        <Method name="getRutaHojaDeVida" returnType="String" visibility="public"/>
+        <Method name="setRutaHojaDeVida" returnType="void" visibility="public">
+          <Argument type="String" name="rutaHojaDeVida"/>
+        </Method>
+        <Method name="getEscolaridad" returnType="String" visibility="public"/>
+        <Method name="setEscolaridad" returnType="void" visibility="public">
+          <Argument type="String" name="escolaridad"/>
+        </Method>
+        <Method name="getEstadoCandidato" returnType="boolean" visibility="public"/>
+        <Method name="setEstadoCandidato" returnType="void" visibility="public">
+          <Argument type="boolean" name="estadoCandidato"/>
+        </Method>
+        <Method name="isPruebasActivas" returnType="boolean" visibility="public"/>
+        <Method name="setPruebasActivas" returnType="void" visibility="public">
+          <Argument type="boolean" name="pruebasActivas"/>
+        </Method>
+        <Method name="getUsuarioList" returnType="List&lt;Usuario&gt;" visibility="public"/>
+        <Method name="setUsuarioList" returnType="void" visibility="public">
+          <Argument type="List&lt;Usuario&gt;" name="usuarioList"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Catalogo" package="com.basp.trabajo_al_minuto.service.entity" visibility="public" xPosition="3198.0" yPosition="798.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="catalogoId" type="Long" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="valor" type="String" visibility="private"/>
+        <Field name="estado" type="boolean" visibility="private"/>
+        <Field name="orden" type="int" visibility="private"/>
+        <Field name="pruebaPlantillaList" type="List&lt;PruebaPlantilla&gt;" visibility="private"/>
+        <Field name="usuarioHasOfertaList" type="List&lt;UsuarioHasOferta&gt;" visibility="private"/>
+        <Field name="pruebaList" type="List&lt;Prueba&gt;" visibility="private"/>
+        <Field name="perfilList" type="List&lt;Perfil&gt;" visibility="private"/>
+        <Field name="catalogoList" type="List&lt;Catalogo&gt;" visibility="private"/>
+        <Field name="catalogoPadre" type="Catalogo" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Long" name="catalogoId"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Long" name="catalogoId"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="valor"/>
+          <Argument type="boolean" name="estado"/>
+          <Argument type="int" name="orden"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getCatalogoId" returnType="Long" visibility="public"/>
+        <Method name="setCatalogoId" returnType="void" visibility="public">
+          <Argument type="Long" name="catalogoId"/>
+        </Method>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="getValor" returnType="String" visibility="public"/>
+        <Method name="setValor" returnType="void" visibility="public">
+          <Argument type="String" name="valor"/>
+        </Method>
+        <Method name="getEstado" returnType="boolean" visibility="public"/>
+        <Method name="setEstado" returnType="void" visibility="public">
+          <Argument type="boolean" name="estado"/>
+        </Method>
+        <Method name="getOrden" returnType="int" visibility="public"/>
+        <Method name="setOrden" returnType="void" visibility="public">
+          <Argument type="int" name="orden"/>
+        </Method>
+        <Method name="getPruebaPlantillaList" returnType="List&lt;PruebaPlantilla&gt;" visibility="public"/>
+        <Method name="setPruebaPlantillaList" returnType="void" visibility="public">
+          <Argument type="List&lt;PruebaPlantilla&gt;" name="pruebaPlantillaList"/>
+        </Method>
+        <Method name="getUsuarioHasOfertaList" returnType="List&lt;UsuarioHasOferta&gt;" visibility="public"/>
+        <Method name="setUsuarioHasOfertaList" returnType="void" visibility="public">
+          <Argument type="List&lt;UsuarioHasOferta&gt;" name="usuarioHasOfertaList"/>
+        </Method>
+        <Method name="getPruebaList" returnType="List&lt;Prueba&gt;" visibility="public"/>
+        <Method name="setPruebaList" returnType="void" visibility="public">
+          <Argument type="List&lt;Prueba&gt;" name="pruebaList"/>
+        </Method>
+        <Method name="getPerfilList" returnType="List&lt;Perfil&gt;" visibility="public"/>
+        <Method name="setPerfilList" returnType="void" visibility="public">
+          <Argument type="List&lt;Perfil&gt;" name="perfilList"/>
+        </Method>
+        <Method name="getCatalogoList" returnType="List&lt;Catalogo&gt;" visibility="public"/>
+        <Method name="setCatalogoList" returnType="void" visibility="public">
+          <Argument type="List&lt;Catalogo&gt;" name="catalogoList"/>
+        </Method>
+        <Method name="getCatalogoPadre" returnType="Catalogo" visibility="public"/>
+        <Method name="setCatalogoPadre" returnType="void" visibility="public">
+          <Argument type="Catalogo" name="catalogoPadre"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Citacion" package="com.basp.trabajo_al_minuto.service.entity" visibility="public" xPosition="778.0" yPosition="-35.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="citacionId" type="Long" visibility="private"/>
+        <Field name="fechaCitacion" type="Date" visibility="private"/>
+        <Field name="lugar" type="String" visibility="private"/>
+        <Field name="fechaCreacion" type="Date" visibility="private"/>
+        <Field name="detalles" type="String" visibility="private"/>
+        <Field name="resuelto" type="boolean" visibility="private"/>
+        <Field name="activarPruebas" type="boolean" visibility="private"/>
+        <Field name="estado" type="boolean" visibility="private"/>
+        <Field name="usuarioAutor" type="Usuario" visibility="private"/>
+        <Field name="usuarioHasOferta" type="UsuarioHasOferta" visibility="private"/>
+        <Field name="evaluacionList" type="List&lt;Evaluacion&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Long" name="citacionId"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Long" name="citacionId"/>
+          <Argument type="Date" name="fechaCitacion"/>
+          <Argument type="boolean" name="resuelto"/>
+          <Argument type="boolean" name="activarPruebas"/>
+          <Argument type="boolean" name="estado"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getCitacionId" returnType="Long" visibility="public"/>
+        <Method name="setCitacionId" returnType="void" visibility="public">
+          <Argument type="Long" name="citacionId"/>
+        </Method>
+        <Method name="getFechaCitacion" returnType="Date" visibility="public"/>
+        <Method name="setFechaCitacion" returnType="void" visibility="public">
+          <Argument type="Date" name="fechaCitacion"/>
+        </Method>
+        <Method name="getLugar" returnType="String" visibility="public"/>
+        <Method name="setLugar" returnType="void" visibility="public">
+          <Argument type="String" name="lugar"/>
+        </Method>
+        <Method name="getFechaCreacion" returnType="Date" visibility="public"/>
+        <Method name="setFechaCreacion" returnType="void" visibility="public">
+          <Argument type="Date" name="fechaCreacion"/>
+        </Method>
+        <Method name="getDetalles" returnType="String" visibility="public"/>
+        <Method name="setDetalles" returnType="void" visibility="public">
+          <Argument type="String" name="detalles"/>
+        </Method>
+        <Method name="getResuelto" returnType="boolean" visibility="public"/>
+        <Method name="setResuelto" returnType="void" visibility="public">
+          <Argument type="boolean" name="resuelto"/>
+        </Method>
+        <Method name="getActivarPruebas" returnType="boolean" visibility="public"/>
+        <Method name="setActivarPruebas" returnType="void" visibility="public">
+          <Argument type="boolean" name="activarPruebas"/>
+        </Method>
+        <Method name="getEstado" returnType="boolean" visibility="public"/>
+        <Method name="setEstado" returnType="void" visibility="public">
+          <Argument type="boolean" name="estado"/>
+        </Method>
+        <Method name="getUsuarioAutor" returnType="Usuario" visibility="public"/>
+        <Method name="setUsuarioAutor" returnType="void" visibility="public">
+          <Argument type="Usuario" name="usuarioAutor"/>
+        </Method>
+        <Method name="getUsuarioHasOferta" returnType="UsuarioHasOferta" visibility="public"/>
+        <Method name="setUsuarioHasOferta" returnType="void" visibility="public">
+          <Argument type="UsuarioHasOferta" name="usuarioHasOferta"/>
+        </Method>
+        <Method name="getEvaluacionList" returnType="List&lt;Evaluacion&gt;" visibility="public"/>
+        <Method name="setEvaluacionList" returnType="void" visibility="public">
+          <Argument type="List&lt;Evaluacion&gt;" name="evaluacionList"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Empresa" package="com.basp.trabajo_al_minuto.service.entity" visibility="public" xPosition="1991.0" yPosition="3957.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="empresaId" type="Long" visibility="private"/>
+        <Field name="nit" type="String" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="logo" type="String" visibility="private"/>
+        <Field name="estado" type="boolean" visibility="private"/>
+        <Field name="fecha" type="Date" visibility="private"/>
+        <Field name="pruebaPlantillaList" type="List&lt;PruebaPlantilla&gt;" visibility="private"/>
+        <Field name="usuarioList" type="List&lt;Usuario&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Long" name="empresaId"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Long" name="empresaId"/>
+          <Argument type="String" name="nit"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="logo"/>
+          <Argument type="boolean" name="estado"/>
+          <Argument type="Date" name="fecha"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getEmpresaId" returnType="Long" visibility="public"/>
+        <Method name="setEmpresaId" returnType="void" visibility="public">
+          <Argument type="Long" name="empresaId"/>
+        </Method>
+        <Method name="getNit" returnType="String" visibility="public"/>
+        <Method name="setNit" returnType="void" visibility="public">
+          <Argument type="String" name="nit"/>
+        </Method>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="getLogo" returnType="String" visibility="public"/>
+        <Method name="setLogo" returnType="void" visibility="public">
+          <Argument type="String" name="logo"/>
+        </Method>
+        <Method name="getEstado" returnType="boolean" visibility="public"/>
+        <Method name="setEstado" returnType="void" visibility="public">
+          <Argument type="boolean" name="estado"/>
+        </Method>
+        <Method name="getFecha" returnType="Date" visibility="public"/>
+        <Method name="setFecha" returnType="void" visibility="public">
+          <Argument type="Date" name="fecha"/>
+        </Method>
+        <Method name="getPruebaPlantillaList" returnType="List&lt;PruebaPlantilla&gt;" visibility="public"/>
+        <Method name="setPruebaPlantillaList" returnType="void" visibility="public">
+          <Argument type="List&lt;PruebaPlantilla&gt;" name="pruebaPlantillaList"/>
+        </Method>
+        <Method name="getUsuarioList" returnType="List&lt;Usuario&gt;" visibility="public"/>
+        <Method name="setUsuarioList" returnType="void" visibility="public">
+          <Argument type="List&lt;Usuario&gt;" name="usuarioList"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Evaluacion" package="com.basp.trabajo_al_minuto.service.entity" visibility="public" xPosition="4853.0" yPosition="65.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="evaluacionId" type="Long" visibility="private"/>
+        <Field name="fechaFin" type="Date" visibility="private"/>
+        <Field name="estado" type="Boolean" visibility="private"/>
+        <Field name="tiempoEmpleado" type="Date" visibility="private"/>
+        <Field name="porcentaje" type="Double" visibility="private"/>
+        <Field name="citacion" type="Citacion" visibility="private"/>
+        <Field name="respuestaList" type="List&lt;Respuesta&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Long" name="evaluacionId"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getEvaluacionId" returnType="Long" visibility="public"/>
+        <Method name="setEvaluacionId" returnType="void" visibility="public">
+          <Argument type="Long" name="evaluacionId"/>
+        </Method>
+        <Method name="getFechaFin" returnType="Date" visibility="public"/>
+        <Method name="setFechaFin" returnType="void" visibility="public">
+          <Argument type="Date" name="fechaFin"/>
+        </Method>
+        <Method name="getEstado" returnType="Boolean" visibility="public"/>
+        <Method name="setEstado" returnType="void" visibility="public">
+          <Argument type="Boolean" name="estado"/>
+        </Method>
+        <Method name="getTiempoEmpleado" returnType="Date" visibility="public"/>
+        <Method name="setTiempoEmpleado" returnType="void" visibility="public">
+          <Argument type="Date" name="tiempoEmpleado"/>
+        </Method>
+        <Method name="getPorcentaje" returnType="Double" visibility="public"/>
+        <Method name="setPorcentaje" returnType="void" visibility="public">
+          <Argument type="Double" name="porcentaje"/>
+        </Method>
+        <Method name="getCitacion" returnType="Citacion" visibility="public"/>
+        <Method name="setCitacion" returnType="void" visibility="public">
+          <Argument type="Citacion" name="citacion"/>
+        </Method>
+        <Method name="getRespuestaList" returnType="List&lt;Respuesta&gt;" visibility="public"/>
+        <Method name="setRespuestaList" returnType="void" visibility="public">
+          <Argument type="List&lt;Respuesta&gt;" name="respuestaList"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Menu" package="com.basp.trabajo_al_minuto.service.entity" visibility="public" xPosition="153.0" yPosition="2919.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="menuId" type="Long" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="orden" type="int" visibility="private"/>
+        <Field name="estado" type="boolean" visibility="private"/>
+        <Field name="url" type="String" visibility="private"/>
+        <Field name="icono" type="String" visibility="private"/>
+        <Field name="menuList" type="List&lt;Menu&gt;" visibility="private"/>
+        <Field name="menuPadre" type="Menu" visibility="private"/>
+        <Field name="rolHasMenuList" type="List&lt;RolHasMenu&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Long" name="menuId"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Long" name="menuId"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="int" name="orden"/>
+          <Argument type="boolean" name="estado"/>
+          <Argument type="String" name="url"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getMenuId" returnType="Long" visibility="public"/>
+        <Method name="setMenuId" returnType="void" visibility="public">
+          <Argument type="Long" name="menuId"/>
+        </Method>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="getOrden" returnType="int" visibility="public"/>
+        <Method name="setOrden" returnType="void" visibility="public">
+          <Argument type="int" name="orden"/>
+        </Method>
+        <Method name="getEstado" returnType="boolean" visibility="public"/>
+        <Method name="setEstado" returnType="void" visibility="public">
+          <Argument type="boolean" name="estado"/>
+        </Method>
+        <Method name="getUrl" returnType="String" visibility="public"/>
+        <Method name="setUrl" returnType="void" visibility="public">
+          <Argument type="String" name="url"/>
+        </Method>
+        <Method name="getIcono" returnType="String" visibility="public"/>
+        <Method name="setIcono" returnType="void" visibility="public">
+          <Argument type="String" name="icono"/>
+        </Method>
+        <Method name="getMenuList" returnType="List&lt;Menu&gt;" visibility="public"/>
+        <Method name="setMenuList" returnType="void" visibility="public">
+          <Argument type="List&lt;Menu&gt;" name="menuList"/>
+        </Method>
+        <Method name="getMenuPadre" returnType="Menu" visibility="public"/>
+        <Method name="setMenuPadre" returnType="void" visibility="public">
+          <Argument type="Menu" name="menuPadre"/>
+        </Method>
+        <Method name="getRolHasMenuList" returnType="List&lt;RolHasMenu&gt;" visibility="public"/>
+        <Method name="setRolHasMenuList" returnType="void" visibility="public">
+          <Argument type="List&lt;RolHasMenu&gt;" name="rolHasMenuList"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Oferta" package="com.basp.trabajo_al_minuto.service.entity" visibility="public" xPosition="3018.0" yPosition="2841.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="ofertaId" type="Long" visibility="private"/>
+        <Field name="fechaExpiracion" type="Date" visibility="private"/>
+        <Field name="estado" type="boolean" visibility="private"/>
+        <Field name="usuarioHasOfertaList" type="List&lt;UsuarioHasOferta&gt;" visibility="private"/>
+        <Field name="perfil" type="Perfil" visibility="private"/>
+        <Field name="usuarioAutor" type="Usuario" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Long" name="ofertaId"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Long" name="ofertaId"/>
+          <Argument type="boolean" name="estado"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getOfertaId" returnType="Long" visibility="public"/>
+        <Method name="setOfertaId" returnType="void" visibility="public">
+          <Argument type="Long" name="ofertaId"/>
+        </Method>
+        <Method name="getFechaExpiracion" returnType="Date" visibility="public"/>
+        <Method name="setFechaExpiracion" returnType="void" visibility="public">
+          <Argument type="Date" name="fechaExpiracion"/>
+        </Method>
+        <Method name="getEstado" returnType="boolean" visibility="public"/>
+        <Method name="setEstado" returnType="void" visibility="public">
+          <Argument type="boolean" name="estado"/>
+        </Method>
+        <Method name="getUsuarioHasOfertaList" returnType="List&lt;UsuarioHasOferta&gt;" visibility="public"/>
+        <Method name="setUsuarioHasOfertaList" returnType="void" visibility="public">
+          <Argument type="List&lt;UsuarioHasOferta&gt;" name="usuarioHasOfertaList"/>
+        </Method>
+        <Method name="getPerfil" returnType="Perfil" visibility="public"/>
+        <Method name="setPerfil" returnType="void" visibility="public">
+          <Argument type="Perfil" name="perfil"/>
+        </Method>
+        <Method name="getUsuarioAutor" returnType="Usuario" visibility="public"/>
+        <Method name="setUsuarioAutor" returnType="void" visibility="public">
+          <Argument type="Usuario" name="usuarioAutor"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Opcion" package="com.basp.trabajo_al_minuto.service.entity" visibility="public" xPosition="6461.0" yPosition="1696.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="opcionId" type="Long" visibility="private"/>
+        <Field name="enunciado" type="String" visibility="private"/>
+        <Field name="correcta" type="boolean" visibility="private"/>
+        <Field name="preguntaPreguntaId" type="Pregunta" visibility="private"/>
+        <Field name="respuestaList" type="List&lt;Respuesta&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Long" name="opcionId"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Long" name="opcionId"/>
+          <Argument type="String" name="enunciado"/>
+          <Argument type="boolean" name="correcta"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getOpcionId" returnType="Long" visibility="public"/>
+        <Method name="setOpcionId" returnType="void" visibility="public">
+          <Argument type="Long" name="opcionId"/>
+        </Method>
+        <Method name="getEnunciado" returnType="String" visibility="public"/>
+        <Method name="setEnunciado" returnType="void" visibility="public">
+          <Argument type="String" name="enunciado"/>
+        </Method>
+        <Method name="getCorrecta" returnType="boolean" visibility="public"/>
+        <Method name="setCorrecta" returnType="void" visibility="public">
+          <Argument type="boolean" name="correcta"/>
+        </Method>
+        <Method name="getPreguntaPreguntaId" returnType="Pregunta" visibility="public"/>
+        <Method name="setPreguntaPreguntaId" returnType="void" visibility="public">
+          <Argument type="Pregunta" name="preguntaPreguntaId"/>
+        </Method>
+        <Method name="getRespuestaList" returnType="List&lt;Respuesta&gt;" visibility="public"/>
+        <Method name="setRespuestaList" returnType="void" visibility="public">
+          <Argument type="List&lt;Respuesta&gt;" name="respuestaList"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="OpcionPlantilla" package="com.basp.trabajo_al_minuto.service.entity" visibility="public" xPosition="5755.0" yPosition="3419.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="opcionId" type="Long" visibility="private"/>
+        <Field name="enunciado" type="String" visibility="private"/>
+        <Field name="correcta" type="Boolean" visibility="private"/>
+        <Field name="preguntaPlantillaPreguntaId" type="PreguntaPlantilla" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Long" name="opcionId"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getOpcionId" returnType="Long" visibility="public"/>
+        <Method name="setOpcionId" returnType="void" visibility="public">
+          <Argument type="Long" name="opcionId"/>
+        </Method>
+        <Method name="getEnunciado" returnType="String" visibility="public"/>
+        <Method name="setEnunciado" returnType="void" visibility="public">
+          <Argument type="String" name="enunciado"/>
+        </Method>
+        <Method name="getCorrecta" returnType="Boolean" visibility="public"/>
+        <Method name="setCorrecta" returnType="void" visibility="public">
+          <Argument type="Boolean" name="correcta"/>
+        </Method>
+        <Method name="getPreguntaPlantillaPreguntaId" returnType="PreguntaPlantilla" visibility="public"/>
+        <Method name="setPreguntaPlantillaPreguntaId" returnType="void" visibility="public">
+          <Argument type="PreguntaPlantilla" name="preguntaPlantillaPreguntaId"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Perfil" package="com.basp.trabajo_al_minuto.service.entity" visibility="public" xPosition="5055.0" yPosition="2919.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="perfilId" type="Long" visibility="private"/>
+        <Field name="titulo" type="String" visibility="private"/>
+        <Field name="descripcion" type="String" visibility="private"/>
+        <Field name="salario" type="String" visibility="private"/>
+        <Field name="requerimientos" type="String" visibility="private"/>
+        <Field name="ofertaList" type="List&lt;Oferta&gt;" visibility="private"/>
+        <Field name="area" type="Catalogo" visibility="private"/>
+        <Field name="perfilHasPruebaList" type="List&lt;PerfilHasPrueba&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Long" name="perfilId"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Long" name="perfilId"/>
+          <Argument type="String" name="titulo"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getPerfilId" returnType="Long" visibility="public"/>
+        <Method name="setPerfilId" returnType="void" visibility="public">
+          <Argument type="Long" name="perfilId"/>
+        </Method>
+        <Method name="getTitulo" returnType="String" visibility="public"/>
+        <Method name="setTitulo" returnType="void" visibility="public">
+          <Argument type="String" name="titulo"/>
+        </Method>
+        <Method name="getDescripcion" returnType="String" visibility="public"/>
+        <Method name="setDescripcion" returnType="void" visibility="public">
+          <Argument type="String" name="descripcion"/>
+        </Method>
+        <Method name="getSalario" returnType="String" visibility="public"/>
+        <Method name="setSalario" returnType="void" visibility="public">
+          <Argument type="String" name="salario"/>
+        </Method>
+        <Method name="getRequerimientos" returnType="String" visibility="public"/>
+        <Method name="setRequerimientos" returnType="void" visibility="public">
+          <Argument type="String" name="requerimientos"/>
+        </Method>
+        <Method name="getOfertaList" returnType="List&lt;Oferta&gt;" visibility="public"/>
+        <Method name="setOfertaList" returnType="void" visibility="public">
+          <Argument type="List&lt;Oferta&gt;" name="ofertaList"/>
+        </Method>
+        <Method name="getArea" returnType="Catalogo" visibility="public"/>
+        <Method name="setArea" returnType="void" visibility="public">
+          <Argument type="Catalogo" name="area"/>
+        </Method>
+        <Method name="getPerfilHasPruebaList" returnType="List&lt;PerfilHasPrueba&gt;" visibility="public"/>
+        <Method name="setPerfilHasPruebaList" returnType="void" visibility="public">
+          <Argument type="List&lt;PerfilHasPrueba&gt;" name="perfilHasPruebaList"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="PerfilHasPrueba" package="com.basp.trabajo_al_minuto.service.entity" visibility="public" xPosition="5376.0" yPosition="1875.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="perfilHasPruebaId" type="Integer" visibility="private"/>
+        <Field name="porcentaje" type="double" visibility="private"/>
+        <Field name="perfil" type="Perfil" visibility="private"/>
+        <Field name="prueba" type="Prueba" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Integer" name="perfilHasPruebaId"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Integer" name="perfilHasPruebaId"/>
+          <Argument type="double" name="porcentaje"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getPerfilHasPruebaId" returnType="Integer" visibility="public"/>
+        <Method name="setPerfilHasPruebaId" returnType="void" visibility="public">
+          <Argument type="Integer" name="perfilHasPruebaId"/>
+        </Method>
+        <Method name="getPorcentaje" returnType="double" visibility="public"/>
+        <Method name="setPorcentaje" returnType="void" visibility="public">
+          <Argument type="double" name="porcentaje"/>
+        </Method>
+        <Method name="getPerfil" returnType="Perfil" visibility="public"/>
+        <Method name="setPerfil" returnType="void" visibility="public">
+          <Argument type="Perfil" name="perfil"/>
+        </Method>
+        <Method name="getPrueba" returnType="Prueba" visibility="public"/>
+        <Method name="setPrueba" returnType="void" visibility="public">
+          <Argument type="Prueba" name="prueba"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Persona" package="com.basp.trabajo_al_minuto.service.entity" visibility="public" xPosition="2665.0" yPosition="3369.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="documento" type="String" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="telefonoFijo" type="String" visibility="private"/>
+        <Field name="celular" type="String" visibility="private"/>
+        <Field name="edad" type="Integer" visibility="private"/>
+        <Field name="genero" type="Short" visibility="private"/>
+        <Field name="usuarioList" type="List&lt;Usuario&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="documento"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="documento"/>
+          <Argument type="String" name="nombre"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getDocumento" returnType="String" visibility="public"/>
+        <Method name="setDocumento" returnType="void" visibility="public">
+          <Argument type="String" name="documento"/>
+        </Method>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="getTelefonoFijo" returnType="String" visibility="public"/>
+        <Method name="setTelefonoFijo" returnType="void" visibility="public">
+          <Argument type="String" name="telefonoFijo"/>
+        </Method>
+        <Method name="getCelular" returnType="String" visibility="public"/>
+        <Method name="setCelular" returnType="void" visibility="public">
+          <Argument type="String" name="celular"/>
+        </Method>
+        <Method name="getEdad" returnType="Integer" visibility="public"/>
+        <Method name="setEdad" returnType="void" visibility="public">
+          <Argument type="Integer" name="edad"/>
+        </Method>
+        <Method name="getGenero" returnType="Short" visibility="public"/>
+        <Method name="setGenero" returnType="void" visibility="public">
+          <Argument type="Short" name="genero"/>
+        </Method>
+        <Method name="getUsuarioList" returnType="List&lt;Usuario&gt;" visibility="public"/>
+        <Method name="setUsuarioList" returnType="void" visibility="public">
+          <Argument type="List&lt;Usuario&gt;" name="usuarioList"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Pregunta" package="com.basp.trabajo_al_minuto.service.entity" visibility="public" xPosition="5657.0" yPosition="1131.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="preguntaId" type="Long" visibility="private"/>
+        <Field name="enunciado" type="String" visibility="private"/>
+        <Field name="opcionList" type="List&lt;Opcion&gt;" visibility="private"/>
+        <Field name="pruebaPruebaId" type="Prueba" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Long" name="preguntaId"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Long" name="preguntaId"/>
+          <Argument type="String" name="enunciado"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getPreguntaId" returnType="Long" visibility="public"/>
+        <Method name="setPreguntaId" returnType="void" visibility="public">
+          <Argument type="Long" name="preguntaId"/>
+        </Method>
+        <Method name="getEnunciado" returnType="String" visibility="public"/>
+        <Method name="setEnunciado" returnType="void" visibility="public">
+          <Argument type="String" name="enunciado"/>
+        </Method>
+        <Method name="getOpcionList" returnType="List&lt;Opcion&gt;" visibility="public"/>
+        <Method name="setOpcionList" returnType="void" visibility="public">
+          <Argument type="List&lt;Opcion&gt;" name="opcionList"/>
+        </Method>
+        <Method name="getPruebaPruebaId" returnType="Prueba" visibility="public"/>
+        <Method name="setPruebaPruebaId" returnType="void" visibility="public">
+          <Argument type="Prueba" name="pruebaPruebaId"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="PreguntaPlantilla" package="com.basp.trabajo_al_minuto.service.entity" visibility="public" xPosition="5780.0" yPosition="4312.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="preguntaId" type="Long" visibility="private"/>
+        <Field name="enunciado" type="String" visibility="private"/>
+        <Field name="opcionPlantillaList" type="List&lt;OpcionPlantilla&gt;" visibility="private"/>
+        <Field name="pruebaPlantillaPruebaId" type="PruebaPlantilla" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Long" name="preguntaId"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getPreguntaId" returnType="Long" visibility="public"/>
+        <Method name="setPreguntaId" returnType="void" visibility="public">
+          <Argument type="Long" name="preguntaId"/>
+        </Method>
+        <Method name="getEnunciado" returnType="String" visibility="public"/>
+        <Method name="setEnunciado" returnType="void" visibility="public">
+          <Argument type="String" name="enunciado"/>
+        </Method>
+        <Method name="getOpcionPlantillaList" returnType="List&lt;OpcionPlantilla&gt;" visibility="public"/>
+        <Method name="setOpcionPlantillaList" returnType="void" visibility="public">
+          <Argument type="List&lt;OpcionPlantilla&gt;" name="opcionPlantillaList"/>
+        </Method>
+        <Method name="getPruebaPlantillaPruebaId" returnType="PruebaPlantilla" visibility="public"/>
+        <Method name="setPruebaPlantillaPruebaId" returnType="void" visibility="public">
+          <Argument type="PruebaPlantilla" name="pruebaPlantillaPruebaId"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Prueba" package="com.basp.trabajo_al_minuto.service.entity" visibility="public" xPosition="4303.0" yPosition="1098.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="pruebaId" type="Long" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="descripcion" type="String" visibility="private"/>
+        <Field name="limiteTiempo" type="Date" visibility="private"/>
+        <Field name="porcentajeMinimo" type="double" visibility="private"/>
+        <Field name="estado" type="boolean" visibility="private"/>
+        <Field name="area" type="Catalogo" visibility="private"/>
+        <Field name="preguntaList" type="List&lt;Pregunta&gt;" visibility="private"/>
+        <Field name="perfilHasPruebaList" type="List&lt;PerfilHasPrueba&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Long" name="pruebaId"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Long" name="pruebaId"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="Date" name="limiteTiempo"/>
+          <Argument type="double" name="porcentajeMinimo"/>
+          <Argument type="boolean" name="estado"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getPruebaId" returnType="Long" visibility="public"/>
+        <Method name="setPruebaId" returnType="void" visibility="public">
+          <Argument type="Long" name="pruebaId"/>
+        </Method>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="getDescripcion" returnType="String" visibility="public"/>
+        <Method name="setDescripcion" returnType="void" visibility="public">
+          <Argument type="String" name="descripcion"/>
+        </Method>
+        <Method name="getLimiteTiempo" returnType="Date" visibility="public"/>
+        <Method name="setLimiteTiempo" returnType="void" visibility="public">
+          <Argument type="Date" name="limiteTiempo"/>
+        </Method>
+        <Method name="getPorcentajeMinimo" returnType="double" visibility="public"/>
+        <Method name="setPorcentajeMinimo" returnType="void" visibility="public">
+          <Argument type="double" name="porcentajeMinimo"/>
+        </Method>
+        <Method name="getEstado" returnType="boolean" visibility="public"/>
+        <Method name="setEstado" returnType="void" visibility="public">
+          <Argument type="boolean" name="estado"/>
+        </Method>
+        <Method name="getArea" returnType="Catalogo" visibility="public"/>
+        <Method name="setArea" returnType="void" visibility="public">
+          <Argument type="Catalogo" name="area"/>
+        </Method>
+        <Method name="getPreguntaList" returnType="List&lt;Pregunta&gt;" visibility="public"/>
+        <Method name="setPreguntaList" returnType="void" visibility="public">
+          <Argument type="List&lt;Pregunta&gt;" name="preguntaList"/>
+        </Method>
+        <Method name="getPerfilHasPruebaList" returnType="List&lt;PerfilHasPrueba&gt;" visibility="public"/>
+        <Method name="setPerfilHasPruebaList" returnType="void" visibility="public">
+          <Argument type="List&lt;PerfilHasPrueba&gt;" name="perfilHasPruebaList"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="PruebaPlantilla" package="com.basp.trabajo_al_minuto.service.entity" visibility="public" xPosition="4274.0" yPosition="4070.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="pruebaId" type="Long" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="descripcion" type="String" visibility="private"/>
+        <Field name="limiteTiempo" type="Date" visibility="private"/>
+        <Field name="porcentajeMinimo" type="Double" visibility="private"/>
+        <Field name="estado" type="Boolean" visibility="private"/>
+        <Field name="area" type="Catalogo" visibility="private"/>
+        <Field name="empresaEmpresaId" type="Empresa" visibility="private"/>
+        <Field name="preguntaPlantillaList" type="List&lt;PreguntaPlantilla&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Long" name="pruebaId"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getPruebaId" returnType="Long" visibility="public"/>
+        <Method name="setPruebaId" returnType="void" visibility="public">
+          <Argument type="Long" name="pruebaId"/>
+        </Method>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="getDescripcion" returnType="String" visibility="public"/>
+        <Method name="setDescripcion" returnType="void" visibility="public">
+          <Argument type="String" name="descripcion"/>
+        </Method>
+        <Method name="getLimiteTiempo" returnType="Date" visibility="public"/>
+        <Method name="setLimiteTiempo" returnType="void" visibility="public">
+          <Argument type="Date" name="limiteTiempo"/>
+        </Method>
+        <Method name="getPorcentajeMinimo" returnType="Double" visibility="public"/>
+        <Method name="setPorcentajeMinimo" returnType="void" visibility="public">
+          <Argument type="Double" name="porcentajeMinimo"/>
+        </Method>
+        <Method name="getEstado" returnType="Boolean" visibility="public"/>
+        <Method name="setEstado" returnType="void" visibility="public">
+          <Argument type="Boolean" name="estado"/>
+        </Method>
+        <Method name="getArea" returnType="Catalogo" visibility="public"/>
+        <Method name="setArea" returnType="void" visibility="public">
+          <Argument type="Catalogo" name="area"/>
+        </Method>
+        <Method name="getEmpresaEmpresaId" returnType="Empresa" visibility="public"/>
+        <Method name="setEmpresaEmpresaId" returnType="void" visibility="public">
+          <Argument type="Empresa" name="empresaEmpresaId"/>
+        </Method>
+        <Method name="getPreguntaPlantillaList" returnType="List&lt;PreguntaPlantilla&gt;" visibility="public"/>
+        <Method name="setPreguntaPlantillaList" returnType="void" visibility="public">
+          <Argument type="List&lt;PreguntaPlantilla&gt;" name="preguntaPlantillaList"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Respuesta" package="com.basp.trabajo_al_minuto.service.entity" visibility="public" xPosition="6711.0" yPosition="430.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="respuestaId" type="Long" visibility="private"/>
+        <Field name="evaluacion" type="Evaluacion" visibility="private"/>
+        <Field name="opcion" type="Opcion" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Long" name="respuestaId"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getRespuestaId" returnType="Long" visibility="public"/>
+        <Method name="setRespuestaId" returnType="void" visibility="public">
+          <Argument type="Long" name="respuestaId"/>
+        </Method>
+        <Method name="getEvaluacion" returnType="Evaluacion" visibility="public"/>
+        <Method name="setEvaluacion" returnType="void" visibility="public">
+          <Argument type="Evaluacion" name="evaluacion"/>
+        </Method>
+        <Method name="getOpcion" returnType="Opcion" visibility="public"/>
+        <Method name="setOpcion" returnType="void" visibility="public">
+          <Argument type="Opcion" name="opcion"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Rol" package="com.basp.trabajo_al_minuto.service.entity" visibility="public" xPosition="810.0" yPosition="3033.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="rolId" type="Long" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="estado" type="boolean" visibility="private"/>
+        <Field name="rolHasMenuList" type="List&lt;RolHasMenu&gt;" visibility="private"/>
+        <Field name="usuarioList" type="List&lt;Usuario&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Long" name="rolId"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Long" name="rolId"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="boolean" name="estado"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getRolId" returnType="Long" visibility="public"/>
+        <Method name="setRolId" returnType="void" visibility="public">
+          <Argument type="Long" name="rolId"/>
+        </Method>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="getEstado" returnType="boolean" visibility="public"/>
+        <Method name="setEstado" returnType="void" visibility="public">
+          <Argument type="boolean" name="estado"/>
+        </Method>
+        <Method name="getRolHasMenuList" returnType="List&lt;RolHasMenu&gt;" visibility="public"/>
+        <Method name="setRolHasMenuList" returnType="void" visibility="public">
+          <Argument type="List&lt;RolHasMenu&gt;" name="rolHasMenuList"/>
+        </Method>
+        <Method name="getUsuarioList" returnType="List&lt;Usuario&gt;" visibility="public"/>
+        <Method name="setUsuarioList" returnType="void" visibility="public">
+          <Argument type="List&lt;Usuario&gt;" name="usuarioList"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="RolHasMenu" package="com.basp.trabajo_al_minuto.service.entity" visibility="public" xPosition="535.0" yPosition="2155.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="rolHasMenuId" type="Integer" visibility="private"/>
+        <Field name="estado" type="boolean" visibility="private"/>
+        <Field name="menu" type="Menu" visibility="private"/>
+        <Field name="rol" type="Rol" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Integer" name="rolHasMenuId"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Integer" name="rolHasMenuId"/>
+          <Argument type="boolean" name="estado"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getRolHasMenuId" returnType="Integer" visibility="public"/>
+        <Method name="setRolHasMenuId" returnType="void" visibility="public">
+          <Argument type="Integer" name="rolHasMenuId"/>
+        </Method>
+        <Method name="getEstado" returnType="boolean" visibility="public"/>
+        <Method name="setEstado" returnType="void" visibility="public">
+          <Argument type="boolean" name="estado"/>
+        </Method>
+        <Method name="getMenu" returnType="Menu" visibility="public"/>
+        <Method name="setMenu" returnType="void" visibility="public">
+          <Argument type="Menu" name="menu"/>
+        </Method>
+        <Method name="getRol" returnType="Rol" visibility="public"/>
+        <Method name="setRol" returnType="void" visibility="public">
+          <Argument type="Rol" name="rol"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Usuario" package="com.basp.trabajo_al_minuto.service.entity" visibility="public" xPosition="1560.0" yPosition="1849.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="password" type="String" visibility="private"/>
+        <Field name="usuarioId" type="Long" visibility="private"/>
+        <Field name="estado" type="boolean" visibility="private"/>
+        <Field name="fechaCreacion" type="Date" visibility="private"/>
+        <Field name="email" type="String" visibility="private"/>
+        <Field name="cambioClave" type="Boolean" visibility="private"/>
+        <Field name="terminos" type="Boolean" visibility="private"/>
+        <Field name="citacionList" type="List&lt;Citacion&gt;" visibility="private"/>
+        <Field name="usuarioHasOfertaList" type="List&lt;UsuarioHasOferta&gt;" visibility="private"/>
+        <Field name="ofertaList" type="List&lt;Oferta&gt;" visibility="private"/>
+        <Field name="candidato" type="Candidato" visibility="private"/>
+        <Field name="empresa" type="Empresa" visibility="private"/>
+        <Field name="persona" type="Persona" visibility="private"/>
+        <Field name="rol" type="Rol" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Long" name="usuarioId"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Long" name="usuarioId"/>
+          <Argument type="String" name="password"/>
+          <Argument type="boolean" name="estado"/>
+          <Argument type="Date" name="fechaCreacion"/>
+          <Argument type="String" name="email"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getPassword" returnType="String" visibility="public"/>
+        <Method name="setPassword" returnType="void" visibility="public">
+          <Argument type="String" name="password"/>
+        </Method>
+        <Method name="getUsuarioId" returnType="Long" visibility="public"/>
+        <Method name="setUsuarioId" returnType="void" visibility="public">
+          <Argument type="Long" name="usuarioId"/>
+        </Method>
+        <Method name="getEstado" returnType="boolean" visibility="public"/>
+        <Method name="setEstado" returnType="void" visibility="public">
+          <Argument type="boolean" name="estado"/>
+        </Method>
+        <Method name="getFechaCreacion" returnType="Date" visibility="public"/>
+        <Method name="setFechaCreacion" returnType="void" visibility="public">
+          <Argument type="Date" name="fechaCreacion"/>
+        </Method>
+        <Method name="getEmail" returnType="String" visibility="public"/>
+        <Method name="setEmail" returnType="void" visibility="public">
+          <Argument type="String" name="email"/>
+        </Method>
+        <Method name="getCambioClave" returnType="Boolean" visibility="public"/>
+        <Method name="setCambioClave" returnType="void" visibility="public">
+          <Argument type="Boolean" name="cambioClave"/>
+        </Method>
+        <Method name="getTerminos" returnType="Boolean" visibility="public"/>
+        <Method name="setTerminos" returnType="void" visibility="public">
+          <Argument type="Boolean" name="terminos"/>
+        </Method>
+        <Method name="getCitacionList" returnType="List&lt;Citacion&gt;" visibility="public"/>
+        <Method name="setCitacionList" returnType="void" visibility="public">
+          <Argument type="List&lt;Citacion&gt;" name="citacionList"/>
+        </Method>
+        <Method name="getUsuarioHasOfertaList" returnType="List&lt;UsuarioHasOferta&gt;" visibility="public"/>
+        <Method name="setUsuarioHasOfertaList" returnType="void" visibility="public">
+          <Argument type="List&lt;UsuarioHasOferta&gt;" name="usuarioHasOfertaList"/>
+        </Method>
+        <Method name="getOfertaList" returnType="List&lt;Oferta&gt;" visibility="public"/>
+        <Method name="setOfertaList" returnType="void" visibility="public">
+          <Argument type="List&lt;Oferta&gt;" name="ofertaList"/>
+        </Method>
+        <Method name="getCandidato" returnType="Candidato" visibility="public"/>
+        <Method name="setCandidato" returnType="void" visibility="public">
+          <Argument type="Candidato" name="candidato"/>
+        </Method>
+        <Method name="getEmpresa" returnType="Empresa" visibility="public"/>
+        <Method name="setEmpresa" returnType="void" visibility="public">
+          <Argument type="Empresa" name="empresa"/>
+        </Method>
+        <Method name="getPersona" returnType="Persona" visibility="public"/>
+        <Method name="setPersona" returnType="void" visibility="public">
+          <Argument type="Persona" name="persona"/>
+        </Method>
+        <Method name="getRol" returnType="Rol" visibility="public"/>
+        <Method name="setRol" returnType="void" visibility="public">
+          <Argument type="Rol" name="rol"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="UsuarioHasOferta" package="com.basp.trabajo_al_minuto.service.entity" visibility="public" xPosition="2392.0" yPosition="1166.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="usuarioHasOfertaId" type="Long" visibility="private"/>
+        <Field name="fechaPostulacion" type="Date" visibility="private"/>
+        <Field name="citacion" type="Citacion" visibility="private"/>
+        <Field name="estado" type="Catalogo" visibility="private"/>
+        <Field name="ofertasOfertaId" type="Oferta" visibility="private"/>
+        <Field name="usuarioUsuarioId" type="Usuario" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Long" name="usuarioHasOfertaId"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getUsuarioHasOfertaId" returnType="Long" visibility="public"/>
+        <Method name="setUsuarioHasOfertaId" returnType="void" visibility="public">
+          <Argument type="Long" name="usuarioHasOfertaId"/>
+        </Method>
+        <Method name="getFechaPostulacion" returnType="Date" visibility="public"/>
+        <Method name="setFechaPostulacion" returnType="void" visibility="public">
+          <Argument type="Date" name="fechaPostulacion"/>
+        </Method>
+        <Method name="getCitacion" returnType="Citacion" visibility="public"/>
+        <Method name="setCitacion" returnType="void" visibility="public">
+          <Argument type="Citacion" name="citacion"/>
+        </Method>
+        <Method name="getEstado" returnType="Catalogo" visibility="public"/>
+        <Method name="setEstado" returnType="void" visibility="public">
+          <Argument type="Catalogo" name="estado"/>
+        </Method>
+        <Method name="getOfertasOfertaId" returnType="Oferta" visibility="public"/>
+        <Method name="setOfertasOfertaId" returnType="void" visibility="public">
+          <Argument type="Oferta" name="ofertasOfertaId"/>
+        </Method>
+        <Method name="getUsuarioUsuarioId" returnType="Usuario" visibility="public"/>
+        <Method name="setUsuarioUsuarioId" returnType="void" visibility="public">
+          <Argument type="Usuario" name="usuarioUsuarioId"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="rolHasMenuList" source="com.basp.trabajo_al_minuto.service.entity.Rol" target="com.basp.trabajo_al_minuto.service.entity.RolHasMenu" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;RolHasMenu&gt;"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta" target="com.basp.trabajo_al_minuto.service.entity.Citacion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Usuario" target="com.basp.trabajo_al_minuto.service.entity.Persona" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Prueba" target="com.basp.trabajo_al_minuto.service.entity.Catalogo" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="respuestaList" source="com.basp.trabajo_al_minuto.service.entity.Evaluacion" target="com.basp.trabajo_al_minuto.service.entity.Respuesta" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Respuesta&gt;"/>
+    <HasRelation name="empresaEmpresaId" source="com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla" target="com.basp.trabajo_al_minuto.service.entity.Empresa" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Respuesta" target="com.basp.trabajo_al_minuto.service.entity.Opcion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.OpcionPlantilla" target="com.basp.trabajo_al_minuto.service.entity.PreguntaPlantilla" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="usuarioList" source="com.basp.trabajo_al_minuto.service.entity.Persona" target="com.basp.trabajo_al_minuto.service.entity.Usuario" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Usuario&gt;"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Perfil" target="com.basp.trabajo_al_minuto.service.entity.Prueba" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Empresa" target="com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="opcion" source="com.basp.trabajo_al_minuto.service.entity.Respuesta" target="com.basp.trabajo_al_minuto.service.entity.Opcion" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ofertaList" source="com.basp.trabajo_al_minuto.service.entity.Usuario" target="com.basp.trabajo_al_minuto.service.entity.Oferta" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Oferta&gt;"/>
+    <HasRelation name="area" source="com.basp.trabajo_al_minuto.service.entity.Perfil" target="com.basp.trabajo_al_minuto.service.entity.Catalogo" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="opcionPlantillaList" source="com.basp.trabajo_al_minuto.service.entity.PreguntaPlantilla" target="com.basp.trabajo_al_minuto.service.entity.OpcionPlantilla" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;OpcionPlantilla&gt;"/>
+    <HasRelation name="candidato" source="com.basp.trabajo_al_minuto.service.entity.Usuario" target="com.basp.trabajo_al_minuto.service.entity.Candidato" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Evaluacion" target="com.basp.trabajo_al_minuto.service.entity.Respuesta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla" target="com.basp.trabajo_al_minuto.service.entity.Catalogo" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="evaluacion" source="com.basp.trabajo_al_minuto.service.entity.Respuesta" target="com.basp.trabajo_al_minuto.service.entity.Evaluacion" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="opcionList" source="com.basp.trabajo_al_minuto.service.entity.Pregunta" target="com.basp.trabajo_al_minuto.service.entity.Opcion" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Opcion&gt;"/>
+    <HasRelation name="evaluacionList" source="com.basp.trabajo_al_minuto.service.entity.Citacion" target="com.basp.trabajo_al_minuto.service.entity.Evaluacion" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Evaluacion&gt;"/>
+    <HasRelation name="usuarioHasOfertaList" source="com.basp.trabajo_al_minuto.service.entity.Usuario" target="com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;UsuarioHasOferta&gt;"/>
+    <HasRelation name="preguntaList" source="com.basp.trabajo_al_minuto.service.entity.Prueba" target="com.basp.trabajo_al_minuto.service.entity.Pregunta" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Pregunta&gt;"/>
+    <HasRelation name="perfilList" source="com.basp.trabajo_al_minuto.service.entity.Catalogo" target="com.basp.trabajo_al_minuto.service.entity.Perfil" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Perfil&gt;"/>
+    <HasRelation name="persona" source="com.basp.trabajo_al_minuto.service.entity.Usuario" target="com.basp.trabajo_al_minuto.service.entity.Persona" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Pregunta" target="com.basp.trabajo_al_minuto.service.entity.Prueba" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Citacion" target="com.basp.trabajo_al_minuto.service.entity.Usuario" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="rol" source="com.basp.trabajo_al_minuto.service.entity.RolHasMenu" target="com.basp.trabajo_al_minuto.service.entity.Rol" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="rolHasMenuList" source="com.basp.trabajo_al_minuto.service.entity.Menu" target="com.basp.trabajo_al_minuto.service.entity.RolHasMenu" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;RolHasMenu&gt;"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla" target="com.basp.trabajo_al_minuto.service.entity.Empresa" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Respuesta" target="com.basp.trabajo_al_minuto.service.entity.Evaluacion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="catalogoPadre" source="com.basp.trabajo_al_minuto.service.entity.Catalogo" target="com.basp.trabajo_al_minuto.service.entity.Catalogo" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="menuPadre" source="com.basp.trabajo_al_minuto.service.entity.Menu" target="com.basp.trabajo_al_minuto.service.entity.Menu" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="citacion" source="com.basp.trabajo_al_minuto.service.entity.Evaluacion" target="com.basp.trabajo_al_minuto.service.entity.Citacion" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="usuarioList" source="com.basp.trabajo_al_minuto.service.entity.Candidato" target="com.basp.trabajo_al_minuto.service.entity.Usuario" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Usuario&gt;"/>
+    <HasRelation name="preguntaPlantillaPreguntaId" source="com.basp.trabajo_al_minuto.service.entity.OpcionPlantilla" target="com.basp.trabajo_al_minuto.service.entity.PreguntaPlantilla" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Rol" target="com.basp.trabajo_al_minuto.service.entity.Usuario" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="usuarioAutor" source="com.basp.trabajo_al_minuto.service.entity.Oferta" target="com.basp.trabajo_al_minuto.service.entity.Usuario" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Oferta" target="com.basp.trabajo_al_minuto.service.entity.Usuario" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="menu" source="com.basp.trabajo_al_minuto.service.entity.RolHasMenu" target="com.basp.trabajo_al_minuto.service.entity.Menu" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Prueba" target="com.basp.trabajo_al_minuto.service.entity.Prueba" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Catalogo" target="com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="usuarioList" source="com.basp.trabajo_al_minuto.service.entity.Rol" target="com.basp.trabajo_al_minuto.service.entity.Usuario" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Usuario&gt;"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Usuario" target="com.basp.trabajo_al_minuto.service.entity.Citacion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Persona" target="com.basp.trabajo_al_minuto.service.entity.Usuario" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="pruebaPruebaId" source="com.basp.trabajo_al_minuto.service.entity.Pregunta" target="com.basp.trabajo_al_minuto.service.entity.Prueba" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Catalogo" target="com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Oferta" target="com.basp.trabajo_al_minuto.service.entity.Perfil" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ofertaList" source="com.basp.trabajo_al_minuto.service.entity.Perfil" target="com.basp.trabajo_al_minuto.service.entity.Oferta" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Oferta&gt;"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.PerfilHasPrueba" target="com.basp.trabajo_al_minuto.service.entity.Prueba" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="prueba" source="com.basp.trabajo_al_minuto.service.entity.PerfilHasPrueba" target="com.basp.trabajo_al_minuto.service.entity.Prueba" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.PreguntaPlantilla" target="com.basp.trabajo_al_minuto.service.entity.OpcionPlantilla" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Menu" target="com.basp.trabajo_al_minuto.service.entity.Menu" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="pruebaPlantillaList" source="com.basp.trabajo_al_minuto.service.entity.Catalogo" target="com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;PruebaPlantilla&gt;"/>
+    <HasRelation name="area" source="com.basp.trabajo_al_minuto.service.entity.Prueba" target="com.basp.trabajo_al_minuto.service.entity.Catalogo" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Citacion" target="com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Candidato" target="com.basp.trabajo_al_minuto.service.entity.Usuario" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Perfil" target="com.basp.trabajo_al_minuto.service.entity.Oferta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Catalogo" target="com.basp.trabajo_al_minuto.service.entity.Catalogo" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ofertasOfertaId" source="com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta" target="com.basp.trabajo_al_minuto.service.entity.Oferta" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="area" source="com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla" target="com.basp.trabajo_al_minuto.service.entity.Catalogo" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Usuario" target="com.basp.trabajo_al_minuto.service.entity.Candidato" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="usuarioHasOfertaList" source="com.basp.trabajo_al_minuto.service.entity.Oferta" target="com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;UsuarioHasOferta&gt;"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Pregunta" target="com.basp.trabajo_al_minuto.service.entity.Opcion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Usuario" target="com.basp.trabajo_al_minuto.service.entity.Oferta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="usuarioAutor" source="com.basp.trabajo_al_minuto.service.entity.Citacion" target="com.basp.trabajo_al_minuto.service.entity.Usuario" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="empresa" source="com.basp.trabajo_al_minuto.service.entity.Usuario" target="com.basp.trabajo_al_minuto.service.entity.Empresa" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.PreguntaPlantilla" target="com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="perfilHasPruebaList" source="com.basp.trabajo_al_minuto.service.entity.Prueba" target="com.basp.trabajo_al_minuto.service.entity.PerfilHasPrueba" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;PerfilHasPrueba&gt;"/>
+    <HasRelation name="citacion" source="com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta" target="com.basp.trabajo_al_minuto.service.entity.Citacion" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="preguntaPlantillaList" source="com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla" target="com.basp.trabajo_al_minuto.service.entity.PreguntaPlantilla" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;PreguntaPlantilla&gt;"/>
+    <HasRelation name="catalogoList" source="com.basp.trabajo_al_minuto.service.entity.Catalogo" target="com.basp.trabajo_al_minuto.service.entity.Catalogo" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Catalogo&gt;"/>
+    <HasRelation name="pruebaPlantillaPruebaId" source="com.basp.trabajo_al_minuto.service.entity.PreguntaPlantilla" target="com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Perfil" target="com.basp.trabajo_al_minuto.service.entity.Catalogo" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="preguntaPreguntaId" source="com.basp.trabajo_al_minuto.service.entity.Opcion" target="com.basp.trabajo_al_minuto.service.entity.Pregunta" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Oferta" target="com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Catalogo" target="com.basp.trabajo_al_minuto.service.entity.Perfil" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Usuario" target="com.basp.trabajo_al_minuto.service.entity.Empresa" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="usuarioHasOfertaList" source="com.basp.trabajo_al_minuto.service.entity.Catalogo" target="com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;UsuarioHasOferta&gt;"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Empresa" target="com.basp.trabajo_al_minuto.service.entity.Usuario" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="perfil" source="com.basp.trabajo_al_minuto.service.entity.PerfilHasPrueba" target="com.basp.trabajo_al_minuto.service.entity.Perfil" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="citacionList" source="com.basp.trabajo_al_minuto.service.entity.Usuario" target="com.basp.trabajo_al_minuto.service.entity.Citacion" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Citacion&gt;"/>
+    <HasRelation name="rol" source="com.basp.trabajo_al_minuto.service.entity.Usuario" target="com.basp.trabajo_al_minuto.service.entity.Rol" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="perfil" source="com.basp.trabajo_al_minuto.service.entity.Oferta" target="com.basp.trabajo_al_minuto.service.entity.Perfil" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Usuario" target="com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Opcion" target="com.basp.trabajo_al_minuto.service.entity.Pregunta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta" target="com.basp.trabajo_al_minuto.service.entity.Usuario" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta" target="com.basp.trabajo_al_minuto.service.entity.Oferta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="menuList" source="com.basp.trabajo_al_minuto.service.entity.Menu" target="com.basp.trabajo_al_minuto.service.entity.Menu" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Menu&gt;"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Usuario" target="com.basp.trabajo_al_minuto.service.entity.Rol" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.RolHasMenu" target="com.basp.trabajo_al_minuto.service.entity.Rol" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Menu" target="com.basp.trabajo_al_minuto.service.entity.RolHasMenu" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="perfilHasPruebaList" source="com.basp.trabajo_al_minuto.service.entity.Perfil" target="com.basp.trabajo_al_minuto.service.entity.PerfilHasPrueba" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;PerfilHasPrueba&gt;"/>
+    <HasRelation name="pruebaPlantillaList" source="com.basp.trabajo_al_minuto.service.entity.Empresa" target="com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;PruebaPlantilla&gt;"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.PerfilHasPrueba" target="com.basp.trabajo_al_minuto.service.entity.Perfil" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="pruebaList" source="com.basp.trabajo_al_minuto.service.entity.Catalogo" target="com.basp.trabajo_al_minuto.service.entity.Prueba" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Prueba&gt;"/>
+    <HasRelation name="usuarioHasOferta" source="com.basp.trabajo_al_minuto.service.entity.Citacion" target="com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.RolHasMenu" target="com.basp.trabajo_al_minuto.service.entity.Menu" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Rol" target="com.basp.trabajo_al_minuto.service.entity.RolHasMenu" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Citacion" target="com.basp.trabajo_al_minuto.service.entity.Evaluacion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Opcion" target="com.basp.trabajo_al_minuto.service.entity.Respuesta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="respuestaList" source="com.basp.trabajo_al_minuto.service.entity.Opcion" target="com.basp.trabajo_al_minuto.service.entity.Respuesta" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Respuesta&gt;"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Catalogo" target="com.basp.trabajo_al_minuto.service.entity.Prueba" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.PruebaPlantilla" target="com.basp.trabajo_al_minuto.service.entity.PreguntaPlantilla" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta" target="com.basp.trabajo_al_minuto.service.entity.Catalogo" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="usuarioUsuarioId" source="com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta" target="com.basp.trabajo_al_minuto.service.entity.Usuario" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Prueba" target="com.basp.trabajo_al_minuto.service.entity.Pregunta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="estado" source="com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta" target="com.basp.trabajo_al_minuto.service.entity.Catalogo" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="usuarioList" source="com.basp.trabajo_al_minuto.service.entity.Empresa" target="com.basp.trabajo_al_minuto.service.entity.Usuario" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Usuario&gt;"/>
+    <UseRelation source="com.basp.trabajo_al_minuto.service.entity.Evaluacion" target="com.basp.trabajo_al_minuto.service.entity.Citacion" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

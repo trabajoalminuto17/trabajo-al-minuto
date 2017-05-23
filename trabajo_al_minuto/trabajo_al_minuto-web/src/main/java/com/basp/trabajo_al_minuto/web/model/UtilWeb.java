@@ -9,10 +9,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,10 +25,16 @@ import org.primefaces.model.StreamedContent;
  */
 public class UtilWeb {
 
+    /**
+     * Se encarga de mostrar en pantalle el mensaje al usuario*
+     */
     public static FacesMessage webMessage(MensajeWeb me) {
         return new FacesMessage(me.getSEVERITY(), me.getTITULO(), me.getDESCRIPCION());
     }
 
+    /**
+     * Permite descargar un archivo PDF*
+     */
     public static StreamedContent descargarArchivoPdf(String url) {
         File file = new File(url);
         if (file.exists()) {
@@ -50,11 +54,17 @@ public class UtilWeb {
         return item;
     }
 
+    /**
+     * Formatea una fecha *
+     */
     public static String formatDate(LocalDateTime date) {
         String d = date.format(DateTimeFormatter.ofPattern("MMM d, yyyy HH:mm", new Locale("es")));
         return Character.toString(d.charAt(0)).toUpperCase() + d.substring(1);
     }
 
+    /**
+     * Formatea una fecha *
+     */
     public static String formatDateTime(LocalDateTime date) {
         String d = date.format(DateTimeFormatter.ofPattern("HH:mm:ss", new Locale("es")));
         return Character.toString(d.charAt(0)).toUpperCase() + d.substring(1);

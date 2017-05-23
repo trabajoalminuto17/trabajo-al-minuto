@@ -7,7 +7,8 @@ package com.basp.trabajo_al_minuto.web.model;
 
 /**
  *
- * @author BASP
+ * Contiene todas aquellas variables que podrán ser usadas cada vez que se
+ * instancie un objeto
  */
 public class AtributosWeb {
 
@@ -33,6 +34,6 @@ public class AtributosWeb {
     public static final String DETALLE_PRUEBA_PLANTILLA_PAGE = FACES_PATH.concat("modulos/pruebas/detalle.xhtml").concat(REDIRECT);
     public static final String DETALLE_EVALUACION_PAGE = FACES_PATH.concat("modulos/pruebas/evaluacion.xhtml").concat(REDIRECT);
     public static final String DETALLE_PERFIL_PAGE = FACES_PATH.concat("modulos/usuarios/detalle_perfil.xhtml").concat(REDIRECT);
-    
+
     public static final String RUTA_HOJA_DE_VIDA_PDF = "D:\\hojas_de_vida\\";
 }

@@ -58,10 +58,16 @@ public class DetallePostulacionView extends ComponenteWeb implements Serializabl
     private Citacion newCitacion;
     private Date fechaActual;
 
+    /**
+     * Constructor*
+     */
     public DetallePostulacionView() {
         newCitacion = new Citacion();
     }
 
+    /**
+     * Codigo a ejecutar una vez se ha instanciado la clase
+     */
     @PostConstruct
     public void init() {
         try {
@@ -78,10 +84,16 @@ public class DetallePostulacionView extends ComponenteWeb implements Serializabl
         }
     }
 
+    /**
+     * Permite descargar un archivo PDF*
+     */
     public void descargarHojaDeVida(String url) {
         streamedContent = descargarArchivoPdf(url);
     }
 
+    /**
+     * Cambia el estado de la citacion a rechazado y actualiza la información*
+     */
     public void rechazarCitacion() {
         try {
             usuarioHasOfertaSeleccionada.setEstado(new Catalogo(9L));
@@ -95,6 +107,10 @@ public class DetallePostulacionView extends ComponenteWeb implements Serializabl
         }
     }
 
+    /**
+     * Metodo que captura la informacion diligenciada por el participante cada
+     * vez que va a crear una citación y la inserta en la tabla citacion
+     */
     public void createCitacion() {
         try {
             Usuario u = getUserLogin();
@@ -105,9 +121,9 @@ public class DetallePostulacionView extends ComponenteWeb implements Serializabl
             newCitacion.setEstado(Boolean.TRUE);
             newCitacion.setUsuarioAutor(u);
             newCitacion.setUsuarioHasOferta(usuarioHasOfertaSeleccionada);
-            citacionSeleccionada = citacionEjb.updateCitacion(newCitacion);
+            citacionSeleccionada = citacionEjb.updateCitacion(newCitacion);//Actualiza la informacion de la citacion
             usuarioHasOfertaSeleccionada = usuarioEjb.updateUsuarioHasOferta(usuarioHasOfertaSeleccionada);
-            enviarCitacion(newCitacion, usuarioHasOfertaSeleccionada);
+            enviarCitacion(newCitacion, usuarioHasOfertaSeleccionada);//Envia el email con los datos de participante
             message = webMessage(CITACION_OK);
         } catch (BusinessException ex) {
             message = webMessage(CITACION_NOT);
@@ -117,6 +133,9 @@ public class DetallePostulacionView extends ComponenteWeb implements Serializabl
         }
     }
 
+    /**
+     * Actualiza la informacion de la citacion *
+     */
     public void updateCitacion() {
         try {
             citacionSeleccionada = citacionEjb.updateCitacion(citacionSeleccionada);
@@ -130,9 +149,12 @@ public class DetallePostulacionView extends ComponenteWeb implements Serializabl
         }
     }
 
+    /**
+     * Cambia el estado de FALSE a TRUE de la columna activarPrueba
+     */
     public void activarPrueba() {
         try {
-            if (citacionEjb.activarPrueba(citacionSeleccionada.getCitacionId()) == 1) {
+            if (citacionEjb.activarPrueba(citacionSeleccionada.getCitacionId()) == 1) {//Envía el id de la citacion seleccionada. Si el resultado de la actualizacion es 1 quiere decir que hubo exito en el proceso
                 message = webMessage(PRUEBA_ACTIVADA);
             } else {
                 message = webMessage(PRUEBA_NO_ACTIVADA);
@@ -145,40 +167,48 @@ public class DetallePostulacionView extends ComponenteWeb implements Serializabl
         }
     }
 
+    /**
+     * Envía todos los datos necesarios para generar y enviar el correo al
+     * usuario cada vez que se crea una citacion *
+     */
     public Boolean enviarCitacion(Citacion citacion, UsuarioHasOferta hasOferta) throws BusinessException {
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");//formatea la fecha de citación que será mostrada al usuario
         String fechaCitacion = df.format(citacion.getFechaCitacion());
         List<String> lisTo = new ArrayList();
         lisTo.add(hasOferta.getUsuarioUsuarioId().getEmail());
         EmailMessage em = new EmailMessage();
-        em.setFrom("trabajoalminuto@gmail.com");
-        em.setUser("trabajoalminuto@gmail.com");
-        em.setPassword("tam12345");
-        em.setPort(587);
+        em.setFrom("trabajoalminuto@gmail.com");//email de origen
+        em.setUser("trabajoalminuto@gmail.com");//usuario que será mostrado
+        em.setPassword("tam12345");//contraseña de la cuenta de correo
+        em.setPort(587);//puerto del servidor de correo
         em.setStarttls(Boolean.TRUE);
-        em.setMask("Trabajo al minuto");
-        em.setSubject("Proceso selección!");
-        em.setBodyMessage(BusinessHtmlTemplates.enviarCitacion(hasOferta.getOfertasOfertaId().getUsuarioAutor().getEmpresa().getNombre(), fechaCitacion, hasOferta.getUsuarioUsuarioId().getPersona().getNombre(), citacion.getLugar(), citacion.getDetalles(), hasOferta.getOfertasOfertaId().getPerfil().getTitulo()));
+        em.setMask("Trabajo al minuto");//Etiqueta de presentacion del correo
+        em.setSubject("Proceso selección!");//Asunto del correo
+        em.setBodyMessage(BusinessHtmlTemplates.enviarCitacion(hasOferta.getOfertasOfertaId().getUsuarioAutor().getEmpresa().getNombre(), fechaCitacion, hasOferta.getUsuarioUsuarioId().getPersona().getNombre(), citacion.getLugar(), citacion.getDetalles(), hasOferta.getOfertasOfertaId().getPerfil().getTitulo()));//parametros que se envian a la plantilla para genear el cuerpo del correo
         em.setToList(lisTo);
-        em.setHost(HOST_EMAIL_SERVER);
-        em.setMimeTypeMessage("text/html; charset=utf-8");
+        em.setHost(HOST_EMAIL_SERVER);//Host del servidor de correo
+        em.setMimeTypeMessage("text/html; charset=utf-8");//
         return sendEmail(em);
     }
 
+    /**
+     * Envía todos los datos necesarios para generar y enviar el correo al
+     * usuario cada vez que se modifique los datos de una citacion *
+     */
     public Boolean actualizarCitacion(Citacion citacion, UsuarioHasOferta hasOferta) throws BusinessException {
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");//formatea la fecha de citación que será mostrada al usuario
         String fechaCitacion = df.format(citacion.getFechaCitacion());
         List<String> lisTo = new ArrayList();
         lisTo.add(hasOferta.getUsuarioUsuarioId().getEmail());
         EmailMessage em = new EmailMessage();
-        em.setFrom("trabajoalminuto@gmail.com");
-        em.setUser("trabajoalminuto@gmail.com");
-        em.setPassword("tam12345");
+        em.setFrom("trabajoalminuto@gmail.com");//email de origen
+        em.setUser("trabajoalminuto@gmail.com");//usuario que será mostrado
+        em.setPassword("tam12345");//contraseña de la cuenta de correo
         em.setPort(587);
         em.setStarttls(Boolean.TRUE);
         em.setMask("Trabajo al minuto");
-        em.setSubject("Proceso selección!");
-        em.setBodyMessage(BusinessHtmlTemplates.citacionRechazada(hasOferta.getOfertasOfertaId().getUsuarioAutor().getEmpresa().getNombre(), fechaCitacion, hasOferta.getUsuarioUsuarioId().getPersona().getNombre(), citacion.getLugar(), citacion.getDetalles()));
+        em.setSubject("Citación reprogramada!");
+        em.setBodyMessage(BusinessHtmlTemplates.actualizarCitacion(hasOferta.getOfertasOfertaId().getUsuarioAutor().getEmpresa().getNombre(), fechaCitacion, hasOferta.getUsuarioUsuarioId().getPersona().getNombre(), citacion.getLugar(), citacion.getDetalles()));//parametros que se envian a la plantilla para genear el cuerpo del correo
         em.setToList(lisTo);
         em.setHost(HOST_EMAIL_SERVER);
         em.setMimeTypeMessage("text/html; charset=utf-8");

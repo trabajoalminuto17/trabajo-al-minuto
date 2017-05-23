@@ -9,7 +9,6 @@ import com.basp.trabajo_al_minuto.model.business.BusinessException;
 import com.basp.trabajo_al_minuto.service.dao.OfertaDao;
 import com.basp.trabajo_al_minuto.service.dte.OfertaAplicada;
 import com.basp.trabajo_al_minuto.service.entity.Oferta;
-import com.basp.trabajo_al_minuto.service.entity.UsuarioHasOferta;
 import com.basp.trabajo_al_minuto.service.facade.OfertaFacade;
 import java.util.List;
 import javax.ejb.LocalBean;

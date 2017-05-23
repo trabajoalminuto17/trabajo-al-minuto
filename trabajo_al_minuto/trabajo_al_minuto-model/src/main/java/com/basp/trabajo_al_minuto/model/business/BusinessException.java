@@ -27,6 +27,9 @@ public class BusinessException extends Exception implements Serializable {
     public BusinessException() {
     }
 
+    /**
+     * Captura y muestra las excepciones de negocio
+     */
     public BusinessException(Exception e) {
         this.clazz = e.getClass();
         this.message = e.getMessage();
@@ -35,12 +38,18 @@ public class BusinessException extends Exception implements Serializable {
         errorMessage = new ErrorMessage(clazz.getSimpleName(), errorMethod, errorLine, message);
     }
 
+    /**
+     * Captura y muestra las excepciones del desarrollador
+     */
     public String developerException() {
         return CAUGHT + " --> Exception = (" + clazz + ")\n "
                 + "--> Trace = (" + getTraceFor(stackTraceElement) + ")\n "
                 + "--> Message = (" + message + ")";
     }
 
+    /**
+     * Inidica la clase el metodo y la linea donde ocurrio la excepcion
+     */
     private String getTraceFor(StackTraceElement[] elements) {
         StringBuilder trace = new StringBuilder();
         for (StackTraceElement element : elements) {
@@ -70,6 +79,9 @@ public class BusinessException extends Exception implements Serializable {
         }
     }
 
+    /**
+     *Metodos get y set *
+     */
     public Class getClazz() {
         return clazz;
     }

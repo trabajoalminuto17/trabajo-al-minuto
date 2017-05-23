@@ -53,6 +53,9 @@ public class DetalleOfertaView extends ComponenteWeb implements Serializable {
     private Usuario usuariologin;
     private UsuarioHasOferta ofertAplicada;
 
+    /**
+     * Codigo a ejecutar una vez se ha instanciado la clase
+     */
     @PostConstruct
     public void init() {
         try {
@@ -75,6 +78,9 @@ public class DetalleOfertaView extends ComponenteWeb implements Serializable {
         }
     }
 
+    /**
+     * Lista todos los usuarios que se han postulado a una oferta*
+     */
     public List<UsuarioHasOferta> getUsuarioHasOfertaByOferta() {
         try {
             return usuarioEjb.getUsuariosByOferta(ofertaSeleccionada.getOfertaId());
@@ -84,11 +90,15 @@ public class DetalleOfertaView extends ComponenteWeb implements Serializable {
         }
     }
 
+    /**
+     * Trae los datos de la postulacion una vez que el usuario selecciona uno de
+     * los datos contenidos en el dataTable*
+     */
     public void onRowSelectVerUsuarioHasOfertas(SelectEvent event) {
         try {
             UsuarioHasOferta uho = (UsuarioHasOferta) event.getObject();
-            if (!uho.getCitacion().getActivarPruebas()) {
-                if (uho.getEstado().getCatalogoId() != 9L) {
+            if (!uho.getCitacion().getActivarPruebas()) {//Valida si el usuario tiene una prueba asignada
+                if (uho.getEstado().getCatalogoId() != 9L) {//Si el estado de la prueba es diferente a rechazada muestra los detalles
                     FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuarioHasOfertaId", ((UsuarioHasOferta) event.getObject()).getUsuarioHasOfertaId());
                     FacesContext.getCurrentInstance().getExternalContext().redirect(DETALLE_POSTULACION_PAGE);
                 } else {
@@ -106,6 +116,9 @@ public class DetalleOfertaView extends ComponenteWeb implements Serializable {
         }
     }
 
+    /**
+     * Muestra las pruebas creadas para un perfil*
+     */
     public List<Prueba> getPruebasByPerfil() {
         try {
             return pruebaEjb.getPruebasByPerfil(ofertaSeleccionada.getPerfil().getPerfilId());
@@ -115,6 +128,10 @@ public class DetalleOfertaView extends ComponenteWeb implements Serializable {
         }
     }
 
+    /**
+     * Trae la informacion de la prueba una vez que el usuario selecciona uno de
+     * los datos contenidos en el dataTable*
+     */
     public void onRowSelectVerPruebas(SelectEvent event) {
         try {
             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("pruebaId", ((Prueba) event.getObject()).getPruebaId());
@@ -124,6 +141,9 @@ public class DetalleOfertaView extends ComponenteWeb implements Serializable {
         }
     }
 
+    /**
+     * Registra la informacion del usuario que aplica a una de las ofertas*
+     */
     public void aplicarOferta() {
         try {
             UsuarioHasOferta uho = new UsuarioHasOferta();

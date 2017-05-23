@@ -39,6 +39,9 @@ public class BusinessPersistence implements Serializable {
     public BusinessPersistence() {
     }
 
+    /**
+     * Crea una nueva instancia del EntityManagere*
+     */
     public BusinessPersistence(EntityManagerFactory EMF) {
         this.EM = EMF.createEntityManager();
     }
@@ -47,6 +50,12 @@ public class BusinessPersistence implements Serializable {
         return EM;
     }
 
+    /**
+     * Recibe como parametro el objeto PersistenceObject el cual contiene el
+     * tipo de query a ejecutar según sea el caso. Devuelve un Objeto con los
+     * resultados de la consulta
+     *
+     */
     public Object readOne(PersistenceObject persistenceObject) throws Exception {
         Query query = null;
         switch (persistenceObject.getQueryType()) {
@@ -79,6 +88,10 @@ public class BusinessPersistence implements Serializable {
         throw new Exception();
     }
 
+    /**
+     * Devuelve una lista con todos los resultados de la consulta, ejecuta el
+     * query según el valor que contenga el objeto PersistenceObject
+     */
     public List read(PersistenceObject persistenceObject) throws Exception {
         Query query = null;
         switch (persistenceObject.getQueryType()) {
@@ -116,6 +129,10 @@ public class BusinessPersistence implements Serializable {
         throw new Exception();
     }
 
+    /**
+     * Inserta nuevos datos en la base de datos, devuelve el número de filas
+     * afectadas
+     */
     public Integer readExecuted(PersistenceObject persistenceObject) throws Exception {
         Query query = null;
         Integer numberRowsAffected = 0;
@@ -146,6 +163,9 @@ public class BusinessPersistence implements Serializable {
         return numberRowsAffected;
     }
 
+    /**
+     * Ejecuta procedimientos almacenados *
+     */
     public List readStoreProcedure(PersistenceObject persistenceObject) throws Exception {
         StoredProcedureQuery query = null;
         switch (persistenceObject.getQueryType()) {
@@ -182,6 +202,9 @@ public class BusinessPersistence implements Serializable {
         throw new Exception();
     }
 
+    /**
+     * Devuelve un solo objeto, producto del resultado del query ejecutado *
+     */
     public Object find(Class<?> t, Object PK) throws Exception {
         EntityTransaction et = EM.getTransaction();
         if (!et.isActive()) {
@@ -341,6 +364,9 @@ public class BusinessPersistence implements Serializable {
         throw new Exception("Transacción Activada");
     }
 
+    /**
+     * Retorna la conexion actual *
+     */
     public Connection getConnection() throws Exception {
         EntityTransaction et = EM.getTransaction();
         if (!et.isActive()) {
@@ -356,12 +382,18 @@ public class BusinessPersistence implements Serializable {
         throw new Exception("Transacción Activada");
     }
 
+    /**
+     * Crea una nueva conexion *
+     */
     public Connection createConnection(String driver, String jdbc, String user, String password, String server, Integer port, String dbName) throws Exception {
         Class.forName(driver);
         String url = jdbc + "://" + server + ":" + port + "/" + dbName;
         return DriverManager.getConnection(url, user, password);
     }
 
+    /**
+     *Cierra la conexion*
+     */
     public Boolean closeConnection(Connection connection) throws Exception {
         connection.close();
         return Boolean.TRUE;
