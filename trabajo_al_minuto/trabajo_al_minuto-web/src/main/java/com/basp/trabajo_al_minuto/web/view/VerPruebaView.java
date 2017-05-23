@@ -64,16 +64,16 @@ public class VerPruebaView extends ComponenteWeb implements Serializable {
                         for (Prueba p : getPreubasResueltas()) {
                             pruebasByPerfil.remove(p);
                         }
-                    }
-                    if (pruebasByPerfil.isEmpty()) {
-                        usuariologin.getCandidato().setPruebasActivas(Boolean.FALSE);
-                        usuariologin = usuarioEjb.updateUsuario(usuariologin);
-                        pruebasCompletas = Boolean.TRUE;
-                        Citacion c = citacionEjb.findCitacion(getCitacionId());
-                        c.setActivarPruebas(Boolean.FALSE);
-                        c.setResuelto(Boolean.TRUE);
-                        c.getUsuarioHasOferta().setEstado(new Catalogo(12L));
-                        citacionEjb.updateCitacion(c);
+                        if (pruebasByPerfil.isEmpty()) {
+                            usuariologin.getCandidato().setPruebasActivas(Boolean.FALSE);
+                            usuariologin = usuarioEjb.updateUsuario(usuariologin);
+                            pruebasCompletas = Boolean.TRUE;
+                            Citacion c = citacionEjb.findCitacion(getCitacionId());
+                            c.setActivarPruebas(Boolean.FALSE);
+                            c.setResuelto(Boolean.TRUE);
+                            c.getUsuarioHasOferta().setEstado(new Catalogo(12L));
+                            citacionEjb.updateCitacion(c);
+                        }
                     }
                 }
             } else {
